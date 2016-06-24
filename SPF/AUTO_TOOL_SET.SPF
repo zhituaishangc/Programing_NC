@@ -1,85 +1,85 @@
-PROC AUTO_TOOL_SET ;SAVE SBLOF DISPLOF;�Զ��Ե�����
-;$AA_IM[Z];��ǰZ��������� 
-;$AA_IM[X];��ǰX���������
-;$AC_DRF[X];X������ƫ��ֵ
-;$AC_DRF[Z];Z������ƫ��ֵ
-;$AA_IM[C];��ǰC��Ƕ�
+﻿PROC AUTO_TOOL_SET ;SAVE SBLOF DISPLOF;自动对刀程序
+;$AA_IM[Z];当前Z轴机床坐标 
+;$AA_IM[X];当前X轴机床坐标
+;$AC_DRF[X];X轴手轮偏置值
+;$AC_DRF[Z];Z轴手轮偏置值
+;$AA_IM[C];当前C轴角度
 ;--------------------------------------------------------------------------
-;DEF NCK REAL SCREW_PITCH;�ݾ�
-;DEF NCK REAL RANDOM_POS;����Ե���Z������
-;DEF NCK REAL ROTATION=(0/1);(O=����,1=����)
-;DEF NCK REAL MEASUER_R;��ͷ�뾶
-;DEF NCK REAL WHL_HEAD;��ͷ��ɰ�־���
-;DEF NCK REAL QUIT_X;ͷ���л��˵�ʱ��Xֵ
-;DEF NCK REAL TOUCH_X;̽ͷ�Ӵ���������ʱX����
-;DEF NCK REAL PRESENT_X;̽ͷ�Ӵ�����ʱX����
-;DEF NCK REAL PRESENT_C;̽ͷ�Ӵ�����ʱC�Ƕ�
-;DEF NCK REAL FINAL_Z;�Ե���ɺ�Z������
-;DEF NCK REAL PRESENT_LZ;̽ͷ�Ӵ����������ʱZ����
-;DEF NCK REAL PRESENT_RZ;̽ͷ�Ӵ��������Ҳ�ʱZ����
-;DEF NCK INT DSHAPE;����ѡ��
-;DEF NCK REAL ANG_L;����ν�
-;DEF NCK REAL ACK_R;�ҳ��ν�
+;DEF NCK REAL SCREW_PITCH;螺距
+;DEF NCK REAL RANDOM_POS;任意对刀点Z轴坐标
+;DEF NCK REAL ROTATION=(0/1);(O=右旋,1=左旋)
+;DEF NCK REAL MEASUER_R;测头半径
+;DEF NCK REAL WHL_HEAD;测头与砂轮距离
+;DEF NCK REAL QUIT_X;头数切换退刀时的X值
+;DEF NCK REAL TOUCH_X;探头接触工件表面时X坐标
+;DEF NCK REAL PRESENT_X;探头接触工件时X坐标
+;DEF NCK REAL PRESENT_C;探头接触工件时C角度
+;DEF NCK REAL FINAL_Z;对刀完成后Z轴坐标
+;DEF NCK REAL PRESENT_LZ;探头接触工件槽左侧时Z坐标
+;DEF NCK REAL PRESENT_RZ;探头接触工件槽右侧时Z坐标
+;DEF NCK INT DSHAPE;齿形选择
+;DEF NCK REAL ANG_L;左齿形角
+;DEF NCK REAL ACK_R;右齿形角
 ;--------------------------------------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
 ;--------------------------------------------------------------------------
-;��ͷ���
+;测头伸出
 ;--------------------------------------------------------------------------
-MEAS=1 G90 G01 X=QUIT_X F500;��ͷ�ӽ�ɰ���˵���ȫλ��
-;IF $AC_MEA[1]=TRUE GOTOF ERROR1;��ͷ�ѹ���
+MEAS=1 G90 G01 X=QUIT_X F500;测头接近砂轮退刀安全位置
+;IF $AC_MEA[1]=TRUE GOTOF ERROR1;测头已工作
 STOPRE
-MEAS=1 G01 X=TOUCH_X-5 F50;��ͷ�����������Ӵ�����
+MEAS=1 G01 X=TOUCH_X-5 F50;测头缓慢进给至接触工件
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR2
-STOPRE;����ֹͣ
-PRESENT_X=$AA_MM[X];̽ͷ�Ӵ�������ʱX����
+STOPRE;进刀停止
+PRESENT_X=$AA_MM[X];探头接触工件槽时X坐标
 ;--------------------------------------------------------------------------
 WHILE(PRESENT_X>=TOUCH_X)
 G91 X=0.5
-IF ROTATION=1;����
+IF ROTATION=1;左旋
 G91 C=-30
 ELSE
 G91 C=30
 ENDIF
 MEAS=1 G91 X=-5 F=50
 STOPRE
-PRESENT_X=$AA_MM[X];̽ͷ�Ӵ�������ʱX����
+PRESENT_X=$AA_MM[X];探头接触工件槽时X坐标
 ENDWHILE
 STOPRE
 ;--------------------------------------------------------------------------
 MEAS=1 G91 Z=-SCREW_PITCH F=50
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR3
-PRESENT_C=$AA_IM[C];̽ͷ�Ӵ�������ʱC�Ƕ�
+PRESENT_C=$AA_IM[C];探头接触工件槽时C角度
 
 MEAS=1 G91 Z=SCREW_PITCH
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR3
 STOPRE
-PRESENT_LZ=$AA_MM[Z];̽ͷ�Ӵ����������ʱZ����
+PRESENT_LZ=$AA_MM[Z];探头接触工件槽左侧时Z坐标
 
 MEAS=1 G91 Z=-SCREW_PITCH
 STOPRE
-PRESENT_RZ=$AA_MM[Z];̽ͷ�Ӵ��������Ҳ�ʱZ����
+PRESENT_RZ=$AA_MM[Z];探头接触工件槽右侧时Z坐标
 CASE DSHAPE OF 0 GOTOF ANG0 1 GOTOF ANG1 DEFAULT ANG2
-ANG0:		;������	
+ANG0:		;三角形	
 ANG_L=TRIANGLE_ANG_L
 ANG_R=TRIANGLE_ANG_R
 GOTOF ANG3	
-ANG1:		;����
+ANG1:		;梯形
 ANG_L=TRAP_ANG_L
 ANG_R=TRAP_ANG_R
 GOTOF ANG3
-ANG2:		;˫Բ��	
+ANG2:		;双圆弧	
 DR1=PRESENT_RZ+MEASUER_R
 DR2=PRESENT_LZ-MEASUER_R
 GOTOF ANG4
 
 ANG3:
-DR1=PRESENT_RZ+MEASUER_R/SIN(ANG_L);�Ҳ�Ӵ������껻��
-DR2=PRESENT_LZ-MEASUER_R/SIN(ANG_R)���Ӵ������껻��
-ANG4��
+DR1=PRESENT_RZ+MEASUER_R/SIN(ANG_L);右侧接触点坐标换算
+DR2=PRESENT_LZ-MEASUER_R/SIN(ANG_R)左侧接触点坐标换算
+ANG4：
 DR3=DR1-DR2
-DR4=(DR3*TAN(ANG_L))/(TAN(ANG_L)+TAN(ANG_R));��໻��㵽�ݸ�ˮƽ����
-DR5=DR2-DR4;��ͷ�Ե���Z������
-DR6=DR5-WHL_HEAD;���㵽��ɰ�ֶԵ���ɺ�Z������
+DR4=(DR3*TAN(ANG_L))/(TAN(ANG_L)+TAN(ANG_R));左侧换算点到齿高水平距离
+DR5=DR2-DR4;测头对刀点Z轴坐标
+DR6=DR5-WHL_HEAD;换算到用砂轮对刀完成后Z轴坐标
 ;--------------------------------------------------------------------------
 FINAL_Z=DR6
 INI ANGLE 
@@ -87,13 +87,13 @@ INI ANGLE
 M17
 ;--------------------------------------------------------------------------
 ;ERROR1:
-;MSG("����ʧ��,ɰ���˵���ȫλ��Xֵ"<<QUIT_X<<"����!!!")
+;MSG("测量失败,砂轮退刀安全位置X值"<<QUIT_X<<"错误!!!")
 ;ENDERROR
 ;--------------------------------------------------------------------------
 ;ERROR2:
-;MSG("����ʧ��,��ͷδ�Ӵ�����,��ͷ�����������!!!")
+;MSG("测量失败,测头未接触工件,测头进给距离错误!!!")
 ;ENDERROR
 ;--------------------------------------------------------------------------
 ;ERROR3:
-;MSG("����ʧ��,��ͷδ�Ӵ��������,�ݾ��������!!!")
+;MSG("测量失败,测头未接触工件侧边,螺距输入错误!!!")
 ;ENDERROR
