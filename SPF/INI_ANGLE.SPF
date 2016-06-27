@@ -1,4 +1,6 @@
-﻿PROC INI_ANGLE ;SAVE SBLOF DISPLOF;磨削时C轴起始角计算
+﻿PROC INI_ANGLE SAVE SBLOF DISPLOF
+;磨削时C轴起始角计算
+
 ;DEF NCK REAL ROTATION;(O=右旋,1=左旋)
 ;DEF NCK REAL START_POS;Z轴磨削起点
 ;DEF NCK REAL SCREW_LEAD;导程
@@ -16,18 +18,18 @@ DEF REAL DR11,DR12,DR13
 ;--------------------------------------------------------------------------
 IF OPERA_MODEL==0;首次对刀
 	;----------------------------------------------------------------------
-	IF OPERA_METHOD==1;手动对刀
+	IF OPERA_METHOD==0;手动对刀
 		;读取对刀信息
 		G4 F=0.5
 		TOOL_SET_X=$AA_IM[X];对刀完成后x轴坐标
-		;DRF_Z=$AC_DRF[Z];对刀完成时手轮偏置值
+		DRF_Z=$AC_DRF[Z];对刀完成时手轮偏置值
 		;砂轮架退回
-		G01 X=0 
-			IF ROTATION==1;左旋
+		G01 G91 X=20
+		IF ROTATION==1;左旋
 			DR11=ABS(RANDOM_POS-START_POS)+DRF_Z;左旋理论对刀点到磨削起点距离
-			ELSE;右旋
+		ELSE;右旋
 			DR11=ABS(RANDOM_POS-START_POS)-DRF_Z;右旋理论对刀点到磨削起点距离
-			ENDIF
+		ENDIF
 		DR12=(DR11/SCREW_LEAD-TRUNC(DR11/SCREW_LEAD))*360;磨削起点到对刀点C轴旋转角度计算
 		START_C=START_POS_C-DR12
 	ELSE;(自动对刀)	
@@ -37,19 +39,22 @@ IF OPERA_MODEL==0;首次对刀
 	ENDIF
 	;-----------------------------------------------------------------------
 ELSE;(非首次对刀)
-	;DRF_Z=$AC_DRF[Z]
+	DRF_Z=$AC_DRF[Z]
 	DR13=DRF_Z/SCREW_LEAD*360
 	IF ROTATION==1;左旋
-	START_C=START_C+DR13
+		START_C=START_C+DR13
 	ELSE;右旋
-	START_C=START_C-DR13
+		START_C=START_C-DR13
 	ENDIF
 ENDIF
 IF START_C>=360
 	START_C=START_C-360
+ELSE
+	IF START_C<0
+		START_C=360+START_C
 	ENDIF
-    IF START_C<0
-	START_C=360+START_C
-	ENDIF
+ENDIF
+
 DRFOF
-M17
+RET
+
