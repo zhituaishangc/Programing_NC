@@ -1,25 +1,26 @@
-;PROC TOOL_SET; SAVE SBLOF DISPLOF;���жԵ������� 
+PROC TOOL_SET SAVE SBLOF DISPLOF;运行对刀主程序 
 ;--------------------------------------------------------------------------
-;DEF NCK REAL OPERA_MODEL;(0/1���״ζԵ�/���ζԵ�)
-;DEF NCK REAL OPERA_METHOD;�Ե���ʽ(0/1,�Զ��Ե�/�ֶ��Ե���
+;DEF NCK REAL OPERA_MODEL;(0/1，首次对刀/二次对刀)
+;DEF NCK REAL OPERA_METHOD;对刀方式(0/1,自动对刀/手动对刀）
 ;--------------------------------------------------------------------------
-;DRFON
-IF OPERA_MODEL==0;�״ζԵ�
-CASE OPERA_METHOD OF 0 GOTOF MASK1 DEFAULT GOTOF MASK2
-MASK1:
-AUTO_TOOL_SET ;�Զ��Ե�����
-GOTOF MASK3
-MASK2:
-JOG_TOOL_SET ;�ֶ��Ե�����
-GOTOF MASK:4
+IF OPERA_MODEL==0;首次对刀
+    CASE OPERA_METHOD OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
+    MASK0:
+    JOG_TOOL_SET ;手动对刀程序
+    GOTOF MASK3
+    
+    MASK1:
+    AUTO_TOOL_SET ;自动对刀程序
+    GOTOF MASK2
 ELSE
-;RAND_OPERATION ;;���ζԵ��ӳ���
+    ;RAND_OPERATION ;;二次对刀子程序
 ENDIF
+
+MASK2:
+IF OPERA_METHOD==1
+    RETRACT;收回测头 
+ENDIF
+
 MASK3:
-;DRFOF
-IF OPERA_METHOD==0
-RETRACT;�ջز�ͷ 
-ENDIF
-MASK4��
-G01 X=0 F=500;ɰ�ּ��˻�
+G01 X=0 F=500;砂轮架退回
 RET
