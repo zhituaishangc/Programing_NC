@@ -1,4 +1,6 @@
-﻿PROC JOG_TOOL_SET ;SAVE SBLOF DISPLOF;手动对刀
+﻿PROC JOG_TOOL_SET SAVE SBLOF DISPLOF
+;手动对刀
+
 ;$AA_IM[Z];当前Z轴机床坐标
 ;$AA_IM[C];当前C轴角度
 ;$AC_DRF[X];X轴手轮偏置值
@@ -37,4 +39,4 @@ ENDIF
 INI_ANGLE 
 ;--------------------------------------------------------------------------
 
-M17
+RET
