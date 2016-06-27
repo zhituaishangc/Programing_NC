@@ -38,5 +38,5 @@ WHILE(TECH_TIME_RCURNT+TECH_TIME_MRCURNT+TECH_TIME_MFCURNT+TECH_TIME_FCURNT+TECH
 	S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDWHILE
 ;--------------------------------------------------------------------------
-;S_GRINDING_END
+S_GRINDING_END
 RET
