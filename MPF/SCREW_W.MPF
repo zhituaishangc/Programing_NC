@@ -10,7 +10,7 @@
 ;DEF NCK INT TECH_TIME_MFCURNT;当前半精磨次数
 ;DEF NCK INT TECH_TIME_FCURNT;当前精磨次数
 
-PAR_INI;参数初始化子程序
+S_PAR_INI;参数初始化子程序
 
 DRESS_STA=$A_DBB[0];是否修整
 IF DRESS_STA==1
