@@ -9,26 +9,37 @@
 ;DEF NCK INT TECH_TIME_MRCURNT;当前半粗磨次数
 ;DEF NCK INT TECH_TIME_MFCURNT;当前半精磨次数
 ;DEF NCK INT TECH_TIME_FCURNT;当前精磨次数
-;--------------------------------------------------------------------------
+
 PAR_INI;参数初始化子程序
-;--------------------------------------------------------------------------
+
 DRESS_STA=$A_DBB[0];是否修整
 IF DRESS_STA==1
     DRESSER
     RET
 ENDIF
-;--------------------------------------------------------------------------
+
 OPERA_STA=$A_DBB[1];是否对刀
 IF OPERA_STA==1
     TOOL_SET
     RET
 ENDIF
-;--------------------------------------------------------------------------
-IF TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F==0;工艺参数中设置的总磨削次数
-    RET
+
+;使用界面参数还是DIY参数
+IF TECH_MODEL==0
+    TECH_TIME_DIY_SET=0
+    IF TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F==0;工艺参数中设置的总磨削次数
+        RET
+    ENDIF
+ELSE
+    TECH_TIME_DIY_SET=TECH_TIME_DIY
+    TECH_NUMCURNT=4
+    IF TECH_TIME_DIY_SET==0
+        RET
+    ENDIF
 ENDIF
+
 ;--------------------------------------------------------------------------
-WHILE(TECH_TIME_RCURNT+TECH_TIME_MRCURNT+TECH_TIME_MFCURNT+TECH_TIME_FCURNT<=TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F)
+WHILE(TECH_TIME_RCURNT+TECH_TIME_MRCURNT+TECH_TIME_MFCURNT+TECH_TIME_FCURNT+TECH_TIME_DIYCURNT<=TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F+TECH_TIME_DIY_SET)
     STOPRE
 	S_CYCLE ;工件类型
 	INI_ANGLE;初始角度计算
