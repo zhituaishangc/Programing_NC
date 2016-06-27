@@ -1,7 +1,7 @@
 ﻿PROC SCREW_W SAVE DISPLON
 ;磨削主程序
 
-PAR_INI;参数初始化子程序
+S_PAR_INI;参数初始化子程序
 
 DRESS_STA=$A_DBB[0];是否修整
 IF DRESS_STA==1
