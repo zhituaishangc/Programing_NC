@@ -1,0 +1,23 @@
+PROC USER_DIY SAVE DISPLON
+;用户自定义工序
+;**********************************************
+TECH_TIME_DIY=
+TECH_DRESS_CUMU_DIY=
+GRIND_METHOD_DIY=
+TECH_GRIND_DEEP_DIY=
+TECH_GRIND_FEED_DIY=
+TECH_DRESS_TIME_DIY=
+TECH_DRESS_DEEP_DIY=
+TECH_DRESS_FEED_DIY=
+WHEEL_LINESPEED_GRIND_DIY=
+WHEEL_LINESPEED_DRESS_DIY=
+;..............................................
+GRINDING;
+;***********************************************
+
+M9
+M21
+M1=5
+WAITS
+
+M30
