@@ -184,7 +184,7 @@ END_CHANGE
 
 CHANGE(VAR1)
 call("UP3")
-call("UP4")
+;call("UP4")
 END_CHANGE
 
 SUB(UP1)
