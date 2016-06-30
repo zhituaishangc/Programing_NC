@@ -64,7 +64,16 @@ END_PRESS
 ;;;;;;;;;;;;;;;;;;;MASK2:工艺参数;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask2/$85021/)
 
-DEF VAR1=(B///,,,/WR0///0,0,0/0,0,0/);辅助画面选中
+DEF VAR1=(I/*0=$85217,1=$85216//$85218,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_MODEL"/0,0,0/490,10,65/);DIY
+
+DEF TECH_PAR_VAR1=(R/%TECH_PAR1///WR1////3,31,115,30)
+DEF TECH_PAR_VAR2=(R/%TECH_PAR2///WR1////3,51,115,30)
+DEF TECH_PAR_VAR3=(R/%TECH_PAR3///WR1////3,70,115,30)
+DEF TECH_PAR_VAR4=(R/%TECH_PAR4///WR1////3,88,115,30)
+DEF TECH_PAR_VAR5=(R/%TECH_PAR5///WR1////3,106,115,30)
+DEF TECH_PAR_VAR6=(R/%TECH_PAR6///WR1////3,124,115,30)
+DEF TECH_PAR_VAR7=(R/%TECH_PAR7///WR1////3,142,115,30)
+DEF TECH_GRID_VAR=(R/%TECH_GRID///WR2////115,31,800,200)
 
 HS1=($85001,ac7,se1);"磨削参数"
 HS2=($85002,ac7,se3);"工艺参数"
@@ -73,6 +82,17 @@ HS8=($85005,ac7,se1);"返回"
 
 VS1=("")
 
+LOAD
+LG("TECH_GRID","TECH_GRID_VAR","custom.com")
+LG("TECH_PAR1","TECH_PAR_VAR1","custom.com")
+LG("TECH_PAR2","TECH_PAR_VAR2","custom.com")
+LG("TECH_PAR3","TECH_PAR_VAR3","custom.com")
+LG("TECH_PAR4","TECH_PAR_VAR4","custom.com")
+LG("TECH_PAR5","TECH_PAR_VAR5","custom.com")
+LG("TECH_PAR6","TECH_PAR_VAR6","custom.com")
+LG("TECH_PAR7","TECH_PAR_VAR7","custom.com")
+END_LOAD
+;
 PRESS(HS1)
 LM("MASK1")
 END_PRESS
@@ -92,7 +112,13 @@ END_PRESS
 PRESS(HS8)
 EXIT
 END_PRESS
-
+CHANGE(VAR1)
+IF VAR1.VAL==1
+	TECH_GRID_VAR.WR=1
+ELSE
+	TECH_GRID_VAR.WR=2
+ENDIF
+END_CHANGE
 //END
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;MASK3:修整参数;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1269,4 +1295,40 @@ PRESS(HS8)
 EXIT
 END_PRESS
 
+//END
+
+//G(TECH_GRID/0/7)
+;
+(R3///$85203,$85203/WR2//"/NC/_N_NC_GD2_ACX/TECH_R[1]"/110/,1)
+(R3///$85204,$85204/WR2//"/NC/_N_NC_GD2_ACX/TECH_MR[1]"/110/,1)
+(R3///$85205,$85205/WR2//"/NC/_N_NC_GD2_ACX/TECH_MF[1]"/110/,1)
+(R3///$85206,$85206/WR2//"/NC/_N_NC_GD2_ACX/TECH_F[1]"/110/,1)
+//END
+;
+//G(TECH_PAR1/0/1)
+(R3///,$85214/WR1///110/1)
+//END
+;
+//G(TECH_PAR2/0/1)
+(R3///,$85213/WR1///110/1)
+//END
+;
+//G(TECH_PAR3/0/1)
+(R3///,$85209/WR1///110/1)
+//END
+;
+//G(TECH_PAR4/0/1)
+(R3///,$85208/WR1///110/1)
+//END
+;
+//G(TECH_PAR5/0/1)
+(R3///,$85215/WR1///110/1)
+//END
+;
+//G(TECH_PAR6/0/1)
+(R3///,$85210/WR1///110/1)
+//END
+;
+//G(TECH_PAR7/0/1)
+(R3///,$85211/WR1///110/1)
 //END
