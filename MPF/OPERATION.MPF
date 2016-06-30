@@ -2,8 +2,8 @@ PROC OPERATION SAVE DISPLON
 ;运行对刀主程序 
 
 ;--------------------------------------------------------------------------
-;DEF NCK REAL OPERA_MODEL;(0/1，首次对刀/二次对刀)
-;DEF NCK REAL OPERA_METHOD;对刀方式(0/1,自动对刀/手动对刀）
+;DEF NCK REAL OPERA_MODEL;(0手动/1自动)
+;DEF NCK REAL OPERA_METHOD;对刀方式(0首次/1二次）
 ;--------------------------------------------------------------------------
 IF OPERA_MODEL==0;首次对刀
     CASE OPERA_METHOD OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
