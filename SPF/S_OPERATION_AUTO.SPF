@@ -14,6 +14,7 @@
 ;DEF NCK REAL WHL_HEAD;测头与砂轮距离
 ;DEF NCK REAL QUIT_X;头数切换退刀时的X值
 ;DEF NCK REAL TOUCH_X;探头接触工件表面时X坐标
+;DEF NCK REAL WHEEL_TOUCH_X;砂轮接触工件表面时X坐标
 ;DEF NCK REAL PRESENT_X;探头接触工件时X坐标
 ;DEF NCK REAL PRESENT_C;探头接触工件时C角度
 ;DEF NCK REAL FINAL_Z;对刀完成后Z轴坐标
@@ -22,8 +23,19 @@
 ;DEF NCK INT DSHAPE;齿形选择
 ;DEF NCK REAL ANG_L;左齿形角
 ;DEF NCK REAL ACK_R;右齿形角
+;DEF NCK REAL WHEEL_TOUCH_X;砂轮接触工件表面时X坐标
 ;--------------------------------------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
+;--------------------------------------------------------------------------
+IF WHEEL_TOUCH_X==0
+MAS("请将砂轮开至刚接触工件表面并记录下当前X轴坐标")
+G04 F=60
+ENDIF
+IF TOUCH_X==0
+MAS("请将测头开至刚接触工件表面并记录下当前X轴坐标")
+G04 F=60
+RET
+ENDIF
 ;--------------------------------------------------------------------------
 ;测头伸出
 ;--------------------------------------------------------------------------
