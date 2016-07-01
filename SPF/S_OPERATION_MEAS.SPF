@@ -26,7 +26,7 @@ IF OPERA_MODEL==0;首次对刀
 		TOOL_SET_X=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
 		DRF_Z=$AC_DRF[Z];对刀完成时手轮偏置值
 		;砂轮架退回
-		G01 G90 X=QUIT_X;砂轮开至头数切换退刀时的X值
+		G01 G90 X=QUIT_X F500;砂轮开至头数切换退刀时的X值
 		IF ROTATION==1;左旋
 			DR11=ABS(RANDOM_POS-START_POS)+DRF_Z;左旋理论对刀点到磨削起点距离
 		ELSE;右旋
