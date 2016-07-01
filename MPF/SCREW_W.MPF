@@ -2,6 +2,7 @@
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
+S_PARA_TRANS;
 
 DRESS_STA=$A_DBB[0];是否修整
 IF DRESS_STA==1
