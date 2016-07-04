@@ -76,6 +76,7 @@
 	PRESS(HS8)
 		EXIT
 	END_PRESS
+
 	CHANGE(VAR14);由面板按键判断修整相关参数的显示
 		IF VAR14.VAL==1
 			VAR2.VAL=1;修整
@@ -83,6 +84,7 @@
 			VAR2.VAL=0;不修整
 		ENDIF
 	END_CHANGE
+
 	CHANGE(VAR18)
 		IF VAR18.VAL==1;对刀按键有效
 			VAR3.VAL=1
@@ -90,7 +92,21 @@
 			VAR3.VAL=0;对刀按键无效
 		ENDIF
 	END_CHANGE
+
 	CHANGE(VAR3)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR4);由对刀类型(首次/二次),判断对刀方式(手动/自动)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR5);由对刀方式(手动/自动),判断显示
+		call("UP1")
+	END_CHANGE
+
+	SUB(UP1)
+
 		IF VAR3.VAL==0
 			VAR4.WR=1
 			VAR5.WR=1
@@ -100,51 +116,30 @@
 			VAR15.WR=4
 		ELSE
 			VAR4.WR=2
-			VAR5.WR=2
-			IF VAR5.VAL==1
-				VAR11.WR=4
-				VAR12.WR=2
-				VAR13.WR=2
-				VAR15.WR=2
+			IF VAR4.VAL==0
+				VAR5.WR=2
+				IF VAR5.VAL==0
+					VAR11.WR=2
+					VAR12.WR=4
+					VAR13.WR=4
+					VAR15.WR=4
+				ELSE
+					VAR11.WR=4
+					VAR12.WR=2
+					VAR13.WR=2
+					VAR15.WR=2
+				ENDIF
 			ELSE
+				VAR5.WR=1
+				VAR5.VAL=0
 				VAR11.WR=2
+				VAR12.WR=4
+				VAR13.WR=4
+				VAR15.WR=4
 			ENDIF
 		ENDIF
-	END_CHANGE
-	CHANGE(VAR5);由对刀方式(手动/自动),判断显示
-		IF VAR5.VAL==0;若选择手动对刀
-			VAR11.WR=2;对刀位置(中点,任意点)
-			VAR12.WR=4;测头接触位不显示
-			VAR13.WR=4;砂轮接触位不显示
-			VAR15.WR=4;工件槽深不显示
-		ELSE
-			VAR11.WR=0
-			VAR12.WR=2
-			VAR13.WR=2
-			VAR15.WR=2
-		ENDIF
-	END_CHANGE
-	CHANGE(VAR4);由对刀类型(首次/二次),判断对刀方式(手动/自动)
-		IF VAR4.VAL==1;若选则二次对刀
-			VAR5.VAL=0;对刀方式为手动
-			VAR5.WR=1;不可更改
-			VAR11.WR=2;对刀位置
-			VAR12.WR=4;测头接触位不显示
-			VAR13.WR=4;砂轮接触位不显示
-			VAR15.WR=4;工件槽深不显示
-		ELSE
-			VAR5.WR=2
-			IF VAR5.VAL==1
-				VAR12.WR=2;测头接触位显示
-				VAR13.WR=2;砂轮接触位显示
-				VAR15.WR=2;工件槽深显示
-			ELSE
-				VAR12.WR=4;测头接触位不显示
-				VAR13.WR=4;砂轮接触位不显示
-				VAR15.WR=4;工件槽深不显示
-			ENDIF
-		ENDIF
-	END_CHANGE
+
+	END_SUB
 
 //END
 
