@@ -92,7 +92,7 @@
 			VAR3.VAL=0;对刀按键无效
 		ENDIF
 	END_CHANGE
-	
+
 	CHANGE(VAR3)
 		call("UP1")
 	END_CHANGE
@@ -117,7 +117,7 @@
 		ELSE
 			VAR4.WR=2
 			IF VAR4.VAL==0
-			VAR5.WR=2
+				VAR5.WR=2
 				IF VAR5.VAL==0
 					VAR11.WR=2
 					VAR12.WR=4
