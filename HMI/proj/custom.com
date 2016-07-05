@@ -31,8 +31,8 @@
 //M(Mask1/$85020//)
 
 	DEF VAR1=(I/*0=$85135,1=$85136,2=$85137,3=$85138,4=$85139//$85134,,,/WR2//"/NC/_N_NC_GD2_ACX/G_TYPE"/0,0,0/40,10,60/);磨削类型
-	DEF VAR2=(I/*0=$85159,1=$85158//$85132,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESS_STA"/0,0,0/140,10,60/);是否修整
-	DEF VAR3=(I/*0=$85161,1=$85160//$85133,,,/WR2//"/NC/_N_NC_GD2_ACX/OPERA_STA"/0,0,0/240,10,60/);是否对刀
+	DEF VAR2=(I/*0=$85014,1=$85013//$85162,$85162,,/WR2//"/NC/_N_NC_GD2_ACX/DRESS_STA"/140,10,40/180,10,50/);是否修整
+	DEF VAR3=(I/*0=$85014,1=$85013//$85163,$85163,,/WR2//"/NC/_N_NC_GD2_ACX/OPERA_STA"/240,10,40/280,10,50/);是否对刀
 	DEF VAR4=(I/*0=$85100,1=$85140//$85141,,,/WR2//"/NC/_N_NC_GD2_ACX/OPERA_MODEL"/0,0,0/340,10,65/);对刀类型
 	DEF VAR5=(I/*0=$85142,1=$85143//$85144,,,/WR2//"/NC/_N_NC_GD2_ACX/OPERA_METHOD"/0,0,0/440,10,63/);对刀方式
 	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2//"/NC/_N_NC_GD2_ACX/ROTATION"/340,35,70/440,35,60/);螺纹旋向
@@ -76,6 +76,7 @@
 	PRESS(HS8)
 		EXIT
 	END_PRESS
+
 	CHANGE(VAR14);由面板按键判断修整相关参数的显示
 		IF VAR14.VAL==1
 			VAR2.VAL=1;修整
@@ -83,6 +84,7 @@
 			VAR2.VAL=0;不修整
 		ENDIF
 	END_CHANGE
+
 	CHANGE(VAR18)
 		IF VAR18.VAL==1;对刀按键有效
 			VAR3.VAL=1
@@ -90,61 +92,54 @@
 			VAR3.VAL=0;对刀按键无效
 		ENDIF
 	END_CHANGE
+
 	CHANGE(VAR3)
-		IF VAR3.VAL==0
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR4);由对刀类型(首次/二次),判断对刀方式(手动/自动)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR5);由对刀方式(手动/自动),判断显示
+		call("UP1")
+	END_CHANGE
+
+	SUB(UP1)
+
+		IF VAR3.VAL==0;不对刀
 			VAR4.WR=1
 			VAR5.WR=1
 			VAR11.WR=4
 			VAR12.WR=4
 			VAR13.WR=4
 			VAR15.WR=4
-		ELSE
-			VAR4.WR=2
-			VAR5.WR=2
-			IF VAR5.VAL==1
-				VAR11.WR=4
-				VAR12.WR=2
-				VAR13.WR=2
-				VAR15.WR=2
-			ELSE
+		ELSE          ;对刀
+			VAR4.WR=2 ;对刀类型可选
+			IF VAR4.VAL==0    ;选择首次对刀
+				VAR5.WR=2     ;对刀方式可选
+				IF VAR5.VAL==0;选择手动对刀
+					VAR11.WR=2
+					VAR12.WR=4
+					VAR13.WR=4
+					VAR15.WR=4
+				ELSE          ;选择自动对刀
+					VAR11.WR=4
+					VAR12.WR=2
+					VAR13.WR=2
+					VAR15.WR=2
+				ENDIF
+			ELSE              ;选择二次对刀
+				VAR5.WR=1     ;对刀方式只能是手动
+				VAR5.VAL=0
 				VAR11.WR=2
+				VAR12.WR=4
+				VAR13.WR=4
+				VAR15.WR=4
 			ENDIF
 		ENDIF
-	END_CHANGE
-	CHANGE(VAR5);由对刀方式(手动/自动),判断显示
-		IF VAR5.VAL==0;若选择手动对刀
-			VAR11.WR=2;对刀位置(中点,任意点)
-			VAR12.WR=4;测头接触位不显示
-			VAR13.WR=4;砂轮接触位不显示
-			VAR15.WR=4;工件槽深不显示
-		ELSE
-			VAR11.WR=0
-			VAR12.WR=2
-			VAR13.WR=2
-			VAR15.WR=2
-		ENDIF
-	END_CHANGE
-	CHANGE(VAR4);由对刀类型(首次/二次),判断对刀方式(手动/自动)
-		IF VAR4.VAL==1;若选则二次对刀
-			VAR5.VAL=0;对刀方式为手动
-			VAR5.WR=1;不可更改
-			VAR11.WR=2;对刀位置
-			VAR12.WR=4;测头接触位不显示
-			VAR13.WR=4;砂轮接触位不显示
-			VAR15.WR=4;工件槽深不显示
-		ELSE
-			VAR5.WR=2
-			IF VAR5.VAL==1
-				VAR12.WR=2;测头接触位显示
-				VAR13.WR=2;砂轮接触位显示
-				VAR15.WR=2;工件槽深显示
-			ELSE
-				VAR12.WR=4;测头接触位不显示
-				VAR13.WR=4;砂轮接触位不显示
-				VAR15.WR=4;工件槽深不显示
-			ENDIF
-		ENDIF
-	END_CHANGE
+
+	END_SUB
 
 //END
 

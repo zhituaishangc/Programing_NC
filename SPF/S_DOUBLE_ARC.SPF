@@ -1,4 +1,4 @@
-PROC S_DOUBLE_ARC SAVE SBLOF DISPLOF
+PROC S_DOUBLE_ARC SBLOF DISPLOF
 ;双圆弧
 
 ;===============================================

@@ -1,4 +1,4 @@
-PROC OPERATION SAVE DISPLON
+PROC OPERATION DISPLON
 ;运行对刀主程序 
 
 ;--------------------------------------------------------------------------
