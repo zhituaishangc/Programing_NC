@@ -1,4 +1,4 @@
-PROC S_WHEL_SHAPE SAVE SBLOF DISPLOF
+PROC S_WHEL_SHAPE SBLOF DISPLOF
 ;修整轮选择水平位置计算
 
 ;修整轮与砂轮中心位置水平坐标计算

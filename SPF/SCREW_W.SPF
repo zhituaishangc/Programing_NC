@@ -1,4 +1,4 @@
-﻿PROC SCREW_W SAVE DISPLON
+﻿PROC SCREW_W DISPLON
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
@@ -31,7 +31,7 @@ ELSE;选择DIY工艺
     TECH_NUMCURNT=4
     IF TECH_TIME_DIY==0
         RET
-        
+
     ENDIF
 ENDIF
 ;--------------------------------------------------------------------------
