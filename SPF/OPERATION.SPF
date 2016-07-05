@@ -1,12 +1,12 @@
-PROC OPERATION SAVE DISPLON
+PROC OPERATION DISPLON
 ;运行对刀主程序 
 
 ;--------------------------------------------------------------------------
-;DEF NCK REAL OPERA_MODEL;(0手动/1自动)
-;DEF NCK REAL OPERA_METHOD;对刀方式(0首次/1二次）
+;DEF NCK REAL OPERA_MODEL;对刀方式(0首次/1二次）
+;DEF NCK REAL OPERA_METHOD;(0手动/1自动)
 ;--------------------------------------------------------------------------
-IF OPERA_METHOD==0				;首次对刀
-    CASE OPERA_MODEL OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
+IF OPERA_MODEL==0				;首次对刀
+    CASE OPERA_METHOD OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
     MASK0:
     S_OPERATION_JOG 			;手动对刀程序
     GOTOF MASK3
@@ -19,7 +19,7 @@ ELSE
 ENDIF
 
 MASK2:
-IF OPERA_METHOD==1
+IF OPERA_MODEL==1
     RETRACT						;收回测头 
 ENDIF
 
