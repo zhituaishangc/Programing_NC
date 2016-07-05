@@ -16,6 +16,7 @@ IF OPERA_MODEL==0				;首次对刀
     GOTOF MASK2
 ELSE
     S_OPERATION_RAND			;二次对刀子程序
+    GOTOF MASK3
 ENDIF
 
 MASK2:
@@ -24,5 +25,6 @@ IF OPERA_MODEL==1
 ENDIF
 
 MASK3:
-G01 X=0 F=500					;砂轮架退回
+G01 X=0 F=500
+OPERA_MODEL=1					;砂轮架退回
 RET
