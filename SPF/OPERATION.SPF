@@ -20,7 +20,7 @@ ENDIF
 
 MASK2:
 IF OPERA_MODEL==1
-    RETRACT						;收回测头 
+    ;RETRACT						;收回测头 
 ENDIF
 
 MASK3:
