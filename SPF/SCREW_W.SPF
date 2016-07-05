@@ -1,4 +1,4 @@
-﻿PROC SCREW_W DISPLON
+﻿PROC SCREW_W
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
