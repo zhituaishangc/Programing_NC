@@ -1,6 +1,4 @@
-﻿DEF NCK STRING[1] AXIS_VER		;垂直轴								
-DEF NCK STRING[1] AXIS_HORI		;水平轴			
-;修整主参数(DRESSER)
+﻿;修整主参数(DRESSER)
 DEF NCK INT DRESSER[0]			;修整器选择(0VW/1XZ/2滚压/3液压)	DRESSER[0]
 DEF NCK REAL DRESSER[1]		;滚压轮齿高							DRESSER[1]
 DEF NCK REAL DRESSER[2]	;两轮中心距							DRESSER[2]
