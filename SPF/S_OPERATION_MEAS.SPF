@@ -1,4 +1,4 @@
-﻿PROC S_OPERATION_MEAS
+PROC S_OPERATION_MEAS DISPLOF
 ;磨削时C轴起始角计算
 
 ;DEF NCK REAL ROTATION;(O=右旋,1=左旋)
@@ -43,6 +43,9 @@ IF OPERA_MODEL==0;首次对刀
 ;-----------------------------------------------------------------------
 ELSE;(非首次对刀)
 	DRF_Z=$AC_DRF[Z]
+	IF DRF_Z==0
+		RET
+	ENDIF
 	DR13=DRF_Z/SCREW_LEAD*360
 	IF ROTATION==1;左旋
 		START_C=START_C+DR13
@@ -59,5 +62,6 @@ ELSE
 ENDIF
 
 DRFOF
+MSG("对刀结束，初始角度计算已完成!!!")
+G04 F=2
 RET
-

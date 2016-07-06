@@ -1,4 +1,4 @@
-﻿PROC S_OPERATION_JOG DISPLOF
+PROC S_OPERATION_JOG DISPLOF
 ;手动对刀
 
 ;$AA_IM[Z];当前Z轴机床坐标
@@ -31,6 +31,7 @@ G01 G90 X=QUIT_X F=500
 START_POS_C=$AA_IM[C];读取C轴初始角度 
 RANDOM_POS=$AA_IM[Z];读取对刀开始时Z轴坐标
 STOPRE
+MSG("手动对刀已启动,请进行对刀操作")
 IF ROTATION==1;左旋
 	G91 Z=(END_POS-RANDOM_POS) C=ABS((END_POS-RANDOM_POS)/SCREW_LEAD*360) F=50;从任意对刀点ZC开始插补
 ELSE
@@ -38,6 +39,7 @@ ELSE
 ENDIF
 ;--------------------------------------------------------------------------
 S_OPERATION_MEAS
+
 ;--------------------------------------------------------------------------
 
 RET
