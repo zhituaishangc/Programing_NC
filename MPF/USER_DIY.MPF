@@ -16,7 +16,11 @@ WHEEL_LINESPEED_DRESS_DIY=
 ;..........................................
 DIY_COUNTER=DIY_COUNTER+1
 GRINDING;
+IF $A_DBB[2]==1;修整中途安全结束程序
+    GOTOF DIY_ENDING
+ENDIF
 ;******************结束********************
+DIY_ENDING:
 
 M9
 M21
