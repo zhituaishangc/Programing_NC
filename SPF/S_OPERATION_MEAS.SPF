@@ -1,63 +1,63 @@
 PROC S_OPERATION_MEAS DISPLOF
 ;磨削时C轴起始角计算
 
-;DEF NCK REAL ROTATION;(O=右旋,1=左旋)
-;DEF NCK REAL START_POS;Z轴磨削起点
-;DEF NCK REAL SCREW_LEAD;导程
-;DEF NCK REAL RANDOM_POS;初始对刀点Z轴坐标
-;DEF NCK REAL FINAL_Z;对刀完成后Z轴坐标
-;DEF NCK REAL DRF_Z;对刀完成时手轮偏置值
-;DEF NCK REAL TOOL_SET_X;完成对刀时砂轮X轴坐标
-;DEF NCK REAL START_C;计算出的C轴起始角度
-;DEF NCK REAL START_POS_C;C轴初始角度
-;DEF NCK REAL PRESENT_C;探头接触工件时C角度
-;DEF NCK REAL OPERA_METHOD;对刀方式(0/1,自动对刀/手动对刀）
-;DEF NCK BOOL OPERA_MODEL;对刀类型(0=首次对刀/1=二次对刀)
-;DEF NCK REAL WORK_DEPTH_INIT;工件初开深度
-;DEF NCK REAL WHEEL_TOUCH_X;砂轮接触工件表面时X坐标
+;DEF NCK REAL INI[0];(O=右旋,1=左旋)
+;DEF NCK REAL INI[6];Z轴磨削起点
+;DEF NCK REAL INI[5];导程
+;DEF NCK REAL TOOL_SET[0];初始对刀点Z轴坐标
+;DEF NCK REAL TOOL_SET[1];对刀完成后Z轴坐标
+;DEF NCK REAL TOOL_SET[2];对刀完成时手轮偏置值
+;DEF NCK REAL TOOL_SET[3];完成对刀时砂轮X轴坐标
+;DEF NCK REAL TOOL_SET[4];计算出的C轴起始角度
+;DEF NCK REAL TOOL_SET[5];C轴初始角度
+;DEF NCK REAL TOOL_SET[6];探头接触工件时C角度
+;DEF NCK REAL TOOL_SET[7];对刀方式(0/1,自动对刀/手动对刀）
+;DEF NCK BOOL TOOL_SET[8];对刀类型(0=首次对刀/1=二次对刀)
+;DEF NCK REAL TOOL_SET[18];工件初开深度
+;DEF NCK REAL TOOL_SET[12];砂轮接触工件表面时X坐标
 ;--------------------------------------------------------------------------
 DEF REAL DR11,DR12,DR13
 ;--------------------------------------------------------------------------
-IF OPERA_MODEL==0;首次对刀
+IF TOOL_SET[8]==0;首次对刀
 ;----------------------------------------------------------------------
-	IF OPERA_METHOD==0;手动对刀
+	IF TOOL_SET[7]==0;手动对刀
 		;读取对刀信息
 		G4 F=0.5
-		TOOL_SET_X=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
-		DRF_Z=$AC_DRF[Z];对刀完成时手轮偏置值
+		TOOL_SET[3]=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
+		TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 		;砂轮架退回
-		G01 G90 X=QUIT_X F500;砂轮开至头数切换退刀时的X值
-		IF ROTATION==1;左旋
-			DR11=ABS(RANDOM_POS-START_POS)+DRF_Z;左旋理论对刀点到磨削起点距离
+		G01 G90 X=INI[10] F500;砂轮开至头数切换退刀时的X值
+		IF INI[0]==1;左旋
+			DR11=ABS(TOOL_SET[0]-INI[6])+TOOL_SET[2];左旋理论对刀点到磨削起点距离
 		ELSE;右旋
-			DR11=ABS(RANDOM_POS-START_POS)-DRF_Z;右旋理论对刀点到磨削起点距离
+			DR11=ABS(TOOL_SET[0]-INI[6])-TOOL_SET[2];右旋理论对刀点到磨削起点距离
 		ENDIF
-		DR12=(DR11/SCREW_LEAD-TRUNC(DR11/SCREW_LEAD))*360;磨削起点到对刀点C轴旋转角度计算
-		START_C=START_POS_C-DR12
+		DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
+		TOOL_SET[4]=TOOL_SET[5]-DR12
 	ELSE;(自动对刀)	
-		TOOL_SET_X=WHEEL_TOUCH_X+WORK_DEPTH_INIT;自动对刀时对刀完成后X轴坐标换算(用于磨削初始进刀位)
-		DR11=ABS(FINAL_Z-START_POS)
-		DR12=(DR11/SCREW_LEAD-TRUNC(DR11/SCREW_LEAD))*360;磨削起点到对刀点C轴旋转角度计算
-		START_C=PRESENT_C-DR12
+		TOOL_SET[3]=TOOL_SET[12]+TOOL_SET[18];自动对刀时对刀完成后X轴坐标换算(用于磨削初始进刀位)
+		DR11=ABS(TOOL_SET[1]-INI[6])
+		DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
+		TOOL_SET[4]=TOOL_SET[6]-DR12
 	ENDIF
 ;-----------------------------------------------------------------------
 ELSE;(非首次对刀)
-	DRF_Z=$AC_DRF[Z]
-	IF DRF_Z==0
+	TOOL_SET[2]=$AC_DRF[Z]
+	IF TOOL_SET[2]==0
 		RET
 	ENDIF
-	DR13=DRF_Z/SCREW_LEAD*360
-	IF ROTATION==1;左旋
-		START_C=START_C+DR13
+	DR13=TOOL_SET[2]/INI[5]*360
+	IF INI[0]==1;左旋
+		TOOL_SET[4]=TOOL_SET[4]+DR13
 	ELSE;右旋
-		START_C=START_C-DR13
+		TOOL_SET[4]=TOOL_SET[4]-DR13
 	ENDIF
 ENDIF
-IF START_C>=360
-	START_C=START_C-360
+IF TOOL_SET[4]>=360
+	TOOL_SET[4]=TOOL_SET[4]-360
 ELSE
-	IF START_C<0
-		START_C=360+START_C
+	IF TOOL_SET[4]<0
+		TOOL_SET[4]=360+TOOL_SET[4]
 	ENDIF
 ENDIF
 

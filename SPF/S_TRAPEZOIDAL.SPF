@@ -36,16 +36,16 @@ DEF STRING[1] HORIZONTAL_AX,VERTICAL_AX
 DEF  REAL LRHIGHT_ERR
 DEF AXIS AX_W,AX_V  ;水平轴和竖直轴
 ;--------读全局变量值-----------
-WHL_NB=WHEEL_WIDTH;砂轮宽传递
-LDRES_R=DWHEEL_RND_L;修左边齿形时的圆角半径传递
-RDRES_R=DWHEEL_RND_R;修右边齿形时的圆角半径传递
-SUML=DRESS_VER_INIT_L;左滚轮与砂轮竖直接触位置
-SUMR=DRESS_VER_INIT_R;右滚轮与砂轮竖直接触位置
-PLWS=DWHEEL_MID_L;修左侧齿形时坐标系水平方向平移距离
-PRWS=DWHEEL_MID_R;修右侧齿形时坐标系水平方向平移距离
+WHL_NB=DRESSER[22];砂轮宽传递
+LDRES_R=DRESSER[31];修左边齿形时的圆角半径传递
+RDRES_R=DRESSER[32];修右边齿形时的圆角半径传递
+SUML=WHEEL[10];左滚轮与砂轮竖直接触位置
+SUMR=WHEEL[11];右滚轮与砂轮竖直接触位置
+PLWS=DRESSER[33];修左侧齿形时坐标系水平方向平移距离
+PRWS=DRESSER[34];修右侧齿形时坐标系水平方向平移距离
 HORIZONTAL_AX=AXIS_HORI; 修整器水平轴名称
 VERTICAL_AX=AXIS_VER;    修整器竖直轴名称
-DF=DRESS_FEED;            当前修整速度传递
+DF=DRESSER[10];            当前修整速度传递
 LRHIGHT_ERR=SUML-SUMR;计算左右轮接触点高度差
 ;水平轴和竖直轴赋值
 AX_W=AXNAME(AXIS_HORI);水平轴
@@ -54,15 +54,15 @@ AX_V=AXNAME(AXIS_VER);竖直轴
 ;
 ;-------------齿槽参数传递-----------------
 ;
-TRA_R_BOTTOM_R = TRAP_RND_R;右下圆角半径,传递
-TRA_R_TOP_R =TRAP_RND_TR ;右上圆角半径,传递
-TRA_L_BOTTOM_R=TRAP_RND_L;左下圆角半径,传递
-TRA_L_TOP_R=TRAP_RND_TL;左上圆角半径,传递
-TRA_P=TRAP_PITCH;螺距,传递
-TRA_H1=TRAP_VER_BOTM     ;齿根高,传递
-TRA_H =TRAP_VER ;齿全高,传递
-TRA_R_ANG = TRAP_ANG_R   ;齿槽右半角实际值,传递
-TRA_L_ANG = TRAP_ANG_L   ;齿槽左半角实际值,传递
+TRA_R_BOTTOM_R = TRAP[5];右下圆角半径,传递
+TRA_R_TOP_R =TRAP[7] ;右上圆角半径,传递
+TRA_L_BOTTOM_R=TRAP[4];左下圆角半径,传递
+TRA_L_TOP_R=TRAP[6];左上圆角半径,传递
+TRA_P=TRAP[8];螺距,传递
+TRA_H1=TRAP[1]     ;齿根高,传递
+TRA_H =TRAP[0] ;齿全高,传递
+TRA_R_ANG = TRAP[12]   ;齿槽右半角实际值,传递
+TRA_L_ANG = TRAP[11]   ;齿槽左半角实际值,传递
 DH0=TRA_H
 DR5=TRA_R_ANG
 DR6=TRA_L_ANG
