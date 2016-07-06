@@ -6,36 +6,36 @@ PROC S_OPERATION_JOG DISPLOF
 ;$AC_DRF[X];X轴手轮偏置值
 ;$AC_DRF[Z];Z轴手轮偏置值
 ;--------------------------------------------------------------------------
-;DEF NCK REAL START_POS;磨削起点
-;DEF NCK REAL END_POS;磨削终点
-;DEF NCK REAL SCREW_LEAD;导程
-;DEF NCK REAL START_POS_C;起始点时C轴角度
-;DEF NCK REAL RANDOM_POS;任意对刀点Z轴坐标 
-;DEF NCK REAL ROTATION=(0/1);(O=右旋,1=左旋)
+;DEF NCK REAL INI[6];磨削起点
+;DEF NCK REAL INI[7];磨削终点
+;DEF NCK REAL INI[5];导程
+;DEF NCK REAL TOOL_SET[5];起始点时C轴角度
+;DEF NCK REAL TOOL_SET[0];任意对刀点Z轴坐标 
+;DEF NCK REAL INI[0]=(0/1);(O=右旋,1=左旋)
 ;DEF NCK REAL TOOL_SET_Z;完成对刀时工件Z轴坐标
-;DEF NCK REAL TOOL_SET_X;完成对刀时砂轮X轴坐标
-;DEF NCK REAL FINAL_Z;对刀完成后Z轴坐标
+;DEF NCK REAL TOOL_SET[3];完成对刀时砂轮X轴坐标
+;DEF NCK REAL TOOL_SET[1];对刀完成后Z轴坐标
 ;DEF NCK REAL INIT_C;C轴初始角度
 ;DEF NCK REAL TOOL_SET_POSITION;对刀位置(0=中点,1=起点对刀,2任意点对刀,3=全程对刀)
 ;--------------------------------------------------------------------------
 SETINT(1) PRIO=1 S_OPERATION_MEAS;中断时直接调用计算C轴起始角度程序
-CASE TOOL_SET_POS OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD1
+CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD1
 DDD0:
-G01 G90 Z=MIDDLE_Z F=2000
+G01 G90 Z=INI[8] F=2000
 GOTOF DDD2
 DDD1:
-G01 G90 Z=START_POS F=2000
+G01 G90 Z=INI[6] F=2000
 GOTOF DDD2
 DDD2:
-G01 G90 X=QUIT_X F=500
-START_POS_C=$AA_IM[C];读取C轴初始角度 
-RANDOM_POS=$AA_IM[Z];读取对刀开始时Z轴坐标
+G01 G90 X=INI[10] F=500
+TOOL_SET[5]=$AA_IM[C];读取C轴初始角度 
+TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
 STOPRE
 MSG("手动对刀已启动,请进行对刀操作")
-IF ROTATION==1;左旋
-	G91 Z=(END_POS-RANDOM_POS) C=ABS((END_POS-RANDOM_POS)/SCREW_LEAD*360) F=50;从任意对刀点ZC开始插补
+IF INI[0]==1;左旋
+	G91 Z=(INI[7]-TOOL_SET[0]) C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50;从任意对刀点ZC开始插补
 ELSE
-	G91 Z=(END_POS-RANDOM_POS) C=ABS((END_POS-RANDOM_POS)/SCREW_LEAD*360) F=50 ;从任意对刀点ZC开始插补
+	G91 Z=(INI[7]-TOOL_SET[0]) C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50 ;从任意对刀点ZC开始插补
 ENDIF
 ;--------------------------------------------------------------------------
 S_OPERATION_MEAS
