@@ -1,5 +1,6 @@
-﻿DEF NCK STRING[1] AXIS_VER		;垂直轴								
+DEF NCK STRING[1] AXIS_VER		;垂直轴								
 DEF NCK STRING[1] AXIS_HORI		;水平轴
+
 ;修整主参数(DRESSER)
 DEF NCK REAL DRESSER[50]
 
@@ -24,35 +25,31 @@ DEF NCK REAL DARC[30]
 ;磨削参数(GRINDING)
 DEF NCK REAL GRINDING[10]
 
-;工序(PROCESS)
-DEF NCK REAL TECH_R[10]
-DEF NCK REAL TECH_MR[10]
-DEF NCK REAL TECH_MF[10]
-DEF NCK REAL TECH_F[10]
-
-;;;;;;;;;;;;;;工序基本参数;;;;;;;;;;;;;;;;
+;工序基本参数
 DEF NCK REAL PROCESS[20]
 
-;;;;;;;;;;;;;;工艺表格参数;;;;;;;;;;;;;;;;
+;工艺表格参数
 DEF NCK REAL TECHNOLOGY[60]
 
-;;;;;;;;;;;;;;DIY参数;;;;;;;;;;;;;;;;
+;DIY参数
 DEF NCK REAL DIY[10]
 
-;;;;;;;;;;;;;;工件头数参数;;;;;;;;;;;;;;;;
+;工件头数参数
 DEF NCK REAL WORK[10]
 
-;;;;;;;;;;;;;;当前磨削次数参数;;;;;;;;;;;;;;;;
+;当前磨削次数参数
 DEF NCK INT TECH_TIME[10]
 
-;;;;;;;;;;;;;;修整进给量参数;;;;;;;;;;;;;;;;
+;修整进给量参数
 DEF NCK REAL TECH_DRESS_DEEP[10]
 
-;;;;;;;;;;;;;;修整速度参数;;;;;;;;;;;;;;;;
+;修整速度参数
 DEF NCK REAL TECH_DRESS_FEED[10]
 
-;;;;;;;;;;;;;;修整轮线速度参数;;;;;;;;;;;;;;;;
+;修整轮线速度参数
 DEF NCK REAL WHEEL_LINESPEED_DRESS[20]
 
-;;;;;;;;;;;;;;磨削修整次数参数;;;;;;;;;;;;;;;;
+;磨削修整次数参数
 DEF NCK INT TECH_DRESS_TIME[10]
+
+M30
