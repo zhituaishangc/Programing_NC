@@ -14,7 +14,7 @@ DIY[5]=
 WHEEL_LINESPEED_DRESS[7]=
 ;..........................................
 PROCESS[5]=PROCESS[5]+1
-GRINDING;
+M_GRINDING;
 IF $A_DBB[2]==1;修整中途安全结束程序
     GOTOF DIY_ENDING
 ENDIF
