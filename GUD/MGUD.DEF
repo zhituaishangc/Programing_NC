@@ -1,4 +1,4 @@
-﻿DEF NCK STRING[1] AXIS_VER		;垂直轴								
+DEF NCK STRING[1] AXIS_VER		;垂直轴								
 DEF NCK STRING[1] AXIS_HORI		;水平轴
 
 ;修整主参数(DRESSER)
