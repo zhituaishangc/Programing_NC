@@ -22,13 +22,20 @@ ELSE
     S_OPERATION_RAND			;二次对刀子程序
     GOTOF MASK3
 ENDIF
-
+ 
 MASK2:
 IF TOOL_SET[8]==1
     ;RETRACT						;收回测头 
 ENDIF
 
 MASK3:
+IF $A_DBB[2]==1;如果按下退刀键
+GOTOF MASK4
+ELSE
+PLCASUP1
+
+
+MASK4:
 G01 X=0 F=500					;砂轮架退回
 TOOL_SET[8]=1
 RET
