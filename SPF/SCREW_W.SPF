@@ -34,9 +34,9 @@ ENDIF
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
-    PLCASUPE;初始角度计算
+    PLCASUP1;初始角度计算
     S_PARA_TRANS;
-    IF $A_DBB[2]==1;修整中途安全结束程序
+    IF $A_DBB[2]==1;按下退刀键跳转到结束程序
         GOTOF G_ENDING
     ENDIF
     S_BCYC;工序进给大循环判断

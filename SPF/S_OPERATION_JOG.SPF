@@ -18,7 +18,6 @@ PROC S_OPERATION_JOG DISPLOF
 ;DEF NCK REAL INIT_C;C轴初始角度
 ;DEF NCK REAL TOOL_SET_POSITION;对刀位置(0=中点,1=起点对刀,2任意点对刀,3=全程对刀)
 ;--------------------------------------------------------------------------
-SETINT(1) PRIO=1 PLCASUPE;中断时直接调用计算C轴起始角度程序
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD1
 DDD0:
 G01 G90 Z=INI[8] F=2000
@@ -38,8 +37,6 @@ ELSE
 	G91 Z=(INI[7]-TOOL_SET[0]) C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50 ;从任意对刀点ZC开始插补
 ENDIF
 ;--------------------------------------------------------------------------
-PLCASUPE
 
-;--------------------------------------------------------------------------
 
 RET
