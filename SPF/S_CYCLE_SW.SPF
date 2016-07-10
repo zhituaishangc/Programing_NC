@@ -50,10 +50,16 @@ ENDIF
 IF INI[0]==0;0右旋,1左旋
 
 	G301;右旋正向磨削，台面向右运动
+	IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
+		RET
+	ENDIF
 	STOPRE
 	IF PROCESS[6]==1;判断是否进行反向磨削
 		G91 G01 X=-PROCESS[8]/2 F=50
 		G302;右旋反向磨削，台面向左运动
+		IF $A_DBB[2]==1
+			RET
+		ENDIF
     ELSE
 		G90 G01 X=INI[10] F=2*PROCESS[9];X退刀
 		G01 Z=INI[6]
@@ -68,10 +74,16 @@ IF INI[0]==0;0右旋,1左旋
 ELSE ;左旋螺纹磨削
 
 	G303;左旋正向磨削，台面向左运动
+	IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
+		RET
+	ENDIF
 	STOPRE
 	IF PROCESS[6]==1
 		G91 G01 X=-PROCESS[8]/2 F=50
 		G304;左旋反向磨削，台面向右运动
+		IF $A_DBB[2]==1
+			RET
+		ENDIF	
 	ELSE
 		G90 G01 X=INI[10] F=2*PROCESS[9]
 		G01 Z=INI[6]
