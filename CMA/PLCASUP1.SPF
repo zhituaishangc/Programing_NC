@@ -1,20 +1,4 @@
 PROC PLCASUP1 DISPLOF
-;磨削时C轴起始角计算
-
-;DEF NCK REAL INI[0];(O=右旋,1=左旋)
-;DEF NCK REAL INI[6];Z轴磨削起点
-;DEF NCK REAL INI[5];导程
-;DEF NCK REAL TOOL_SET[0];初始对刀点Z轴坐标
-;DEF NCK REAL TOOL_SET[1];对刀完成后Z轴坐标
-;DEF NCK REAL TOOL_SET[2];对刀完成时手轮偏置值
-;DEF NCK REAL TOOL_SET[3];完成对刀时砂轮X轴坐标
-;DEF NCK REAL TOOL_SET[4];计算出的C轴起始角度
-;DEF NCK REAL TOOL_SET[5];C轴初始角度
-;DEF NCK REAL TOOL_SET[6];探头接触工件时C角度
-;DEF NCK REAL TOOL_SET[7];对刀方式(0/1,自动对刀/手动对刀）
-;DEF NCK BOOL TOOL_SET[8];对刀类型(0=首次对刀/1=二次对刀)
-;DEF NCK REAL TOOL_SET[18];工件初开深度
-;DEF NCK REAL TOOL_SET[12];砂轮接触工件表面时X坐标
 ;--------------------------------------------------------------------------
 DEF REAL DR11,DR12,DR13
 ;--------------------------------------------------------------------------
@@ -51,7 +35,7 @@ IF TOOL_SET[8]==0;首次对刀
 	ENDIF
 ;-----------------------------------------------------------------------
 ELSE;(非首次对刀)
-	IF (TOOL_SET[2]==0)AND(TOOL_SET[20]==0)
+	IF (TOOL_SET[2]==0)AND(TOOL_SET[20]==0);如果手动Z和X的偏置值都为0
 		RET
 	ENDIF
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
