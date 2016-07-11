@@ -1,29 +1,5 @@
 PROC S_OPERATION_AUTO DISPLOF
 ;自动对刀程序
-
-;$AA_IM[Z];当前Z轴机床坐标 
-;$AA_IM[X];当前X轴机床坐标
-;$AC_DRF[X];X轴手轮偏置值
-;$AC_DRF[Z];Z轴手轮偏置值
-;$AA_IM[C];当前C轴角度
-;--------------------------------------------------------------------------
-;DEF NCK REAL INI[4];螺距
-;DEF NCK REAL TOOL_SET[0];任意对刀点Z轴坐标
-;DEF NCK REAL INI[0]=(0/1);(O=右旋,1=左旋)
-;DEF NCK REAL TOOL_SET[9];测头半径
-;DEF NCK REAL TOOL_SET[10];测头与砂轮距离
-;DEF NCK REAL INI[10];头数切换退刀时的X值
-;DEF NCK REAL TOOL_SET[11];探头接触工件表面时X坐标
-;DEF NCK REAL TOOL_SET[12];砂轮接触工件表面时X坐标
-;DEF NCK REAL TOOL_SET[13];探头接触工件时X坐标
-;DEF NCK REAL TOOL_SET[6];探头接触工件时C角度
-;DEF NCK REAL TOOL_SET[1];对刀完成后Z轴坐标
-;DEF NCK REAL TOOL_SET[14];探头接触工件槽左侧时Z坐标
-;DEF NCK REAL TOOL_SET[15];探头接触工件槽右侧时Z坐标
-;DEF NCK INT DRESSER[4];齿形选择
-;DEF NCK REAL TOOL_SET[16];左齿形角
-;DEF NCK REAL ACK_R;右齿形角
-;DEF NCK REAL TOOL_SET[12];砂轮接触工件表面时X坐标
 ;--------------------------------------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
 ;--------------------------------------------------------------------------
