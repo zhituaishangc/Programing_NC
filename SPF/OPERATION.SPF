@@ -1,9 +1,4 @@
 PROC OPERATION DISPLON
-;运行对刀主程序 
-
-;--------------------------------------------------------------------------
-;DEF NCK REAL TOOL_SET[8];对刀方式(0首次/1二次）
-;DEF NCK REAL TOOL_SET[7];(0手动/1自动)
 ;--------------------------------------------------------------------------
 IF TOOL_SET[8]==0				;首次对刀
     CASE TOOL_SET[7] OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
@@ -24,7 +19,7 @@ ELSE
 ENDIF
  
 MASK2:
-IF TOOL_SET[8]==1
+IF TOOL_SET[7]==1
     ;RETRACT						;收回测头 
 ENDIF
 
@@ -32,7 +27,7 @@ MASK3:
 IF $A_DBB[2]==1;如果按下退刀键
     GOTOF MASK4
 ELSE
-    PLCASUP1
+    PLCASUP1;跳转到初始角度计算子程序
 ENDIF
 
 MASK4:
