@@ -14,6 +14,14 @@ INI[3]=INI[2]-INI[1]
 INI[5]=WORK[0]*INI[4]
 INI[9]=360*INI[3]/INI[5]
 INI[8]=(INI[2]+INI[1])/2
+;锥度相关计算
+IF INI[11]==0;判断有无锥度
+	INI[14]=0
+ELSE
+	INI[14]=INI[12]/INI[13]
+ENDIF
+INI[15]=INI[3]*INI[14]/2;X方向的增量
+;-----------
 IF INI[3]<=0;
     MSG("左端坐标>右端")
 	G4 F10
