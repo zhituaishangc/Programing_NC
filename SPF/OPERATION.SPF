@@ -34,3 +34,4 @@ MASK4:
 G01 X=0 F=500					;砂轮架退回
 TOOL_SET[8]=1
 RET
+
