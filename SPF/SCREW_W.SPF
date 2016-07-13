@@ -30,7 +30,7 @@ ELSE;选择DIY工艺
         RET
     ENDIF
 ENDIF
-;--------------------------------------------------------------------------
+;-------------------------------------------------------
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
@@ -42,7 +42,7 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
     S_BCYC;工序进给大循环判断
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDWHILE
-;--------------------------------------------------------------------------
+;-------------------------------------------------------
 G_ENDING:
 
 S_GRINDING_END
