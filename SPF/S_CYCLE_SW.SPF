@@ -97,6 +97,7 @@ ELSE ;左旋螺纹磨削
 	ENDIF
 ENDIF
 ;
-WORK[1]=WORK[1]+1
+WORK[1]=WORK[1]+1;头数累加
 ENDWHILE
 RET
+
