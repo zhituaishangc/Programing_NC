@@ -7,7 +7,7 @@ workstation only for HJMT Programing segment
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
 * [SinuTrain导出文件样例](https://github.com/nie11kun/Programing_NC/wiki/SinuTrain导出文件样例)
-* [反馈通道](https://github.com/nie11kun/Programing_NC/issues)（请详细描述问题或意见细节）
+* [反馈通道](https://github.com/nie11kun/Programing_NC/issues)(请详细描述问题或意见细节)
 
 
 ![](https://i.imgur.com/Yc8JG.gif)
