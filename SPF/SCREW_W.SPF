@@ -2,7 +2,7 @@ PROC SCREW_W DISPLON
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
-S_PARA_TRANS;
+S_PARA_TRANS;参数传递
 
 GRINDING[1]=$A_DBB[0];是否修整
 IF GRINDING[1]==1
@@ -25,7 +25,7 @@ IF PROCESS[0]==0;选择界面工艺
         RET
     ENDIF
 ELSE;选择DIY工艺
-    PROCESS[2]=4
+    PROCESS[2]=4;当前工艺切换到DIY
     IF DIY[1]==0
         RET
     ENDIF
@@ -46,4 +46,6 @@ ENDWHILE
 G_ENDING:
 
 S_GRINDING_END
+
 RET
+
