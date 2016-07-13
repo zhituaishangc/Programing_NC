@@ -6,20 +6,20 @@ DEF REAL DR1,DR2,DR3,DR4
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD1
 
 DDD0:
-G01 G90 Z=INI[8] F=2000						;开至工件中点
+G01 G90 Z=INI[8] F=2000;开至工件中点
 GOTOF DDD2
 
 DDD1:
-G01 G90 Z=INI[6] F=2000						;开至工件起点
+G01 G90 Z=INI[6] F=2000;开至工件起点
 GOTOF DDD2
 
 DDD2:
-G01 G90 X=INI[10] F=500							;砂轮快速进给到头数切换退刀时的X值
-TOOL_SET[0]=$AA_IM[Z]							;读取对刀开始时Z轴坐标
-DR1=ABS(TOOL_SET[0]-INI[6])					;计算对刀点到起始点的距离
+G01 G90 X=INI[10] F=500;砂轮快速进给到头数切换退刀时的X值
+TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
+DR1=ABS(TOOL_SET[0]-INI[6]);计算对刀点到起始点的距离
 DR2=DR1/INI[5]
-DR3=(DR2-TRUNC(DR2))*360						;起点到对刀点C轴等效旋转角度
-DR4=TOOL_SET[4]+DR3									;工件旋转DR4角度时,砂轮在对刀点等效为首次对刀完成状态
+DR3=(DR2-TRUNC(DR2))*360;起点到对刀点C轴等效旋转角度
+DR4=TOOL_SET[4]+DR3;工件旋转DR4角度时,砂轮在对刀点等效为首次对刀完成状态
 IF DR4>=360
 	DR4=DR4-360
 ENDIF
