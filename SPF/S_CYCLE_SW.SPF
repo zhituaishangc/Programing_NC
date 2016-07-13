@@ -46,7 +46,7 @@ IF PROCESS[6]==0;根据磨削方式判断进给量
 ELSE
 	X=PROCESS[4]+PROCESS[8]/2 F=50;双向磨削X进给
 ENDIF
-
+FGROUP(Z)
 IF INI[0]==0;0右旋,1左旋
 
 	G301;右旋正向磨削，台面向右运动
