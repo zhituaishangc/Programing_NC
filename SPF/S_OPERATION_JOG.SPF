@@ -1,24 +1,30 @@
 PROC S_OPERATION_JOG DISPLOF
-;--------------------------------------------------------------------------
+;手动对刀
+;--------------------------------------
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD1
+
 DDD0:
 G01 G90 Z=INI[8] F=2000;快速移动到对刀中点
 GOTOF DDD2
+
 DDD1:
 G01 G90 Z=INI[6] F=2000;快速的移动到对刀起点
 GOTOF DDD2
+
 DDD2:
 G01 G90 X=INI[10] F=500
 TOOL_SET[5]=$AA_IM[C];读取C轴初始角度 
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
 STOPRE
+
 MSG("手动对刀已启动,请进行对刀操作")
+FGROUP(Z)
 IF INI[0]==1;左旋
 	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50;从任意对刀点ZC开始插补
 ELSE
 	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50 ;从任意对刀点ZC开始插补
 ENDIF
-;--------------------------------------------------------------------------
+;--------------------------------------
 
 RET
 

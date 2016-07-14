@@ -10,13 +10,13 @@ ELSE;右旋
     INI[6]=INI[2]
     INI[7]=INI[1]
 ENDIF
-INI[3]=INI[2]-INI[1]
-INI[5]=WORK[0]*INI[4]
-INI[9]=360*INI[3]/INI[5]
-INI[8]=(INI[2]+INI[1])/2
+INI[3]=INI[2]-INI[1];磨削长度
+INI[5]=WORK[0]*INI[4];导程
+INI[9]=360*INI[3]/INI[5];磨削总角度
+INI[8]=(INI[2]+INI[1])/2;磨削中点
 ;锥度相关计算
 IF INI[11]==0;判断有无锥度
-	INI[14]=0
+	INI[14]=0;锥度值
 ELSE
 	INI[14]=INI[12]/INI[13]
 ENDIF
@@ -28,7 +28,7 @@ IF INI[3]<=0;
 	M30
 ENDIF
 
-PROCESS[7]=0
+PROCESS[7]=0;当前磨削是否修整累计
 
 TECH_TIME[0]=0;当前粗磨次数
 TECH_TIME[1]=0;当前半粗磨次数
@@ -42,4 +42,6 @@ IF PROCESS[0]==1
 ELSE
 	PROCESS[2]=0
 ENDIF
+
 RET
+
