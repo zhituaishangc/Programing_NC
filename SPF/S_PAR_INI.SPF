@@ -39,14 +39,14 @@ ELSE
 ENDIF
 ;报警判断
 IF INI[3]<=0;磨削长度<=0
-    MSG("左端坐标>右端")
+	MSG("左端坐标>右端")
 	G4 F5
 	DRESSER[6]=1;报警标记 
 ENDIF
 IF DRESSER[24]<300;当前砂轮直径
 	MSG("砂轮过小，请更换砂轮！")
 	G4 F5
-    DRESSER[6]=1;报警标记
+	DRESSER[6]=1;报警标记
 ENDIF
 ;
 RET
