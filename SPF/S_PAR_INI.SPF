@@ -22,14 +22,9 @@ ELSE
 ENDIF
 INI[15]=INI[3]*INI[14]/2;X方向的增量
 ;-----------
-IF INI[3]<=0;
-    MSG("左端坐标>右端")
-	G4 F10
-	M30
-ENDIF
-
+DRESSER[6]=0;报警标记取消
+;
 PROCESS[7]=0;当前磨削是否修整累计
-
 TECH_TIME[0]=0;当前粗磨次数
 TECH_TIME[1]=0;当前半粗磨次数
 TECH_TIME[2]=0;当前半精磨次数
@@ -42,6 +37,17 @@ IF PROCESS[0]==1
 ELSE
 	PROCESS[2]=0
 ENDIF
-
+;报警判断
+IF INI[3]<=0;磨削长度<=0
+	MSG("左端坐标>右端")
+	G4 F5
+	DRESSER[6]=1;报警标记 
+ENDIF
+IF DRESSER[24]<300;当前砂轮直径
+	MSG("砂轮过小，请更换砂轮！")
+	G4 F5
+	DRESSER[6]=1;报警标记
+ENDIF
+;
 RET
 
