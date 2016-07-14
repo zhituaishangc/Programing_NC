@@ -25,7 +25,7 @@ ENDIF
 
 G90 G1 AX[AXIVER]=0 F200
 WHILE($A_DBB[4]<>1);没到初始位置
-    M31;回到初始位置
+    M44;回到初始位置
 ENDWHILE
 
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
@@ -38,12 +38,12 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     
     G4 F0.2
     WHILE($A_DBB[3]<>1);没压到左开关
-        M32;摆到左端
+        M43;摆到左端
     ENDWHILE
 
     G4 F0.2
     WHILE($A_DBB[4]<>1);没压到右开关
-        M31;摆到右端
+        M44;摆到右端
     ENDWHILE
 
     DRESSER[5]=1
