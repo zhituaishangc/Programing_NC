@@ -1,6 +1,7 @@
 PROC S_GRINDING_END SBLOF DISPLOF
+;磨削收尾
 
-IF PROCESS[0]==0
+IF PROCESS[0]==0;如果不是DIY
     M9
     M21
     M1=5
@@ -8,3 +9,4 @@ IF PROCESS[0]==0
 ENDIF
 
 RET
+

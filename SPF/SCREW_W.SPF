@@ -2,19 +2,22 @@ PROC SCREW_W DISPLON
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
-S_PARA_TRANS;
+IF DRESSER[6]==1;有报警标记则退出程序
+    GOTOF G_ENDING
+ENDIF
+S_PARA_TRANS;参数传递
 
 GRINDING[1]=$A_DBB[0];是否修整
 IF GRINDING[1]==1
-    DRESS
+    DRESS;修整
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     GOTOF G_ENDING
 ENDIF
 
 GRINDING[2]=$A_DBB[1];是否对刀
 IF GRINDING[2]==1
-    OPERATION
-    PROCESS[4]=TOOL_SET[3]
+    OPERATION;对刀
+    PROCESS[4]=TOOL_SET[3];当前磨削进刀位赋值
     GOTOF G_ENDING
 ENDIF
 
@@ -25,12 +28,12 @@ IF PROCESS[0]==0;选择界面工艺
         RET
     ENDIF
 ELSE;选择DIY工艺
-    PROCESS[2]=4
+    PROCESS[2]=4;当前工艺切换到DIY
     IF DIY[1]==0
         RET
     ENDIF
 ENDIF
-;--------------------------------------------------------------------------
+;-------------------------------------------------------
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
@@ -42,8 +45,10 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
     S_BCYC;工序进给大循环判断
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDWHILE
-;--------------------------------------------------------------------------
+;-------------------------------------------------------
 G_ENDING:
 
 S_GRINDING_END
+
 RET
+

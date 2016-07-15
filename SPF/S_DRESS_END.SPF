@@ -1,4 +1,5 @@
 PROC S_DRESS_END SBLOF DISPLOF
+;修整收尾
 
 M29
 M15
@@ -6,3 +7,4 @@ M15
 M2=5
 WAITS(2)
 RET
+
