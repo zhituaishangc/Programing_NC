@@ -3,7 +3,7 @@ PROC S_DRESS_START DISPLOF
 
 DRESSER[6]=0
 IF DRESSER[24]<300
-	MSG("砂轮过小，请更换砂轮！")
+	MSG("砂轮过小,请更换砂轮!")
 	G4 F3
 	DRESSER[6]=1;报警标记
 	GOTOF ENDING_A
