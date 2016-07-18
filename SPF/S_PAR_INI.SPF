@@ -37,6 +37,7 @@ IF PROCESS[0]==1
 ELSE
 	PROCESS[2]=0
 ENDIF
+;-----------
 ;报警判断
 IF INI[3]<=0;磨削长度<=0
 	MSG("左端坐标>右端")
