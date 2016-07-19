@@ -1,6 +1,8 @@
 PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
+DRFOF;手轮偏置清除
+
 ;INI[1];丝杠磨削左端坐标
 ;INI[2];丝杠磨削右端坐标
 IF INI[0]==1;左旋
