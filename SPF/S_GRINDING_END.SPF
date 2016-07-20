@@ -4,8 +4,8 @@ PROC S_GRINDING_END SBLOF DISPLOF
 IF PROCESS[0]==0;如果不是DIY
     M9
     M21
-    M1=5
-    WAITS
+    M15
+    G4 F5
 ENDIF
 
 RET
