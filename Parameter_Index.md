@@ -6,8 +6,8 @@
 |$A_DBB[2]|DB4900.DBX2.0|是否退刀
 |$A_DBB[3]|DB4900.DBX3.0|液压左开关
 |$A_DBB[4]|DB4900.DBX4.0|液压右开关
-|$MN_USER_DATA_INT[0]|14510|润滑间歇时间
-|$MN_USER_DATA_INT[1]|14510|润滑启动时间
+|$MN_USER_DATA_INT[0]|INI[21]|润滑间歇时间
+|$MN_USER_DATA_INT[1]|INI[22]|润滑启动时间
 |||
 |**修整主参数(DRESSER)**|
 |DRESSER[0]|DRESSWARE|修整器选择(0VW/1XZ/2滚压/3液压)
@@ -71,6 +71,8 @@
 |INI[18]|minute|分
 |INI[19]|second|秒
 |INI[20]|helix_value|螺旋升角值
+|INI[21]|14510|润滑间歇时间
+|INI[22]|14510|润滑启动时间
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
