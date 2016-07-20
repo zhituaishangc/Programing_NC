@@ -42,9 +42,9 @@ WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 G91 G01 C=WORK[3] F=PROCESS[9];头数切换,角度增量累加
 G90 Z=INI[6] F=PROCESS[9];Z轴到磨削起点
 IF PROCESS[6]==0;根据磨削方式判断进给量
-	X=PROCESS[4] F=50;X进给
+	X=PROCESS[4] F=PROCESS[11];X进给
 ELSE
-	X=PROCESS[4]+PROCESS[8]/2 F=50;双向磨削X进给
+	X=PROCESS[4]+PROCESS[8]/2 F=PROCESS[11];双向磨削X进给
 ENDIF
 FGROUP(Z)
 IF INI[0]==0;0右旋,1左旋
@@ -55,7 +55,7 @@ IF INI[0]==0;0右旋,1左旋
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1;判断是否进行反向磨削
-		G91 G01 X=-PROCESS[8]/2 F=50
+		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 		G302;右旋反向磨削,台面向左运动
 		IF $A_DBB[2]==1
 			RET
@@ -79,7 +79,7 @@ ELSE;左旋螺纹磨削
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1
-		G91 G01 X=-PROCESS[8]/2 F=50
+		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 		G304;左旋反向磨削,台面向右运动
 		IF $A_DBB[2]==1
 			RET
