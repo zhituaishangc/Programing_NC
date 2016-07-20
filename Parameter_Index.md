@@ -1,5 +1,11 @@
 |数组|全局变量|意义
 |:----:|:----:|:----:|
+|**需要提前手动输入**|
+|$A_DBW[12]|DB4900.DBW12|砂轮极限速度
+|$A_DBB[14]|DB4900.DBB14|砂轮风扇停留时间
+|DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
+|PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
+|||
 |**PLC_NC交换变量**|
 |$A_DBB[0]|DB4900.DBX0.0|是否修整
 |$A_DBB[1]|DB4900.DBX1.0|是否对刀
@@ -11,10 +17,6 @@
 |$A_DBW[12]|DB4900.DBW12|砂轮极限速度
 |$A_DBB[14]|DB4900.DBB14|砂轮风扇停留时间
 |$A_DBD[16]|DB4900.DBD16|砂轮转速模拟量
-|||
-|**需要提前手动输入**|
-|DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
-|PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
 |||
 |**修整主参数(DRESSER)**|
 |DRESSER[0]|DRESSWARE|修整器选择(0VW/1XZ/2滚压/3液压)
