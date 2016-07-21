@@ -2,8 +2,9 @@ PROC S_GRINDING_END SBLOF DISPLOF
 ;磨削收尾
 
 IF PROCESS[0]==0;如果不是DIY
-    M9
-    M21
+    M9;修整冷却关
+    M21;吸雾关
+    M57;退刀关
     M1=5
     WAITS
 ENDIF
