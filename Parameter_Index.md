@@ -173,11 +173,11 @@
 |DARC[14]|DARC_RND_LTRANS_VER|滚道左半径垂直偏心
 |DARC[15]|DARC_RND_RTRANS_VER|滚道右半径垂直偏心
 |||
-|**磨削参数(GRINDING)**||
-|GRINDING[0]|G_TYPE|磨削类型(0外螺纹/1内螺纹/2蜗杆/3外圆/4环形槽)
-|GRINDING[1]|DRESS_STA|是否修整(0否/1是)
-|GRINDING[2]|OPERA_STA|是否对刀(0否/1是)
-|GRINDING[3]|CYCLE_MODEL|磨削循环类型
+|**磨削参数(GRIND)**||
+|GRIND[0]|G_TYPE|磨削类型(0外螺纹/1内螺纹/2蜗杆/3外圆/4环形槽)
+|GRIND[1]|DRESS_STA|是否修整(0否/1是)
+|GRIND[2]|OPERA_STA|是否对刀(0否/1是)
+|GRIND[3]|CYCLE_MODEL|磨削循环类型
 |||
 |**工序基本参数**||
 |PROCESS[0]|TECH_MODEL|工艺类型(0界面/1DIY)
