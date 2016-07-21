@@ -1,7 +1,7 @@
 PROC S_DRESS_END SBLOF DISPLOF
 ;修整收尾
 
-M29
+M29;修整冷却关
 
 M2=5
 WAITS(2)
