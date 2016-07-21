@@ -4,8 +4,9 @@ PROC S_GRINDING_END SBLOF DISPLOF
 IF PROCESS[0]==0;如果不是DIY
     M9
     M21
+    M57
     M15
-    G4 F5
+    G4 F2
 ENDIF
 
 RET
