@@ -36,7 +36,8 @@ ELSE;选择DIY工艺
     ENDIF
 ENDIF
 ;-------------------------------------------------------
-;M20;磨削冷却开
+M8;磨削冷却开
+M20;吸雾开
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
