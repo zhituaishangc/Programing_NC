@@ -126,6 +126,7 @@
 |WHEEL[15]|DWHEEL_VER_DISTANCE|双滚轮垂直误差
 |WHEEL[16]|HY_LEFT|液压左开关
 |WHEEL[17]|HY_LEFT|液压右开关
+|WHEEL[18]|MOLD_TIME|成型修整轮向下停留时间
 |||
 |**三角齿形(TRI)**||
 |TRI[0]|TRIANGLE_VER|齿高
