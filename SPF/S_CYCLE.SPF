@@ -7,6 +7,10 @@ ENDIF
 
 S_CYCLE_SW;小循环
 
+IF $A_DBB[2]==1;按下退刀键跳转到结束程序
+    RET
+ENDIF
+
 IF PROCESS[3]==1
     M9;磨削冷却关
     M28;修整冷却开
