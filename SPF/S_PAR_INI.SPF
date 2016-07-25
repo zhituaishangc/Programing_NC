@@ -14,7 +14,7 @@ ELSE;右旋
 ENDIF
 INI[3]=INI[2]-INI[1];磨削长度
 INI[5]=WORK[0]*INI[4];导程
-INI[9]=360*INI[3]/INI[5];磨削总角度
+INI[9]=360*(INI[3]+INI[24])/INI[5];磨削总角度
 INI[8]=(INI[2]+INI[1])/2;磨削中点
 ;锥度相关计算
 IF INI[11]==0;判断有无锥度

@@ -82,6 +82,8 @@
 |INI[20]|helix_value|螺旋升角值
 |INI[21]|LUB_INTER|润滑间歇时间(中间变量)
 |INI[22]|LUB_TIME|润滑启动时间(中间变量)
+|INI[23]|QUIT|退刀位置
+|INI[24]|PITCH_COM|全长螺距补偿
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -126,6 +128,7 @@
 |WHEEL[15]|DWHEEL_VER_DISTANCE|双滚轮垂直误差
 |WHEEL[16]|HY_LEFT|液压左开关
 |WHEEL[17]|HY_LEFT|液压右开关
+|WHEEL[18]|MOLD_TIME|成型修整轮向下停留时间
 |||
 |**三角齿形(TRI)**||
 |TRI[0]|TRIANGLE_VER|齿高
@@ -192,6 +195,7 @@
 |PROCESS[9]|TECH_GRIND_FEED|磨削速度
 |PROCESS[10]|WHEEL_LINESPEED_GRIND|磨削砂轮线速度
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
+|PROCESS[12]|GRIND_TOTAL|工艺磨削总量
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -222,6 +226,19 @@
 |TECHNOLOGY[51]|WHEEL_LINESPEED_GRIND_MR|磨削砂轮线速度
 |TECHNOLOGY[52]|WHEEL_LINESPEED_GRIND_MF|磨削砂轮线速度
 |TECHNOLOGY[53]|WHEEL_LINESPEED_GRIND_F|磨削砂轮线速度
+|TECHNOLOGY[60]||粗磨头架转速
+|TECHNOLOGY[61]||半粗磨头架转速
+|TECHNOLOGY[62]||精磨头架转速
+|TECHNOLOGY[63]||精磨头架转速
+|TECHNOLOGY[70]||粗磨砂轮转速
+|TECHNOLOGY[71]||半粗磨砂轮架转速
+|TECHNOLOGY[72]||精磨砂轮转速
+|TECHNOLOGY[73]||精磨砂轮转速
+|||
+|TECHNOLOGY[60]||粗磨头架转速
+|TECHNOLOGY[61]||半粗磨头架转速
+|TECHNOLOGY[62]||半精磨头架转速
+|TECHNOLOGY[63]||精磨头架转速
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
