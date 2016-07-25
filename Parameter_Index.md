@@ -82,6 +82,8 @@
 |INI[20]|helix_value|螺旋升角值
 |INI[21]|LUB_INTER|润滑间歇时间(中间变量)
 |INI[22]|LUB_TIME|润滑启动时间(中间变量)
+|INI[23]|QUIT|退刀位置
+|INI[24]|PITCH_COM|全长螺距补偿
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
