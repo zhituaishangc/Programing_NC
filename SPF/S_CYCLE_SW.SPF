@@ -37,6 +37,7 @@ IF INI[0]==0;0右旋,1左旋
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1;判断是否进行反向磨削
+		G4 F0.5
 		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 		S_CYCLE_SW_MESSAGE
 		G302;右旋反向磨削,台面向左运动
@@ -65,6 +66,7 @@ ELSE;左旋螺纹磨削
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1
+		G4 F0.5
 		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 		S_CYCLE_SW_MESSAGE
 		G304;左旋反向磨削,台面向右运动
