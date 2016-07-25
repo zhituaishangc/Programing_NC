@@ -53,6 +53,7 @@ ELSE
 	ENDIF
 ENDIF
 
+STOPRE
 DRFOF
 
 IF $A_DBB[2]==1;按下退刀键
