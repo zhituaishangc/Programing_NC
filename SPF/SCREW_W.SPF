@@ -21,7 +21,7 @@ S_ROTATE_ANGLE;螺旋升角
 GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
     M20;吸雾开
-    M8;磨削冷却开
+    ;M8;磨削冷却开
     OPERATION;对刀
     PROCESS[4]=TOOL_SET[3];当前磨削进刀位赋值
     GOTOF G_ENDING
