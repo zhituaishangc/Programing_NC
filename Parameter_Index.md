@@ -57,6 +57,7 @@
 |DRESSER[33]|DWHEEL_MID_L|左修整轮对砂轮中心
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
+|DRESSER[36]|DRESS_WHEEL_RPM|修整时砂轮转速
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -129,6 +130,7 @@
 |WHEEL[16]|HY_LEFT|液压左开关
 |WHEEL[17]|HY_LEFT|液压右开关
 |WHEEL[18]|MOLD_TIME|成型修整轮向下停留时间
+|WHEEL[19]|DRESS_RPM|修整轮转速
 |||
 |**三角齿形(TRI)**||
 |TRI[0]|TRIANGLE_VER|齿高
@@ -234,11 +236,6 @@
 |TECHNOLOGY[71]||半粗磨砂轮架转速
 |TECHNOLOGY[72]||精磨砂轮转速
 |TECHNOLOGY[73]||精磨砂轮转速
-|||
-|TECHNOLOGY[60]||粗磨头架转速
-|TECHNOLOGY[61]||半粗磨头架转速
-|TECHNOLOGY[62]||半精磨头架转速
-|TECHNOLOGY[63]||精磨头架转速
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
