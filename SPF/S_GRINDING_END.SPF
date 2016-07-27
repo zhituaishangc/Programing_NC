@@ -1,5 +1,6 @@
 PROC S_GRINDING_END SBLOF DISPLOF
 ;磨削收尾
+INI[25]=0;退刀计算标志位置0
 
 IF PROCESS[0]==0;如果不是DIY
     M9;磨削冷却关
