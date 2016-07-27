@@ -14,7 +14,7 @@
 //END
 
 ;;;;;;;;;;;;;MASK0:出厂信息;;;;;;;;;;;;;;;;
-//M(Mask0/$85024/"panel_0_1.png"/)
+//M(Mask0/$85024/"panel_0_1_chs.png"/)
 
 	DEF VAR1=(B///,,,/WR1///0,0,0/0,0,0/);辅助画面选中
 
@@ -193,7 +193,7 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK2:工艺参数;;;;;;;;;;;;;;;;;;;
-//M(Mask2/$85021/"panel_2_0.png"/)
+//M(Mask2/$85021/"panel_2_0_chs.png"/)
 
 	;DEF TECH_PAR_VAR1=(R/%TECH_PAR1///WR1////3,30,115,30)
 	;DEF TECH_GRID_VAR=(R/%TECH_GRID///WR2////115,51,360,210)
@@ -209,6 +209,7 @@
 	DEF VAR16=(I///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[12]"/0,0,0/222,104,60/);半粗磨次数
 	DEF VAR17=(I///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[13]"/0,0,0/312,104,60/);半精磨次数
 	DEF VAR18=(I///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[14]"/0,0,0/402,104,60/);精磨次数
+	
 	;进给深度
 	DEF VAR19=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[21]"/0,0,0/132,129,60);粗磨进给量
 	DEF VAR20=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[22]"/0,0,0/222,129,60);半粗磨进给量
@@ -226,11 +227,13 @@
 	DEF VAR42=(I///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[42]"/0,0,0/222,179,60/);半精磨
 	DEF VAR43=(I///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[43]"/0,0,0/312,179,60/);精磨
 	DEF VAR44=(I///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[44]"/0,0,0/402,179,60/);终磨
+	
 	;砂轮线速度设定
 	DEF VAR37=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[51]"/20,320,210/132,203,60/);粗磨砂轮线速度调用
 	DEF VAR38=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[52]"/20,320,210/222,203,60/);半粗磨砂轮线速度调用
 	DEF VAR39=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[53]"/20,320,210/312,203,60/);半精磨砂轮线速度调用
 	DEF VAR40=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[54]"/20,320,210/402,203,60/);精磨砂轮线速度调用
+	
 	;头架转速显示
 	DEF VAR23=(R///,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[61]"/0,0,0/132,245,60/);粗磨头架转速
 	DEF VAR24=(R///,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[62]"/0,0,0/222,245,60/);半粗磨头架转速
