@@ -5,16 +5,16 @@ MESSAGE_0:;粗磨信息
 MSG("粗磨中-->正在进行第"<<TECH_TIME[0]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
-MESSAGE_1:;半粗磨信息
-MSG("半粗磨中-->正在进行第"<<TECH_TIME[1]<<"次循环,第"<<WORK[1]+1<<"头");
+MESSAGE_1:;半精磨信息
+MSG("半精磨中-->正在进行第"<<TECH_TIME[1]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
-MESSAGE_2:;半精磨信息
-MSG("半精磨中-->正在进行第"<<TECH_TIME[2]<<"次循环,第"<<WORK[1]+1<<"头");
+MESSAGE_2:;精磨信息
+MSG("精磨中-->正在进行第"<<TECH_TIME[2]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
-MESSAGE_3:;精磨信息
-MSG("精磨中-->正在进行第"<<TECH_TIME[3]<<"次循环,第"<<WORK[1]+1<<"头");
+MESSAGE_3:;终磨信息
+MSG("终磨中-->正在进行第"<<TECH_TIME[3]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
 MESSAGE_4:;自定义磨削,信息显示
