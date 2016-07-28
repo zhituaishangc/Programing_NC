@@ -2,14 +2,14 @@ PROC S_CYCLE_SW SBLOF DISPLOF
 ;外螺纹小循环
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
-	RET;第一次空运行，直接跳出
+	RET;第一次空运行,直接跳出
 
 ENDIF
 
 WORK[1]=0
 WORK[2]=360/WORK[0]
 
-G90 G01 C=TOOL_SET[4] F=PROCESS[9];C轴转到起点
+G90 G01 C=TOOL_SET[4] F=3600;C轴转到起点
 G90 G01 Z=INI[6] F=2*PROCESS[9];Z轴到磨削起点
 X=INI[10];X轴到安全位置
 STOPRE
@@ -18,82 +18,78 @@ WHILE(WORK[1]<WORK[0])
 ;
 CASE PROCESS[2] OF 0 GOTOF MESSAGE_0 1 GOTOF MESSAGE_1 2 GOTOF MESSAGE_2 3 GOTOF MESSAGE_3 4 GOTOF MESSAGE_4 DEFAULT GOTOF MESSAGE_5
 MESSAGE_0:;粗磨信息
-MSG("粗磨中-->正在进行第"<<TECH_TIME[0]<<"次循环，第"<<WORK[1]+1<<"头");
+MSG("粗磨中-->正在进行第"<<TECH_TIME[0]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
 MESSAGE_1:;半粗磨信息
-MSG("半粗磨中-->正在进行第"<<TECH_TIME[1]<<"次循环，第"<<WORK[1]+1<<"头");
+MSG("半粗磨中-->正在进行第"<<TECH_TIME[1]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
 MESSAGE_2:;半精磨信息
-MSG("半精磨中-->正在进行第"<<TECH_TIME[1]<<"次循环，第"<<WORK[1]+1<<"头");
+MSG("半精磨中-->正在进行第"<<TECH_TIME[1]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
 MESSAGE_3:;精磨信息
-MSG("精磨中-->正在进行第"<<TECH_TIME[1]<<"次循环，第"<<WORK[1]+1<<"头");
+MSG("精磨中-->正在进行第"<<TECH_TIME[1]<<"次循环,第"<<WORK[1]+1<<"头");
 GOTOF MESSAGE_5
 ;
-MESSAGE_4:;自定义磨削，信息显示
-MSG("自定义磨削-->正在进行第"<<PROCESS[5]<<"次工序，第"<<TECH_TIME[4]<<"次循环，第"<<WORK[1]+1<<"头");
+MESSAGE_4:;自定义磨削,信息显示
+MSG("自定义磨削-->正在进行第"<<PROCESS[5]<<"次工序,第"<<TECH_TIME[4]<<"次循环,第"<<WORK[1]+1<<"头");
 ;
 MESSAGE_5:;
 ;
 WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
-G91 G01 C=WORK[3] F=PROCESS[9];头数切换，角度增量累加
+G91 G01 C=WORK[3] F=PROCESS[9];头数切换,角度增量累加
 G90 Z=INI[6] F=PROCESS[9];Z轴到磨削起点
 IF PROCESS[6]==0;根据磨削方式判断进给量
-	X=PROCESS[4] F=50;X进给
+	X=PROCESS[4] F=PROCESS[11];X进给
 ELSE
-	X=PROCESS[4]+PROCESS[8]/2 F=50;双向磨削X进给
+	X=PROCESS[4]+PROCESS[8]/2 F=PROCESS[11];双向磨削X进给
 ENDIF
 FGROUP(Z)
 IF INI[0]==0;0右旋,1左旋
 
-	G301;右旋正向磨削，台面向右运动
+	G301;右旋正向磨削,台面向右运动
 	IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 		RET
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1;判断是否进行反向磨削
-		G91 G01 X=-PROCESS[8]/2 F=50
-		G302;右旋反向磨削，台面向左运动
+		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
+		G302;右旋反向磨削,台面向左运动
 		IF $A_DBB[2]==1
 			RET
 		ENDIF
     ELSE
 		G90 G01 X=INI[10] F=2*PROCESS[9];X退刀
-		G01 Z=INI[6]
-		C=TOOL_SET[4]
+		G01 Z=INI[6] C=TOOL_SET[4]
     ENDIF
 	STOPRE
 	IF (WORK[0]<>1)AND(PROCESS[6]==1);头数不等于1,且双向磨削
-		G90 G01 X=INI[10] F=2*PROCESS[9];换头时，X退刀，返回起点
-		G01 Z=INI[6]
-		C=TOOL_SET[4]
+		G90 G01 X=INI[10] F=2*PROCESS[9];换头时,X退刀,返回起点
+		G01 Z=INI[6] C=TOOL_SET[4]
 	ENDIF
 ELSE;左旋螺纹磨削
 
-	G303;左旋正向磨削，台面向左运动
+	G303;左旋正向磨削,台面向左运动
 	IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 		RET
 	ENDIF
 	STOPRE
 	IF PROCESS[6]==1
-		G91 G01 X=-PROCESS[8]/2 F=50
-		G304;左旋反向磨削，台面向右运动
+		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
+		G304;左旋反向磨削,台面向右运动
 		IF $A_DBB[2]==1
 			RET
 		ENDIF	
 	ELSE
 		G90 G01 X=INI[10] F=2*PROCESS[9]
-		G01 Z=INI[6]
-		C=TOOL_SET[4]
+		G01 Z=INI[6] C=TOOL_SET[4]
 	ENDIF
 	STOPRE
 	IF (WORK[0]<>1)AND(PROCESS[6]==1);头数不等于1,且双向磨削
-		G90 G01 X=INI[10] F=2*PROCESS[9];换头时，X退刀，返回起点
-		G01 Z=INI[6]
-		C=TOOL_SET[4]
+		G90 G01 X=INI[10] F=2*PROCESS[9];换头时,X退刀,返回起点
+		G01 Z=INI[6] C=TOOL_SET[4]
 	ENDIF
 ENDIF
 ;

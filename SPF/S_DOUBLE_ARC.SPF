@@ -86,7 +86,7 @@ STOPRE
 ;======================================
 ;运行区域
 ;左半圆弧点位
-TRANS AX[AXIHOR]=-DARC[12]+DRESSER[33] AX[AXIVER]=WHEEL[10];左圆弧TRANS坐标点，以水平偏心量为起刀点
+TRANS AX[AXIHOR]=-DARC[12]+DRESSER[33] AX[AXIVER]=WHEEL[10];左圆弧TRANS坐标点,以水平偏心量为起刀点
 
 G0 AX[AXIVER]=DR2
 G0 AX[AXIHOR]=DR3 AX[AXIVER]=DR4 F=DRESSER[10]
@@ -98,7 +98,7 @@ G0 AX[AXIVER]=DR2
 TRANS
 ;=======================================
 ;右半圆弧点位
-TRANS AX[AXIHOR]=DARC[13]+DRESSER[34] AX[AXIVER]=WHEEL[11];右圆弧TRANS坐标点，以水平偏心量为起刀点
+TRANS AX[AXIHOR]=DARC[13]+DRESSER[34] AX[AXIVER]=WHEEL[11];右圆弧TRANS坐标点,以水平偏心量为起刀点
 
 G0 AX[AXIVER]=DR17
 G0 AX[AXIHOR]=-DR18 AX[AXIVER]=DR19 F=DRESSER[10]
