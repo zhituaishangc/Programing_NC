@@ -12,7 +12,7 @@ TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
 	GOTOF SKIP_CALCULATE
 ENDIF
-		
+
 IF TOOL_SET[8]==0;首次对刀
 	;------------------------
 	IF TOOL_SET[7]==0;手动对刀
@@ -60,6 +60,7 @@ ENDIF
 
 STOPRE
 DRFOF
+
 SKIP_CALCULATE:
 IF $A_DBB[2]==1;按下退刀键
 	MSG("退刀中，请勿复位程序!")
