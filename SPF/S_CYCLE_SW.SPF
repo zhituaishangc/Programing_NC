@@ -46,6 +46,7 @@ IF INI[0]==0;0右旋,1左旋
 		IF $A_DBB[2]==1
 			RET
 		ENDIF
+		G90 G01 X=INI[10] F=1000;双向磨削结束,X退刀
     ELSE
 		MSG("X退出工件")
 		G90 G01 X=INI[10] F=1000;X退刀
@@ -74,7 +75,8 @@ ELSE;左旋螺纹磨削
 		G304;左旋反向磨削,台面向右运动
 		IF $A_DBB[2]==1
 			RET
-		ENDIF	
+		ENDIF
+		G90 G01 X=INI[10] F=1000;双向磨削结束,X退刀
 	ELSE
 		MSG("X退出工件")
 		G90 G01 X=INI[10] F=1000
