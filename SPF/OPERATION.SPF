@@ -32,7 +32,7 @@ IF $A_DBB[2]==1;如果按下退刀键
     GOTOF MASK4
 ELSE
     PLCASUP1;跳转到初始角度计算子程序
-    MSG("退刀中，请勿复位程序!")
+    MSG("退刀中,请勿复位程序!")
 	G01 G90 X=INI[23] F1000;退刀时的X值
 ENDIF
 
