@@ -13,15 +13,17 @@ MSG("C轴转到起点")
 G90 G01 C=TOOL_SET[4] F=3600;C轴转到起点
 MSG("Z轴到起点")
 G90 G01 Z=INI[6] F=1500;Z轴到磨削起点
+MSG("X轴到安全位置")
 X=INI[10] F=800;X轴到安全位置
 STOPRE
 
 WHILE(WORK[1]<WORK[0])
 ;
 WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
-G91 G01 C=WORK[3] F=PROCESS[9];头数切换,角度增量累加
+MSG("正在换头中")
+G91 G01 C=WORK[3] F=3600;头数切换,角度增量累加
 G90 Z=INI[6] F=PROCESS[9];Z轴到磨削起点
-MSG("X轴进给")
+MSG("砂轮正在进入工件螺纹")
 IF PROCESS[6]==0;根据磨削方式判断进给量
 	X=PROCESS[4] F=PROCESS[11];X进给
 ELSE

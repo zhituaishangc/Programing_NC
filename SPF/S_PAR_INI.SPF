@@ -2,6 +2,7 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
 DRFOF;手轮偏置清除
+PROCESS[3]=0;修整标记清零
 INI[25]=1;退刀计算标志位置1
 
 ;INI[1];丝杠磨削左端坐标
