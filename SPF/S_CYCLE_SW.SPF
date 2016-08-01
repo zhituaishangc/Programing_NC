@@ -46,7 +46,15 @@ IF INI[0]==0;0右旋,1左旋
 		IF $A_DBB[2]==1
 			RET
 		ENDIF
-    ELSE
+		IF PROCESS[3]==1
+			MSG("砂轮正在退出工件")
+			G90 G01 X=INI[10] F=1000;双向磨削结束,需要修砂轮,X退刀
+		ENDIF
+		IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
+			MSG("砂轮正在退出工件")
+			G90 G01 X=INI[10] F=1000;双向磨削结束,次数已到设定次数,X退刀
+		ENDIF
+	ELSE
 		MSG("X退出工件")
 		G90 G01 X=INI[10] F=1000;X退刀
 		MSG("Z到磨削起点")
@@ -74,7 +82,15 @@ ELSE;左旋螺纹磨削
 		G304;左旋反向磨削,台面向右运动
 		IF $A_DBB[2]==1
 			RET
-		ENDIF	
+		ENDIF
+		IF PROCESS[3]==1
+			MSG("砂轮正在退出工件")
+			G90 G01 X=INI[10] F=1000;双向磨削结束,需要修砂轮时,X退刀
+		ENDIF
+		IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
+			MSG("砂轮正在退出工件")
+			G90 G01 X=INI[10] F=1000;双向磨削结束,次数已到设定次数,X退刀
+		ENDIF		
 	ELSE
 		MSG("X退出工件")
 		G90 G01 X=INI[10] F=1000
