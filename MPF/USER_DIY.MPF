@@ -2,16 +2,16 @@ PROC USER_DIY DISPLON;用户自定义工序
 PROCESS[5]=0
 
 ;****************DIY工序1******************
-DIY[0]=                        ;单向/双向磨削设定
-DIY[1]=                        ;磨削次数	
-DIY[2]=                        ;磨削进给量
-DIY[3]=                        ;磨削速度
-DIY[4]=                        ;循环多少次修砂轮累计
-DIY[5]=                        ;磨削中砂轮线速度
-TECH_DRESS_TIME[4]=            ;磨削中砂轮修整次数	
-TECH_DRESS_DEEP[5]=            ;修整进给深度
-TECH_DRESS_FEED[5]=            ;修整速度
-WHEEL_LINESPEED_DRESS[7]=      ;修整时砂轮线速度
+DIY[0]=0                        ;单向/双向磨削设定
+DIY[1]=1                        ;磨削次数	
+DIY[2]=0.01                     ;磨削进给量
+DIY[3]=10                       ;磨削速度
+DIY[4]=0                        ;循环多少次修砂轮累计
+DIY[5]=20                       ;磨削中砂轮线速度
+TECH_DRESS_TIME[4]=1            ;磨削中砂轮修整次数	
+TECH_DRESS_DEEP[5]=0.01         ;修整进给深度
+TECH_DRESS_FEED[5]=10           ;修整速度
+WHEEL_LINESPEED_DRESS[7]=15     ;修整时砂轮线速度
 ;..........................................
 PROCESS[5]=PROCESS[5]+1
 M_GRINDING;
@@ -30,7 +30,7 @@ M21;吸雾关
 M57;退刀关
 M15;砂轮关
 M1=5;修整轮关
-G4 F2
+G4 F1
 
 M30
 
