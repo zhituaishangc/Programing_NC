@@ -67,6 +67,8 @@
 	DEF VAR29=(I/0,500//$85127,$85127,$85048,/WR2/"panel_1_15_chs.png"/"/NC/_N_NC_GD2_ACX/INI[22]"/335,320,207/440,320,60/);润滑间歇时间输入值
 	DEF VAR30=(I/0,500//$85126,$85126,$85047,/WR2/"panel_1_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[23]"/335,345,207/440,345,60/);润滑启动时间输入值
 
+	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	
 	HS1=($85001,ac7,se3);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -154,6 +156,25 @@
 		VAR28=VAR30*100
 	END_CHANGE
 
+	CHANGE(QCHECK)
+		IF QCHECK.VAL==1
+			SCREW_R.WR=1
+			VAR6.WR=1
+			VAR7.WR=1
+			VAR8.WR=1
+			VAR9.WR=1
+			VAR10.WR=1
+			X_QUIT.WR=1
+		ELSE
+			SCREW_R.WR=2
+			VAR6.WR=2
+			VAR7.WR=2
+			VAR8.WR=2
+			VAR9.WR=2
+			VAR10.WR=2
+			X_QUIT.WR=2
+		ENDIF
+	END_CHANGE
 	SUB(UP1)
 
 		IF VAR3.VAL==0;不对刀
@@ -253,6 +274,9 @@
 	;界面设定磨削总量计算
 	DEF VAR14=(R///$85220,$85219,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[13]"/30,25,190/120,25,60/);工艺磨削总量显示
 	
+	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF TECH_CHECK=(I///$85220,$85219,$85043,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[3]"/0,0,0/0,0,0);当前执行那道工艺检测
+	
 	HS1=($85001,ac7,se1);"磨削参数"
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
@@ -280,71 +304,6 @@
 		EXIT
 	END_PRESS
 
-	CHANGE(VAR0)
-		IF VAR0.VAL==1;选择DIY工艺
-			;单双磨禁止选择
-			VAR10.WR=1
-			VAR11.WR=1
-			VAR12.WR=1
-			VAR13.WR=1
-			;循环次数
-			VAR15.WR=1
-			VAR16.WR=1
-			VAR17.WR=1
-			VAR18.WR=1
-			;进给深度
-			VAR19.WR=1
-			VAR20.WR=1
-			VAR21.WR=1
-			VAR22.WR=1
-			;磨削速度
-			VAR27.WR=1
-			VAR28.WR=1
-			VAR29.WR=1
-			VAR30.WR=1
-			;磨削几次修整设定
-			VAR41.WR=1
-			VAR42.WR=1
-			VAR43.WR=1
-			VAR44.WR=1
-			;砂轮线速度设定
-			VAR37.WR=1
-			VAR38.WR=1
-			VAR39.WR=1
-			VAR40.WR=1
-		ELSE
-			;单双磨
-			VAR10.WR=2
-			VAR11.WR=2
-			VAR12.WR=2
-			VAR13.WR=2
-			;循环次数
-			VAR15.WR=2
-			VAR16.WR=2
-			VAR17.WR=2
-			VAR18.WR=2
-			;进给深度
-			VAR19.WR=2
-			VAR20.WR=2
-			VAR21.WR=2
-			VAR22.WR=2
-			;磨削速度
-			VAR27.WR=2
-			VAR28.WR=2
-			VAR29.WR=2
-			VAR30.WR=2
-			;磨削几次修整设定
-			VAR41.WR=2
-			VAR42.WR=2
-			VAR43.WR=2
-			VAR44.WR=2
-			;砂轮线速度设定
-			VAR37.WR=2
-			VAR38.WR=2
-			VAR39.WR=2
-			VAR40.WR=2
-		ENDIF
-	END_CHANGE
 	CHANGE(VAR15);界面设定磨削总量计算
 		CALL("UP3")
 	END_CHANGE
@@ -393,7 +352,19 @@
 	END_CHANGE
 	CHANGE(VAR40)
 		VAR36.VAL=VAR40.VAL*60000/(PI*VAR32.VAL)
-	END_CHANGE		
+	END_CHANGE
+
+	CHANGE(VAR0);选择DIY工艺时,工艺表格全部不能选中
+		CALL("Q_DIY_SET")
+	END_CHANGE
+	
+	CHANGE(QCHECK)
+		CALL("Q_DIY_SET")
+	END_CHANGE
+	
+	CHANGE(TECH_CHECK)
+		CALL("Q_DIY_SET")
+	END_CHANGE
 	SUB(UP2)
 		VAR23.VAL=VAR27.VAL/VAR31.VAL
 		VAR24.VAL=VAR28.VAL/VAR31.VAL
@@ -402,6 +373,117 @@
 	END_SUB
 	SUB(UP3)
 		VAR14.VAL=VAR15.VAL*VAR19.VAL+VAR16.VAL*VAR20.VAL+VAR17.VAL*VAR21.VAL+VAR18.VAL*VAR22.VAL
+	END_SUB
+	
+	SUB(DIY_ON)
+		;单双磨禁止选择
+		VAR10.WR=1
+		VAR11.WR=1
+		VAR12.WR=1
+		VAR13.WR=1
+		;循环次数
+		VAR15.WR=1
+		VAR16.WR=1
+		VAR17.WR=1
+		VAR18.WR=1
+		;进给深度
+		VAR19.WR=1
+		VAR20.WR=1
+		VAR21.WR=1
+		VAR22.WR=1
+		;磨削速度
+		VAR27.WR=1
+		VAR28.WR=1
+		VAR29.WR=1
+		VAR30.WR=1
+		;磨削几次修整设定
+		VAR41.WR=1
+		VAR42.WR=1
+		VAR43.WR=1
+		VAR44.WR=1
+		;砂轮线速度设定
+		VAR37.WR=1
+		VAR38.WR=1
+		VAR39.WR=1
+		VAR40.WR=1
+	END_SUB	
+	SUB(DIY_OFF)
+		;单双磨
+		VAR10.WR=2
+		VAR11.WR=2
+		VAR12.WR=2
+		VAR13.WR=2
+		;循环次数
+		VAR15.WR=2
+		VAR16.WR=2
+		VAR17.WR=2
+		VAR18.WR=2
+		;进给深度
+		VAR19.WR=2
+		VAR20.WR=2
+		VAR21.WR=2
+		VAR22.WR=2
+		;磨削速度
+		VAR27.WR=2
+		VAR28.WR=2
+		VAR29.WR=2
+		VAR30.WR=2
+		;磨削几次修整设定
+		VAR41.WR=2
+		VAR42.WR=2
+		VAR43.WR=2
+		VAR44.WR=2
+		;砂轮线速度设定
+		VAR37.WR=2
+		VAR38.WR=2
+		VAR39.WR=2
+		VAR40.WR=2	
+	END_SUB
+	SUB(Q_DIY_SET)
+		IF VAR0.VAL==1
+			CALL("DIY_ON")
+		ELSE
+			CALL("DIY_OFF")
+			IF QCHECK.VAL==1
+				IF TECH_CHECK.VAL==0
+					VAR10.WR=1
+					VAR19.WR=1
+				ELSE
+					VAR10.WR=2
+					VAR19.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==1
+					VAR11.WR=1
+					VAR20.WR=1
+				ELSE
+					VAR11.WR=2
+					VAR20.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==2
+					VAR12.WR=1
+					VAR21.WR=1
+				ELSE
+					VAR12.WR=2
+					VAR21.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==3
+					VAR13.WR=1
+					VAR22.WR=1
+				ELSE
+					VAR13.WR=2
+					VAR22.WR=2
+				ENDIF
+			ELSE
+				VAR10.WR=2
+				VAR11.WR=2
+				VAR12.WR=2
+				VAR13.WR=2
+				VAR19.WR=2
+				VAR20.WR=2
+				VAR21.WR=2
+				VAR22.WR=2
+			ENDIF
+		ENDIF	
 	END_SUB
 
 //END
@@ -604,6 +686,8 @@
 	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/50,10,20/);垂直轴
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/50,25,20/);水平轴
 
+	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测	
+
 	HS1=($85379,ac7,se1);"滚压轮"
 
 	VS8=($85386,ac7,se1);"返回"
@@ -642,6 +726,19 @@
 		call("UP3")
 	END_CHANGE
 
+	CHANGE(QCHECK)
+		IF QCHECK.VAL==1
+			VAR4.WR=1
+			VAR6.WR=1
+			VAR9.WR=1
+			VAR13.WR=1
+		ELSE
+			VAR4.WR=2
+			VAR6.WR=2
+			VAR9.WR=2
+			VAR13.WR=2
+		ENDIF
+	END_CHANGE
 	SUB(UP3)
 
 		IF VAR1.VAL==0
@@ -1060,6 +1157,8 @@
 
 	DEF VAR10=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
 
+	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测	
+	
 	HS1=($85379,ac7,se3);"滚压轮"
 
 	VS8=($85386,ac7,se1);"返回"
@@ -1096,7 +1195,20 @@
 	CHANGE(VAR10)
 		VAR3.VAL=-(VAR0.VAL-VAR7.VAL/2-VAR10.VAL/2)
 	END_CHANGE
-
+	
+	CHANGE(QCHECK)
+		IF QCHECK.VAL==1
+			VAR0.WR=1
+			VAR2.WR=1
+			VAR5.WR=1
+			VAR7.WR=1
+		ELSE
+			VAR0.WR=2
+			VAR2.WR=2
+			VAR5.WR=2
+			VAR7.WR=2
+		ENDIF
+	END_CHANGE
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK15:修整参数_摆缸;;;;;;;;;;;;;;;;;;;
