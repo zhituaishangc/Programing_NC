@@ -426,7 +426,7 @@
 				VAR19.WR=1
 			ELSE
 				VAR10.WR=2
-				VAR19.WR=2				
+				VAR19.WR=2
 			ENDIF
 			IF TECH_CHECK.VAL==1
 				VAR11.WR=1
