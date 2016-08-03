@@ -34,7 +34,7 @@ IF TOOL_SET[8]==0;首次对刀
 			;------------------------
 		ENDIF
 		DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
-		TOOL_SET[4]=TOOL_SET[5]-DR12
+		TOOL_SET[4]=TOOL_SET[5]+DR12
 	ELSE;(自动对刀)	
 		TOOL_SET[3]=TOOL_SET[12]+TOOL_SET[18];自动对刀时对刀完成后X轴坐标换算(用于磨削初始进刀位)
 		DR11=ABS(TOOL_SET[1]-INI[6])
