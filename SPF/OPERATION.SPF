@@ -37,8 +37,6 @@ ELSE
 ENDIF
 
 MASK4:
-TOOL_SET[8]=1;改为二次对刀
-
 MSG("对刀已完成,请等待程序自动结束!")
 G04 F=0.5
 
