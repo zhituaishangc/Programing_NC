@@ -1,6 +1,9 @@
 PROC RING_GROOVE DISPLOF
 ;环形槽
 
+DRFOF;手轮偏置清除
+STOPRE
+
 MSG("砂轮开到起始位置")
 G1 G90 X=INI[10] F=300;开到对刀起始位
 R299=1500;砂轮转速
