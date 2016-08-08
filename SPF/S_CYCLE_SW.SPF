@@ -58,6 +58,9 @@ IF INI[0]==0;0右旋,1左旋
 		G90 G01 X=INI[10] F=1000;X退刀
 		MSG("Z到磨削起点")
 		G01 Z=INI[6] C=TOOL_SET[4] F=1500
+		IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
+			RET
+		ENDIF
     ENDIF
 	STOPRE
 	IF (WORK[0]<>1)AND(PROCESS[6]==1);头数不等于1,且双向磨削
@@ -95,6 +98,9 @@ ELSE;左旋螺纹磨削
 		G90 G01 X=INI[10] F=1000
 		MSG("Z到磨削起点")
 		G01 Z=INI[6] C=TOOL_SET[4] F=1500
+		IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
+			RET
+		ENDIF
 	ENDIF
 	STOPRE
 	IF (WORK[0]<>1)AND(PROCESS[6]==1);头数不等于1,且双向磨削
