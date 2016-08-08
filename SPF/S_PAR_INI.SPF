@@ -36,16 +36,19 @@ TECH_TIME[3]=0;当前精磨次数
 TECH_TIME[4]=0
 
 WORK[1]=0;当前磨削头数
-IF PROCESS[0]==1
+
+IF PROCESS[0]==1;选择了DIY工艺
 	PROCESS[2]=4
 ELSE
 	PROCESS[2]=0
 ENDIF
 ;-----------
 ;X轴初始接触赋值位置选择
-IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
-	PROCESS[4]=PROCESS[13]
-	PROCESS[14]=0
+IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
+	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
+		PROCESS[4]=PROCESS[13]
+		PROCESS[14]=0
+	ENDIF
 ENDIF
 ;-----------
 ;报警判断
