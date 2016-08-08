@@ -19,6 +19,7 @@ ENDIF
 GOTOB C_CYCLE
 
 RING_END:
+DRFOF;手轮偏置清除
 M9;关磨削冷却
 M15;关砂轮
 RET
