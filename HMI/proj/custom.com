@@ -186,7 +186,7 @@
 
 		IF VAR3.VAL==0;不对刀
 			VAR4.WR=1
-			VAR5.WR=1
+			VAR5.WR=4
 			VAR11.WR=4
 			VAR12.WR=4
 			VAR13.WR=4
@@ -194,7 +194,7 @@
 		ELSE;对刀
 			VAR4.WR=2;对刀类型可选
 			IF VAR4.VAL==0;选择首次对刀
-				VAR5.WR=1;对刀方式可选
+				VAR5.WR=4;对刀方式可选
 				IF VAR5.VAL==0;选择手动对刀
 					VAR11.WR=2
 					VAR12.WR=4
@@ -207,7 +207,7 @@
 					VAR15.WR=2
 				ENDIF
 			ELSE;选择二次对刀
-				VAR5.WR=1;对刀方式只能是手动
+				VAR5.WR=4;对刀方式只能是手动
 				VAR5.VAL=0
 				VAR11.WR=2
 				VAR12.WR=4
