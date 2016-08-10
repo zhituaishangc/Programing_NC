@@ -3,8 +3,10 @@ PROC OPERATION DISPLON
 IF TOOL_SET[8]==0;首次对刀
     CASE TOOL_SET[7] OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
     MASK0:
-    M1=3 S1=2000
-    WAITS
+    R299=1500
+    G4 F0.2
+    M13
+    G4 F5
     S_OPERATION_JOG;手动对刀程序
     GOTOF MASK3
     
@@ -12,8 +14,10 @@ IF TOOL_SET[8]==0;首次对刀
     S_OPERATION_AUTO;自动对刀程序
     GOTOF MASK2
 ELSE
-    M1=3 S1=2000
-    WAITS
+    R299=1500
+    G4 F0.2
+    M13
+    G4 F5
     S_OPERATION_RAND;二次对刀子程序
     GOTOF MASK3
 ENDIF
@@ -28,10 +32,13 @@ IF $A_DBB[2]==1;如果按下退刀键
     GOTOF MASK4
 ELSE
     PLCASUP1;跳转到初始角度计算子程序
+    MSG("退刀中,请勿复位程序!")
+	G01 G90 X=INI[23] F1000;退刀时的X值
 ENDIF
 
 MASK4:
-G01 X=0 F=500;砂轮架退回
-TOOL_SET[8]=1;改为二次对刀
+MSG("对刀已完成,请等待程序自动结束!")
+G04 F=0.5
+
 RET
 

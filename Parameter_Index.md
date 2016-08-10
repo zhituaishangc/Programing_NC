@@ -1,8 +1,13 @@
 |数组|全局变量|意义
 |:----:|:----:|:----:|
 |**需要提前手动输入**|
+<<<<<<< HEAD
 |$A_DBW[12]|DB4900.DBW12|模拟量砂轮极限速度
 |$A_DBB[14]|DB4900.DBB14|砂轮风扇停留时间
+=======
+|MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
+|MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
+>>>>>>> temp
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
 |||
@@ -12,11 +17,19 @@
 |$A_DBB[2]|DB4900.DBX2.0|是否退刀
 |$A_DBB[3]|DB4900.DBX3.0|液压左开关
 |$A_DBB[4]|DB4900.DBX4.0|液压右开关
+<<<<<<< HEAD
 |$A_DBW[6]|DB4900.DBW6|润滑间歇时间(1min)
 |$A_DBD[8]|DB4900.DBD8|润滑启动时间(10ms)
 |$A_DBW[12]|DB4900.DBW12|模拟量砂轮极限速度
 |$A_DBB[14]|DB4900.DBB14|砂轮风扇停留时间
 |$A_DBW[16]|DB4900.DBW16|模拟量砂轮转速
+=======
+|MD14510[0]|DB4500.DBW0|润滑间歇时间(1min)
+|MD14510[1]|DB4500.DBW2|润滑启动时间(10ms)
+|MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
+|MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
+|R299|-->WHEEL_RPM6|模拟量砂轮转速
+>>>>>>> temp
 |||
 |**修整主参数(DRESSER)**|
 |DRESSER[0]|DRESSWARE|修整器选择(0VW/1XZ/2滚压/3液压)
@@ -57,6 +70,7 @@
 |DRESSER[33]|DWHEEL_MID_L|左修整轮对砂轮中心
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
+|DRESSER[36]|DRESS_WHEEL_RPM|修整时砂轮转速
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -82,6 +96,10 @@
 |INI[20]|helix_value|螺旋升角值
 |INI[21]|LUB_INTER|润滑间歇时间(中间变量)
 |INI[22]|LUB_TIME|润滑启动时间(中间变量)
+|INI[23]|QUIT|退刀位置
+|INI[24]|PITCH_COM|全长螺距补偿
+|INI[25]|QUIT_CALCULATE|退刀计算标志位
+|INI[26]|单件/批量模式|单件/批量模式
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -126,6 +144,8 @@
 |WHEEL[15]|DWHEEL_VER_DISTANCE|双滚轮垂直误差
 |WHEEL[16]|HY_LEFT|液压左开关
 |WHEEL[17]|HY_LEFT|液压右开关
+|WHEEL[18]|MOLD_TIME|成型修整轮向下停留时间
+|WHEEL[19]|DRESS_RPM|修整轮转速
 |||
 |**三角齿形(TRI)**||
 |TRI[0]|TRIANGLE_VER|齿高
@@ -173,11 +193,11 @@
 |DARC[14]|DARC_RND_LTRANS_VER|滚道左半径垂直偏心
 |DARC[15]|DARC_RND_RTRANS_VER|滚道右半径垂直偏心
 |||
-|**磨削参数(GRINDING)**||
-|GRINDING[0]|G_TYPE|磨削类型(0外螺纹/1内螺纹/2蜗杆/3外圆/4环形槽)
-|GRINDING[1]|DRESS_STA|是否修整(0否/1是)
-|GRINDING[2]|OPERA_STA|是否对刀(0否/1是)
-|GRINDING[3]|CYCLE_MODEL|磨削循环类型
+|**磨削参数(GRIND)**||
+|GRIND[0]|G_TYPE|磨削类型(0外螺纹/1内螺纹/2蜗杆/3外圆/4环形槽)
+|GRIND[1]|DRESS_STA|是否修整(0否/1是)
+|GRIND[2]|OPERA_STA|是否对刀(0否/1是)
+|GRIND[3]|CYCLE_MODEL|磨削循环类型
 |||
 |**工序基本参数**||
 |PROCESS[0]|TECH_MODEL|工艺类型(0界面/1DIY)
@@ -192,6 +212,9 @@
 |PROCESS[9]|TECH_GRIND_FEED|磨削速度
 |PROCESS[10]|WHEEL_LINESPEED_GRIND|磨削砂轮线速度
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
+|PROCESS[12]|GRIND_TOTAL|工艺设定磨削总量
+|PROCESS[13]|WHEEL_POS_INI|初始磨削接触位置
+|PROCESS[14]|GRID_TOTAL_ACCUMULATION|工艺磨削总量累计
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -222,6 +245,14 @@
 |TECHNOLOGY[51]|WHEEL_LINESPEED_GRIND_MR|磨削砂轮线速度
 |TECHNOLOGY[52]|WHEEL_LINESPEED_GRIND_MF|磨削砂轮线速度
 |TECHNOLOGY[53]|WHEEL_LINESPEED_GRIND_F|磨削砂轮线速度
+|TECHNOLOGY[60]||粗磨头架转速
+|TECHNOLOGY[61]||半粗磨头架转速
+|TECHNOLOGY[62]||精磨头架转速
+|TECHNOLOGY[63]||精磨头架转速
+|TECHNOLOGY[70]||粗磨砂轮转速
+|TECHNOLOGY[71]||半粗磨砂轮架转速
+|TECHNOLOGY[72]||精磨砂轮转速
+|TECHNOLOGY[73]||精磨砂轮转速
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
