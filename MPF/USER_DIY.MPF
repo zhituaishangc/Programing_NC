@@ -1,6 +1,6 @@
 PROC USER_DIY DISPLON;用户自定义工序
 PROCESS[5]=0
-IF INI[26]<>0;0调整/1磨削
+IF INI[26]<>0;0单件小批量/1批量生产
     PROCESS[4]=PROCESS[13];当前等于初始
     PROCESS[14]=0;累计磨削清零
 ENDIF
