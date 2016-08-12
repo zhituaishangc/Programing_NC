@@ -9,8 +9,11 @@ S_PARA_TRANS;参数传递
 
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
+    M20;吸雾开
+    M28;修整冷却开
     DRESS;修整
-    PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
+    PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
+    PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
     GOTOF G_ENDING
 ENDIF
 
@@ -18,8 +21,14 @@ S_ROTATE_ANGLE;螺旋升角
 
 GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
+    M20;吸雾开
+    ;M8;磨削冷却开
     OPERATION;对刀
-    PROCESS[4]=TOOL_SET[3];当前磨削进刀位赋值
+    IF TOOL_SET[8]==0;首次对刀
+        PROCESS[13]=TOOL_SET[3];初始磨削进刀位赋值
+        PROCESS[4]=PROCESS[13];当前等于初始
+        TOOL_SET[8]=1;改为二次对刀
+    ENDIF
     GOTOF G_ENDING
 ENDIF
 
@@ -36,8 +45,9 @@ ELSE;选择DIY工艺
     ENDIF
 ENDIF
 ;-------------------------------------------------------
-M8;磨削冷却开
 M20;吸雾开
+M8;磨削冷却开
+TOOL_SET[8]=1;改为二次对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
@@ -53,6 +63,5 @@ ENDWHILE
 G_ENDING:
 
 S_GRINDING_END
-
 RET
 
