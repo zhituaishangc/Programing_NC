@@ -27,11 +27,14 @@ MASK3:
 IF $A_DBB[2]==1;如果按下退刀键
     GOTOF MASK4
 ELSE
-    PLCASUP1;跳转到初始角度计算子程序
+	PLCASUP1;跳转到初始角度计算子程序
+	MSG("退刀中,请勿复位程序!")
+	G01 G90 X=INI[23] F1000;退刀时的X值
 ENDIF
 
 MASK4:
-G01 X=0 F=500;砂轮架退回
-TOOL_SET[8]=1;改为二次对刀
+MSG("对刀已完成,请等待程序自动结束!")
+G04 F=0.5
+
 RET
 

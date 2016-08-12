@@ -2,6 +2,8 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
 DRFOF;手轮偏置清除
+PROCESS[3]=0;修整标记清零
+INI[25]=1;退刀计算标志位置1
 
 ;INI[1];丝杠磨削左端坐标
 ;INI[2];丝杠磨削右端坐标
@@ -14,7 +16,7 @@ ELSE;右旋
 ENDIF
 INI[3]=INI[2]-INI[1];磨削长度
 INI[5]=WORK[0]*INI[4];导程
-INI[9]=360*INI[3]/INI[5];磨削总角度
+INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
 INI[8]=(INI[2]+INI[1])/2;磨削中点
 ;锥度相关计算
 IF INI[11]==0;判断有无锥度
@@ -34,10 +36,17 @@ TECH_TIME[3]=0;当前精磨次数
 TECH_TIME[4]=0
 
 WORK[1]=0;当前磨削头数
-IF PROCESS[0]==1
-	PROCESS[2]=4
-ELSE
+
+;-----------
+;X轴初始接触赋值位置选择
+IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
 	PROCESS[2]=0
+	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
+		PROCESS[4]=PROCESS[13]
+		PROCESS[14]=0
+	ENDIF
+ELSE
+	PROCESS[2]=4
 ENDIF
 ;-----------
 ;报警判断
