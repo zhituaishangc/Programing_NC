@@ -16,7 +16,8 @@
 |MD14510[1]|DB4500.DBW2|润滑启动时间(10ms)
 |MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
 |MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
-|R299|-->WHEEL_RPM6|模拟量砂轮转速
+|R299|-->WHEEL_RPM|模拟量砂轮转速
+|PLCASUP1|ASUP1|PLC异步子程序-退刀键启动
 |||
 |**修整主参数(DRESSER)**|
 |DRESSER[0]|DRESSWARE|修整器选择(0VW/1XZ/2滚压/3液压)
