@@ -1,6 +1,5 @@
 # Programing_NC
 workstation only for HJMT Programing segment
-workstation only for HJMT Programing segment
 ## 快速访问
 * [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-07-15 08:49:40*
 * 项目成员: [Marco Nie](https://github.com/nie11kun)、[zhituaishangc](https://github.com/zhituaishangc)、[guanzhenhao](https://github.com/guanzhenhao)、[wangting3215](https://github.com/wangting3215)
