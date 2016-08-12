@@ -1,8 +1,5 @@
 # Programing_NC
-* 5轴
-* 砂轮控制: 变频器
-* 修整轮控制: 伺服主轴
-* 修整器类型: 成型滚压轮
+workstation only for HJMT Programing segment
 
 ## 快速访问
 * [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-07-15 08:49:40*
