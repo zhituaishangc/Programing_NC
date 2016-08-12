@@ -10,5 +10,4 @@ workstation only for HJMT Programing segment
 * [SinuTrain配置样例](https://github.com/nie11kun/Programing_NC/wiki/SinuTrain导出文件样例)
 * [反馈通道](https://github.com/nie11kun/Programing_NC/issues)(请详细描述问题或意见细节)
 
-
 ![](https://i.imgur.com/Yc8JG.gif)
