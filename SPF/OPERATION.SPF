@@ -1,5 +1,6 @@
 PROC OPERATION DISPLON
-;-------------------------
+;对刀主程序
+
 IF TOOL_SET[8]==0;首次对刀
     CASE TOOL_SET[7] OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
     MASK0:
