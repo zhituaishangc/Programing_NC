@@ -1,11 +1,11 @@
 # SK7120
-* 5轴
+* 5轴: X Z C V A(修整轮)
 * 砂轮控制: 变频器
 * 修整轮控制: 伺服主轴
 * 修整器类型: 成型滚压轮
 
 ## 快速访问
-* [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-07-15 08:49:40*
+* [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止时间见master分支*
 * 项目成员: [Marco Nie](https://github.com/nie11kun)、[zhituaishangc](https://github.com/zhituaishangc)、[guanzhenhao](https://github.com/guanzhenhao)、[wangting3215](https://github.com/wangting3215)
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
