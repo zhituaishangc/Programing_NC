@@ -2,7 +2,6 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
 DRFOF;手轮偏置清除
-PROCESS[3]=0;修整标记清零
 INI[25]=1;退刀计算标志位置1
 
 ;INI[1];丝杠磨削左端坐标
@@ -28,6 +27,7 @@ INI[15]=INI[3]*INI[14]/2;X方向的增量
 ;-----------
 DRESSER[6]=0;报警标记取消
 ;
+PROCESS[3]=0;修整标记清零
 PROCESS[7]=0;当前磨削是否修整累计
 TECH_TIME[0]=0;当前粗磨次数
 TECH_TIME[1]=0;当前半粗磨次数
@@ -53,7 +53,7 @@ ENDIF
 IF INI[3]<=0;磨削长度<=0
 	MSG("工件左端坐标>工件右端坐标")
 	G4 F5
-	DRESSER[6]=1;报警标记 
+	DRESSER[6]=1;报警标记
 ENDIF
 IF DRESSER[24]<DRESSER[35];当前砂轮直径<最小砂轮直径
 	MSG("砂轮过小,请更换砂轮!")
