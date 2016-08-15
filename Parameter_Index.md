@@ -85,7 +85,7 @@
 |INI[21]|LUB_INTER|润滑间歇时间(中间变量)
 |INI[22]|LUB_TIME|润滑启动时间(中间变量)
 |INI[23]|QUIT|退刀位置
-|INI[24]|PITCH_COM|全长螺距补偿
+|INI[24]|PITCH_COM|全长导程补偿
 |INI[25]|QUIT_CALCULATE|退刀计算标志位
 |INI[26]|单件小批量/批量生产|单件小批量/批量生产
 |||
