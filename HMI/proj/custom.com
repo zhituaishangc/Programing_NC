@@ -1447,7 +1447,8 @@
 		ELSE
 			VAR2.WR=2
 			VAR3.WR=2
-			VAR5.WR=2						
+			VAR5.WR=2
+		ENDIF	
 	END_CHANGE
 
 //END
