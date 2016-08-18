@@ -632,8 +632,8 @@
 			VAR12.WR=1
 			VAR13.WR=1
 		ELSE
-			VAR2.WR=2
-			VAR3.WR=2
+			VAR2.WR=1
+			VAR3.WR=1
 			VAR4.WR=2
 			VAR6.WR=2
 			VAR9.WR=2
