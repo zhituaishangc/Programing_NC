@@ -547,11 +547,11 @@
 	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测		
 
 	HS1=($85380,ac7,se2);"单滚轮"
-	HS2=($85381,ac7,se2);"双滚轮"
-	HS3=($85382,ac7,se2);"方滚轮"
+	;HS2=($85381,ac7,se2);"双滚轮"
+	;HS3=($85382,ac7,se2);"方滚轮"
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
+	;VS1=($85383,ac7,se1);"三角"
+	;VS2=($85384,ac7,se1);"梯形"
 	VS3=($85385,ac7,se1);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
@@ -560,23 +560,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK5")
+		;LM("MASK5")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK6")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK11")
+		;LM("MASK6")
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		;LM("MASK7")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		;LM("MASK8")
 	END_PRESS
 
 	PRESS(VS3)
@@ -955,11 +951,11 @@
 	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测		
 
 	HS1=($85380,ac7,se3);"单滚轮"
-	HS2=($85381,ac7,se2);"双滚轮"
-	HS3=($85382,ac7,se2);"方滚轮"
+	;HS2=($85381,ac7,se2);"双滚轮"
+	;HS3=($85382,ac7,se2);"方滚轮"
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
+	;VS1=($85383,ac7,se1);"三角"
+	;VS2=($85384,ac7,se1);"梯形"
 	VS3=($85385,ac7,se1);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
@@ -968,19 +964,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK5")
+		;LM("MASK5")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK6")
+		;LM("MASK6")
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		;LM("MASK7")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		;LM("MASK8")
 	END_PRESS
 
 	PRESS(VS3)
@@ -1852,11 +1848,11 @@
 	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测				
 	
 	HS1=($85380,ac7,se2);"单滚轮"
-	HS2=($85381,ac7,se2);"双滚轮"
-	HS3=($85382,ac7,se2);"方滚轮"
+	;HS2=($85381,ac7,se2);"双滚轮"
+	;HS3=($85382,ac7,se2);"方滚轮"
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
+	;VS1=($85383,ac7,se1);"三角"
+	;VS2=($85384,ac7,se1);"梯形"
 	VS3=($85385,ac7,se3);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
@@ -1865,19 +1861,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK5")
+		;LM("MASK5")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK6")
+		;LM("MASK6")
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		;LM("MASK7")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		;LM("MASK8")
 	END_PRESS
 
 	PRESS(VS3)
