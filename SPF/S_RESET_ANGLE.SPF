@@ -1,0 +1,10 @@
+PROC S_RESET_ANGLE DISPLOF
+;螺旋升角复位
+
+IF INI[16]==1
+	MSG("螺旋升角置零中")
+	G90 G01 A=DC(0) F=50
+ENDIF
+
+RET
+

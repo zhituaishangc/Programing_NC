@@ -1,0 +1,29 @@
+PROC RING_GROOVE DISPLOF
+;环形槽
+
+DRFOF;手轮偏置清除
+STOPRE
+
+MSG("砂轮开到起始位置")
+G1 G90 X=INI[10] F=300;开到对刀起始位
+R299=1500
+G4 F0.2
+M13
+MSG("等待砂轮转速到位")
+G4 F5
+M8;开磨削冷却
+
+C_CYCLE:
+MSG("头架旋转中...")
+G91 C=3600 F=3600;头架旋转
+IF $A_DBB[2]==1;如果按下退刀键
+    GOTOF RING_END
+ENDIF
+GOTOB C_CYCLE
+
+RING_END:
+DRFOF;手轮偏置清除
+M9;关磨削冷却
+M15;关砂轮
+RET
+

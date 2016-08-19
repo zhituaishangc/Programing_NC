@@ -1,0 +1,45 @@
+PROC OPERATION DISPLON
+;对刀主程序
+
+IF TOOL_SET[8]==0;首次对刀
+    CASE TOOL_SET[7] OF 0 GOTOF MASK0 DEFAULT GOTOF MASK1
+    MASK0:
+    R299=1500
+    G4 F0.2
+    M13
+    G4 F5
+    S_OPERATION_JOG;手动对刀程序
+    GOTOF MASK3
+    
+    MASK1:
+    S_OPERATION_AUTO;自动对刀程序
+    GOTOF MASK2
+ELSE
+    R299=1500
+    G4 F0.2
+    M13
+    G4 F5
+    S_OPERATION_RAND;二次对刀子程序
+    GOTOF MASK3
+ENDIF
+ 
+MASK2:
+IF TOOL_SET[7]==1
+    ;RETRACT;收回测头 
+ENDIF
+
+MASK3:
+IF $A_DBB[2]==1;如果按下退刀键
+    GOTOF MASK4
+ELSE
+	PLCASUP1;跳转到初始角度计算子程序
+	MSG("退刀中,请勿复位程序!")
+	G01 G90 X=INI[23] F1000;退刀时的X值
+ENDIF
+
+MASK4:
+MSG("对刀已完成,请等待程序自动结束!")
+G04 F=0.5
+
+RET
+
