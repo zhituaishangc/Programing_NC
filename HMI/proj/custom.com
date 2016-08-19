@@ -1937,7 +1937,6 @@
 			VAR6.WR=1
 			VAR7.WR=1
 			VAR8.WR=1
-			VAR9.WR=1
 		ELSE
 			VAR0.WR=2
 			VAR1.WR=2
@@ -1948,7 +1947,6 @@
 			VAR6.WR=2
 			VAR7.WR=2
 			VAR8.WR=2
-			VAR9.WR=2
 		ENDIF
 	END_CHANGE	
 	
