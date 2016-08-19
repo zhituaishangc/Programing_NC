@@ -1,118 +1,96 @@
 PROC S_OPERATION_AUTO DISPLOF
 ;自动对刀程序
-
-;$AA_IM[Z];当前Z轴机床坐标 
-;$AA_IM[X];当前X轴机床坐标
-;$AC_DRF[X];X轴手轮偏置值
-;$AC_DRF[Z];Z轴手轮偏置值
-;$AA_IM[C];当前C轴角度
-;--------------------------------------------------------------------------
-;DEF NCK REAL SCREW_PITCH;螺距
-;DEF NCK REAL RANDOM_POS;任意对刀点Z轴坐标
-;DEF NCK REAL ROTATION=(0/1);(O=右旋,1=左旋)
-;DEF NCK REAL MEASUER_R;测头半径
-;DEF NCK REAL WHL_HEAD;测头与砂轮距离
-;DEF NCK REAL QUIT_X;头数切换退刀时的X值
-;DEF NCK REAL TOUCH_X;探头接触工件表面时X坐标
-;DEF NCK REAL WHEEL_TOUCH_X;砂轮接触工件表面时X坐标
-;DEF NCK REAL PRESENT_X;探头接触工件时X坐标
-;DEF NCK REAL PRESENT_C;探头接触工件时C角度
-;DEF NCK REAL FINAL_Z;对刀完成后Z轴坐标
-;DEF NCK REAL PRESENT_LZ;探头接触工件槽左侧时Z坐标
-;DEF NCK REAL PRESENT_RZ;探头接触工件槽右侧时Z坐标
-;DEF NCK INT DSHAPE;齿形选择
-;DEF NCK REAL ANG_L;左齿形角
-;DEF NCK REAL ACK_R;右齿形角
-;DEF NCK REAL WHEEL_TOUCH_X;砂轮接触工件表面时X坐标
-;--------------------------------------------------------------------------
+;---------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
-;--------------------------------------------------------------------------
-IF WHEEL_TOUCH_X==0;
+;---------------------------------------------
+IF TOOL_SET[12]==0;
     MSG("请将砂轮开至刚接触工件表面并记录下当前X轴坐标")
     G04 F=60
 ENDIF
-IF TOUCH_X==0
+IF TOOL_SET[11]==0
     MSG("请将测头开至刚接触工件表面并记录下当前X轴坐标")
     G04 F=60
     RET
 ENDIF
-;--------------------------------------------------------------------------
+;---------------------------------------------
 ;测头伸出
-;--------------------------------------------------------------------------
-MEAS=1 G90 G01 X=QUIT_X F500			;测头接近砂轮退刀安全位置
-;IF $AC_MEA[1]=TRUE GOTOF ERROR1		;测头已工作
+;---------------------------------------------
+MSG("自动对刀测量已开始,请等待!")
+MEAS=1 G90 G01 X=INI[10] F500;测头接近砂轮退刀安全位置
+;IF $AC_MEA[1]=TRUE GOTOF ERROR1;测头已工作
 STOPRE
-MEAS=1 G01 X=TOUCH_X-5 F50				;测头缓慢进给至接触工件
+MEAS=1 G01 X=TOOL_SET[11]-5 F50;测头缓慢进给至接触工件
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR2
 STOPRE;进刀停止
-PRESENT_X=$AA_MM[X]						;探头接触工件槽时X坐标
-;--------------------------------------------------------------------------
-WHILE(PRESENT_X>=TOUCH_X)				;探头接触工件槽时X坐标>=探头接触工件表面时X坐标
-    G91 X=0.5							;测头退回
-    IF ROTATION=1						;左旋
+TOOL_SET[13]=$AA_MM[X];探头接触工件槽时X坐标
+;-------------------------------------------
+WHILE(TOOL_SET[13]>=TOOL_SET[11]);探头接触工件槽时X坐标>=探头接触工件表面时X坐标
+    G91 X=0.5;测头退回
+    IF INI[0]=1;左旋
         G91 C=-30
     ELSE
         G91 C=30
     ENDIF
-    MEAS=1 G91 X=-5 F=50				;测头再次进给
+    MEAS=1 G91 X=-5 F=50;测头再次进给
     STOPRE
-    PRESENT_X=$AA_MM[X]					;探头接触工件槽时X坐标
+    TOOL_SET[13]=$AA_MM[X];探头接触工件槽时X坐标
 ENDWHILE
 STOPRE
-;--------------------------------------------------------------------------
-MEAS=1 G91 Z=-SCREW_PITCH F=50			;测头右移一个螺距
+;----------------------------------------------
+MSG("正在测量对刀点信息,请等待!")
+MEAS=1 G91 Z=-INI[4] F=50;测头右移一个螺距
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR3
-PRESENT_C=$AA_IM[C]						;探头接触工件槽时C角度
+TOOL_SET[6]=$AA_IM[C];探头接触工件槽时C角度
 
-MEAS=1 G91 Z=SCREW_PITCH				;测头左移一个螺距
+MEAS=1 G91 Z=INI[4];测头左移一个螺距
 ;IF $AC_MEA[1]=FALSE GOTOF ERROR3
 STOPRE
-PRESENT_LZ=$AA_MM[Z]					;探头接触工件槽左侧时Z坐标
+TOOL_SET[14]=$AA_MM[Z];探头接触工件槽左侧时Z坐标
 
-MEAS=1 G91 Z=-SCREW_PITCH				;测头右移一个螺距
+MEAS=1 G91 Z=-INI[4];测头右移一个螺距
 STOPRE
-PRESENT_RZ=$AA_MM[Z]					;探头接触工件槽右侧时Z坐标
-CASE DSHAPE OF 0 GOTOF ANG0 1 GOTOF ANG1 DEFAULT ANG2
-ANG0:									;三角形	
-ANG_L=TRIANGLE_ANG_L
-ANG_R=TRIANGLE_ANG_R
+TOOL_SET[15]=$AA_MM[Z];探头接触工件槽右侧时Z坐标
+CASE DRESSER[4] OF 0 GOTOF ANG0 1 GOTOF ANG1 DEFAULT ANG2
+ANG0:;三角形	
+TOOL_SET[16]=TRI[9]
+TOOL_SET[17]=TRI[10]
 GOTOF ANG3	
 	
-ANG1:									;梯形
-ANG_L=TRAP_ANG_L
-ANG_R=TRAP_ANG_R
+ANG1:;梯形
+TOOL_SET[16]=TRAP[11]
+TOOL_SET[17]=TRAP[12]
 GOTOF ANG3
 
-ANG2:									;双圆弧	
-DR1=PRESENT_RZ
-DR2=PRESENT_LZ
+ANG2:;双圆弧	
+DR1=TOOL_SET[15]
+DR2=TOOL_SET[14]
 DR5=(DR1+DR2)/2
 GOTOF ANG4
 
 ANG3:
-DR1=PRESENT_RZ+MEASUER_R/COS(ANG_R)		;右侧接触点坐标换算
-DR2=PRESENT_LZ-MEASUER_R/COS(ANG_L)		;左侧接触点坐标换算
+DR1=TOOL_SET[15]+TOOL_SET[9]/COS(TOOL_SET[17]);右侧接触点坐标换算
+DR2=TOOL_SET[14]-TOOL_SET[9]/COS(TOOL_SET[16]);左侧接触点坐标换算
 DR3=DR1-DR2
-DR4=(DR3*TAN(ANG_L))/(TAN(ANG_L)+TAN(ANG_R));左侧换算点到齿高水平距离
-DR5=DR2+DR4								;测头对刀点Z轴坐标
+DR4=(DR3*TAN(TOOL_SET[16]))/(TAN(TOOL_SET[16])+TAN(TOOL_SET[17]));左侧换算点到齿高水平距离
+DR5=DR2+DR4;测头对刀点Z轴坐标
 
 ANG4:
-DR6=DR5-WHL_HEAD						;换算到用砂轮对刀完成后Z轴坐标
-;--------------------------------------------------------------------------
-FINAL_Z=DR6								;对刀完成后Z轴坐标
-S_OPERATION_MEAS;
-;--------------------------------------------------------------------------
+DR6=DR5-TOOL_SET[10];换算到用砂轮对刀完成后Z轴坐标
+;------------------------------------------
+TOOL_SET[1]=DR6;对刀完成后Z轴坐标
+;------------------------------------------
 RET
 
-;--------------------------------------------------------------------------
+
+;-------------------------------------------
 ;ERROR1:
-;MSG("测量失败,砂轮退刀安全位置X值"<<QUIT_X<<"错误!!!")
+;MSG("测量失败,砂轮退刀安全位置X值"<<INI[10]<<"错误!")
 ;ENDERROR
-;--------------------------------------------------------------------------
+;-------------------------------------------
 ;ERROR2:
-;MSG("测量失败,测头未接触工件,测头进给距离错误!!!")
+;MSG("测量失败,测头未接触工件,测头进给距离错误!")
 ;ENDERROR
-;--------------------------------------------------------------------------
+;-------------------------------------------
 ;ERROR3:
-;MSG("测量失败,测头未接触工件侧边,螺距输入错误!!!")
+;MSG("测量失败,测头未接触工件侧边,螺距输入错误!")
 ;ENDERROR

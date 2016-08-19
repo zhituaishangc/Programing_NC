@@ -2,43 +2,66 @@ PROC SCREW_W DISPLON
 ;磨削主程序
 
 S_PAR_INI;参数初始化子程序
-S_PARA_TRANS;
+IF DRESSER[6]==1;有报警标记则退出程序
+    GOTOF G_ENDING
+ENDIF
+S_PARA_TRANS;参数传递
 
-DRESS_STA=$A_DBB[0];是否修整
-IF DRESS_STA==1
-    DRESSER
-    WHEEL_POS_CURNT=WHEEL_POS_CURNT-DRESS_TIME_R*DRESS_DEEP_R-DRESS_TIME_F*DRESS_DEEP_F
-    RET
+GRIND[1]=$A_DBB[0];是否修整
+IF GRIND[1]==1
+    M20;吸雾开
+    M28;修整冷却开
+    DRESS;修整
+    PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
+    PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
+    GOTOF G_ENDING
 ENDIF
 
-OPERA_STA=$A_DBB[1];是否对刀
-IF OPERA_STA==1
-    OPERATION
-    WHEEL_POS_CURNT=TOOL_SET_X
-    RET
+S_ROTATE_ANGLE;螺旋升角
+
+GRIND[2]=$A_DBB[1];是否对刀
+IF GRIND[2]==1
+    M20;吸雾开
+    ;M8;磨削冷却开
+    OPERATION;对刀
+    IF TOOL_SET[8]==0;首次对刀
+        PROCESS[13]=TOOL_SET[3];初始磨削进刀位赋值
+        PROCESS[4]=PROCESS[13];当前等于初始
+        TOOL_SET[8]=1;改为二次对刀
+    ENDIF
+    GOTOF G_ENDING
 ENDIF
 
 ;使用界面参数还是DIY参数
-IF TECH_MODEL==0;选择界面工艺
-    TECH_TIME_DIY=0;DIY磨削次数
-    IF TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F==0;工艺参数中设置的总磨削次数
+IF PROCESS[0]==0;选择界面工艺
+    DIY[1]=0;DIY磨削次数
+    IF TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]==0;工艺参数中设置的总磨削次数
         RET
     ENDIF
 ELSE;选择DIY工艺
-    TECH_NUMCURNT=4
-    IF TECH_TIME_DIY==0
+    PROCESS[2]=4;当前工艺切换到DIY
+    IF DIY[1]==0
         RET
     ENDIF
 ENDIF
-;--------------------------------------------------------------------------
-WHILE(TECH_TIME_RCURNT+TECH_TIME_MRCURNT+TECH_TIME_MFCURNT+TECH_TIME_FCURNT+TECH_TIME_DIYCURNT<=TECH_TIME_R+TECH_TIME_MR+TECH_TIME_MF+TECH_TIME_F+TECH_TIME_DIY)
+;-------------------------------------------------------
+M20;吸雾开
+M8;磨削冷却开
+TOOL_SET[8]=1;改为二次对刀
+WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE;工件类型
-    S_OPERATION_MEAS;初始角度计算
+    PLCASUP1;初始角度计算
     S_PARA_TRANS;
+    IF $A_DBB[2]==1;按下退刀键跳转到结束程序
+        GOTOF G_ENDING
+    ENDIF
     S_BCYC;工序进给大循环判断
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDWHILE
-;--------------------------------------------------------------------------
+;-------------------------------------------------------
+G_ENDING:
+
 S_GRINDING_END
 RET
+

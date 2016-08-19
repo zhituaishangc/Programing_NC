@@ -1,37 +1,65 @@
 PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
-;L_POS;丝杠磨削左端坐标
-;R_POS;丝杠磨削右端坐标
-IF ROTATION==1;左旋
-    START_POS=L_POS
-    END_POS=R_POS
+DRFOF;手轮偏置清除
+INI[25]=1;退刀计算标志位置1
+
+;INI[1];丝杠磨削左端坐标
+;INI[2];丝杠磨削右端坐标
+IF INI[0]==1;左旋
+    INI[6]=INI[1]
+    INI[7]=INI[2]
 ELSE;右旋
-    START_POS=R_POS
-    END_POS=L_POS
+    INI[6]=INI[2]
+    INI[7]=INI[1]
 ENDIF
-LENGTH=R_POS-L_POS
-SCREW_LEAD=WORK_TH*SCREW_PITCH
-TOTAL_ANGLE=360*LENGTH/SCREW_LEAD
-MIDDLE_Z=(R_POS+L_POS)/2
-IF LENGTH<=0;
-    MSG("左端坐标>右端")
-	G4 F10
-	M30
-ENDIF
-
-TECH_DRESS_CUMU_CURNT=0
-
-TECH_TIME_RCURNT=0;当前粗磨次数
-TECH_TIME_MRCURNT=0;当前半粗磨次数
-TECH_TIME_MFCURNT=0;当前半精磨次数
-TECH_TIME_FCURNT=0;当前精磨次数
-TECH_TIME_DIYCURNT=0
-
-WORK_THCURNT=0;当前磨削头数
-IF TECH_MODEL==1
-	TECH_NUMCURNT=4
+INI[3]=INI[2]-INI[1];磨削长度
+INI[5]=WORK[0]*INI[4];导程
+INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
+INI[8]=(INI[2]+INI[1])/2;磨削中点
+;锥度相关计算
+IF INI[11]==0;判断有无锥度
+	INI[14]=0;锥度值
 ELSE
-	TECH_NUMCURNT=0
+	INI[14]=INI[12]/INI[13]
 ENDIF
+INI[15]=INI[3]*INI[14]/2;X方向的增量
+;-----------
+DRESSER[6]=0;报警标记取消
+;
+PROCESS[3]=0;修整标记清零
+PROCESS[7]=0;当前磨削是否修整累计
+TECH_TIME[0]=0;当前粗磨次数
+TECH_TIME[1]=0;当前半粗磨次数
+TECH_TIME[2]=0;当前半精磨次数
+TECH_TIME[3]=0;当前精磨次数
+TECH_TIME[4]=0
+
+WORK[1]=0;当前磨削头数
+
+;-----------
+;X轴初始接触赋值位置选择
+IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
+	PROCESS[2]=0
+	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
+		PROCESS[4]=PROCESS[13]
+		PROCESS[14]=0
+	ENDIF
+ELSE
+	PROCESS[2]=4
+ENDIF
+;-----------
+;报警判断
+IF INI[3]<=0;磨削长度<=0
+	MSG("工件左端坐标>工件右端坐标")
+	G4 F5
+	DRESSER[6]=1;报警标记
+ENDIF
+IF DRESSER[24]<DRESSER[35];当前砂轮直径<最小砂轮直径
+	MSG("砂轮过小,请更换砂轮!")
+	G4 F5
+	DRESSER[6]=1;报警标记
+ENDIF
+;
 RET
+
