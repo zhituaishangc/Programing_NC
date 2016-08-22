@@ -1651,27 +1651,56 @@
 	DEF VAR25=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[9]"/0,0,0/0,0,0/);圆弧半径
 	DEF VAR26=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[10]"/0,0,0/0,0,0/);右圆弧半径
 	
-	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测				
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85380,ac7,se2);"单滚轮"
 	HS2=($85381,ac7,se2);"双滚轮"
 	HS3=($85382,ac7,se2);"方滚轮"
+	HS4=($85379,ac7,se2);"滚压轮"
+	HS5=($85378,ac7,se2);"摆缸"
 
-	VS1=($85383,ac7,se3);"三角"
+	VS1=($85383,ac7,se1);"三角"
 	VS2=($85384,ac7,se1);"梯形"
 	VS3=($85385,ac7,se1);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
 	PRESS(HS1)
-		LM("MASK4")
+		IF WARE.VAL==0
+			LM("MASK4")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK12")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK5")
+		IF WARE.VAL==0
+			LM("MASK5")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK13")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK6")
+		IF WARE.VAL==0
+			LM("MASK6")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK14")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK11")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK15")
 	END_PRESS
 
 	PRESS(VS1)
@@ -1832,27 +1861,56 @@
 	DEF VAR25=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[9]"/0,0,0/0,0,0/);圆弧半径
 	DEF VAR26=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[10]"/0,0,0/0,0,0/);右圆弧半径
 	
-	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测					
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85380,ac7,se2);"单滚轮"
 	HS2=($85381,ac7,se2);"双滚轮"
 	HS3=($85382,ac7,se2);"方滚轮"
+	HS4=($85379,ac7,se2);"滚压轮"
+	HS5=($85378,ac7,se2);"摆缸"
 
 	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se3);"梯形"
+	VS2=($85384,ac7,se1);"梯形"
 	VS3=($85385,ac7,se1);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
 	PRESS(HS1)
-		LM("MASK4")
+		IF WARE.VAL==0
+			LM("MASK4")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK12")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK5")
+		IF WARE.VAL==0
+			LM("MASK5")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK13")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK6")
+		IF WARE.VAL==0
+			LM("MASK6")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK14")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK11")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK15")
 	END_PRESS
 
 	PRESS(VS1)
@@ -2020,35 +2078,64 @@
 
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DARC[1]"/0,0,0/0,0,0/);齿高
 	
-	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测				
-	
-	HS1=($85380,ac7,se2);"单滚轮"
-	;HS2=($85381,ac7,se2);"双滚轮"
-	;HS3=($85382,ac7,se2);"方滚轮"
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
-	;VS1=($85383,ac7,se1);"三角"
-	;VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se3);"双圆弧"
+	HS1=($85380,ac7,se2);"单滚轮"
+	HS2=($85381,ac7,se2);"双滚轮"
+	HS3=($85382,ac7,se2);"方滚轮"
+	HS4=($85379,ac7,se2);"滚压轮"
+	HS5=($85378,ac7,se2);"摆缸"
+
+	VS1=($85383,ac7,se1);"三角"
+	VS2=($85384,ac7,se1);"梯形"
+	VS3=($85385,ac7,se1);"双圆弧"
 	VS8=($85386,ac7,se1);"返回"
 
 	PRESS(HS1)
-		LM("MASK4")
+		IF WARE.VAL==0
+			LM("MASK4")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK12")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		;LM("MASK5")
+		IF WARE.VAL==0
+			LM("MASK5")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK13")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		;LM("MASK6")
+		IF WARE.VAL==0
+			LM("MASK6")
+		ELSE
+			IF WARE.VAL==1
+				LM("MASK14")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK11")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK15")
 	END_PRESS
 
 	PRESS(VS1)
-		;LM("MASK7")
+		LM("MASK7")
 	END_PRESS
 
 	PRESS(VS2)
-		;LM("MASK8")
+		LM("MASK8")
 	END_PRESS
 
 	PRESS(VS3)
