@@ -1,6 +1,7 @@
 # Programing_NC
 
 [![Join the chat at https://gitter.im/hjmtdev/Lobby](https://badges.gitter.im/hjmtdev/Lobby.svg)](https://gitter.im/hjmtdev/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 workstation only for HJMT Programing segment
 
 ## 快速访问
