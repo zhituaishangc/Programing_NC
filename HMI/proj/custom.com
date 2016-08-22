@@ -672,8 +672,8 @@
 			VS3.se=1
 			call("UP1")
 			IF QCHECK.VAL==0
-				VAR2.WR=2
-				VAR3.WR=2
+				VAR2.WR=1
+				VAR3.WR=1
 				VAR11.WR=2
 				VAR12.WR=2
 			ELSE
@@ -693,8 +693,8 @@
 				VS3.se=1
 				call("UP1")
 				IF QCHECK.VAL==0
-					VAR2.WR=2
-					VAR3.WR=2
+					VAR2.WR=1
+					VAR3.WR=1
 					VAR11.WR=2
 					VAR12.WR=2
 				ELSE
