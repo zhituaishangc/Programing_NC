@@ -1,5 +1,5 @@
 PROC S_DRESS_CALC SBLOF DISPLOF
-;齿形选择
+;修整次数循环累积
 
 ;修整次数累加
 IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
