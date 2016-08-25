@@ -2,8 +2,21 @@ PROC S_RESET_ANGLE DISPLOF
 ;螺旋升角复位
 
 IF INI[16]==1
-	MSG("螺旋升角置零中")
-	G90 G01 A=DC(0) F=50
+	IF $AA_IM[A]<>0
+		M35;松开
+		G4 F1
+		MSG("螺旋升角置零中")
+		IF INI[20]>=0
+			G90 G01 A=DC(-1) F=50
+		ELSE
+			G90 G01 A=DC(1) F=50
+		ENDIF
+		G4 F0.5
+		G90 G01 A=DC(0) F=50
+		STOPRE
+		M36;夹紧
+		G4 F1
+	ENDIF
 ENDIF
 
 RET
