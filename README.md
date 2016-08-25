@@ -1,5 +1,8 @@
-# Programing_NC
-workstation only for HJMT Programing segment
+# SK7420×20
+* 四轴: X Z C A(升角)
+* 砂轮控制: 变频器
+* 修整轮控制: 变频器(**无模拟量**)
+* 修整器类型: XZ差补 双圆弧 单滚轮
 
 ## 快速访问
 * [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-08-12 13:46:35*
