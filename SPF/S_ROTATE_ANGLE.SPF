@@ -7,8 +7,15 @@ IF INI[16]==1
 	ELSE
 		INI[20]=360+INI[17]-INI[18]/60-INI[19]/3600;计算升角值
 	ENDIF
-	MSG("螺旋升角到位中")
-	G90 G01 A=DC(INI[20]) F=50
+	IF $AA_IM[A]<>INI[20]
+		M69;松开
+		G4 F1
+		MSG("螺旋升角到位中")
+		G90 G01 A=DC(INI[20]) F=50
+		STOPRE
+		M70;夹紧
+		G4 F1
+	ENDIF
 ENDIF
 
 RET
