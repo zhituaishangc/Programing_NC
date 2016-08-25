@@ -4,8 +4,13 @@ PROC S_PAR_INI SBLOF DISPLOF
 DRFOF;手轮偏置清除
 INI[25]=1;退刀计算标志位置1
 
-;INI[1];丝杠磨削左端坐标
-;INI[2];丝杠磨削右端坐标
+;螺旋升角值
+IF INI[17]>=0
+	INI[20]=INI[17]+INI[18]/60+INI[19]/3600;计算升角值
+ELSE
+	INI[20]=360+INI[17]-INI[18]/60-INI[19]/3600;计算升角值
+ENDIF
+
 IF INI[0]==1;左旋
     INI[6]=INI[1]
     INI[7]=INI[2]
@@ -13,20 +18,22 @@ ELSE;右旋
     INI[6]=INI[2]
     INI[7]=INI[1]
 ENDIF
+
 INI[3]=INI[2]-INI[1];磨削长度
 INI[5]=WORK[0]*INI[4];导程
 INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
 INI[8]=(INI[2]+INI[1])/2;磨削中点
+
 ;锥度相关计算
 IF INI[11]==0;判断有无锥度
 	INI[14]=0;锥度值
 ELSE
 	INI[14]=INI[12]/INI[13]
 ENDIF
+
 INI[15]=INI[3]*INI[14]/2;X方向的增量
 ;-----------
 DRESSER[6]=0;报警标记取消
-;
 PROCESS[3]=0;修整标记清零
 PROCESS[7]=0;当前磨削是否修整累计
 TECH_TIME[0]=0;当前粗磨次数
