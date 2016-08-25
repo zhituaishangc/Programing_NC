@@ -1,8 +1,11 @@
 # Programing_NC
+
+[![Join the chat at https://gitter.im/hjmtdev/Lobby](https://badges.gitter.im/hjmtdev/Lobby.svg)](https://gitter.im/hjmtdev/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 workstation only for HJMT Programing segment
 
 ## 快速访问
-* [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-07-15 08:49:40*
+* [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-08-12 13:46:35*
 * 项目成员: [Marco Nie](https://github.com/nie11kun)、[zhituaishangc](https://github.com/zhituaishangc)、[guanzhenhao](https://github.com/guanzhenhao)、[wangting3215](https://github.com/wangting3215)
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
