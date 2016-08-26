@@ -1,5 +1,5 @@
 PROC SCREW_W DISPLON
-;磨削主程序
+;外螺纹主程序
 
 S_PAR_INI;参数初始化子程序
 IF DRESSER[6]==1;有报警标记则退出程序
