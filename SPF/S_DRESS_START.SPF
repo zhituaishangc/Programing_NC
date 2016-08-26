@@ -1,7 +1,11 @@
 PROC S_DRESS_START DISPLOF
-;报警及M功能
+;报警及参数初始化
 
+DRESSER[18]=0;当前次数清零
+DRESSER[19]=0
+DRESSER[20]=0
 DRESSER[6]=0
+
 IF DRESSER[24]<DRESSER[35]
 	MSG("砂轮过小,请更换砂轮!")
 	G4 F3
