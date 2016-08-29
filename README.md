@@ -3,7 +3,6 @@
 [![Join the chat at https://gitter.im/hjmtdev/Lobby](https://badges.gitter.im/hjmtdev/Lobby.svg)](https://gitter.im/hjmtdev/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 workstation only for HJMT Programing segment
-
 ## 快速访问
 * [进度统计](https://nie11kun.github.io/Programing_NC/)-->*截止 2016-08-12 13:46:35*
 * 项目成员: [Marco Nie](https://github.com/nie11kun)、[zhituaishangc](https://github.com/zhituaishangc)、[guanzhenhao](https://github.com/guanzhenhao)、[wangting3215](https://github.com/wangting3215)
