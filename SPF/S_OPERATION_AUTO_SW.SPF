@@ -1,5 +1,5 @@
-PROC S_OPERATION_AUTO DISPLOF
-;自动对刀程序
+PROC S_OPERATION_AUTO_SW DISPLOF
+;外螺纹自动对刀程序
 ;---------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
 ;---------------------------------------------
