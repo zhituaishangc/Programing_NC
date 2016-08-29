@@ -1,5 +1,5 @@
-PROC S_OPERATION_RAND DISPLOF
-;二次对刀程序
+PROC S_OPERATION_RAND_SW DISPLOF
+;外螺纹二次对刀程序
 ;-----------------------------------------
 DEF REAL DR1,DR2,DR3,DR4
 
