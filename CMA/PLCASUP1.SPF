@@ -14,7 +14,7 @@ IF $A_DBB[2]==1;按下退刀键
 	IF GRIND[0]<>1;不是内螺纹
 	    G01 G90 X=INI[23] F1000;退刀时的X值
     ELSE
-        G90 G01 X=INI[10] F=1000;X退刀
+        G91 G01 X=5 F=1000;X离开螺纹
         G91 G01 Z=INI[3] C=-INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
         G90 G01 Z=INI[2]+20 F=1500;Z轴到工件右端偏右一位置
     ENDIF
@@ -37,6 +37,7 @@ IF TOOL_SET[8]==0;首次对刀
 			DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
 			TOOL_SET[4]=TOOL_SET[5]-DR12
 		ELSE
+			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2
 			DR11=TOOL_SET[2]/INI[5]*360;Z轴DRF换算出的角度
 			IF INI[0]==1;左旋
 				TOOL_SET[4]=TOOL_SET[5]+DR11
