@@ -11,12 +11,17 @@ ELSE
 	INI[20]=360+INI[17]-INI[18]/60-INI[19]/3600;计算升角值
 ENDIF
 
-IF INI[0]==1;左旋
-    INI[6]=INI[1]
-    INI[7]=INI[2]
-ELSE;右旋
-    INI[6]=INI[2]
-    INI[7]=INI[1]
+IF GRIND[0]==1;是内螺纹磨削
+	INI[6]=INI[2]
+	INI[7]=INI[1]
+ELSE;不是内螺纹磨削
+	IF INI[0]==1;左旋
+		INI[6]=INI[1]
+		INI[7]=INI[2]
+	ELSE;右旋
+		INI[6]=INI[2];磨削起点
+		INI[7]=INI[1];磨削终点
+	ENDIF
 ENDIF
 
 INI[3]=INI[2]-INI[1];磨削长度
