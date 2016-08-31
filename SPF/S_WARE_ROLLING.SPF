@@ -8,11 +8,11 @@ AXIVER=AXNAME(AXIS_VER);竖直轴
 IF DRESSER[18]+DRESSER[19]+DRESSER[20]==0;第一次跳过
     RET
 ENDIF
-MSG("正在接触砂轮中!")
+;MSG("正在接触砂轮中!")
 G90 G1 AX[AXIVER]=WHEEL[10] F=DRESSER[10];到达修整位置
-MSG("修整接触停留中")
+;MSG("修整接触停留中")
 G4 F=WHEEL[18]
-MSG("修整轮回退")
+;MSG("修整轮回退")
 IF GRIND[0]<>1;不是内螺纹
     G91 G1 AX[AXIVER]=1
 ELSE
