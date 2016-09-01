@@ -15,7 +15,11 @@ IF $A_DBB[2]==1;按下退刀键
 	    G01 G90 X=INI[23] F1000;退刀时的X值
     ELSE
         G91 G01 X=5 F=1000;X离开螺纹
-        G91 G01 Z=INI[3] C=-INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
+		IF INI[0]==0;右旋
+			G91 G01 Z=INI[3] C=-INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
+		ELSE
+			G91 G01 Z=INI[3] C=INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
+		ENDIF
         G90 G01 Z=INI[2]+20 F=1500;Z轴到工件右端偏右一位置
     ENDIF
 ENDIF
