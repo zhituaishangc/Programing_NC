@@ -62,7 +62,7 @@ WHILE(WORK[1]<WORK[0])
 		ENDIF
 	ELSE;左旋螺纹磨削
 		S_CYCLE_SW_MESSAGE
-		G303;左旋正向磨削,台面向左运动
+		G305;左旋正向磨削,台面向右运动
 		IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 			RET
 		ENDIF
@@ -71,7 +71,7 @@ WHILE(WORK[1]<WORK[0])
 			G4 F0.5
 			G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 			S_CYCLE_SW_MESSAGE
-			G304;左旋反向磨削,台面向右运动
+			G306;左旋反向磨削,台面向右运动
 			IF $A_DBB[2]==1
 				RET
 			ENDIF
@@ -91,7 +91,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("砂轮退出工件")
 			G90 G01 X=INI[10] F=1000
 			MSG("台面到磨削起点")
-			G91 G01 Z=-INI[3] C=-INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
+			G91 G01 Z=INI[3] C=INI[9] X=-INI[15] F=360*30;走螺旋线返回起点
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
