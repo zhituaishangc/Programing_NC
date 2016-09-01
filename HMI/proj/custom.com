@@ -580,6 +580,8 @@
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	DEF TECH_CHECK=(I///$85220,$85219,$85043,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[3]"/0,0,0/0,0,0);当前执行那道工艺检测
 	
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+
 	HS1=($85001,ac7,se1);"磨削参数"
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
@@ -588,7 +590,11 @@
 	VS1=("")
 
 	PRESS(HS1)
-		LM("MASK1")
+		IF TYPE.VAL<>1
+			LM("MASK1")
+		ELSE
+			LM("MASK18")
+		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
@@ -2896,6 +2902,8 @@
 	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/50,10,20/);垂直轴
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/50,25,20/);水平轴
 	
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -2904,7 +2912,11 @@
 	VS1=("")
 
 	PRESS(HS1)
-		LM("MASK1")
+		IF TYPE.VAL<>1
+			LM("MASK1")
+		ELSE
+			LM("MASK18")
+		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
