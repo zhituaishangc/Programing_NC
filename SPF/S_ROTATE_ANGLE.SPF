@@ -6,7 +6,7 @@ IF INI[16]==1
 		M35;松开
 		G4 F1
 		MSG("螺旋升角到位中")
-		G90 G01 A=DC(INI[20]) F=50
+		G90 G01 A=INI[20] F=50
 		STOPRE
 		M36;夹紧
 		G4 F1
