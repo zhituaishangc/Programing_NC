@@ -6,8 +6,8 @@ IF INI[16]==1
 		M35;松开
 		G4 F2
 		MSG("螺旋升角置零中")
-		IF (INI[20]>=0) AND (INI[20]<=90)
-			G90 G01 A=DC(359) F=50
+		IF INI[20]>=0
+			G90 G01 A=DC(-1) F=50
 		ELSE
 			G90 G01 A=DC(1) F=50
 		ENDIF
