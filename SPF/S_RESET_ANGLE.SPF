@@ -4,7 +4,10 @@ PROC S_RESET_ANGLE DISPLOF
 IF INI[16]==1
 	IF $AA_IM[A]<>0
 		M35;松开
-		G4 F2
+		WHILE($A_DBB[3]==0)
+			G4 F0.2
+		ENDWHILE
+		G4 F1
 		MSG("螺旋升角置零中")
 		IF INI[20]>=0
 			G90 G01 A=-1 F=50
