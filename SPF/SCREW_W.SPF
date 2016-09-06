@@ -18,7 +18,10 @@ IF GRIND[1]==1
 ENDIF
 
 M68;头架修整器缩回
-G4 F2
+WHILE($A_DBB[6]==0)
+    G4 F0.2
+ENDWHILE
+
 S_ROTATE_ANGLE;螺旋升角
 
 GRIND[2]=$A_DBB[1];是否对刀
