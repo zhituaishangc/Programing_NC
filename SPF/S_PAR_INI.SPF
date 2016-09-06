@@ -54,8 +54,9 @@ WORK[1]=0;当前磨削头数
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
 	PROCESS[2]=0
 	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
-		PROCESS[4]=PROCESS[13]
-		PROCESS[14]=0
+		PROCESS[4]=PROCESS[13];砂轮1当前等于初始
+		PROCESS[15]=PROCESS[16];砂轮2当前等于初始
+		PROCESS[14]=0;工艺累积进刀清零
 	ENDIF
 ELSE
 	PROCESS[2]=4
