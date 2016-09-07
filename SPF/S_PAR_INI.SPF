@@ -8,12 +8,12 @@ DRESSER[41]=-DRESSER[2]+((DRESSER[39]-DRESSER[23]/2-DRESSER[37]/2)/2+DRESSER[23]
 
 ;新砂轮时磨削初始和当前接触
 IF DRESSER[5]==0;砂轮1为新砂轮
-	PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离
+	PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮1接触工件位置等于初始接触加上当前与初始接触修整轮距离
 	PROCESS[4]=PROCESS[13];砂轮1当前等于初始
 ENDIF
 IF DRESSER[40]==0;砂轮2为新砂轮
-	PROCESS[16]=PROCESS[16]+(WHEEL[20]-WHEEL[22]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离
-	PROCESS[15]=PROCESS[16];砂轮1当前等于初始
+	PROCESS[16]=PROCESS[16]+(WHEEL[20]-WHEEL[22]);新砂轮2接触工件位置等于初始接触加上当前与初始接触修整轮距离
+	PROCESS[15]=PROCESS[16];砂轮2当前等于初始
 ENDIF
 
 ;螺旋升角值
