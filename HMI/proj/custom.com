@@ -899,7 +899,7 @@
 	
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
-	DEF GRIND_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);回零时砂轮1与修整轮中间距
 	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);砂轮1NC用初始接触
@@ -955,7 +955,7 @@
 			LM("MASK11")
 		ELSE
 			IF VAR1.VAL==4
-				IF GRIND_TYPE<>1;不是内螺纹
+				IF TYPE<>1;不是内螺纹
 					LM("MASK16")
 				ELSE
 					LM("MASK17")
@@ -1196,7 +1196,7 @@
 
 	SUB(UP5)
 		IF VAR1.VAL==4;成型X
-			IF GRIND_TYPE<>1;不是内螺纹
+			IF TYPE<>1;不是内螺纹
 
 			ELSE
 				VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);砂轮1初始接触位
