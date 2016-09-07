@@ -4,5 +4,8 @@ DEFINE G302 AS G91 G01 Z=INI[3] C=-INI[9] X=-INI[15] F=PROCESS[9] ;右旋反向�
 DEFINE G303 AS G91 G64 G01 Z=INI[3] C=INI[9] X=INI[15] F=PROCESS[9];左旋正向磨削,台面向左运动
 DEFINE G304 AS G91 G01 Z=-INI[3] C=-INI[9] X=-INI[15] F=PROCESS[9];左旋反向磨削,台面向右运动
 
+DEFINE G305 AS G91 G01 Z=-INI[3] C=-INI[9] X=INI[15] F=PROCESS[9];内螺纹左旋正向磨削,台面向右运动(锥度默认右端为大端)
+DEFINE G306 AS G91 G01 Z=INI[3] C=INI[9] X=-INI[15] F=PROCESS[9];内螺纹左旋反向磨削,台面向左运动
+
 M30
 
