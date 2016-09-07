@@ -746,6 +746,11 @@
 		VAR38.WR=1
 		VAR39.WR=1
 		VAR40.WR=1
+		;砂轮选择
+		VAR50.WR=1
+		VAR51.WR=1
+		VAR52.WR=1
+		VAR53.WR=1
 	END_SUB	
 
 	SUB(DIY_OFF)
@@ -778,7 +783,12 @@
 		VAR37.WR=2
 		VAR38.WR=2
 		VAR39.WR=2
-		VAR40.WR=2	
+		VAR40.WR=2
+		;砂轮选择
+		VAR50.WR=2
+		VAR51.WR=2
+		VAR52.WR=2
+		VAR53.WR=2
 	END_SUB
 
 	SUB(Q_DIY_SET)
@@ -794,30 +804,38 @@
 				IF TECH_CHECK.VAL==0
 					VAR10.WR=1
 					VAR19.WR=1
+					VAR50.WR=1
 				ELSE
 					VAR10.WR=2
 					VAR19.WR=2
+					VAR50.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==1
 					VAR11.WR=1
 					VAR20.WR=1
+					VAR51.WR=1
 				ELSE
 					VAR11.WR=2
 					VAR20.WR=2
+					VAR51.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==2
 					VAR12.WR=1
 					VAR21.WR=1
+					VAR52.WR=1
 				ELSE
 					VAR12.WR=2
 					VAR21.WR=2
+					VAR52.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==3
 					VAR13.WR=1
 					VAR22.WR=1
+					VAR53.WR=1
 				ELSE
 					VAR13.WR=2
 					VAR22.WR=2
+					VAR53.WR=2
 				ENDIF
 			ELSE
 				VAR10.WR=2
@@ -828,6 +846,10 @@
 				VAR20.WR=2
 				VAR21.WR=2
 				VAR22.WR=2
+				VAR50.WR=2
+				VAR51.WR=2
+				VAR52.WR=2
+				VAR53.WR=2
 			ENDIF
 		ENDIF	
 	END_SUB
