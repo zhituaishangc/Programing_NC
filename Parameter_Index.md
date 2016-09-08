@@ -91,6 +91,13 @@
 |INI[24]|PITCH_COM|全长导程补偿
 |INI[25]|QUIT_CALCULATE|退刀计算标志位
 |INI[26]|单件小批量/批量生产|单件小批量/批量生产
+|INI[27]|工件大径
+|INI[28]|工件端面到反相器孔距离
+|INI[29]|工件安装位置允许的最大误差
+|INI[30]|工件长度
+|INI[31]|腰型孔角度(展开图尺寸)
+|INI[32]|腰型孔长(展开图尺寸)
+|INI[33]|腰型孔宽(展开图尺寸)
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -103,7 +110,7 @@
 |TOOL_SET[7]|OPERA_METHOD|对刀方式(0手动/1自动)
 |TOOL_SET[8]|OPERA_MODEL|对刀类型(0首次/1二次)
 |TOOL_SET[9]|MEASUER_R|测头半径
-|TOOL_SET[10]|WHL_HEAD|测头与砂轮距离
+|TOOL_SET[10]|WHL_HEAD|测头与砂轮距离(Z向)
 |TOOL_SET[11]|TOUCH_X|探头接触工件表面时X坐标(自动对刀参数)
 |TOOL_SET[12]|WHEEL_TOUCH_X|砂轮接触工件表面时X坐标(自动对刀参数)
 |TOOL_SET[13]|PRESENT_X|探头接触工件时X坐标
@@ -115,6 +122,12 @@
 |TOOL_SET[19]|TOOL_SET_POS|(0中点对刀/1起点对刀/2任意)
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
+|TOOL_SET[22]|FXQK|(0=圆形孔,1=腰型孔)
+|TOOL_SET[23]|WHL_HEAD_X|测头中心与砂轮中心距离(X向)
+|TOOL_SET[24]|首件工件端面接触侧头时Z向坐标
+|TOOL_SET[25]|耳朵端面是否测量(1=不测量,0=测量)
+|TOOL_SET[26]|自动对刀完成标志(1=完成,0=未完成)
+|TOOL_SET[27]|自动对刀完成Z轴退刀位置(1=完成,0=未完成)
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
