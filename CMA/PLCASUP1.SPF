@@ -63,6 +63,7 @@ IF TOOL_SET[8]==0;首次对刀
 			ELSE
 				TOOL_SET[4]=TOOL_SET[5]-DR12
 			ENDIF
+		ENDIF
 	ENDIF
 ELSE;非首次对刀
 	IF (TOOL_SET[2]==0)AND(TOOL_SET[20]==0);如果手轮Z和X的偏置值都为0
