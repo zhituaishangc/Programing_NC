@@ -42,18 +42,18 @@ G94	G91	G1 Z=-10 F=50 MEAS=1	;工件右移，触碰测头停止
 DR3=$AA_MM[Z]						;测头接触工件端面坐标(DR3)
 DR4=ABS(DR3-TOOL_SET[24])			;工件安装位置误差值(测量数据)(DR4)
 DR5=ABS(DR1-DR3)					;测头在相对磨削起点距离工件端面距离(DR5)
-IF	DR4>INI[29]	GOTOF ERROR2
+IF DR4>INI[29]	GOTOF ERROR2
 
 ;---------------测头伸向转向器孔---------------
 G94 G90 G53 G01 Z=DR1 F1000			
 G94 G90 G53 G01	X=TOOL_SET[11]-5;测头移动到距离工件外缘5mm处
 G91	G01	Z=-(DR5+INI[28]) F1000;测头走到反相器孔
 G90	G53	G01	X=TOOL_SET[11]+2*TOOL_SET[9] MEAS=1	;测头伸出
-IF	$AC_MEA[1]==TRUE GOTOF ERROR3
+IF $AC_MEA[1]==TRUE GOTOF ERROR3
 
 IF TOOL_SET[22]=0 GOTOF ROUND
 ELSE
-GOTOF	YXK	
+GOTOF YXK	
 ENDIF
 
 ;----------测量开始，测角度(圆形孔)------------
@@ -151,7 +151,7 @@ G90	G01	X=TOOL_SET[11]-5				 ;测头离开腰型孔
 
 ;----------------耳朵端面测量------------------
 NEXT:
-IF	TOOL_SET[25]==10 GOTOF BACK			;判断耳朵端面是否磨削
+IF TOOL_SET[25]==10 GOTOF BACK			;判断耳朵端面是否磨削
 G94 G91 G1 Z=-[INI30] MEAS=1
 G91	G01	Z2 F500
 G94 G91 G1 Z-8 F50 MEAS=1
