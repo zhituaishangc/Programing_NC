@@ -8,7 +8,11 @@ INI[25]=1;退刀计算标志位置1
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
 	IF DRESSER[5]==0;砂轮为新砂轮
-		PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离
+		IF GRIND[0]<>1;不是内螺纹
+			PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+		ELSE
+			PROCESS[13]=PROCESS[13]+(WHEEL[10]-WHEEL[12]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+		ENDIF
 		PROCESS[4]=PROCESS[13];砂轮当前等于初始
 	ENDIF
 ENDIF
