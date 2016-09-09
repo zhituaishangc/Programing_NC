@@ -10,7 +10,7 @@ S_PARA_TRANS;参数传递
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
     M20;吸雾开
-    ;M28;修整冷却开
+    M8;修整&磨削冷却开
     DRESS;修整
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
@@ -51,7 +51,8 @@ ELSE;选择DIY工艺
 ENDIF
 ;-------------------------------------------------------
 M20;吸雾开
-M8;磨削冷却开
+M8;修整&磨削冷却开
+M38;淋浴冷却开
 TOOL_SET[8]=1;改为二次对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
