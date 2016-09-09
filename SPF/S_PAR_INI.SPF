@@ -2,6 +2,7 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
 DRFOF;手轮偏置清除
+TRANS;坐标系复原
 INI[25]=1;退刀计算标志位置1
 
 ;升角计算值
