@@ -7,7 +7,13 @@ DRESSER[20]=0
 DRESSER[6]=0
 
 IF DRESSER[24]<DRESSER[35]
-	MSG("砂轮过小,请更换砂轮!")
+	MSG("砂轮1过小,请更换砂轮!")
+	G4 F3
+	DRESSER[6]=1;报警标记
+	GOTOF ENDING_A
+ENDIF
+IF DRESSER[38]<DRESSER[44];当前砂轮2直径<最小砂轮2直径
+	MSG("砂轮2过小,请更换砂轮!")
 	G4 F3
 	DRESSER[6]=1;报警标记
 	GOTOF ENDING_A
