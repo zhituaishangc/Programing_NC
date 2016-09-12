@@ -9,13 +9,8 @@ TOOL_SET[21]=$AA_IM[Z];手动对刀完成后Z轴坐标
 TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 
-IF $A_DBB[2]==1;按下退刀键
-	MSG("退刀中,请勿复位程序!")
-	G01 G90 X=INI[23] F1000;退刀时的X值
-ENDIF
-
 IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
-	RET
+	GOTOF X_BACK
 ENDIF
 
 IF TOOL_SET[8]==0;首次对刀
@@ -54,6 +49,12 @@ ELSE
 	IF TOOL_SET[4]<0
 		TOOL_SET[4]=360+TOOL_SET[4]
 	ENDIF
+ENDIF
+
+X_BACK:
+IF $A_DBB[2]==1;按下退刀键
+	MSG("退刀中,请勿复位程序!")
+	G01 G90 X=INI[23] F1000;退刀时的X值
 ENDIF
 
 STOPRE
