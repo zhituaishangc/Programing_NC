@@ -51,7 +51,7 @@ ELSE
     PLCASUP1;跳转到初始角度计算子程序
     MSG("退刀中,请勿复位程序!")
     IF GRIND[0]<>1;不是内螺纹
-        G01 G90 X=INI[23] F1000;退刀时的X值
+        G01 G90 X=INI[23] F1800;退刀时的X值
     ELSE
         G90 G01 X=INI[10] F=1000;X离开螺纹
         IF INI[0]==0;右旋
