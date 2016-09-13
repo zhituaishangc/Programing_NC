@@ -57,7 +57,7 @@ DRFOF
 X_BACK:
 IF $A_DBB[2]==1;按下退刀键
 	MSG("退刀中,请勿复位程序!")
-	G01 G90 X=INI[23] F1000;退刀时的X值
+	G01 G90 X=INI[23] F1800;退刀时的X值
 ENDIF
 
 RET
