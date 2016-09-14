@@ -1,7 +1,8 @@
 PROC S_DRESS_END SBLOF DISPLOF
 ;修整收尾
 
-M2=5
-WAITS(2)
+M65;变频修整轮2停止
+G4 F0.2
+
 RET
 
