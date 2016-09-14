@@ -13,7 +13,7 @@ WHILE(WORK[1]<WORK[0])
 		G90 G01 C=DC(TOOL_SET[4]+WORK[3]) F=3600;头数切换,角度增量累加
 	ENDIF
 	MSG("台面到磨削起点")
-	G90 Z=INI[6] F=2000;Z轴到磨削起点
+	G90 Z=INI[6] F=600;Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
 	IF PROCESS[6]==0;根据磨削方式判断进给量
 		IF PROCESS[17]==0;砂轮1
