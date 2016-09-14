@@ -55,6 +55,9 @@ IF TOOL_SET[8]==0;首次对刀
 	TOOL_SET[8]=1;改为二次对刀
 ELSE;非首次对刀
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
+	IF GRIND[0]==1;是内螺纹,二次对刀影响初值
+		PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
+	ENDIF
 	DR13=TOOL_SET[2]/INI[5]*360
 	IF INI[0]==1;左旋
 		TOOL_SET[4]=TOOL_SET[4]-DR13
