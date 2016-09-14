@@ -11,11 +11,11 @@ GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
 	IF DRESSER[5]==0;砂轮1为新砂轮
 		PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮1接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
-		PROCESS[4]=PROCESS[13];砂轮1当前等于初始
+		PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
 	ENDIF
 	IF DRESSER[40]==0;砂轮2为新砂轮
 		PROCESS[16]=PROCESS[16]+(WHEEL[20]-WHEEL[22]);新砂轮2接触工件位置等于初始接触加上当前与初始接触修整轮距离
-		PROCESS[15]=PROCESS[16];砂轮2当前等于初始
+		PROCESS[15]=PROCESS[15]+(WHEEL[20]-WHEEL[22])
 	ENDIF
 ENDIF
 
