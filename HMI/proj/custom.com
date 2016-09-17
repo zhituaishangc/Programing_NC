@@ -243,6 +243,7 @@
 			PITCH_COM.WR=2
 			PIECE_VOLUME.WR=2
 			IF VAR20.WR<>4
+				VAR20.WR=2;打开锥度开关
 				IF VAR20.VAL==0
 					VAR21.WR=1
 					VAR22.WR=1
