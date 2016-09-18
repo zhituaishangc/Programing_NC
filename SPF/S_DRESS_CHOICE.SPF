@@ -2,12 +2,21 @@ PROC S_DRESS_CHOICE SBLOF DISPLOF
 ;修整选择及参数赋值
 
 IF PROCESS[3]==0;纯修整
-    DRESSER[11]=DRESSER[25];粗修次数
-    DRESSER[12]=DRESSER[26];精修次数
-    DRESSER[14]=DRESSER[27];粗修进给
-    DRESSER[15]=DRESSER[28];精修进给
-    DRESSER[16]=DRESSER[29];粗修速度
-    DRESSER[17]=DRESSER[30];精修速度
+    IF PROCESS[17]==0;选择砂轮1用粗修参数
+        DRESSER[11]=DRESSER[25];粗修次数
+        DRESSER[12]=0;精修次数
+        DRESSER[14]=DRESSER[27];粗修进给
+        DRESSER[15]=0;精修进给
+        DRESSER[16]=DRESSER[29];粗修速度
+        DRESSER[17]=0;精修速度
+    ELSE
+        DRESSER[11]=0;粗修次数
+        DRESSER[12]=DRESSER[26];精修次数
+        DRESSER[14]=0;粗修进给
+        DRESSER[15]=DRESSER[28];精修进给
+        DRESSER[16]=0;粗修速度
+        DRESSER[17]=DRESSER[30];精修速度
+    ENDIF
     WHEEL_LINESPEED_DRESS[0]=WHEEL_LINESPEED_DRESS[1];砂轮线速度
 ELSE;磨削中修整
     IF PROCESS[17]==0;选择砂轮1用粗修参数
