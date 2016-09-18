@@ -71,6 +71,8 @@
 |DRESSER[42]|DRESS_CUMU|砂轮2修整累积
 |DRESSER[43]|DRESS_WHEEL2_RPM|修整时砂轮2转速
 |DRESSER[44]|WHEEL2_MIN_diameter|砂轮2最小直径
+|DRESSER[45]|WHEEL1_DRESS|砂轮1是否修整
+|DRESSER[46]|WHEEL2_DRESS|砂轮2是否修整
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
