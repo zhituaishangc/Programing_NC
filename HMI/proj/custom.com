@@ -76,8 +76,8 @@
 
 	DEF VAR27=(I/0,500///WR4//"$MN_USER_DATA_INT[0]"/0,0,0/0,0,0/);润滑间歇时间调用值
 	DEF VAR28=(I/0,500///WR4//"$MN_USER_DATA_INT[1]"/0,0,0/0,0,0/);润滑启动时间调用值
-	DEF VAR29=(I/0,500//$85127,$85127,$85048,/WR2/"panel_1_15_chs.png"/"/NC/_N_NC_GD2_ACX/INI[22]"/380,320,182/460,320,60/);润滑间歇时间输入值
-	DEF VAR30=(I/0,500//$85126,$85126,$85047,/WR2/"panel_1_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[23]"/380,345,182/460,345,60/);润滑启动时间输入值
+	DEF VAR29=(I/0,500//$85127,$85127,$85048,/WR1/"panel_1_15_chs.png"/"/NC/_N_NC_GD2_ACX/INI[22]"/380,320,182/460,320,60/);润滑间歇时间输入值
+	DEF VAR30=(I/0,500//$85126,$85126,$85047,/WR1/"panel_1_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[23]"/380,345,182/460,345,60/);润滑启动时间输入值
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	
@@ -213,7 +213,7 @@
 			PITCH_COM.WR=1
 			PIECE_VOLUME.WR=1
 			IF VAR20.WR<>4
-				VAR20.WR=1
+				;VAR20.WR=1;锥度按键图片显示不正常处理，不检测
 				VAR21.WR=1
 				VAR22.WR=1
 			ELSE
@@ -222,7 +222,7 @@
 				VAR22.WR=4
 			ENDIF
 			IF VAR23.WR<>4
-				VAR23.WR=1
+				;VAR23.WR=1
 				VAR24.WR=1
 				VAR25.WR=1
 				VAR26.WR=1
