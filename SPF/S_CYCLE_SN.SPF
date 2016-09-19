@@ -33,6 +33,9 @@ IF PROCESS[3]==1
     PROCESS[15]=PROCESS[15]-(DRESSER[19]-1)*DRESSER[15];砂轮2当前进刀位置计算
     PROCESS[3]=0;修整标记清零
     M29;修整冷却关
+    IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警
+        RET
+    ENDIF
     M8;磨削冷却开
     MSG("台面快速接近磨削起点")
 	G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一位置
