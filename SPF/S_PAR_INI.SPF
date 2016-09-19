@@ -9,13 +9,13 @@ DRESSER[41]=-DRESSER[2]+((DRESSER[39]-DRESSER[23]/2-DRESSER[37]/2)/2+DRESSER[23]
 ;新砂轮时磨削初始和当前接触
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
-	IF DRESSER[5]==0;砂轮1为新砂轮
-		PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10]);新砂轮1接触工件位置等于初始接触加上当前与初始接触修整轮距离
-		PROCESS[4]=PROCESS[13];砂轮1当前等于初始
+	IF (DRESSER[5]==0) AND (DRESSER[45]==1);砂轮1为新砂轮且要修整
+		PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮1接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+		PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
 	ENDIF
-	IF DRESSER[40]==0;砂轮2为新砂轮
-		PROCESS[16]=PROCESS[16]+ABS(WHEEL[20]-WHEEL[22]);新砂轮2接触工件位置等于初始接触加上当前与初始接触修整轮距离
-		PROCESS[15]=PROCESS[16];砂轮2当前等于初始
+	IF (DRESSER[40]==0) AND (DRESSER[46]==1);砂轮2为新砂轮且要修整
+		PROCESS[16]=PROCESS[16]+(WHEEL[20]-WHEEL[22]);新砂轮2接触工件位置等于初始接触加上当前与初始接触修整轮距离
+		PROCESS[15]=PROCESS[15]+(WHEEL[20]-WHEEL[22])
 	ENDIF
 ENDIF
 
@@ -83,8 +83,13 @@ IF INI[3]<=0;磨削长度<=0
 	G4 F5
 	DRESSER[6]=1;报警标记
 ENDIF
-IF DRESSER[24]<DRESSER[35];当前砂轮直径<最小砂轮直径
-	MSG("砂轮过小,请更换砂轮!")
+IF DRESSER[24]<DRESSER[35];当前砂轮1直径<最小砂轮1直径
+	MSG("砂轮1过小,请更换砂轮!")
+	G4 F5
+	DRESSER[6]=1;报警标记
+ENDIF
+IF DRESSER[38]<DRESSER[44];当前砂轮2直径<最小砂轮2直径
+	MSG("砂轮2过小,请更换砂轮!")
 	G4 F5
 	DRESSER[6]=1;报警标记
 ENDIF

@@ -3,7 +3,8 @@
 |**需要提前手动输入**|
 |MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
 |MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
-|DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
+|DRESSER[35]|WHEEL1_MIN_diameter|砂轮1最小直径
+|DRESSER[44]|WHEEL2_MIN_diameter|砂轮2最小直径
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
 |||
 |**PLC_NC交换变量**|
@@ -60,7 +61,7 @@
 |DRESSER[32]|DWHEEL_RND_R|齿形相对修整轮右圆弧半径
 |DRESSER[33]|DWHEEL_MID_L|左修整轮对砂轮中心
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
-|DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
+|DRESSER[35]|WHEEL1_MIN_diameter|砂轮1最小直径
 |DRESSER[36]|DRESS_WHEEL1_RPM|修整时砂轮1转速
 |DRESSER[37]|WHEEL2_DIA|砂轮2初始直径
 |DRESSER[38]|WHEEL2_DIACURNT|砂轮2当前直径
@@ -69,6 +70,9 @@
 |DRESSER[41]|WHEEL1&2_MID|修整轮相对砂轮1&2修整起点位置X坐标
 |DRESSER[42]|DRESS_CUMU|砂轮2修整累积
 |DRESSER[43]|DRESS_WHEEL2_RPM|修整时砂轮2转速
+|DRESSER[44]|WHEEL2_MIN_diameter|砂轮2最小直径
+|DRESSER[45]|WHEEL1_DRESS|砂轮1是否修整
+|DRESSER[46]|WHEEL2_DRESS|砂轮2是否修整
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
