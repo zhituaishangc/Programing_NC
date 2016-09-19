@@ -23,6 +23,17 @@ IF GRIND[1]==1
     GOTOF G_ENDING
 ENDIF
 
+IF DRESSER[24]>DRESSER[49];当前砂轮1直径>砂轮最大磨削直径
+	MSG("砂轮1过大,请将砂轮修整到小于最大磨削直径!")
+	G4 F5000
+	GOTOF G_ENDING
+ENDIF
+IF DRESSER[38]>DRESSER[49];当前砂轮2直径>砂轮最大磨削直径
+	MSG("砂轮2过大,请将砂轮修整到小于最大磨削直径!")
+	G4 F5000
+	GOTOF G_ENDING
+ENDIF
+
 S_ROTATE_ANGLE;螺旋升角
 
 GRIND[2]=$A_DBB[1];是否对刀

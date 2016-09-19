@@ -75,6 +75,7 @@
 |DRESSER[46]|WHEEL2_DRESS|砂轮2是否修整
 |DRESSER[47]|WHEEL_DSURFACE|砂轮到修整端面位置
 |DRESSER[48]|DWHEEL_DSURFACE|修整轮到修整端面距离
+|DRESSER[49]|WHEEL_MAX_diameter|砂轮最大磨削直径
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
