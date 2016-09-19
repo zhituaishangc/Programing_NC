@@ -24,15 +24,11 @@ IF GRIND[1]==1
 ENDIF
 
 IF DRESSER[24]>DRESSER[49];当前砂轮1直径>砂轮最大磨削直径
-	MSG("砂轮1过大,请将砂轮修整到小于最大磨削直径!")
-	G4 F5
-    DRESSER[6]=4;报警标记
+    DRESSER[6]=4;砂轮1过大,请将砂轮修整到小于最大磨削直径
 	GOTOF G_ENDING
 ENDIF
 IF DRESSER[38]>DRESSER[49];当前砂轮2直径>砂轮最大磨削直径
-	MSG("砂轮2过大,请将砂轮修整到小于最大磨削直径!")
-	G4 F5
-    DRESSER[6]=5;报警标记
+    DRESSER[6]=5;砂轮2过大,请将砂轮修整到小于最大磨削直径
 	GOTOF G_ENDING
 ENDIF
 
