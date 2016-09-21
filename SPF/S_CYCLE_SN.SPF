@@ -24,7 +24,8 @@ ENDIF
 IF PROCESS[3]==1
     MSG("砂轮离开工件中")
     G90 G01 Z=INI[2]+20 F=1500;Z轴到工件右端偏右一位置
-    M9;磨削冷却关
+    M9;内磨削冷却关
+    M39;外磨削冷却关
     M28;修整冷却开
     DRESS;修整
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14];砂轮1初始进刀位置计算
@@ -36,7 +37,8 @@ IF PROCESS[3]==1
     IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警
         RET
     ENDIF
-    M8;磨削冷却开
+    M8;内磨削冷却开
+    M38;外磨削冷却开
     MSG("台面快速接近磨削起点")
 	G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一位置
 	MSG("砂轮到安全位置")

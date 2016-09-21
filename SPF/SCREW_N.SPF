@@ -36,7 +36,7 @@ S_ROTATE_ANGLE;螺旋升角
 
 GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
-    M20;吸雾开
+    ;M20;吸雾开
     ;M8;磨削冷却开
     OPERATION;对刀
     GOTOF G_ENDING
@@ -56,7 +56,8 @@ ELSE;选择DIY工艺
 ENDIF
 ;-------------------------------------------------------
 M20;吸雾开
-M8;磨削冷却开
+M8;内磨削冷却开
+M38;外磨削冷却开
 TOOL_SET[8]=1;改为二次对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
