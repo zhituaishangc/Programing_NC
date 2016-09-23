@@ -5,9 +5,9 @@ IF GRIND[0]<>1;不是内螺纹
     IF TOOL_SET[8]==0;首次对刀
         CASE TOOL_SET[7] OF 0 GOTOF MASK0_SW DEFAULT GOTOF MASK1_SW
         MASK0_SW:
-        R298=1500
-        G4 F0.2
-        M23
+        ;R298=1500
+        ;G4 F0.2
+        ;M23
         R299=1500
         G4 F0.2
         M13
@@ -18,9 +18,9 @@ IF GRIND[0]<>1;不是内螺纹
         S_OPERATION_AUTO_SW;外螺纹自动对刀程序
         GOTOF MASK2
     ELSE
-        R298=1500
-        G4 F0.2
-        M23
+        ;R298=1500
+        ;G4 F0.2
+        ;M23
         R299=1500
         G4 F0.2
         M13
@@ -31,10 +31,10 @@ IF GRIND[0]<>1;不是内螺纹
     IF TOOL_SET[8]==0;首次对刀
         CASE TOOL_SET[7] OF 0 GOTOF MASK0_SN DEFAULT GOTOF MASK1_SN
         MASK0_SN:
-        R298=1500
-        G4 F0.2
-        M23
-        R299=1500
+        ;R298=1500
+        ;G4 F0.2
+        ;M23
+        R299=10000
         G4 F0.2
         M13
         S_OPERATION_JOG_SN;内螺纹手动对刀程序
@@ -44,10 +44,10 @@ IF GRIND[0]<>1;不是内螺纹
         S_OPERATION_AUTO_SN;内螺纹自动对刀程序
         GOTOF MASK2
     ELSE
-        R298=1500
-        G4 F0.2
-        M23
-        R299=1500
+        ;R298=1500
+        ;G4 F0.2
+        ;M23
+        R299=10000
         G4 F0.2
         M13
         S_OPERATION_RAND_SN;内螺纹二次对刀子程序
