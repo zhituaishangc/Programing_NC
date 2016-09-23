@@ -8,6 +8,8 @@ IF PROCESS[17]==0;砂轮1
 ELSE
     G90 G01 X=INI[10]+DRESSER[39] F=2000;X轴到安全位置
 ENDIF
+MSG("等待砂轮转速到位")
+G4 F5
 
 RET
 
