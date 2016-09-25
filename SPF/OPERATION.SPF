@@ -75,7 +75,7 @@ ELSE
         ELSE
             G91 G01 Z=INI[3] C=INI[9] X=-INI[15] F=INI[5]*30;走螺旋线返回起点
         ENDIF
-        G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一位置
+        G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
         G90 G01 X=DRESSER[41] F2000
     ENDIF
 ENDIF

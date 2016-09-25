@@ -10,7 +10,7 @@ S_GRIND_SN;内螺纹小循环
 PLCASUP1;初始角度计算
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     MSG("砂轮离开工件中")
-    G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一位置
+    G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
     MSG("砂轮回退到安全位置")
     G90 G1 X=DRESSER[41] F2000
 ENDIF
@@ -23,7 +23,7 @@ ENDIF
 
 IF PROCESS[3]==1
     MSG("砂轮离开工件中")
-    G90 G01 Z=INI[2]+20 F=1500;Z轴到工件右端偏右一位置
+    G90 G01 Z=INI[28] F=1500;Z轴到工件右端偏右一位置
     M9;内磨削冷却关
     M39;外磨削冷却关
     M28;修整冷却开
@@ -40,7 +40,7 @@ IF PROCESS[3]==1
     M8;内磨削冷却开
     M38;外磨削冷却开
     MSG("台面快速接近磨削起点")
-	G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一位置
+	G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
 	MSG("砂轮到安全位置")
     IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一刀不再进去了
         IF PROCESS[17]==0;砂轮1
