@@ -106,7 +106,9 @@
 |INI[23]|QUIT|退刀位置
 |INI[24]|PITCH_COM|全长导程补偿
 |INI[25]|QUIT_CALCULATE|退刀计算标志位
-|INI[26]|单件小批量/批量生产|单件小批量/批量生产
+|INI[26]|MULTI_OR_SINGLE|单件小批量/批量生产
+|INI[27]|C_INIT|头架在程序结束调整到合适角度
+|INI[28]|Z_INIT|内螺纹时台面起始位置
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
