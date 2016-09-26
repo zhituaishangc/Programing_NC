@@ -100,5 +100,9 @@ IF DRESSER[6]<>0
     ENDIF
     G4 F999999
 ENDIF
+
+DRESSER[45]=0;砂轮1是否修整
+DRESSER[46]=0;砂轮2是否修整
+
 RET
 
