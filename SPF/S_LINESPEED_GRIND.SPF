@@ -43,7 +43,7 @@ ELSE
     M25;关砂轮2
 ENDIF
 
-MSG("等待砂轮转速到位")
+;MSG("等待砂轮转速到位")
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=1
     G4 F5
 ELSE
