@@ -47,25 +47,25 @@ WHILE(WORK[1]<WORK[0])
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 		ELSE
@@ -99,25 +99,25 @@ WHILE(WORK[1]<WORK[0])
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
 				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10] F=800;X轴到安全位置
+					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 				ELSE
-					G90 G01 X=INI[10]+DRESSER[39] F=800;X轴到安全位置
+					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
 				ENDIF
 			ENDIF
 		ELSE
