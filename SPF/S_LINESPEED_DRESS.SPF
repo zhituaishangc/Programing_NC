@@ -17,15 +17,18 @@ IF GRIND[0]<>1;不是内螺纹
         DRESSER[38]=DRESSER[37]
     ENDIF
 ELSE
-    IF WHEEL[12]>=WHEEL[10];初始接触大于当前接触
-        DRESSER[24]=DRESSER[23]-(WHEEL[12]-WHEEL[10])*2
+    IF PROCESS[17]==0;是砂轮1
+        IF WHEEL[12]>=WHEEL[10];初始接触大于当前接触
+            DRESSER[24]=DRESSER[23]-(WHEEL[12]-WHEEL[10])*2
+        ELSE
+            DRESSER[24]=DRESSER[23]
+        ENDIF
     ELSE
-        DRESSER[24]=DRESSER[23]
-    ENDIF
-    IF WHEEL[22]<=WHEEL[20];初始接触小于当前接触
-        DRESSER[38]=DRESSER[37]-(WHEEL[20]-WHEEL[22])*2
-    ELSE
-        DRESSER[38]=DRESSER[37]
+        IF WHEEL[22]<=WHEEL[20];初始接触小于当前接触
+            DRESSER[38]=DRESSER[37]-(WHEEL[20]-WHEEL[22])*2
+        ELSE
+            DRESSER[38]=DRESSER[37]
+        ENDIF
     ENDIF
 ENDIF
 
@@ -48,8 +51,8 @@ ENDIF
 M1=3 S1=DWHEEL_RPM
 WAITS
 
-;MSG("等待砂轮转速到位")
 IF DRESSER[18]+DRESSER[19]+DRESSER[20]==0;第一次多停留一段时间
+    MSG("等待砂轮转速到位")
     G4 F5
 ELSE
     G4 F0.5
