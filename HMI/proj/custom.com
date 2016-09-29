@@ -2804,8 +2804,8 @@
 			VAR2.WR=1
 			VAR3.WR=1
 			VAR4.WR=1
-			VAR5.WR=1
-			VAR6.WR=1
+			VAR5.WR=4
+			VAR6.WR=4
 			VAR7.WR=1
 			VAR8.WR=1
 			VAR15.WR=1
