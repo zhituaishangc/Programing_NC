@@ -13,6 +13,7 @@ IF INI[16]==1
 		ENDIF
 		G4 F0.5
 		G90 G01 A=0 F=50
+		G4 F0.5
 		STOPRE
 		M36;夹紧
 		G4 F1
