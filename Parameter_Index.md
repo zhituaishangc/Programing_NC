@@ -74,7 +74,7 @@
 |INI[7]|END_POS|磨削终点
 |INI[8]|MIDDLE_Z|磨削中点
 |INI[9]|TOTAL_ANGLE|磨削总角度
-|INI[10]|QUIT_X|头数切换退刀时的X值(内螺纹时为砂轮中心与头架中心重合时的X坐标)
+|INI[10]|QUIT_X|对刀起始位置和磨削中回退位置的X值(内螺纹时为砂轮中心与头架中心重合时的X坐标)
 |INI[11]|TAPER|是否有锥度
 |INI[12]|TAPER_MOLE|锥度分子
 |INI[13]|TAPER_DENO|锥度分母
