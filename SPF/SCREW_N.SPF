@@ -80,8 +80,5 @@ G_ENDING:
 S_GRINDING_END;运行结束
 S_ALARM;机床报警
 
-DRESSER[45]=0;砂轮1是否修整
-DRESSER[46]=0;砂轮2是否修整
-
 RET
 
