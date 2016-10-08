@@ -156,7 +156,7 @@ IF TECH_TIME[4]<DIY[1]
         ENDIF
     ENDIF
     ;传递参数
-    PROCESS[17]=TECHNOLOGY[78];使用砂轮1/2
+    PROCESS[17]=DIY[6];使用砂轮1/2
     S_PARA_TRANS;修整参数赋值
     PROCESS[4]=PROCESS[4]-DIY[2];砂轮1进刀位置
     PROCESS[15]=PROCESS[15]-DIY[2];砂轮2进刀位置

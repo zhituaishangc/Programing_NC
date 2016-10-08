@@ -274,7 +274,6 @@
 |TECHNOLOGY[75]||半粗磨选择砂轮1/2
 |TECHNOLOGY[76]||精磨选择砂轮1/2
 |TECHNOLOGY[77]||终磨选择砂轮1/2
-|TECHNOLOGY[78]||DIY选择砂轮1/2
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
@@ -283,6 +282,7 @@
 |DIY[3]|TECH_GRIND_FEED_DIY|DIY磨削速度
 |DIY[4]|TECH_DRESS_CUMU_DIY|DIY是否修整累计
 |DIY[5]|WHEEL_LINESPEED_GRIND_DIY|DIY砂轮线速度
+|DIY[6]||DIY选择砂轮1/2
 |||
 |**工件头数参数**||
 |WORK[0]|WORK_TH|头数
