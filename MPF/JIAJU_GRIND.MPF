@@ -1,5 +1,5 @@
 PROC JIAJU_GRIND DISPLON
-;夹具修整
+;夹具磨削
 
 DRESSER[60]=0;Z轴左
 DRESSER[61]=10;Z轴右
