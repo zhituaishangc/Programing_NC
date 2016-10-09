@@ -78,6 +78,14 @@
 |DRESSER[49]|WHEEL_MAX_diameter|砂轮最大磨削直径
 |DRESSER[50]|DRESS_TIME_RCURNT|当前粗修次数(临时变量)
 |DRESSER[51]|DRESS_FEED_RCURNT|当前粗修进给(临时变量)
+|DRESSER[60]|JIAJU_GRIND_LEFT|夹具磨削,Z轴左端位置
+|DRESSER[61]|JIAJU_GRIND_RIGHT|夹具磨削,Z轴右端位置
+|DRESSER[62]|JIAJU_GRIND_TOUCH|夹具磨削,X轴初始接触
+|DRESSER[63]|JIAJU_DRESS_LEFT|夹具修整砂轮,Z轴左端位置
+|DRESSER[64]|JIAJU_DRESS_RIGHT|夹具修整砂轮,Z轴右端位置
+|DRESSER[65]|JIAJU_GRESS_TOUCH|夹具修整砂轮,X轴初始接触
+|DRESSER[66]|JIAJU_GRESS_TIME|夹具修整砂轮,修整次数
+|DRESSER[67]|JIAJU_GRESS_FEED|夹具修整砂轮,进刀量
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -106,7 +114,9 @@
 |INI[23]|QUIT|退刀位置
 |INI[24]|PITCH_COM|全长导程补偿
 |INI[25]|QUIT_CALCULATE|退刀计算标志位
-|INI[26]|单件小批量/批量生产|单件小批量/批量生产
+|INI[26]|MULTI_OR_SINGLE|单件小批量/批量生产
+|INI[27]|C_INIT|头架在程序结束调整到合适角度
+|INI[28]|Z_INIT|内螺纹时台面起始位置
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -272,7 +282,6 @@
 |TECHNOLOGY[75]||半粗磨选择砂轮1/2
 |TECHNOLOGY[76]||精磨选择砂轮1/2
 |TECHNOLOGY[77]||终磨选择砂轮1/2
-|TECHNOLOGY[78]||DIY选择砂轮1/2
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
@@ -281,6 +290,7 @@
 |DIY[3]|TECH_GRIND_FEED_DIY|DIY磨削速度
 |DIY[4]|TECH_DRESS_CUMU_DIY|DIY是否修整累计
 |DIY[5]|WHEEL_LINESPEED_GRIND_DIY|DIY砂轮线速度
+|DIY[6]||DIY选择砂轮1/2
 |||
 |**工件头数参数**||
 |WORK[0]|WORK_TH|头数

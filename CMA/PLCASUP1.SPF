@@ -45,6 +45,7 @@ IF TOOL_SET[8]==0;首次对刀
 	PROCESS[16]=PROCESS[13]+(DRESSER[39]-DRESSER[24]/2+DRESSER[38]/2);砂轮2初始磨削进刀位赋值
 	PROCESS[15]=PROCESS[16];当前2等于初始2
 	TOOL_SET[8]=1;改为二次对刀
+	PROCESS[14]=0;工艺累积进刀清零
 ELSE;非首次对刀
 	PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 	PROCESS[16]=PROCESS[16]+TOOL_SET[20];磨削过程中调整X
@@ -75,13 +76,9 @@ IF $A_DBB[2]==1;按下退刀键
 	IF GRIND[0]<>1;不是内螺纹
 		G01 G90 X=INI[23] F1800;退刀时的X值
 	ELSE
-		G90 G01 X=INI[10] F=2000;X离开螺纹
-		IF INI[0]==0;右旋
-			G91 G01 Z=INI[3] C=-INI[9] X=-INI[15] F=INI[5]*30;走螺旋线返回起点
-		ELSE
-			G91 G01 Z=INI[3] C=INI[9] X=-INI[15] F=INI[5]*30;走螺旋线返回起点
-		ENDIF
-		G90 G01 Z=INI[2]+20 F=2500;Z轴到工件右端偏右一点位置
+		G90 G01 X=INI[10] F=500;X离开螺纹
+		G90 G01 Z=INI[2] F=1500;走螺旋线返回起点
+		G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一点位置
 		G90 G01 X=DRESSER[41] F2000
 	ENDIF
 ENDIF

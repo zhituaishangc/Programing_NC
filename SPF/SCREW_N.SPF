@@ -36,8 +36,9 @@ S_ROTATE_ANGLE;螺旋升角
 
 GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
-    M20;吸雾开
+    ;M20;吸雾开
     ;M8;磨削冷却开
+    TOOL_SET[8]=0;改为首次对刀
     OPERATION;对刀
     GOTOF G_ENDING
 ENDIF
@@ -56,7 +57,8 @@ ELSE;选择DIY工艺
 ENDIF
 ;-------------------------------------------------------
 M20;吸雾开
-M8;磨削冷却开
+M8;内磨削冷却开
+M38;外磨削冷却开
 TOOL_SET[8]=1;改为二次对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
@@ -75,28 +77,8 @@ ENDWHILE
 ;-------------------------------------------------------
 G_ENDING:
 
-S_GRINDING_END
-IF DRESSER[6]<>0
-    IF DRESSER[6]==1;有报警
-        MSG("工件左端坐标>工件右端坐标")
-    ELSE
-        IF DRESSER[6]==2;有报警
-            MSG("砂轮1过小,请更换砂轮!")
-        ELSE
-            IF DRESSER[6]==3;有报警
-                MSG("砂轮2过小,请更换砂轮!")
-            ELSE
-                IF DRESSER[6]==4;有报警
-                    MSG("砂轮1过大,请将砂轮修整到小于最大磨削直径!")
-                ELSE
-                    IF DRESSER[6]==5;有报警
-                        MSG("砂轮2过大,请将砂轮修整到小于最大磨削直径!")
-                    ENDIF
-                ENDIF
-            ENDIF
-        ENDIF
-    ENDIF
-    G4 F999999
-ENDIF
+S_GRINDING_END;运行结束
+S_ALARM;机床报警
+
 RET
 
