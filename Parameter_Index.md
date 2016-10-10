@@ -86,6 +86,7 @@
 |DRESSER[65]|JIAJU_GRESS_TOUCH|夹具修整砂轮,X轴初始接触
 |DRESSER[66]|JIAJU_GRESS_TIME|夹具修整砂轮,修整次数
 |DRESSER[67]|JIAJU_GRESS_FEED|夹具修整砂轮,进刀量
+|DRESSER[68]|JIAJU_GRESS_CUMU|夹具修整砂轮,修整次数累积
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
