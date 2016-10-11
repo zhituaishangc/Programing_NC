@@ -252,7 +252,12 @@
 |PROCESS[21]||外圆磨程序共用进给量
 |PROCESS[22]||外圆磨程序共用进给速度
 |PROCESS[23]||外圆磨程序共用砂轮线速度
-||
+|||
+|PROCESS[24]|SN_GRIND_FEED|内螺纹外圆磨削进给速度
+|PROCESS[25]|SN_GRIND_DEEP|内螺纹外圆磨削进给量
+|PROCESS[26]|SN_RIGHT_FACE_GRIND_DEEP|内螺纹右端面磨削进给量
+|PROCESS[27]|SN_RIGHT_FACE_GRIND_U|内螺纹右端面磨削单面壁厚
+|||
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
