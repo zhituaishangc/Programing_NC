@@ -117,6 +117,9 @@
 |INI[26]|MULTI_OR_SINGLE|单件小批量/批量生产
 |INI[27]|C_INIT|头架在程序结束调整到合适角度
 |INI[28]|Z_INIT|内螺纹时台面起始位置
+|INI[29]|QUIT_SN_EXCIRCLE_GRIND_X|外圆磨削X轴安全退刀位置
+|INI[30]|QUIT_SN_EXCIRCLE_GRIND_U|外圆磨削U轴安全退刀位置
+|INI[31]|SN_EXCIRCLE_GRIND_L|外圆磨削图纸上外圆磨削长度
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -141,6 +144,8 @@
 |TOOL_SET[19]|TOOL_SET_POS|(0中点对刀/1起点对刀/2任意)
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
+|TOOL_SET[22]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
+|TOOL_SET[23]|OPERA_SN_RIGHT_FACE_U|自动对刀后右端面U轴坐标，磨削中心
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
@@ -240,6 +245,7 @@
 |PROCESS[15]|WHEEL2_POS_CURNT|当前砂轮2进入工件位置
 |PROCESS[16]|WHEEL2_POS_INI|初始砂轮2磨削接触位置
 |PROCESS[17]|WHEEL_CHOICE|选择砂轮1/2
+|||
 |PROCESS[18]||外圆磨当前所在工艺
 |PROCESS[19]||外圆磨当前循环是否修整累计
 |PROCESS[20]||外圆磨当前接触工件位置
