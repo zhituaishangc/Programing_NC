@@ -160,7 +160,7 @@
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
 |TOOL_SET[22]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
-|TOOL_SET[23]|OPERA_SN_RIGHT_FACE_U|自动对刀后右端面U轴坐标，磨削中心
+|TOOL_SET[23]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
 |TOOL_SET[24]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
 |||
 |**滚轮参数(WHEEL)**||
