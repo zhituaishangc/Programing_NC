@@ -75,6 +75,13 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDWHILE
 ;-------------------------------------------------------
+;外圆磨削循环控制
+WHILE(TECH_TIME[5]+TECH_TIME[6]+TECH_TIME[7]+TECH_TIME[8]+TECH_TIME[9]<=TECHNOLOGY[78]+TECHNOLOGY[83]+TECHNOLOGY[88]+TECHNOLOGY[93]+DIY[7])
+	STOPRE
+	SYNTH_CYCLE
+	SYNTH_BCYCLE
+ENDWHILE
+;-------------------------------------------------------
 G_ENDING:
 
 S_GRINDING_END;运行结束
