@@ -274,6 +274,7 @@
 |PROCESS[26]|SN_RIGHT_FACE_GRIND_DEEP|内螺纹右端面磨削进给量
 |PROCESS[27]|SN_RIGHT_FACE_GRIND_U|内螺纹右端面磨削单面壁厚
 |PROCESS[28]||外圆磨削是否修砂轮标志(1Y0N)
+|PROCESS[29]||磨削中心C轴磨削转速
 |||
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削

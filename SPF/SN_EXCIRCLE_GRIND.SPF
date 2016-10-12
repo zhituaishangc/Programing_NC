@@ -12,7 +12,7 @@ G90 G1 U=PROCESS[20]+1 F1000                ;U轴开至磨削安全位置
 
 G4 F2
 MSG("C轴启动，外圆磨削开始")
-M3 S100
+M3 S=PROCESS[29]
 G90 G1 U=PROCESS[20] F=PROCESS[24]          ;磨削开始
 G90 G1 Z=TOOL_SET[22]-INI[31] F=PROCESS[24] ;Z轴移动进给开始磨削外圆
 
