@@ -18,11 +18,12 @@ IF TECH_TIME[5]<TECHNOLOGY[78];当前粗磨次数<粗磨次数
         ENDIF
     ENDIF
     ;传递参数
-    S_PARA_TRANS;修整参数赋值
+    SYN_PARA_TRANS;修整参数赋值
     PROCESS[20]=PROCESS[20]-TECHNOLOGY[80];外圆磨当前接触工件位置
     ;PROCESS[6]=TECHNOLOGY[0];是否需要双向磨削待定
     PROCESS[21]=TECHNOLOGY[80];程序用磨削进刀量
     PROCESS[22]=TECHNOLOGY[81];程序用磨削速度
+	PROCESS[29]=PROCESS[30];粗磨时C轴旋转速度
     TECH_DRESS_TIME[6]=TECH_DRESS_TIME[7];磨削中修整次数
     TECH_DRESS_DEEP[6]=TECH_DRESS_DEEP[7];外圆磨削中修整共用进刀量=
     TECH_DRESS_FEED[6]=TECH_DRESS_FEED[7];外圆磨程序共用修整速度
@@ -49,11 +50,12 @@ IF TECH_TIME[6]<TECHNOLOGY[83]
         ENDIF
     ENDIF
     ;传递参数
-    S_PARA_TRANS;修整参数赋值
+    SYN_PARA_TRANS;修整参数赋值
     PROCESS[20]=PROCESS[20]-TECHNOLOGY[85];外圆磨当前接触工件位置
     ;PROCESS[6]=TECHNOLOGY[1];单双磨
     PROCESS[21]=TECHNOLOGY[85];程序共用磨削进刀量
     PROCESS[22]=TECHNOLOGY[86];程序共用磨削速度
+	PROCESS[29]=PROCESS[31];半精磨时C轴旋转速度
     TECH_DRESS_TIME[6]=TECH_DRESS_TIME[8];磨削中修整次数
     TECH_DRESS_DEEP[6]=TECH_DRESS_DEEP[8];外圆磨削中修整共用进刀量=
     TECH_DRESS_FEED[6]=TECH_DRESS_FEED[8];外圆磨程序共用修整速度=
@@ -81,11 +83,12 @@ IF TECH_TIME[7]<TECHNOLOGY[88]
         ENDIF
     ENDIF
     ;传递参数
-    S_PARA_TRANS;修整参数赋值
+    SYN_PARA_TRANS;修整参数赋值
     PROCESS[20]=PROCESS[20]-TECHNOLOGY[90];外圆磨当前接触工件位置
     ;PROCESS[6]=TECHNOLOGY[2];单双磨
     PROCESS[21]=TECHNOLOGY[90];磨削进刀量
     PROCESS[22]=TECHNOLOGY[91];程序共用磨削速度
+	PROCESS[29]=PROCESS[32];精磨时C轴旋转速度
     TECH_DRESS_TIME[6]=TECH_DRESS_TIME[9];磨削中修整次数
     TECH_DRESS_DEEP[6]=TECH_DRESS_DEEP[9];外圆磨削中修整共用进刀量=
     TECH_DRESS_FEED[6]=TECH_DRESS_FEED[9];外圆磨程序共用修整速度=
@@ -114,11 +117,12 @@ IF TECH_TIME[8]<TECHNOLOGY[93]
         ENDIF
     ENDIF
     ;传递参数
-    S_PARA_TRANS;修整参数赋值
+    SYN_PARA_TRANS;修整参数赋值
     PROCESS[20]=PROCESS[20]-TECHNOLOGY[95];外圆磨当前接触工件位置
     ;PROCESS[6]=TECHNOLOGY[3];单双磨
     PROCESS[21]=TECHNOLOGY[95];磨削进刀量
     PROCESS[22]=TECHNOLOGY[96];程序共用磨削速度=
+	PROCESS[29]=PROCESS[33];终磨时C轴旋转速度
     TECH_DRESS_TIME[6]=TECH_DRESS_TIME[10];磨削中修整次数
     TECH_DRESS_DEEP[6]=TECH_DRESS_DEEP[10];外圆磨削中修整共用进刀量=
     TECH_DRESS_FEED[6]=TECH_DRESS_FEED[10];外圆磨程序共用修整速度=
@@ -148,11 +152,12 @@ IF TECH_TIME[9]<DIY[7]
         ENDIF
     ENDIF
     ;传递参数
-    S_PARA_TRANS;修整参数赋值
+    SYN_PARA_TRANS;修整参数赋值
     PROCESS[20]=PROCESS[20]-DIY[9];外圆磨当前接触工件位置
     ;PROCESS[6]=DIY[0];单双磨
     PROCESS[21]]=DIY[9];磨削进刀量
     PROCESS[22]=DIY[10];程序共用磨削速度=
+	PROCESS[29]=DIY[12];外磨时C轴旋转速度
     TECH_DRESS_TIME[6]=TECH_DRESS_TIME[11];磨削中修整次数
     TECH_DRESS_DEEP[6]=TECH_DRESS_DEEP[11];外圆磨削中修整共用进刀量=
     TECH_DRESS_FEED[6]=TECH_DRESS_FEED[11];外圆磨程序共用修整速度=
