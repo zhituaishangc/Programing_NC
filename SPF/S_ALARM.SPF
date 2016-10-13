@@ -21,6 +21,9 @@ IF DRESSER[6]<>0
             ENDIF
         ENDIF
     ENDIF
+	IF DRESSER[6]==6
+		MSG("外圆磨砂轮直径过小,请检查砂轮直径参数或更换砂轮")
+	ENDIF
     G4 F999999
 ENDIF
 

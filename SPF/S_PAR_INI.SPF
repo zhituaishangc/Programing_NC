@@ -92,6 +92,8 @@ ENDIF
 IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
 	PROCESS[20]=TOOL_SET[23];批量第二件清除外圆已磨削量
 ENDIF
-
+IF DRESSER[90]<DRESSER[92]
+	DRESSER[6]=6;外圆磨砂轮直径过小
+ENDIF
 RET
 
