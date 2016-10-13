@@ -252,6 +252,7 @@
 |GRIND[1]|DRESS_STA|是否修整(0否/1是)
 |GRIND[2]|OPERA_STA|是否对刀(0否/1是)
 |GRIND[3]|CYCLE_MODEL|磨削循环类型
+|GRIND[4]||磨外圆砂轮是否修整
 |||
 |**工序基本参数**||
 |PROCESS[0]|TECH_MODEL|工艺类型(0界面/1DIY)
