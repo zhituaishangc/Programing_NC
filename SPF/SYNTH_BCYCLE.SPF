@@ -10,7 +10,7 @@ IF TECH_TIME[5]<TECHNOLOGY[78];当前粗磨次数<粗磨次数
     IF PROCESS[19]<TECHNOLOGY[79];修整判断
         PROCESS[19]=PROCESS[19]+1;当前磨削是否修整累计
         IF PROCESS[19]==TECHNOLOGY[79];修整次数到位标记
-            PROCESS[3]=1
+            PROCESS[28]=1;外圆磨削是否修砂轮标志(1Y0N)
             PROCESS[19]=0;累计次数清零
         ENDIF
         IF TECH_TIME[5]==TECHNOLOGY[78];如果是最后一刀
@@ -41,7 +41,7 @@ IF TECH_TIME[6]<TECHNOLOGY[83]
     IF PROCESS[19]<TECHNOLOGY[84]
         PROCESS[19]=PROCESS[19]+1
         IF PROCESS[19]==TECHNOLOGY[84]
-            PROCESS[3]=1
+            PROCESS[28]=1;外圆磨削是否修砂轮标志(1Y0N)
             PROCESS[19]=0
         ENDIF
         IF TECH_TIME[5]==TECHNOLOGY[78]
@@ -73,7 +73,7 @@ IF TECH_TIME[7]<TECHNOLOGY[88]
     IF PROCESS[19]<TECHNOLOGY[89]
         PROCESS[19]=PROCESS[19]+1
         IF PROCESS[19]==TECHNOLOGY[89]
-            PROCESS[3]=1
+            PROCESS[28]=1;外圆磨削是否修砂轮标志(1Y0N)
             PROCESS[19]=0
         ENDIF
         IF TECH_TIME[7]==TECHNOLOGY[88]
@@ -106,7 +106,7 @@ IF TECH_TIME[8]<TECHNOLOGY[93]
     IF PROCESS[19]<TECHNOLOGY[94]
         PROCESS[19]=PROCESS[19]+1
         IF PROCESS[19]==TECHNOLOGY[94]
-            PROCESS[3]=1
+            PROCESS[28]=1;外圆磨削是否修砂轮标志(1Y0N)
             PROCESS[19]=0
         ENDIF
         IF TECH_TIME[8]==TECHNOLOGY[93]
@@ -140,7 +140,7 @@ IF TECH_TIME[9]<DIY[7]
     IF PROCESS[19]<DIY[8]
         PROCESS[19]=PROCESS[19]+1
         IF PROCESS[19]==DIY[8]
-            PROCESS[3]=1
+            PROCESS[28]=1;外圆磨削是否修砂轮标志(1Y0N)
             PROCESS[19]=0
         ENDIF
         IF TECH_TIME[9]==DIY[7]

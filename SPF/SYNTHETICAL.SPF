@@ -1,0 +1,92 @@
+PROC SYNTHETICAL DISPLON
+;磨削中心主程序
+
+S_PAR_INI;参数初始化子程序
+IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警标记则退出程序
+    GOTOF G_ENDING
+ENDIF
+S_PARA_TRANS;参数传递
+
+GRIND[1]=$A_DBB[0];是否修整
+IF GRIND[1]==1
+    M20;吸雾开
+    M28;修整冷却开
+    DRESS;修整
+    IF DRESSER[45]==1;纯修整要修砂轮1
+        PROCESS[13]=PROCESS[13]-DRESSER[50]*DRESSER[51];界面粗磨数据
+        PROCESS[4]=PROCESS[4]-DRESSER[50]*DRESSER[51];界面粗磨数据
+    ENDIF
+    IF DRESSER[46]==1;纯修整要修砂轮2
+        PROCESS[16]=PROCESS[16]-(DRESSER[19]-1)*DRESSER[15];界面精磨数据
+        PROCESS[15]=PROCESS[15]-(DRESSER[19]-1)*DRESSER[15];界面精磨数据
+    ENDIF
+    GOTOF G_ENDING
+ENDIF
+
+IF DRESSER[24]>DRESSER[49];当前砂轮1直径>砂轮最大磨削直径
+    DRESSER[6]=4;砂轮1过大,请将砂轮修整到小于最大磨削直径
+	GOTOF G_ENDING
+ENDIF
+IF DRESSER[38]>DRESSER[49];当前砂轮2直径>砂轮最大磨削直径
+    DRESSER[6]=5;砂轮2过大,请将砂轮修整到小于最大磨削直径
+	GOTOF G_ENDING
+ENDIF
+
+S_ROTATE_ANGLE;螺旋升角
+
+GRIND[2]=$A_DBB[1];是否对刀
+IF GRIND[2]==1
+    ;M20;吸雾开
+    ;M8;磨削冷却开
+    TOOL_SET[8]=0;改为首次对刀
+    OPERATION;对刀
+    GOTOF G_ENDING
+ENDIF
+
+;使用界面参数还是DIY参数
+IF PROCESS[0]==0;选择界面工艺
+    DIY[1]=0;DIY磨削次数
+    IF TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]==0;工艺参数中设置的总磨削次数
+        RET
+    ENDIF
+ELSE;选择DIY工艺
+    PROCESS[2]=4;当前工艺切换到DIY
+    IF DIY[1]==0
+        RET
+    ENDIF
+ENDIF
+;-------------------------------------------------------
+M20;吸雾开
+M8;内磨削冷却开
+M38;外磨削冷却开
+TOOL_SET[8]=1;改为二次对刀
+WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
+    STOPRE
+    S_CYCLE_SN;内螺纹磨削循环
+    PLCASUP1;初始角度计算
+    S_PARA_TRANS;
+    IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警
+        GOTOF G_ENDING
+    ENDIF
+    IF $A_DBB[2]==1;按下退刀键跳转到结束程序
+        GOTOF G_ENDING
+    ENDIF
+    S_BCYC;工序进给大循环判断
+    S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+ENDWHILE
+;-------------------------------------------------------
+;外圆磨削循环控制
+WHILE(TECH_TIME[5]+TECH_TIME[6]+TECH_TIME[7]+TECH_TIME[8]+TECH_TIME[9]<=TECHNOLOGY[78]+TECHNOLOGY[83]+TECHNOLOGY[88]+TECHNOLOGY[93]+DIY[7])
+	STOPRE
+	SYNTH_CYCLE
+	S_PARA_TRANS;参数传递
+	SYNTH_BCYCLE
+ENDWHILE
+;-------------------------------------------------------
+G_ENDING:
+
+S_GRINDING_END;运行结束
+S_ALARM;机床报警
+
+RET
+
