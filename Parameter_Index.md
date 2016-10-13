@@ -278,10 +278,10 @@
 |PROCESS[19]||外圆磨当前循环是否修整累计
 |PROCESS[20]||外圆磨当前接触工件位置
 |PROCESS[21]||外圆磨程序共用进给量
-|PROCESS[22]||外圆磨程序共用进给速度
+|PROCESS[22]||外圆磨程序共用Z轴进给速度
 |PROCESS[23]||外圆磨程序共用砂轮线速度
 |||
-|PROCESS[24]|SN_GRIND_FEED|内螺纹外圆磨削进给速度
+|PROCESS[24]|SN_GRIND_FEED|内螺纹外圆磨削U轴进给速度
 |PROCESS[25]|SN_GRIND_DEEP|内螺纹外圆磨削进给量
 |PROCESS[26]|SN_RIGHT_FACE_GRIND_DEEP|内螺纹右端面磨削进给量
 |PROCESS[27]|SN_RIGHT_FACE_GRIND_U|内螺纹右端面磨削单面壁厚
