@@ -7,7 +7,7 @@ IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3)OR(DRESSER[6]==6);有报警�
 ENDIF
 S_PARA_TRANS;参数传递
 
-GRIND[1]=$A_DBB[0];是否修整
+GRIND[1]=$A_DBB[0];螺纹磨是否修整
 IF GRIND[1]==1
     M20;吸雾开
     M28;修整冷却开
@@ -16,18 +16,15 @@ IF GRIND[1]==1
         PROCESS[13]=PROCESS[13]-DRESSER[50]*DRESSER[51];界面粗磨数据
         PROCESS[4]=PROCESS[4]-DRESSER[50]*DRESSER[51];界面粗磨数据
     ENDIF
-    IF DRESSER[46]==1;纯修整要修砂轮2
-        PROCESS[16]=PROCESS[16]-(DRESSER[19]-1)*DRESSER[15];界面精磨数据
-        PROCESS[15]=PROCESS[15]-(DRESSER[19]-1)*DRESSER[15];界面精磨数据
-    ENDIF
+	
     GOTOF G_ENDING
 ENDIF
 
 ;外圆磨砂轮是否纯修整
 IF GRIND[4]==1
 	SYNTH_DRESS
-	PROCESS[20]=PROCESS[20]-DRESSER[75]*DRESSER[77]-(DRESSER[76]-1)*DRESSER[78];外圆磨当前接触工件位置重新计算
-	TOOL_SET[23]=TOOL_SET[23]-DRESSER[75]*DRESSER[77]-(DRESSER[76]-1)*DRESSER[78];外圆磨初始接触工件位置重新计算
+	PROCESS[20]=PROCESS[20]-DRESSER[73]*DRESSER[77]-(DRESSER[74]-1)*DRESSER[78];外圆磨当前接触工件位置重新计算
+	TOOL_SET[23]=TOOL_SET[23]-DRESSER[73]*DRESSER[77]-(DRESSER[74]-1)*DRESSER[78];外圆磨初始接触工件位置重新计算
 ENDIF
 
 IF DRESSER[24]>DRESSER[49];当前砂轮1直径>砂轮最大磨削直径
