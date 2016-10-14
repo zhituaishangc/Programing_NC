@@ -89,6 +89,11 @@ IF DRESSER[38]<DRESSER[44];当前砂轮2直径<最小砂轮2直径
 ENDIF
 ;
 ;外圆磨削相关初始化
+TECH_TIME[5]=0
+TECH_TIME[6]=0
+TECH_TIME[7]=0
+TECH_TIME[8]=0
+TECH_TIME[9]=0
 IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
 	PROCESS[20]=TOOL_SET[23];批量第二件清除外圆已磨削量
 ENDIF
