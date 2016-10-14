@@ -7,11 +7,7 @@
 	VS1=($85006,ac7,se1) 
 
 	PRESS(HS7)
-		IF TYPE.VAL<>1
-			LM("MASK1")
-		ELSE
-			LM("MASK18")
-		ENDIF
+		LM("MASK18")
 	END_PRESS
 
 	PRESS(VS1)
@@ -3057,7 +3053,7 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK10:修整返回;;;;;;;;;;;;;;;;;;;;;;;;
-//M(Mask10/$85022//)
+//M(Mask10/$85022/"panel_3_4_chs.png"/)
 
 	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/110,10,110/200,10,110/);砂轮1累计修整量
 	DEF VAR22=(R///$85377,$85377,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[43]"/110,30,110/200,30,110/);砂轮2累计修整量
