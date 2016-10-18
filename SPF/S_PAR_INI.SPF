@@ -6,6 +6,20 @@ PROCESS[3]=0;修整标记清零
 DRESSER[44]=0;取消标记
 INI[25]=1;退刀计算标志位置1
 
+;新砂轮时磨削初始和当前接触
+GRIND[1]=$A_DBB[0];是否修整
+IF GRIND[1]==1
+	IF DRESSER[5]==0;砂轮为新砂轮
+		IF GRIND[0]<>1;不是内螺纹
+			PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+			PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
+		ELSE
+			PROCESS[13]=PROCESS[13]+(WHEEL[10]-WHEEL[12]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+			PROCESS[4]=PROCESS[4]+(WHEEL[10]-WHEEL[12])
+		ENDIF
+	ENDIF
+ENDIF
+
 ;INI[1];丝杠磨削左端坐标
 ;INI[2];丝杠磨削右端坐标
 IF INI[0]==1;左旋
