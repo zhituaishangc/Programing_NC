@@ -68,6 +68,7 @@
 |DRESSER[43]|DRESS_EDGE_FEED|砂轮边缘修整速度
 |DRESSER[44]|DRESS_EDGE_RESET|砂轮边缘修整当前位置复位信号
 |DRESSER[45]|DRESS_EDGE_TIME_TEMP|砂轮边缘修整当前次数临时变量
+|DRESSER[46]|DRESS_EDGE_CENTER|金刚笔对准砂轮回转中心X轴位置
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)

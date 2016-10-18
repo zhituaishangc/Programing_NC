@@ -1,7 +1,7 @@
 PROC S_DRESS_EDGE DISPLOF
 ;砂轮边缘修整
 
-DRESSER[37]=?+DRESSER[24]/2;计算初始位置
+DRESSER[37]=DRESSER[46]+DRESSER[24]/2;计算初始位置
 
 IF DRESSER[44]==1;如果为刚刚进行过新砂轮修整
     DRESSER[38]=DRESSER[37];重新赋值

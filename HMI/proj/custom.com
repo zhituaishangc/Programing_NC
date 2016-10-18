@@ -1843,6 +1843,8 @@
 	DEF VAR5=(R/0,2//$85708,$85708,,$85043/WR2/"panel_17_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[43]"/330,180,110/440,180,110/);砂轮边缘修整进给量
 	DEF VAR6=(R/0,2000//$85709,$85709,,$85045/WR2/"panel_17_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[44]"/330,200,110/440,200,110/);砂轮边缘修整速度
 
+	DEF VAR7=(R///$85710,$85710,,$85043/WR2/"panel_17_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[47]"/330,30,110/440,30,110/);金刚笔对准砂轮回转中心X轴位置
+
 	DEF QCHECK=(I///$85220,$85219,$85043,/WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测	
 
 	HS1=($85379,ac7,se1);"滚压轮"
@@ -1868,11 +1870,13 @@
 			VAR3.WR=1
 			VAR4.WR=1
 			VAR5.WR=1
+			VAR7.WR=1
 		ELSE
 			VAR2.WR=2
 			VAR3.WR=2
 			VAR4.WR=2
 			VAR5.WR=2
+			VAR7.WR=2
 		ENDIF
 	END_CHANGE
 
