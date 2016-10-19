@@ -2958,8 +2958,6 @@
 			VAR2.WR=2
 			VAR3.WR=2
 			VAR4.WR=2
-			VAR5.WR=2
-			VAR6.WR=2
 			VAR7.WR=2
 			VAR8.WR=2
 			VAR15.WR=2
