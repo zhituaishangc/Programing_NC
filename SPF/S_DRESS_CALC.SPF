@@ -42,7 +42,11 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
         ENDIF
         DRESSER[10]=DRESSER[17]
     ENDIF
-    MSG("新砂轮轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成")
+    IF DRESSER[11]<>0
+        MSG("新砂轮轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[14]<<"mm")
+    ELSE
+        MSG("新砂轮轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[15]<<"mm")
+    ENDIF
 ELSE
     IF DRESSER[18]<DRESSER[11]
         DRESSER[18]=DRESSER[18]+1
@@ -64,7 +68,7 @@ ELSE
             ENDIF
         ENDIF
         DRESSER[10]=DRESSER[16]
-        MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成")
+        MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成,进给量:"<<DRESSER[14]<<"mm")
     ELSE
         IF DRESSER[19]<DRESSER[12]
             DRESSER[19]=DRESSER[19]+1
@@ -86,7 +90,7 @@ ELSE
                 ENDIF
             ENDIF
             DRESSER[10]=DRESSER[17]
-            MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成")
+            MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成,进给量:"<<DRESSER[15]<<"mm")
         ELSE
             DRESSER[19]=DRESSER[19]+1
         ENDIF
