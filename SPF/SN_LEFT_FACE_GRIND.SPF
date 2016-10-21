@@ -9,6 +9,10 @@ MSG("C轴启动,外圆磨削开始")
 
 M3 S=PROCESS[29]                           ;C轴启动
 
+M26	                                       ;控制箱空调启动
+M20                                        ;吸雾器启动
+M38                                        ;磨削冷却开
+
 TECHNOLOGY[98]=0                           ;循环计数清空
 
 WHILE TECHNOLOGY[98]<TECHNOLOGY[99]
@@ -23,15 +27,19 @@ G94 G90 G01 Z=TOOL_SET[24]-PROCESS[34]+0.1 U=TOOL_SET[23]+1 F1000    ;Z/U插补�
 
 STOPRE
 
-TECHNOLOGY[98]=TECHNOLOGY[98]+1                                      ;磨削循环计数
-TOOL_SET[24]=TOOL_SET[24]-PROCESS[34]                                ;磨削量累计
+TECHNOLOGY[98]=TECHNOLOGY[98]+1             ;磨削循环计数
+TOOL_SET[24]=TOOL_SET[24]-PROCESS[34]       ;磨削量累计
 
 ENDWHILE
 
 STOPRE
 
-G90 G1 Z=TOOL_SET[24]+0.5 F3000                                      ;退刀
-G90 G1 U=INI[30] F=3000                                              ;退刀
+M39                                         ;磨削冷却关
+M21	                                        ;吸雾器停止
+M27	                                        ;控制箱空调停止
+
+G90 G1 Z=TOOL_SET[24]+0.5 F3000             ;退刀
+G90 G1 U=INI[30] F=3000                     ;退刀
 
 
 RET
