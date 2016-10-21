@@ -334,8 +334,7 @@
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
 	HS8=($85005,ac7,se1);返回
-	HS4=("外磨工艺",ac7,se1);外磨工艺
-	HS5=("外磨修整",ac7,se1);外磨修整
+	HS4=("外磨修整",ac7,se1);外磨修整
 	HS6=("端面磨削",ac7,se1);端面磨削
 
 	VS1=("")
@@ -351,12 +350,8 @@
 	PRESS(HS3)
 		LM("MASK3")
 	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK19")
-	END_PRESS
 	
-	PRESS(HS5)
+	PRESS(HS4)
 		LM("MASK20")
 	END_PRESS
 	
@@ -636,7 +631,8 @@
 	HS3=($85003,ac7,se1);"修整参数"
 	HS8=($85005,ac7,se1);"返回"
 
-	VS1=("")
+	VS1=("螺纹磨削",ac7,se3)
+	VS2=("外圆磨削",ac7,se1)
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -661,7 +657,15 @@
 	PRESS(HS8)
 		EXIT
 	END_PRESS
+	
+	PRESS(VS1)
+		LM("MASK2")
+	END_PRESS
 
+	PRESS(VS2)
+		LM("MASK19")
+	END_PRESS
+	
 	CHANGE(VAR15);界面设定磨削总量计算
 		CALL("UP3")
 	END_CHANGE
@@ -3201,7 +3205,7 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK19:外磨工艺参数;;;;;;;;;;;;;;;;;;;;;;;;;
-//M(MASK19/$85026/"panel_2_0_chs.png"/)
+//M(MASK19/$85021/"panel_2_0_chs.png"/)
 
 	;DEF TECH_PAR_VAR1=(R/%TECH_PAR1///WR1////3,30,115,30)
 	;DEF TECH_GRID_VAR=(R/%TECH_GRID///WR2////115,51,360,210)
@@ -3270,10 +3274,10 @@
 	HS1=($85001,ac7,se1);"磨削参数"
 	HS2=($85002,ac7,se1);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
-	HS4=("外磨工艺",ac7,se3);"外磨工艺"
 	HS8=($85005,ac7,se1);"返回"
 
-	VS1=("")
+	VS1=("螺纹磨削",ac7,se1)
+	VS2=("外圆磨削",ac7,se3)
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -3297,6 +3301,14 @@
 
 	PRESS(HS8)
 		EXIT
+	END_PRESS
+	
+	PRESS(VS1)
+		LM("MASK2")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK19")
 	END_PRESS
 
 	CHANGE(VAR15);界面设定磨削总量计算
@@ -3536,7 +3548,7 @@
 	VS8=($85386,ac7,se1);"返回"
 
 	PRESS(VS8)
-		LM("MASK10")
+		EXIT
 	END_PRESS
 
 	CHANGE(VAR2)
