@@ -2,19 +2,24 @@ PROC SN_EXCIRCLE_GRIND DISPLOF
 ;磨削中心外圆磨削
 
 MSG("X轴/U轴回退至安全位置")
-G90 G1 X=INI[29] U=INI[30] F=2000
 
-STOPRE
+G90 G1 X=INI[29] U=INI[30] F=2000       ;X/Z轴退回安全位置
 
-G90 G1 Z=TOOL_SET[22]+0.1 F2000             ;Z轴开至右端面磨削起点外
+G90 G1 Z=TOOL_SET[24]+0.1 F1000         ;Z轴开至磨削起点
 
-G90 G1 U=PROCESS[20]+1 F1000                ;U轴开至磨削安全位置
+G90 G1 U=PROCESS[20]+1 F1000            ;U轴开至磨削接触点外位置 
 
-G4 F2
 MSG("C轴启动,外圆磨削开始")
+
 M3 S=PROCESS[29]
-G90 G1 U=PROCESS[20] F=PROCESS[24]          ;磨削开始
-G90 G1 Z=TOOL_SET[22]-INI[31] F=PROCESS[22] ;Z轴移动进给开始磨削外圆
+
+G90 G1 U=PROCESS[20] F=PROCESS[24]      ;磨削进刀 
+
+SYN_MESSAGE                             ;调用磨削信息显示
+
+G90 G1 Z=TOOL_SET[22]+1 F=PROCESS[22]   ;Z轴移动进给开始磨削外圆
+
+G90 G1 U=PROCESS[20]+1 F1000            ;U轴退刀
 
 
 RET
