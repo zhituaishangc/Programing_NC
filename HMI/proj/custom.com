@@ -630,6 +630,8 @@
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
 	HS8=($85005,ac7,se1);"返回"
+	HS4=("外磨修整",ac7,se1);外磨修整
+	HS5=("端面磨削",ac7,se1);端面磨削
 
 	VS1=("螺纹磨削",ac7,se3)
 	VS2=("外圆磨削",ac7,se1)
@@ -650,6 +652,14 @@
 		LM("MASK3")
 	END_PRESS
 
+	PRESS(HS4)
+		LM("MASK20")
+	END_PRESS
+	
+    PRESS(HS5)
+		LM("MASK21")
+	END_PRESS
+	
 	PRESS(HS7)
 		LM("MASK7")
 	END_PRESS
@@ -3496,7 +3506,7 @@
 	HS3=($85003,ac7,se1);修整参数
 	HS8=($85005,ac7,se1);返回
 	HS4=("外磨修整",ac7,se1);外磨修整
-	HS6=("端面磨削",ac7,se1);端面磨削
+	HS5=("端面磨削",ac7,se1);端面磨削
 
 	PRESS(HS1)
 		LM("MASK18")
@@ -3514,7 +3524,7 @@
 		LM("MASK20")
 	END_PRESS
 	
-    PRESS(HS6)
+    PRESS(HS5)
 		LM("MASK21")
 	END_PRESS
 	
