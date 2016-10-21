@@ -3058,6 +3058,8 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
+	HS4=("外磨修整",ac7,se1);外磨修整
+	HS6=("端面磨削",ac7,se1);端面磨削
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -3076,6 +3078,14 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+	
+	PRESS(HS4)
+		LM("MASK20")
+	END_PRESS
+	
+    PRESS(HS6)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3480,9 +3490,35 @@
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
-	VS8=($85386,ac7,se1);"返回"
+	VS1=("")
+	HS1=($85001,ac7,se3);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se1);修整参数
+	HS8=($85005,ac7,se1);返回
+	HS4=("外磨修整",ac7,se1);外磨修整
+	HS6=("端面磨削",ac7,se1);端面磨削
 
-	PRESS(VS8)
+	PRESS(HS1)
+		LM("MASK18")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3")
+	END_PRESS
+	
+	PRESS(HS4)
+		LM("MASK20")
+	END_PRESS
+	
+    PRESS(HS6)
+		LM("MASK21")
+	END_PRESS
+	
+	PRESS(HS8)
 		EXIT
 	END_PRESS
 
