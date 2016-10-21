@@ -295,6 +295,7 @@
 |PROCESS[33]||外圆磨终磨时C轴旋转速度
 |PROCESS[34]||磨削中心:左端面磨削当前接触工件位置
 |PROCESS[35]||磨削中心:左端面磨削进给量
+|PROCESS[36]||磨削中心:右端端面磨削进给速度
 |||
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
@@ -365,6 +366,10 @@
 |||
 |TECHNOLOGY[98]||磨削中心:左端面磨削已磨削次数
 |TECHNOLOGY[99]||磨削中心:左端面磨削设定磨削次数
+|||
+|TECHNOLOGY[100]||磨削中心:右端面磨削已磨削次数
+|TECHNOLOGY[101]||磨削中心:右端面磨削设定磨削次数
+|||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
