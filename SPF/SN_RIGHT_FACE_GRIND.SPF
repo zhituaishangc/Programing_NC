@@ -1,20 +1,48 @@
 PROC SN_RIGHT_FACE_GRIND DISPLOF
 ;磨削中心右端面磨削
 
-MSG("X轴/U轴回退至安全位置")
+G90 G1 X=INI[29] U=INI[30] F=2000          ;X/U轴退回安全位置
 
-G90 G1 X=INI[29] U=INI[30] F=2000                                         ;X/Z轴退回安全位置
+G90 G1 Z=TOOL_SET[22]+0.1 F2000            ;Z轴开至右端面磨削起点外
 
-G90 G1 Z=TOOL_SET[22]+0.1 F2000                                           ;Z轴开至右端面磨削起点外
+G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
 
-G90 G1 U=TOOL_SET[23] F2000                                               ;U轴开至外圆磨削起点
+MSG("C轴启动,外圆磨削开始")
 
-MSG("C轴启动，右端面磨削开始")
+M3 S=PROCESS[29]                           ;C轴启动
 
-M3 S=PROCESS[29]
+M26	                                       ;控制箱空调启动
+M20                                        ;吸雾器启动
+M38                                        ;磨削冷却开
 
-G90 G1 U=TOOL_SET[23]-PROCESS[27] Z=TOOL_SET[22]-PROCESS[26] F=PROCESS[24] ;插补法磨削右端面
- 
+TECHNOLOGY[100]=0                           ;循环计数清空
+
+WHILE TECHNOLOGY[100]<TECHNOLOGY[101]
+
+MSG("左端面磨削，当前为第"<< TECHNOLOGY[100]+1<<"次磨削，还剩"<<TECHNOLOGY[101]-1-TECHNOLOGY[100]<<"次，进给量为"<<PROCESS[26]<<"mm")
+
+G94 G90 G01 Z=TOOL_SET[22]-PROCESS[26] U=TOOL_SET[23]-PROCESS[27] F=PROCESS[36] ;Z/U插补法进刀 磨削左端面
+
+G4 F3
+
+G94 G90 G01 Z=TOOL_SET[22]-PROCESS[26]+0.1 U=TOOL_SET[23]+1 F1000    ;Z/U插补退刀 
+
+STOPRE
+
+TECHNOLOGY[100]=TECHNOLOGY[100]+1             ;磨削循环计数
+TOOL_SET[22]=TOOL_SET[22]-PROCESS[26]       ;磨削量累计
+
+ENDWHILE
+
+STOPRE
+
+M39                                         ;磨削冷却关
+M21	                                        ;吸雾器停止
+M27	                                        ;控制箱空调停止
+
+G90 G1 Z=TOOL_SET[22]+0.5 F3000             ;退刀
+G90 G1 U=INI[30] F=3000                     ;退刀
+
 
 RET
 
