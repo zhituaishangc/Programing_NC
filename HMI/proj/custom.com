@@ -3496,7 +3496,7 @@
 	HS3=($85003,ac7,se1);修整参数
 	HS8=($85005,ac7,se1);返回
 	HS4=("外磨修整",ac7,se1);外磨修整
-	HS6=("端面磨削",ac7,se1);端面磨削
+	HS5=("端面磨削",ac7,se1);端面磨削
 
 	PRESS(HS1)
 		LM("MASK18")
@@ -3514,7 +3514,7 @@
 		LM("MASK20")
 	END_PRESS
 	
-    PRESS(HS6)
+    PRESS(HS5)
 		LM("MASK21")
 	END_PRESS
 	
@@ -3590,11 +3590,37 @@
 	DEF VAR13=(R///$87023,$87023,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[37]"/130,340,120/250,340,110/);右端面Z轴初始接触位置
 	DEF VAR14=(R///$87024,$87024,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[28]"/370,340,120/460,340,110/);右端面U轴插补进给深度
 	
+	HS1=($85001,ac7,se3);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se1);修整参数
 	HS8=($85005,ac7,se1);返回
+	HS4=("外磨修整",ac7,se1);外磨修整
+	HS5=("端面磨削",ac7,se1);端面磨削
 
+	PRESS(HS1)
+		LM("MASK18")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3")
+	END_PRESS
+	
+	PRESS(HS4)
+		LM("MASK20")
+	END_PRESS
+	
+    PRESS(HS5)
+		LM("MASK21")
+	END_PRESS
+	
 	PRESS(HS8)
 		EXIT
 	END_PRESS
+
 
 //END
 
