@@ -52,48 +52,25 @@ ELSE;成型/液压
     SHAPE_VER_REAL=DRESSER[1]
 ENDIF
 
-IF PROCESS[17]==0;砂轮1
-    IF DRESSER[5]==0;新砂轮
-        IF DRESSER[11]<>0;如果粗修次数不为零按粗修进给量抬刀
-            DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[14]);新砂轮初始余量对应修整次数
-            SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[14];实际抬刀量
-        ELSE
-            DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[15])
-            SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[15]
-        ENDIF
-        IF GRIND[0]<>1;不是内螺纹
-            WHEEL[10]=WHEEL[12]-SHAPE_VER_REAL_FIX;当前左端接触位置
-            WHEEL[11]=WHEEL[13]-SHAPE_VER_REAL_FIX;当前右端接触位置
-        ELSE
-            WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
-            WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
-        ENDIF
-    ELSE
-        DRESSER[13]=0;新砂轮初始余量对应修整次数
-        WHEEL[10]=WHEEL[10];砂轮1当前左端接触位置
-        WHEEL[11]=WHEEL[11];砂轮1当前右端接触位置
-    ENDIF
-ELSE;砂轮2
-    IF DRESSER[40]==0;新砂轮
-        IF DRESSER[11]<>0;如果粗修次数不为零按粗修进给量抬刀
-            DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[14]);新砂轮初始余量对应修整次数
-            SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[14];实际抬刀量
-        ELSE
-            DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[15])
-            SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[15]
-        ENDIF
-        IF GRIND[0]<>1;不是内螺纹
-            WHEEL[20]=WHEEL[22]+SHAPE_VER_REAL_FIX;当前左端接触位置
-            WHEEL[21]=WHEEL[23]+SHAPE_VER_REAL_FIX;当前右端接触位置
-        ELSE
-            WHEEL[20]=WHEEL[22]-SHAPE_VER_REAL_FIX;当前左端接触位置
-            WHEEL[21]=WHEEL[23]-SHAPE_VER_REAL_FIX;当前右端接触位置
-        ENDIF
-    ELSE
-        DRESSER[13]=0;新砂轮初始余量对应修整次数
-        WHEEL[20]=WHEEL[20];砂轮2当前左端接触位置
-        WHEEL[21]=WHEEL[21];砂轮2当前右端接触位置
-    ENDIF
+IF DRESSER[5]==0;新砂轮
+	IF DRESSER[11]<>0;如果粗修次数不为零按粗修进给量抬刀
+		DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[14]);新砂轮初始余量对应修整次数
+		SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[14];实际抬刀量
+	ELSE
+		DRESSER[13]=ROUNDUP(SHAPE_VER_REAL/DRESSER[15])
+		SHAPE_VER_REAL_FIX=DRESSER[13]*DRESSER[15]
+	ENDIF
+	IF GRIND[0]<>1;不是内螺纹
+		WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
+		WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
+	ELSE
+		WHEEL[10]=WHEEL[12]-SHAPE_VER_REAL_FIX;当前左端接触位置
+		WHEEL[11]=WHEEL[13]-SHAPE_VER_REAL_FIX;当前右端接触位置
+	ENDIF
+ELSE
+	DRESSER[13]=0;新砂轮初始余量对应修整次数
+	WHEEL[10]=WHEEL[10];砂轮1当前左端接触位置
+	WHEEL[11]=WHEEL[11];砂轮1当前右端接触位置
 ENDIF
 
 RET
