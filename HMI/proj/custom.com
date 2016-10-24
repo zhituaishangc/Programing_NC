@@ -3500,9 +3500,8 @@
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
-	VS1=("")
-	VS2=("底面修整",ac7,se3);底面修整
-	VS3=("侧面修整",ac7,se1);侧面修整
+	VS1=("底面修整",ac7,se3);底面修整
+	VS2=("侧面修整",ac7,se1);侧面修整
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -3530,11 +3529,11 @@
 		LM("MASK21")
 	END_PRESS
 	
-	PRESS(VS2)
+	PRESS(VS1)
 		LM("MASK20")
 	END_PRESS
 	
-	PRESS(VS3)
+	PRESS(VS2)
 		LM("MASK22")
 	END_PRESS
 	
@@ -3665,9 +3664,8 @@
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
-	VS1=("")
-	VS2=("底面修整",ac7,se1);底面修整
-	VS3=("侧面修整",ac7,se3);侧面修整
+	VS1=("底面修整",ac7,se1);底面修整
+	VS2=("侧面修整",ac7,se3);侧面修整
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -3691,11 +3689,11 @@
 		LM("MASK21")
 	END_PRESS
 	
-    PRESS(VS2)
+    PRESS(VS1)
 		LM("MASK20")
 	END_PRESS
 	
-	PRESS(VS3)
+	PRESS(VS2)
 		LM("MASK22")
 	END_PRESS
 	
