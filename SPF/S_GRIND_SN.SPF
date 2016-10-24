@@ -16,17 +16,9 @@ WHILE(WORK[1]<WORK[0])
 	G90 Z=INI[6] F=600;Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
 	IF PROCESS[6]==0;根据磨削方式判断进给量
-		IF PROCESS[17]==0;砂轮1
-			X=PROCESS[4] F=PROCESS[11];X进给
-		ELSE
-			X=PROCESS[15] F=PROCESS[11];X进给
-		ENDIF
+		X=PROCESS[4] F=PROCESS[11];X进给
 	ELSE
-		IF PROCESS[17]==0;砂轮1
-			X=PROCESS[4]+PROCESS[8]/2 F=PROCESS[11];双向磨削X进给
-		ELSE
-			X=PROCESS[15]+PROCESS[8]/2 F=PROCESS[11];双向磨削X进给
-		ENDIF
+		X=PROCESS[4]+PROCESS[8]/2 F=PROCESS[11];双向磨削X进给
 	ENDIF
 	FGROUP(Z)
 	IF INI[0]==0;0右旋,1左旋
@@ -46,35 +38,19 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			IF PROCESS[17]==0;砂轮1
-				G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
-			ELSE
-				G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=500;X轴到安全位置
-			ENDIF
+			G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
 			MSG("台面到磨削起点")
 			G90 G01 Z=INI[2] F=1500;走螺旋线返回起点
 			IF $A_DBB[2]==1
@@ -98,35 +74,19 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
-				IF PROCESS[17]==0;砂轮1
-					G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
-				ELSE
-					G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=800;X轴到安全位置
-				ENDIF
+				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			IF PROCESS[17]==0;砂轮1
-				G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
-			ELSE
-				G90 G01 X=INI[10]+DRESSER[39]-$AC_DRF[X] F=500;X轴到安全位置
-			ENDIF
+			G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
 			MSG("台面到磨削起点")
 			G90 G01 Z=INI[2] F=1500;走螺旋线返回起点
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
