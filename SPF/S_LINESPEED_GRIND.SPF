@@ -5,46 +5,24 @@ DEF REAL WHEEL1_RPM;砂轮转速
 DEF REAL WHEEL2_RPM;砂轮转速
 
 IF GRIND[0]<>1;不是内螺纹
-    IF WHEEL[12]<=WHEEL[10];初始接触小于当前接触
+    IF WHEEL[12]>=WHEEL[10];初始接触大于当前接触
         DRESSER[24]=DRESSER[23]-(WHEEL[10]-WHEEL[12])*2
     ELSE
         DRESSER[24]=DRESSER[23]
     ENDIF
-    IF WHEEL[22]>=WHEEL[20];初始接触大于当前接触
-        DRESSER[38]=DRESSER[37]-(WHEEL[22]-WHEEL[20])*2
+ELSE;是内螺纹
+    IF WHEEL[12]<=WHEEL[10];初始接触小于当前接触
+        DRESSER[24]=DRESSER[23]-(WHEEL[12]-WHEEL[10])*2
     ELSE
-        DRESSER[38]=DRESSER[37]
-    ENDIF
-ELSE
-    IF PROCESS[17]==0;是砂轮1
-        IF WHEEL[12]>=WHEEL[10];初始接触大于当前接触
-            DRESSER[24]=DRESSER[23]-(WHEEL[12]-WHEEL[10])*2
-        ELSE
-            DRESSER[24]=DRESSER[23]
-        ENDIF
-    ELSE
-        IF WHEEL[22]<=WHEEL[20];初始接触小于当前接触
-            DRESSER[38]=DRESSER[37]-(WHEEL[20]-WHEEL[22])*2
-        ELSE
-            DRESSER[38]=DRESSER[37]
-        ENDIF
+        DRESSER[24]=DRESSER[23]
     ENDIF
 ENDIF
 
 WHEEL1_RPM=PROCESS[10]*60000/($PI*DRESSER[24])
-WHEEL2_RPM=PROCESS[10]*60000/($PI*DRESSER[38])
 
-IF PROCESS[17]<>0;不是砂轮1
-    R298=WHEEL2_RPM
-    G4 F0.2
-    M23;开砂轮2
-    M15;关砂轮1
-ELSE
-    R299=WHEEL1_RPM
-    G4 F0.2
-    M13;开砂轮1
-    M25;关砂轮2
-ENDIF
+R299=WHEEL1_RPM
+G4 F0.2
+M13;开砂轮1
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=1
     MSG("等待砂轮转速到位")

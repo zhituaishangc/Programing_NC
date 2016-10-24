@@ -1,44 +1,8 @@
 PROC S_CYCLE_INIT DISPLOF
-;磨削工序切换时,双砂轮初始走位
+;磨削工序开始时,砂轮初始走位
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1
     S_CYCLE_INIT_SUB
-ELSE
-    IF PROCESS[2]==1;工艺1
-        IF (TECH_TIME[1]==1)AND(TECHNOLOGY[75]<>TECHNOLOGY[74])
-            S_CYCLE_INIT_SUB
-        ENDIF
-    ELSE
-        IF PROCESS[2]==2;工艺2
-            IF TECH_TIME[1]<>0;工艺1次数不为0
-                IF (TECH_TIME[2]==1)AND(TECHNOLOGY[76]<>TECHNOLOGY[75])
-                    S_CYCLE_INIT_SUB
-                ENDIF
-            ELSE;与工艺0判断
-                IF (TECH_TIME[2]==1)AND(TECHNOLOGY[76]<>TECHNOLOGY[74])
-                    S_CYCLE_INIT_SUB
-                ENDIF
-            ENDIF
-        ELSE
-            IF PROCESS[2]==3;工艺3
-                IF TECH_TIME[2]<>0;工艺2次数不为0
-                    IF (TECH_TIME[3]==1)AND(TECHNOLOGY[77]<>TECHNOLOGY[76])
-                        S_CYCLE_INIT_SUB
-                    ENDIF
-                ELSE
-                    IF TECH_TIME[1]<>0;工艺1次数不为0
-                        IF (TECH_TIME[3]==1)AND(TECHNOLOGY[77]<>TECHNOLOGY[75])
-                            S_CYCLE_INIT_SUB
-                        ENDIF
-                    ELSE;与工艺0判断
-                        IF (TECH_TIME[3]==1)AND(TECHNOLOGY[77]<>TECHNOLOGY[74])
-                            S_CYCLE_INIT_SUB
-                        ENDIF
-                    ENDIF
-                ENDIF
-            ENDIF
-        ENDIF
-    ENDIF
 ENDIF
 
 RET
