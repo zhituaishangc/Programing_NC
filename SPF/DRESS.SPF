@@ -23,7 +23,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_DRESS_SHAPE;齿形选择
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
         GOTOF D_ENDING
@@ -44,7 +43,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_DRESS_SHAPE;齿形选择
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
         GOTOF D_ENDING
@@ -66,7 +64,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_WARE_ROLLING;滚压轮修整
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1
         GOTOF ROLLING_V_ENDING
