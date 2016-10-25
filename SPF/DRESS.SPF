@@ -9,7 +9,8 @@ ENDIF
 
 S_DRESS_START;报警及参数初始化
 
-IF DRESSER[6]==2
+IF DRESSER[6]==2;砂轮过小
+    DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
     GOTOF D_ENDING
 ENDIF
 

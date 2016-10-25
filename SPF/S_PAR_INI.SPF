@@ -2,7 +2,6 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
 DRFOF;手轮偏置清除
-INI[25]=1;退刀计算标志位置1
 
 ;新砂轮时磨削初始和当前接触
 GRIND[1]=$A_DBB[0];是否修整
@@ -25,6 +24,7 @@ ELSE
 	INI[20]=INI[17]+INI[18]/60+INI[19]/3600;计算升角值
 ENDIF
 
+;工件左右
 IF GRIND[0]==1;是内螺纹磨削
 	INI[6]=INI[2]
 	INI[7]=INI[1]
@@ -49,9 +49,9 @@ IF INI[11]==0;判断有无锥度
 ELSE
 	INI[14]=INI[12]/INI[13]
 ENDIF
-
 INI[15]=INI[3]*INI[14]/2;X方向的增量
-;-----------
+
+;参数初始化
 DRESSER[6]=0;报警标记取消
 PROCESS[3]=0;修整标记清零
 PROCESS[7]=0;当前磨削是否修整累计
@@ -60,10 +60,9 @@ TECH_TIME[1]=0;当前半粗磨次数
 TECH_TIME[2]=0;当前半精磨次数
 TECH_TIME[3]=0;当前精磨次数
 TECH_TIME[4]=0
-
+INI[25]=1;退刀计算标志位置1
 WORK[1]=0;当前磨削头数
 
-;-----------
 ;X轴初始接触赋值位置选择
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
 	PROCESS[2]=0
@@ -74,7 +73,7 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 ELSE
 	PROCESS[2]=4
 ENDIF
-;-----------
+
 ;报警判断
 IF INI[3]<=0;磨削长度<=0
 	DRESSER[6]=1;工件左端坐标>工件右端坐标
