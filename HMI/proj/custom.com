@@ -2812,6 +2812,7 @@
 			VAR16.WR=1
 			VAR17.WR=1
 			VAR18.WR=1
+			VS7.se=2;程序运行期间调整清除键不可用
 		ELSE
 			VAR0.WR=2
 			VAR1.WR=2
