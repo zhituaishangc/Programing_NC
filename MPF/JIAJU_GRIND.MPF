@@ -11,9 +11,14 @@ DRESSER[68]=0
 S_RESET_ANGLE;升角复位
 G90 G01 Z=INI[28] F2500;内螺纹时台面起始位置
 G90 G01 X=INI[10] F1500;砂轮中心与头架中心重合
-R299=25000
-G4 F0.2
-M13;砂轮1启动
+IF INI[36]==0;砂轮类型选择
+    R299=25000
+    G4 F0.2
+    M13;砂轮启动
+ELSE
+    M1=3 S1=25000
+    WAITS
+ENDIF
 G4 F5
 ;M8;内磨削冷却开
 M38;外磨削冷却开
@@ -40,8 +45,14 @@ DRESSER[68]=DRESSER[68]+1
 GOTOB CYCLE
 
 WAITP
-M15
+IF INI[36]==0;砂轮类型选择
+    M15
+ELSE
+    M1=5
+ENDIF
 M9
 M39
+G4 F1
+
 M30
 
