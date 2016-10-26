@@ -3,7 +3,6 @@
 |**需要提前手动输入**|
 |MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
 |MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
-|DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
 |||
 |**PLC_NC交换变量**|
