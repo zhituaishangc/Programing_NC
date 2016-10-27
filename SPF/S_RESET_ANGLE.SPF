@@ -3,7 +3,12 @@ PROC S_RESET_ANGLE DISPLOF
 
 IF INI[16]==1
 	IF $AA_IM[A]<>0
+		M33;液压开
+		G4 F1
 		M35;松开
+		WHILE($A_DBB[3]==0);液压开关未到位
+			G4 F0.2
+		ENDWHILE
 		G4 F1
 		MSG("螺旋升角置零中")
 		IF INI[20]>=0
@@ -17,6 +22,7 @@ IF INI[16]==1
 		G4 F0.5
 		M36;夹紧
 		G4 F1
+		M34;液压关
 	ENDIF
 ENDIF
 

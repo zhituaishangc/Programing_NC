@@ -1,7 +1,16 @@
 PROC S_DRESS_END SBLOF DISPLOF
 ;修整收尾
 
-M2=5
-WAITS(2)
+IF INI[37]==0;修整轮类型选择
+    M65
+ELSE
+    IF INI[36]==0
+        M1=5
+    ELSE
+        M2=5
+    ENDIF
+ENDIF
+G4 F0.5
+
 RET
 

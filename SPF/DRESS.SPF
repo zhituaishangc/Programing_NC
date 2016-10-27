@@ -9,7 +9,8 @@ ENDIF
 
 S_DRESS_START;报警及参数初始化
 
-IF DRESSER[6]==1
+IF DRESSER[6]==2;砂轮过小
+    DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
     GOTOF D_ENDING
 ENDIF
 
@@ -17,19 +18,22 @@ DRESSING:
 CASE DRESSER[0] OF 0 GOTOF WARE_0 1 GOTOF WARE_1 2 GOTOF WARE_2 3 GOTOF WARE_3 DEFAULT GOTOF WARE_4;修整器选择
 
 WARE_0:;V-W
+MSG("修整轮运行至起始位置")
+G90 G01 V=0 F500;修整开始前V轴到安全位置
 S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_DRESS_SHAPE;齿形选择
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
         GOTOF D_ENDING
     ENDIF
     S_DRESS_CALC;次数累积
 ENDWHILE
+MSG("修整轮运行至起始位置")
+G90 G01 V=0 F500;修整结束后V轴到安全位置
 GOTOF D_ENDING
 
 WARE_1:;X-Z
@@ -44,7 +48,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_DRESS_SHAPE;齿形选择
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
         GOTOF D_ENDING
@@ -66,7 +69,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_WARE_ROLLING;滚压轮修整
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1
         GOTOF ROLLING_V_ENDING
@@ -85,10 +87,10 @@ GOTOF D_ENDING
 WARE_4:;滚压X
 S_DRESS_SHAPE_INIT;垂直位置计算
 MSG("修整轮运行至起始位置")
-G90 G1 X=WHEEL[10]+10 F1000;多退刀一点，防止齿高过大抬刀不够
+G90 G1 X=WHEEL[10]+10 F1500;多退刀一点，防止齿高过大抬刀不够
 S_RESET_ANGLE;升角复位
 MSG("台面到位中")
-G90 G1 Z=DRESSER[21] F1500
+G90 G1 Z=DRESSER[21] F2500
 MSG("修整轮运行至修整位置")
 IF GRIND[0]<>1;不是内螺纹
     G90 G1 X=WHEEL[10]+1 F500
@@ -99,7 +101,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
     S_WARE_ROLLING;滚压轮修整
-    S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1
         GOTOF ROLLING_X_ENDING
@@ -108,7 +109,13 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
 ENDWHILE
 ROLLING_X_ENDING:
 MSG("修整轮运行至起始位置")
-G90 G1 X=WHEEL[10]+10 F1000;多退刀一点，防止齿高过大抬刀不够
+G90 G1 X=WHEEL[10]+10 F1500;多退刀一点，防止齿高过大抬刀不够
+MSG("台面离开工件中")
+IF GRIND[0]<>1;不是内螺纹
+    G90 G1 Z=INI[6] F2500
+ELSE
+    G90 G1 Z=INI[28] F2500
+ENDIF
 S_ROTATE_ANGLE;螺旋升角
 GOTOF D_ENDING
 

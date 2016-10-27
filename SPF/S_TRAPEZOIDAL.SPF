@@ -58,7 +58,7 @@ TRA_R_BOTTOM_R = TRAP[5];右下圆角半径,传递
 TRA_R_TOP_R =TRAP[7];右上圆角半径,传递
 TRA_L_BOTTOM_R=TRAP[4];左下圆角半径,传递
 TRA_L_TOP_R=TRAP[6];左上圆角半径,传递
-TRA_P=TRAP[8];螺距,传递
+TRA_P=INI[4];螺距,传递
 TRA_H1=TRAP[1];齿根高,传递
 TRA_H =TRAP[0];齿全高,传递
 TRA_R_ANG = TRAP[12];齿槽右半角实际值,传递
@@ -110,9 +110,7 @@ STOPRE
 ;参数计算
 ;---------------------------------------------
 ;
-;-----------------梯形齿砂轮修整程序-------------
-;
-G55       
+;-----------------梯形齿砂轮修整程序-------------     
 WHR =LDRES_R;滚轮半径改为左滚轮半径
 REPEAT BEGIN END;重新计算左滚轮对应的各点坐标
 TRANS AX[AX_W]=PLWS AX[AX_V]=SUML-WHR

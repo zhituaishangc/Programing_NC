@@ -11,20 +11,19 @@ PROC S_OPERATION_AUTO_SN DISPLOF
 ;INI[5]				导程
 ;INI[6]				磨削起点
 ;INI[10]			工件中心X坐标
-;INI[27]			工件大径
-;INI[28]			工件端面到反相器孔距离
+;INI[34]			工件大径
+;INI[35]			工件端面到反相器孔距离
 ;INI[29]			工件安装位置允许的最大误差(预设数据)
 ;INI[30]			工件长度
 ;INI[31]			腰型孔角度(展开图尺寸)
 ;INI[32]			腰型孔长(展开图尺寸)
 ;INI[33]			腰型孔宽(展开图尺寸)
 -----------------------------------------------
-DEF	REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19
-,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29
+DEF	REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29
 ;----------------------------------------------
-TOOL_SET[11]=INI[10]-TOOL_SET[23]-(INI[27]/2+TOOL_SET[9]);测头接触工件外圆坐标计算(从外侧测量)
+TOOL_SET[11]=INI[10]-TOOL_SET[23]-(INI[34]/2+TOOL_SET[9]);测头接触工件外圆坐标计算(从外侧测量)
 DR1=INI[6]+TOOL_SET[10];测头与工件端面距离=工件在磨削起点与砂轮磨距离，时Z坐标(DR1)
-SPOF						
+SPOF
 DRFOF;关闭DRF
 G94	G90	G53	G01	X=TOOL_SET[11]+2*TOOL_SET[9]
 G94	G90	G53	G01	Z=DR1
@@ -47,7 +46,7 @@ IF DR4>INI[29]	GOTOF ERROR2
 ;---------------测头伸向转向器孔---------------
 G94 G90 G53 G01 Z=DR1 F1000			
 G94 G90 G53 G01	X=TOOL_SET[11]-5;测头移动到距离工件外缘5mm处
-G91	G01	Z=-(DR5+INI[28]) F1000;测头走到反相器孔
+G91	G01	Z=-(DR5+INI[35]) F1000;测头走到反相器孔
 G90	G53	G01	X=TOOL_SET[11]+2*TOOL_SET[9] MEAS=1	;测头伸出
 IF $AC_MEA[1]==TRUE GOTOF ERROR3
 
@@ -100,10 +99,10 @@ GOTOF NEXT
 YXK：
 DR12=INI[32]*COS(INI[31])				;腰型孔长投影到水平向长度DR12
 DR13=INI[32]*SIN(INI[31])				;腰型孔长投影到垂直向长度DR13
-DR14=DR13/($PI*INI[27])*360				;将垂直长度转换为C轴旋转角度DR14
+DR14=DR13/($PI*INI[34])*360				;将垂直长度转换为C轴旋转角度DR14
 DR15=INI[33]*COS(INI[31])				;腰型孔宽投影到水平向长度DR15
 DR16=INI[33]*SIN(INI[31])				;腰型孔宽投影到垂直向长度DR16
-DR17=DR16/($PI*INI[27])*360				;将垂直宽度转换为C轴旋转角度DR17
+DR17=DR16/($PI*INI[34])*360				;将垂直宽度转换为C轴旋转角度DR17
 
 MSG("腰型孔测量开始,请等待测量结束！")
 ;(腰型孔宽度方向测量)
