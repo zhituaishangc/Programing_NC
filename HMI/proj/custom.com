@@ -293,7 +293,7 @@
 	DEF VAR2=(I/*0=$85014,1=$85013//$85162,$85162,,/WR1//"/NC/_N_NC_GD2_ACX/GRIND[2]"/100,10,40/140,10,50/);是否修整
 	DEF VAR3=(I/*0=$85014,1=$85013//$85163,$85163,,/WR1//"/NC/_N_NC_GD2_ACX/GRIND[3]"/195,10,40/230,10,50/);是否对刀
 	DEF VAR4=(I/*0=$85100,1=$85140//$85141,,,/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[9]"/0,0,0/270,10,70);对刀类型(首次/二次)
-	DEF VAR5=(I/*0=$85142,1=$85143//$85144,,,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[8]"/0,0,0/270,30,70);对刀方式(手动/自动)
+	DEF VAR5=(I/*0=$85142,1=$85143//$85144,,,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[8]"/0,0,0/270,10,70);对刀方式(手动/自动)
 	DEF VAR11=(I/*0=$85146,1=$85147,2=$85148/1/$85145,,,/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[20]"/0,0,0/270,50,70/);选择对刀位置
 
 	DEF VAR12=(R/-500,500//$85151,$85150,$85043,/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[12]"/215,305,165/280,305,60/);测头接触位
@@ -443,10 +443,10 @@
 
 	SUB(UP1)
 		IF VAR3.VAL==0;不对刀
-			VAR4.WR=1
-			VAR5.WR=1
+			VAR4.WR=4;首次二次
+			VAR5.WR=1;手动自动
 			IF VAR5.VAL==0
-				VAR11.WR=4
+				VAR11.WR=4;对刀位置
 				VAR12.WR=4
 				VAR13.WR=4
 				VAR15.WR=4
@@ -457,27 +457,18 @@
 				VAR15.WR=1
 			ENDIF
 		ELSE;对刀
-			VAR4.WR=2;对刀类型可选
-			IF VAR4.VAL==0;选择首次对刀
-				VAR5.WR=2;对刀方式可选
-				IF VAR5.VAL==0;选择手动对刀
-					VAR11.WR=4
-					VAR12.WR=4
-					VAR13.WR=4
-					VAR15.WR=4
-				ELSE;选择自动对刀
-					VAR11.WR=4
-					VAR12.WR=2
-					VAR13.WR=2
-					VAR15.WR=2
-				ENDIF
-			ELSE;选择二次对刀
-				VAR5.WR=1;对刀方式只能是手动
-				VAR5.VAL=0
-				VAR11.WR=4
+			VAR4.WR=4;对刀类型可选
+			VAR5.WR=2;手动自动
+			IF VAR5.VAL==0
+				VAR11.WR=4;对刀位置
 				VAR12.WR=4
 				VAR13.WR=4
 				VAR15.WR=4
+			ELSE
+				VAR11.WR=4
+				VAR12.WR=2
+				VAR13.WR=2
+				VAR15.WR=2
 			ENDIF
 		ENDIF
 	END_SUB
