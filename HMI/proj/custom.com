@@ -2293,6 +2293,7 @@
 			VAR16.WR=2
 			VAR17.WR=2
 			VAR18.WR=2
+			VS7.se=1;
 		ENDIF
 	END_CHANGE
 	
