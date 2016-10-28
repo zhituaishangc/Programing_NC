@@ -52,8 +52,13 @@ IF DRESSER[5]==0;新砂轮
         WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
         WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
     ELSE
-        WHEEL[10]=WHEEL[12]-SHAPE_VER_REAL_FIX;当前左端接触位置
-        WHEEL[11]=WHEEL[13]-SHAPE_VER_REAL_FIX;当前右端接触位置
+        IF DRESSER[37]==0;前/后修整
+            WHEEL[10]=WHEEL[12]-SHAPE_VER_REAL_FIX;当前左端接触位置
+            WHEEL[11]=WHEEL[13]-SHAPE_VER_REAL_FIX;当前右端接触位置
+        ELSE
+            WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
+            WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
+        ENDIF
     ENDIF
 ELSE;旧砂轮
     DRESSER[13]=0;新砂轮初始余量对应修整次数

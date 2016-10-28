@@ -8,8 +8,13 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
             WHEEL[10]=WHEEL[10]-DRESSER[14];当前左接触
             WHEEL[11]=WHEEL[11]-DRESSER[14];当前右接触
         ELSE
-            WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
-            WHEEL[11]=WHEEL[11]+DRESSER[14];当前右接触
+            IF DRESSER[37]==0;前/后修整
+                WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
+                WHEEL[11]=WHEEL[11]+DRESSER[14];当前右接触
+            ELSE
+                WHEEL[10]=WHEEL[10]-DRESSER[14];当前左接触
+                WHEEL[11]=WHEEL[11]-DRESSER[14];当前右接触
+            ENDIF
         ENDIF
         DRESSER[10]=DRESSER[16];修整速度赋值
     ELSE
@@ -17,8 +22,13 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
             WHEEL[10]=WHEEL[10]-DRESSER[15];当前左接触
             WHEEL[11]=WHEEL[11]-DRESSER[15];当前右接触
         ELSE
-            WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
-            WHEEL[11]=WHEEL[11]+DRESSER[15];当前右接触
+            IF DRESSER[37]==0;前/后修整
+                WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
+                WHEEL[11]=WHEEL[11]+DRESSER[15];当前右接触
+            ELSE
+                WHEEL[10]=WHEEL[10]-DRESSER[15];当前左接触
+                WHEEL[11]=WHEEL[11]-DRESSER[15];当前右接触
+            ENDIF
         ENDIF
         DRESSER[10]=DRESSER[17]
     ENDIF
@@ -34,8 +44,13 @@ ELSE
             WHEEL[10]=WHEEL[10]-DRESSER[14];当前左接触
             WHEEL[11]=WHEEL[11]-DRESSER[14];当前右接触
         ELSE
-            WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
-            WHEEL[11]=WHEEL[11]+DRESSER[14];当前右接触
+            IF DRESSER[37]==0;前/后修整
+                WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
+                WHEEL[11]=WHEEL[11]+DRESSER[14];当前右接触
+            ELSE
+                WHEEL[10]=WHEEL[10]-DRESSER[14];当前左接触
+                WHEEL[11]=WHEEL[11]-DRESSER[14];当前右接触
+            ENDIF
         ENDIF
         DRESSER[10]=DRESSER[16]
         MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成,进给量:"<<DRESSER[14]<<"mm")
@@ -46,8 +61,13 @@ ELSE
                 WHEEL[10]=WHEEL[10]-DRESSER[15];当前左接触
                 WHEEL[11]=WHEEL[11]-DRESSER[15];当前右接触
             ELSE
-                WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
-                WHEEL[11]=WHEEL[11]+DRESSER[15];当前右接触
+                IF DRESSER[37]==0;前/后修整
+                    WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
+                    WHEEL[11]=WHEEL[11]+DRESSER[15];当前右接触
+                ELSE
+                    WHEEL[10]=WHEEL[10]-DRESSER[15];当前左接触
+                    WHEEL[11]=WHEEL[11]-DRESSER[15];当前右接触
+                ENDIF
             ENDIF
             DRESSER[10]=DRESSER[17]
             MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成,进给量:"<<DRESSER[15]<<"mm")

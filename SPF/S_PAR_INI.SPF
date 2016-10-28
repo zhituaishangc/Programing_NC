@@ -11,8 +11,13 @@ IF GRIND[1]==1
 			PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
 			PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
 		ELSE
-			PROCESS[13]=PROCESS[13]+(WHEEL[10]-WHEEL[12]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
-			PROCESS[4]=PROCESS[4]+(WHEEL[10]-WHEEL[12])
+			IF DRESSER[37]==0;前/后修整
+				PROCESS[13]=PROCESS[13]+(WHEEL[10]-WHEEL[12]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+				PROCESS[4]=PROCESS[4]+(WHEEL[10]-WHEEL[12])
+			ELSE
+				PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10])
+				PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
+			ENDIF
 		ENDIF
 	ENDIF
 ENDIF
