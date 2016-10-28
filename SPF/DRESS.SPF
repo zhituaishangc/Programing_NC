@@ -35,6 +35,7 @@ GOTOF D_ENDING
 WARE_1:;X-Z
 S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS
 MSG("砂轮架回退到修整位中")
 G1 G90 X=WHEEL[10]+2 F1200;x轴回退到修整接触位+2
 S_RESET_ANGLE;升角复位
@@ -105,11 +106,7 @@ IF ((PROCESS[17]==0)AND(GRIND[1]==0))OR((GRIND[1]==1)AND(DRESSER[45]==1));砂轮
     ENDIF
     S_DRESS_SHAPE_INIT;垂直位置计算(必须放在PROCESS[17]赋值之后)
     MSG("修整轮运行至修整位置")
-    IF GRIND[0]<>1;不是内螺纹
-        G90 G1 X=WHEEL[10]+1 F500
-    ELSE
-        G90 G1 X=WHEEL[10]-1 F500
-    ENDIF
+    G90 G1 X=WHEEL[10]-1 F500
     WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
         STOPRE
         S_LINESPEED_DRESS;砂轮速度
