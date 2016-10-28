@@ -902,6 +902,7 @@
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/0,0,0/);水平轴
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);内螺纹成型X前/后
 
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);回零时砂轮与修整轮中间距
 	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触
@@ -958,7 +959,11 @@
 				IF TYPE<>1;不是内螺纹
 					LM("MASK16")
 				ELSE
-					LM("MASK17")
+					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
+						LM("MASK17")
+					ELSE
+						LM("MASK19")
+					ENDIF
 				ENDIF
 			ENDIF
 		ENDIF
@@ -1208,8 +1213,13 @@
 					VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
 					VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
 				ELSE
-					VAR33.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
-					VAR31.VAL=VAR33.VAL+VAR32.VAL;NC用初始接触
+					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
+						VAR33.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
+						VAR31.VAL=VAR33.VAL+VAR32.VAL;NC用初始接触
+					ELSE
+						VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
+						VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
+					ENDIF
 				ENDIF
 			ENDIF
 		ENDIF
@@ -2088,7 +2098,7 @@
 
 //END
 
-;;;;;;;;;;;;;;;;;;;MASK17:修整参数_滚压轮X_内;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;MASK17:修整参数_滚压轮X_内_前;;;;;;;;;;;;
 //M(Mask17/$85379/"panel_17_1_chs.png"/)
 
 	DEF VAR0=(R/0,800//$85329,$85329,,$85043/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时砂轮与修整轮中间距
@@ -2196,6 +2206,98 @@
 
 	SUB(UP2)
 		VAR12.VAL=VAR20.VAL+VAR21.VAL
+	END_SUB
+
+//END
+
+;;;;;;;;;;;;;;;;;;;MASK19:修整参数_滚压轮X_内_后;;;;;;;;;;;;
+//M(Mask19/$85379//)
+
+	DEF VAR0=(R/0,800//$85329,$85329,,$85043/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时砂轮与修整轮中间距
+
+	DEF VAR11=(R/0,80//$85332,$85332,,$85047/WR2/"panel_17_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110/);滚压轮停留时间
+
+	DEF VAR2=(R/0,50//$85330,$85330,,$85043/WR2/"panel_17_3_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[2]"/325,170,110/440,170,110/);齿高
+	DEF VAR7=(R/0,500//$85396,$85396,,$85043/WR2/"panel_17_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/325,190,110/440,190,110/);修整轮直径
+	DEF VAR8=(R/0,60//$85397,$85397,,$85046/WR2/"panel_17_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/325,210,110/440,210,110/);修整轮线速度
+	DEF VAR9=(I///$85325,$85325,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/325,230,110/440,230,110/);修整轮转速
+
+	DEF VAR1=(R/-500,500//$85331,$85331,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/325,260,130/440,260,110/);NC用初始接触
+	DEF VAR3=(R/-500,500//$85398,$85398,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/325,280,130/440,280,110/);初始接触位置
+	DEF VAR5=(R/-500,500//$85399,$85399,,$85043/WR1/"panel_17_4_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[11]"/325,300,130/440,300,110/);当前接触位置
+
+	DEF VAR10=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
+
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+
+	HS1=($85380,ac7,se2);"单滚轮"
+	HS2=($85381,ac7,se2);"双滚轮"
+	HS3=($85382,ac7,se2);"方滚轮"
+	HS4=($85379,ac7,se3);"滚压轮"
+	HS5=($85378,ac7,se2);"摆缸"
+
+	VS8=($85386,ac7,se1);"返回"
+
+	PRESS(HS1)
+		LM("MASK12")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK13")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK14")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK19")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK15")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK3")
+	END_PRESS
+
+	CHANGE(VAR0)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR2)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR3)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR7)
+		call("UP1")
+		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL);修整轮转速计算
+	END_CHANGE
+
+	CHANGE(VAR8)
+		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL);修整轮转速计算
+	END_CHANGE
+
+	CHANGE(QCHECK)
+		IF QCHECK.VAL==1
+			VAR0.WR=1
+			VAR2.WR=1
+			VAR7.WR=1
+		ELSE
+			VAR0.WR=2
+			VAR2.WR=2
+			VAR7.WR=2
+		ENDIF
+	END_CHANGE
+
+	SUB(UP1)
+		VAR3.VAL=-(VAR0.VAL-VAR7.VAL/2-VAR10.VAL/2);初始接触位
+		VAR1.VAL=VAR3.VAL-VAR2.VAL;NC用初始接触
 	END_SUB
 
 //END

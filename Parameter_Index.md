@@ -6,6 +6,7 @@
 |INI[16]|helix_angle_enable|螺旋升角使能
 |INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服)
 |INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服)
+|DRESSER[37]|N_CX_X_TYPE|内螺纹成型X前/后
 |PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
 |||
 |**PLC_NC交换变量**|
@@ -64,7 +65,7 @@
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
 |DRESSER[36]|DRESS_WHEEL_RPM|修整时砂轮转速
-|DRESSER[37]|
+|DRESSER[37]|N_CX_X_TYPE|内螺纹成型X前/后
 |DRESSER[38]|
 |DRESSER[39]|
 |DRESSER[40]|
