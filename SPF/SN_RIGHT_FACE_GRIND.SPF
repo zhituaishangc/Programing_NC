@@ -7,7 +7,7 @@ IF DRESSER[98]==1                         ;修整标记(0不修整/1修整)
 
 WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
 
-TOOL_SET[22]=TOOL_SET[22]-DRESSER[106]    ;磨削进给累积修整量
+TOOL_SET[22]=TOOL_SET[22]-(DRESSER[94]*DRESSER[96])-(DRESSER[95]*DRESSER[97])  ;磨削进给累积修整量
 
 ENDIF
 
