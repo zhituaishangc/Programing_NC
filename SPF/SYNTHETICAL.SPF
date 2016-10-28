@@ -17,6 +17,11 @@ IF GRIND[1]==1
     GOTOF G_ENDING
 ENDIF
 
+IF DRESSER[24]>DRESSER[49];当前砂轮1直径>砂轮最大磨削直径
+    DRESSER[6]=4;砂轮1过大,请将砂轮修整到小于最大磨削直径
+	GOTOF G_ENDING
+ENDIF
+
 ;外圆磨砂轮是否纯修整
 IF GRIND[4]==1
 	SYNTH_DRESS
