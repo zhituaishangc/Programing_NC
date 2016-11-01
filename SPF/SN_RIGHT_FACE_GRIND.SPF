@@ -8,7 +8,9 @@ IF DRESSER[98]==1                         ;修整标记(0不修整/1修整)
 WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
 
 TOOL_SET[22]=TOOL_SET[22]-(DRESSER[94]*DRESSER[96])-(DRESSER[95]*DRESSER[97])  ;磨削进给累积修整量
+
 PROCESS[37]=PROCESS[37]-(DRESSER[94]*DRESSER[96])-(DRESSER[95]*DRESSER[97])
+
 ENDIF
 
 G90 G1 Z=TOOL_SET[22]+0.1 F2000            ;Z轴开至右端面磨削起点外
@@ -18,8 +20,6 @@ G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
 MSG("C轴启动,外圆磨削开始")
 
 M3 S=PROCESS[29]                           ;C轴启动
-
-
 M38                                        ;磨削冷却开
 
 TECHNOLOGY[100]=0                          ;循环计数清空
@@ -39,13 +39,14 @@ STOPRE
 TECHNOLOGY[100]=TECHNOLOGY[100]+1           ;磨削循环计数
 
 PROCESS[37]=PROCESS[37]-PROCESS[26]
+
 ENDWHILE
 
 STOPRE
 
 M39                                         ;磨削冷却关
 
-G90 G1 Z=TOOL_SET[22]+0.5 F3000             ;退刀
+G90 G1 Z=PROCESS[37]+0.5 F3000             ;退刀
 
 G90 G1 U=INI[30] F=3000                     ;退刀
 
