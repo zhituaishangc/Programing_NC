@@ -5,7 +5,7 @@ G90 G1 X=INI[29] U=INI[30] F=2000          ;X/U轴退回安全位置
 G90 G1 Z=TOOL_SET[24]+0.1 F1000            ;Z轴开至磨削位置
 G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
 
-IF DRESSER[98]==1                         ;修整标记(0不修整/1修整)
+IF DRESSER[109]==1                         ;修整标记(0不修整/1修整)
 
 WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
 
