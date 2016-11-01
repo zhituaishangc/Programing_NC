@@ -47,6 +47,8 @@ G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F2000;z轴快速接近
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M8;修整&磨削冷却开
     S_DRESS_SHAPE;齿形选择
     S_DRESS_CHOICE;修整参数赋值
     IF $A_DBB[2]==1;修整中途安全结束程序
