@@ -4,7 +4,7 @@ PROC S_DRESS_CALC SBLOF DISPLOF
 IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
     DRESSER[20]=DRESSER[20]+1;次数累积
     IF DRESSER[11]<>0;抬刀部分按粗修还是精修
-        IF GRIND[0]<>1;不是内螺纹
+        IF GRIND[0]==0;是外螺纹
 			;
         ELSE;是内螺纹
             WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
@@ -12,7 +12,7 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
         ENDIF
         DRESSER[10]=DRESSER[16];修整速度赋值
     ELSE
-        IF GRIND[0]<>1;不是内螺纹
+        IF GRIND[0]==0;是外螺纹
 			;
         ELSE;是内螺纹
             WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
@@ -24,7 +24,7 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
 ELSE
     IF DRESSER[18]<DRESSER[11]
         DRESSER[18]=DRESSER[18]+1
-        IF GRIND[0]<>1;不是内螺纹
+        IF GRIND[0]==0;是外螺纹
 			;
         ELSE
             WHEEL[10]=WHEEL[10]+DRESSER[14];当前左接触
@@ -35,7 +35,7 @@ ELSE
     ELSE
         IF DRESSER[19]<DRESSER[12]
             DRESSER[19]=DRESSER[19]+1
-            IF GRIND[0]<>1;不是内螺纹
+            IF GRIND[0]==0;是外螺纹
 				;
             ELSE
                 WHEEL[10]=WHEEL[10]+DRESSER[15];当前左接触
