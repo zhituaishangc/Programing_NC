@@ -5,6 +5,16 @@ G90 G1 X=INI[29] U=INI[30] F=2000          ;X/U轴退回安全位置
 G90 G1 Z=TOOL_SET[24]+0.1 F1000            ;Z轴开至磨削位置
 G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
 
+IF DRESSER[109]==1                         ;修整标记(0不修整/1修整)
+
+WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
+
+TOOL_SET[24]=TOOL_SET[24]-(DRESSER[94]*DRESSER[96])-(DRESSER[95]*DRESSER[97])  ;磨削进给累积修整量
+
+PROCESS[34]=PROCESS[34]-(DRESSER[94]*DRESSER[96])-(DRESSER[95]*DRESSER[97])
+
+ENDIF
+
 MSG("C轴启动,外圆磨削开始")
 
 M3 S=PROCESS[29]                           ;C轴启动
@@ -17,18 +27,18 @@ TECHNOLOGY[98]=0                           ;循环计数清空
 
 WHILE TECHNOLOGY[98]<TECHNOLOGY[99]
 
-MSG("左端面磨削，当前为第"<< TECHNOLOGY[98]+1<<"次磨削，还剩"<<TECHNOLOGY[99]-1-TECHNOLOGY[98]<<"次，进给量为"<<PROCESS[34]<<"mm")
+MSG("左端面磨削，当前为第"<< TECHNOLOGY[98]+1<<"次磨削，还剩"<<TECHNOLOGY[99]-1-TECHNOLOGY[98]<<"次，进给量为"<<PROCESS[40]<<"mm")
 
-G94 G90 G01 Z=TOOL_SET[24]-PROCESS[35] U=TOOL_SET[23]+0.1 F1         ;Z/U插补法进刀 磨削左端面
+G94 G90 G01 Z=PROCESS[34]-PROCESS[40] U=TOOL_SET[23]+0.1 F1         ;Z/U插补法进刀 磨削左端面
 
 G4 F3
 
-G94 G90 G01 Z=TOOL_SET[24]-PROCESS[35]+0.1 U=TOOL_SET[23]+1 F1000    ;Z/U插补退刀 
+G94 G90 G01 Z=PROCESS[34]-PROCESS[40]+0.1 U=TOOL_SET[23]+1 F1000    ;Z/U插补退刀 
 
 STOPRE
 
 TECHNOLOGY[98]=TECHNOLOGY[98]+1             ;磨削循环计数
-TOOL_SET[24]=TOOL_SET[24]-PROCESS[35]       ;磨削量累计
+PROCESS[34]=PROCESS[34]-PROCESS[40]       ;磨削量累计
 
 ENDWHILE
 
@@ -38,7 +48,7 @@ M39                                         ;磨削冷却关
 M21	                                        ;吸雾器停止
 M27	                                        ;控制箱空调停止
 
-G90 G1 Z=TOOL_SET[24]+0.5 F3000             ;退刀
+G90 G1 Z=PROCESS[34]+0.5 F3000             ;退刀
 G90 G1 U=INI[30] F=3000                     ;退刀
 
 
