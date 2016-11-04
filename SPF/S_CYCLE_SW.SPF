@@ -9,7 +9,7 @@ WORK[1]=0
 WORK[2]=360/WORK[0]
 
 MSG("头架到位中")
-G90 G01 C=DC(TOOL_SET[4]) F=3600;C轴转到起点
+G90 G01 C=ACP(TOOL_SET[4]) F=3600;C轴转到起点
 MSG("台面到磨削起点")
 G90 G01 Z=INI[6] F=1500;Z轴到磨削起点
 MSG("砂轮到安全位置")
@@ -59,7 +59,7 @@ WHILE(WORK[1]<WORK[0])
 				GOTOF LABEL_RIGHT;需要进行修整时跳过返回到磨削起点程序段
 			ENDIF
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] C=ACP(TOOL_SET[4]) F=1500
 			LABEL_RIGHT:
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
@@ -70,7 +70,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("换头,砂轮退出工件")
 			G90 G01 X=INI[10] F=1000;换头时,X退刀,返回起点
 			MSG("换头,台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] C=ACP(TOOL_SET[4]) F=1500
 		ENDIF
 	ELSE;左旋螺纹磨削
 
@@ -100,7 +100,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("砂轮退出工件")
 			G90 G01 X=INI[10] F=1000
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] C=ACP(TOOL_SET[4]) F=1500
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
@@ -110,7 +110,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("换头,砂轮退出工件")
 			G90 G01 X=INI[10] F=1000;换头时,X退刀,返回起点
 			MSG("换头,台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] C=ACP(TOOL_SET[4]) F=1500
 		ENDIF
 	ENDIF
 	WORK[1]=WORK[1]+1;头数累加
