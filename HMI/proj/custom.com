@@ -74,7 +74,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -171,7 +171,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -469,7 +469,7 @@
 	END_PRESS
 	
     PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1366,7 +1366,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -1483,7 +1483,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(VS1)
@@ -1546,6 +1546,8 @@
 
 	;DEF TECH_PAR_VAR1=(R/%TECH_PAR1///WR1////3,30,115,30)
 	;DEF TECH_GRID_VAR=(R/%TECH_GRID///WR2////115,51,360,210)
+	
+	DEF VAR3=(R///$87011,$87011,,$85043/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[20]"/10,330,120/90,330,110/);外圆当前接触位置
 	
 	;单双磨削选择
 	;DEF VAR10=(I/*0=$85120,1=$85121//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[1]"/0,0,0/132,78,60);
@@ -1613,10 +1615,10 @@
 	HS5=("外磨修整",ac7,se1);
 	HS6=("端面外圆",ac7,se3);端面与外圆磨削
 	HS8=($85005,ac7,se1);"返回"
-	
-	VS1=("左端磨削",ac7,se1);左端面磨削
-	VS2=("右端磨削",ac7,se1);右端面磨削
-    VS3=("外圆磨削",ac7,se3);外圆磨削
+    VS1=("共用参数",ac7,se1);共用磨削参数
+	VS2=("左端磨削",ac7,se1);左端面磨削
+	VS3=("右端磨削",ac7,se1);右端面磨削
+    VS4=("外圆磨削",ac7,se3);外圆磨削
 	
 	PRESS(HS1)
 		LM("MASK1")
@@ -1639,7 +1641,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -1647,14 +1649,18 @@
 	END_PRESS
 	
 	PRESS(VS1)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(VS2)
-		LM("MASK12")
+		LM("MASK11")
 	END_PRESS
 	
 	PRESS(VS3)
+		LM("MASK12")
+	END_PRESS
+	
+	PRESS(VS4)
 		LM("MASK9")
 	END_PRESS
 		
@@ -1926,7 +1932,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
     PRESS(VS1)
@@ -1972,19 +1978,16 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK11:端面与外圆磨削参数设置;;;;;;;;;;;;;;;;
-//M(Mask11/$85029/"panel_3_4_chs.png"/)
+//M(Mask11/$85029//)
+	DEF VAR2=(R///$87025,$87025,,$85043/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[25]"/330,150,120/440,150,110/);左端面Z轴对刀位置
+	DEF VAR3=(R///$87011,$87011,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[35]"/330,50,120/435,50,110/);左端面Z轴当前接触位置
+    DEF VAR4=(R1///$87013,$87013,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[100]"/330,80,120/435,80,110/);左端面磨削设定循环计数
+	DEF VAR6=(R/0,0.1//$87014,$87014,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[41]"/330,110,120/435,110,110/);左端面磨削进给量
 
-	DEF VAR1=(R///$87010,$87010,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,50,120/435,50,110/);左端面U轴对刀位置
-	DEF VAR2=(R///$87016,$87016,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[25]"/330,70,120/435,70,110/);左端面Z轴对刀位置
-	DEF VAR3=(R///$87011,$87011,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[35]"/330,100,120/435,100,110/);左端面Z轴当前接触位置
-    DEF VAR4=(R1///$87013,$87013,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[100]"/330,130,120/435,130,110/);左端面磨削设定循环计数
-	DEF VAR5=(R1///$87015,$87015,,$85050/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[99]"/330,150,120/435,150,110/);左端面磨削循环计数
-	DEF VAR6=(R/0,0.1//$87014,$87014,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[41]"/330,170,120/435,170,110/);左端面磨削进给量
-
-	DEF VAR7=(R///$87012,$87012,,$85059/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[40]"/330,230,120/435,230,110/);C轴转速
-	DEF VAR8=(R///$85215,$85215,,$85045/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[36]"/330,250,120/435,250,110/);左端面磨削速度
+	DEF VAR7=(R///$87012,$87012,,$85059/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[40]"/330,140,120/435,140,110/);C轴转速
+	DEF VAR8=(R///$85215,$85215,,$85045/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[36]"/330,170,120/435,170,110/);左端面磨削速度
     DEF VAR9=(R///$87022,$87022,,$85043/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[105]"/70,10,150/200,10,110/);磨削量累计
-    DEF VAR10=(R1/0,80//$85317,$85317,,$85046/WR2/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[103]"/330,300,110/435,300,110/);砂轮线速度
+    DEF VAR10=(R1/0,80//$85317,$85317,,$85046/WR4/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[103]"/330,300,110/435,300,110/);砂轮线速度
 	
 	HS1=("工件选项",ac7,se1);工件选项
 	HS2=($85001,ac7,se1);磨削参数
@@ -1993,9 +1996,10 @@
 
 	HS5=("外磨修整",ac7,se1);外磨修整
 	HS6=("端面外圆",ac7,se3);端面与外圆磨削
-	VS1=("左端磨削",ac7,se3);左端面磨削
-	VS2=("右端磨削",ac7,se1);右端面磨削
-	VS3=("外圆磨削",ac7,se1);外圆磨削
+	VS1=("共用参数",ac7,se1);共用磨削参数
+	VS2=("左端磨削",ac7,se3);左端面磨削
+	VS3=("右端磨削",ac7,se1);右端面磨削
+	VS4=("外圆磨削",ac7,se1);外圆磨削
 
     HS8=($85005,ac7,se1);返回
 
@@ -2019,15 +2023,23 @@
 		LM("MASK8")
 	END_PRESS
 	
+	PRESS(HS6)
+		LM("MASK13")
+	END_PRESS
+	
 	PRESS(VS1)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(VS2)
-		LM("MASK12")
+		LM("MASK11")
 	END_PRESS
 	
 	PRESS(VS3)
+		LM("MASK12")
+	END_PRESS
+	
+	PRESS(VS4)
 		LM("MASK9")
 	END_PRESS
 	
@@ -2042,19 +2054,18 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK12:右端面磨削参数设置;;;;;;;;;;;;;;
-//M(Mask12/$85030/"panel_3_4_chs.png"/)
-
-	DEF VAR1=(R///$87010,$87010,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,50,120/435,50,110/);U轴对刀位置
-	DEF VAR2=(R///$87025,$87025,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/330,70,120/435,70,110/);右端面Z轴对刀位置
-	DEF VAR3=(R///$87011,$87011,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[38]"/330,100,120/435,100,110/);右端面Z轴当前接触位置
-    DEF VAR4=(R1///$87013,$87013,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[102]"/330,130,120/435,130,110/);右端面磨削设定循环计数
-	DEF VAR5=(R1///$87015,$87015,,$85050/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[101]"/330,150,120/435,150,110/);右端面磨削循环计数
-	DEF VAR6=(R/0,0.1//$87014,$87014,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[27]"/330,170,120/435,170,110/);右端面磨削进给量
-    DEF VAR7=(R///$87017,$87017,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[28]"/330,200,120/435,200,110/);右端面U轴插补进给深度
-	DEF VAR8=(R///$87012,$87012,,$85059/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[39]"/330,230,120/435,230,110/);C轴转速
-	DEF VAR9=(R///$85215,$85215,,$85045/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[37]"/330,250,120/435,250,110/);右端面磨削速度
+//M(Mask12/$85030//)
+	
+	DEF VAR2=(R///$87025,$87025,,$85043/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/330,150,120/440,150,110/);右端面Z轴对刀位置
+	DEF VAR3=(R///$87011,$87011,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[38]"/330,50,120/435,50,110/);右端面Z轴当前接触位置
+    DEF VAR4=(R1///$87013,$87013,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[102]"/330,80,120/435,80,110/);右端面磨削设定循环计数
+	
+	DEF VAR6=(R/0,0.1//$87014,$87014,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[27]"/330,110,120/435,110,110/);右端面磨削进给量
+    DEF VAR7=(R///$87017,$87017,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[28]"/330,140,120/435,140,110/);右端面U轴插补进给深度
+	DEF VAR8=(R///$87012,$87012,,$85059/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[39]"/330,170,120/435,170,110/);C轴转速
+	DEF VAR9=(R///$85215,$85215,,$85045/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[37]"/330,200,120/435,200,110/);右端面磨削速度
     DEF VAR10=(R///$87022,$87022,,$85043/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[104]"/70,10,150/200,10,110/);右端面累计磨削量
-    DEF VAR11=(R1/0,80//$85317,$85317,,$85046/WR2/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[103]"/330,300,110/435,300,110/);砂轮线速度
+    DEF VAR11=(R1/0,80//$85317,$85317,,$85046/WR4/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[103]"/330,300,110/435,300,110/);砂轮线速度
 	
     HS1=("工件选项",ac7,se1);工件选项
 	HS2=($85001,ac7,se1);磨削参数
@@ -2062,10 +2073,10 @@
 	HS4=($85003,ac7,se1);修整参数
 	HS5=("外磨修整",ac7,se1);外磨修整
 	HS6=("端面外圆",ac7,se3);端面与外圆磨削
-	
-	VS1=("左端磨削",ac7,se1);左端面磨削
-	VS2=("右端磨削",ac7,se3);右端面磨削
-    VS3=("外圆磨削",ac7,se1);外圆磨削	
+	VS1=("共用参数",ac7,se1);共用磨削参数
+	VS2=("左端磨削",ac7,se1);左端面磨削
+	VS3=("右端磨削",ac7,se3);右端面磨削
+    VS4=("外圆磨削",ac7,se1);外圆磨削	
 	
 	HS8=($85005,ac7,se1);返回
 
@@ -2090,18 +2101,22 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(VS1)
-		LM("MASK11")
+		LM("MASK13")
 	END_PRESS
 	
 	PRESS(VS2)
-		LM("MASK12")
+		LM("MASK11")
 	END_PRESS
 	
 	PRESS(VS3)
+		LM("MASK12")
+	END_PRESS
+	
+	PRESS(VS4)
 		LM("MASK9")
 	END_PRESS
 	
@@ -2114,4 +2129,76 @@
 	END_CHANGE
 
 
+//END
+
+;;;;;;;;;;;;;;;;;;;MASK13:公共磨削参数设置;;;;;;;;;;;;;;
+//M(Mask13/$85038//)
+
+    DEF VAR0=(R///$87026,$87026,,$85043/WR2//"/NC/_N_NC_GD2_ACX/INI[30]"/330,30,120/440,30,110/);X轴安全位置
+	
+	DEF VAR1=(R///$87027,$87027,,$85043/WR2//"/NC/_N_NC_GD2_ACX/INI[31]"/330,50,120/440,50,110/);U轴安全位置
+	
+	DEF VAR2=(R///$87010,$87010,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,90,120/440,90,110/);U轴对刀位置
+	
+    DEF VAR3=(R///$87016,$87016,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[25]"/330,120,120/440,120,110/);左端面Z轴对刀位置
+    
+	DEF VAR4=(R///$87025,$87025,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/330,150,120/440,150,110/);右端面Z轴对刀位置
+	
+    HS1=("工件选项",ac7,se1);工件选项
+	HS2=($85001,ac7,se1);磨削参数
+	HS3=($85002,ac7,se1);工艺参数
+	HS4=($85003,ac7,se1);修整参数
+	HS5=("外磨修整",ac7,se1);外磨修整
+	HS6=("端面外圆",ac7,se3);端面与外圆磨削
+    VS1=("共用参数",ac7,se3);共用磨削参数
+	VS2=("左端磨削",ac7,se1);左端面磨削
+	VS3=("右端磨削",ac7,se1);右端面磨削
+    VS4=("外圆磨削",ac7,se1);外圆磨削	
+	
+	HS8=($85005,ac7,se1);返回
+
+	PRESS(HS1)
+		LM("MASK1")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3")
+	END_PRESS
+	
+	PRESS(HS4)
+		LM("MASK4")
+	END_PRESS
+	
+    PRESS(HS5)
+		LM("MASK8")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK13")
+	END_PRESS
+	
+	PRESS(VS1)
+		LM("MASK13")
+	END_PRESS
+	
+	PRESS(VS2)
+		LM("MASK11")
+	END_PRESS
+	
+	PRESS(VS3)
+		LM("MASK12")
+	END_PRESS
+	
+	PRESS(VS4)
+		LM("MASK9")
+	END_PRESS
+	
+	PRESS(HS8)
+		LM("MASK11")
+	END_PRESS
+    
 //END
