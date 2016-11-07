@@ -1,8 +1,6 @@
 PROC SN_EXCIRCLE_GRIND DISPLOF
 ;磨削中心外圆磨削
 
-MSG("X轴/U轴回退至安全位置")
-
 G90 G1 U=PROCESS[20]+5 F=1000       ;X/Z轴退回安全位置
 
 G90 G1 Z=TOOL_SET[24]+0.1 F1000         ;Z轴开至磨削起点
@@ -20,7 +18,7 @@ SYN_MESSAGE                             ;调用磨削信息显示
 G90 G1 Z=TOOL_SET[22]+1 F=PROCESS[22]   ;Z轴移动进给开始磨削外圆
 
 G90 G1 U=PROCESS[20]+1 F1000            ;U轴退刀
-
+STOPRE
 
 RET
 
