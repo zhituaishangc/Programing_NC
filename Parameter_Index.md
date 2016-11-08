@@ -410,6 +410,8 @@
 |TECHNOLOGY[103]||磨削中心:右端面磨削量累计
 |||
 |TECHNOLOGY[104]||磨削中心:左端面磨削量累计
+|TECHNOLOGY[105]||磨削中心:右端面磨削中修整次数
+|TECHNOLOGY[106]||磨削中心:左端面磨削中修整次数
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
