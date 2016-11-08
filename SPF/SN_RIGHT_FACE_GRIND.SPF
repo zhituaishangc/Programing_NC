@@ -3,32 +3,21 @@ PROC SN_RIGHT_FACE_GRIND DISPLON
 
 G90 G1 X=INI[29] U=INI[30] F=2000         ;X/U轴退回安全位置
 
-IF DRESSER[98]==1                         ;修整标记(0不修整/1修整)
-
-WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
-
-TOOL_SET[22]=TOOL_SET[22]-(DRESSER[104]*DRESSER[96])-(DRESSER[105]-1)*DRESSER[97]  ;磨削进给累积修整量
-
-PROCESS[37]=PROCESS[37]-(DRESSER[104]*DRESSER[96])-(DRESSER[105]-1)*DRESSER[97]
-
-ENDIF
-
-G90 G1 Z=PROCESS[37]+0.1 F2000            ;Z轴开至右端面磨削起点外
-
-G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
-
 MSG("C轴启动,外圆磨削开始")
 
 M3 S=PROCESS[29]                           ;C轴启动
 M38                                        ;磨削冷却开
 
 TECHNOLOGY[100]=0                          ;循环计数清空
-
+DRESSER[98]=0
 WHILE TECHNOLOGY[100]<=TECHNOLOGY[101]
+G90 G1 Z=PROCESS[37]+0.1 F2000            ;Z轴开至右端面磨削起点外
+G90 G1 U=TOOL_SET[23]+1 F2000              ;U轴开至磨削位置
 
 MSG("右端面磨削，当前为第"<< TECHNOLOGY[100]<<"次磨削，还剩"<<TECHNOLOGY[101]-TECHNOLOGY[100]<<"次，进给量为"<<PROCESS[26]<<"mm")
 IF TECHNOLOGY[100]<>0
 	G94 G90 G01 Z=PROCESS[37] U=TOOL_SET[23]-PROCESS[27] F=PROCESS[36] ;Z/U插补法进刀 磨削左端面
+	DRESSER[98]=DRESSER[98]+1
 ENDIF
 G4 F3
 
@@ -39,6 +28,12 @@ STOPRE
 TECHNOLOGY[100]=TECHNOLOGY[100]+1           ;磨削循环计数
 IF TECHNOLOGY[100]<=TECHNOLOGY[101]
 	PROCESS[37]=PROCESS[37]-PROCESS[26]
+ENDIF
+;磨削中修整相关
+IF DRESSER[98]==TECHNOLOGY[105] AND TECHNOLOGY[105]<>0
+	WHEEL_SIDE_DRESS                          ;调用侧面修整子程序
+	TOOL_SET[22]=TOOL_SET[22]-(DRESSER[104]*DRESSER[96])-(DRESSER[105]-1)*DRESSER[97]  ;磨削进给累积修整量
+	PROCESS[37]=PROCESS[37]-(DRESSER[104]*DRESSER[96])-(DRESSER[105]-1)*DRESSER[97]
 ENDIF
 ENDWHILE
 
