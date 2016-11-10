@@ -12,6 +12,8 @@ IF GRIND[1]==1
     M20;吸雾开
     M28;修整冷却开
     DRESS;修整
+    M29;修整冷却关
+    S_DRESS_EDGE;砂轮边沿修型
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
     GOTOF G_ENDING
@@ -23,12 +25,8 @@ GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
     M20;吸雾开
     ;M8;磨削冷却开
+    TOOL_SET[8]=0;改为首次对刀
     OPERATION;对刀
-    IF TOOL_SET[8]==0;首次对刀
-        PROCESS[13]=TOOL_SET[3];初始磨削进刀位赋值
-        PROCESS[4]=PROCESS[13];当前等于初始
-        TOOL_SET[8]=1;改为二次对刀
-    ENDIF
     GOTOF G_ENDING
 ENDIF
 
