@@ -162,6 +162,9 @@
 |TOOL_SET[25]|耳朵端面是否测量(1=不测量,0=测量)
 |TOOL_SET[26]|自动对刀完成标志(1=完成,0=未完成)
 |TOOL_SET[27]|自动对刀完成Z轴退刀位置(1=完成,0=未完成)
+|TOOL_SET[28]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
+|TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
+|TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
