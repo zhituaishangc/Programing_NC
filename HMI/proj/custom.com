@@ -956,7 +956,7 @@
 			LM("MASK11")
 		ELSE
 			IF VAR1.VAL==4
-				IF TYPE<>1;不是内螺纹
+				IF TYPE.VAL<>1;不是内螺纹
 					LM("MASK16")
 				ELSE
 					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
@@ -1209,7 +1209,7 @@
 			VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
 		ELSE
 			IF VAR1.VAL==4;成型X
-				IF TYPE<>1;不是内螺纹
+				IF TYPE.VAL<>1;不是内螺纹
 					VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
 					VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
 				ELSE
