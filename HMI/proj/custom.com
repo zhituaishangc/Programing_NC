@@ -956,7 +956,7 @@
 			LM("MASK11")
 		ELSE
 			IF VAR1.VAL==4
-				IF TYPE<>1;不是内螺纹
+				IF TYPE.VAL<>1;不是内螺纹
 					LM("MASK16")
 				ELSE
 					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
@@ -1209,7 +1209,7 @@
 			VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
 		ELSE
 			IF VAR1.VAL==4;成型X
-				IF TYPE<>1;不是内螺纹
+				IF TYPE.VAL<>1;不是内螺纹
 					VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
 					VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
 				ELSE
@@ -3143,6 +3143,8 @@
 
 	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/50,10,20/);垂直轴
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/50,25,20/);水平轴
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
