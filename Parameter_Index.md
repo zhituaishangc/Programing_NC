@@ -132,6 +132,7 @@
 |INI[37]|DWHEEL_TYPE|修整轮类型选择
 |INI[38|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
+|INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
