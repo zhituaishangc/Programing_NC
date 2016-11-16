@@ -29,8 +29,12 @@ IF PROCESS[3]==1
     IF DRESSER[6]==2;砂轮过小
         RET
     ENDIF
+    MSG("台面到磨削起点")
+    G90 G01 Z=INI[6] F=2000;Z轴到磨削起点
     IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);不是最后一次
         M8;磨削冷却开
+        MSG("砂轮到安全位置")
+        G90 G01 X=INI[10] F=1500;X轴到安全位置
     ENDIF
 ENDIF
 
