@@ -22,7 +22,7 @@ namespace 界面自动拼接
 		bool shape=true;
 		string grindType;
 		string dressType;
-		string wheelType;
+		string wheelType="6666";
 		public MainForm()
 		{
 			//
@@ -277,7 +277,7 @@ namespace 界面自动拼接
 							int ind=oneLineStr.IndexOf(WheelStr[i]);
 							if(ind!=-1)
 							{
-								oneLineStr=";"+oneLineStr;
+								oneLineStr="	;"+oneLineStr.Trim();
 							}
 						}
 						
@@ -288,7 +288,7 @@ namespace 界面自动拼接
 						for(int i=0;i<3;i++)
 						{
 							int ind=oneLineStr.IndexOf(shapeStr[i]);
-							if(ind!=-1) oneLineStr=";"+oneLineStr;
+							if(ind!=-1) oneLineStr="	;"+oneLineStr.Trim();
 						}
 					}
 					//以上循环齿形按键是否显示
