@@ -22,7 +22,7 @@ namespace 界面自动拼接
 		bool shape=true;
 		string grindType;
 		string dressType;
-		string wheelType;
+		string wheelType="6666";
 		public MainForm()
 		{
 			//
