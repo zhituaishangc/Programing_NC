@@ -16,12 +16,10 @@ ENDIF
 
 IF PROCESS[3]==1
     M9;磨削冷却关
-    M28;修整冷却开
     DRESS;修整
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始X轴位置累积
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前X轴位置累积
     PROCESS[3]=0;修整标记清零
-    M29;修整冷却关
     IF DRESSER[6]==2;砂轮过小
         RET
     ENDIF
