@@ -18,13 +18,18 @@ DRESSING:
 CASE DRESSER[0] OF 0 GOTOF WARE_0 1 GOTOF WARE_1 2 GOTOF WARE_2 3 GOTOF WARE_3 DEFAULT GOTOF WARE_4;修整器选择
 
 WARE_0:;V-W
-MSG("修整轮运行至起始位置")
-G90 G01 V=0 F500;修整开始前V轴到安全位置
 S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
+MSG("垂直初始位")
+G90 G01 V=0 F500;修整开始前V轴到安全位置
+MSG("水平初始位")
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F500
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
     S_DRESS_SHAPE;齿形选择
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
@@ -32,13 +37,17 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     ENDIF
     S_DRESS_CALC;次数累积
 ENDWHILE
-MSG("修整轮运行至起始位置")
+M29;修整冷却关
+MSG("水平初始位")
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F500
+MSG("垂直初始位")
 G90 G01 V=0 F500;修整结束后V轴到安全位置
 GOTOF D_ENDING
 
 WARE_1:;X-Z
 S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
 MSG("砂轮架回退到修整位中")
 G1 G90 X=WHEEL[10]+2 F1200;x轴回退到修整接触位+2
 S_RESET_ANGLE;升角复位
@@ -47,6 +56,8 @@ G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F2000;z轴快速接近
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
     S_DRESS_SHAPE;齿形选择
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
@@ -54,13 +65,17 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     ENDIF
     S_DRESS_CALC;次数累积
 ENDWHILE
-MSG("砂轮架回退到修整位中")
+M29;修整冷却关
+MSG("砂轮架离开中")
 G1 G90 X=WHEEL[10]+2 F1200;x轴回退到修整接触位+2
+MSG("台面离开中")
+G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F2000;z轴快速接近
 S_ROTATE_ANGLE;螺旋升角
 GOTOF D_ENDING
 
 WARE_2:;滚压V
 S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
 MSG("修整轮运行至起始位置")
 G90 G1 V=0 F500
 MSG("修整轮运行至修整位置")
@@ -68,6 +83,8 @@ G90 G1 V=WHEEL[10]+1
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
     S_WARE_ROLLING;滚压轮修整
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1
@@ -75,6 +92,7 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     ENDIF
     S_DRESS_CALC;次数累积
 ENDWHILE
+M29;修整冷却关
 ROLLING_V_ENDING:
 MSG("修整轮运行至起始位置")
 G90 G1 V=0 F500
@@ -86,6 +104,7 @@ GOTOF D_ENDING
 
 WARE_4:;滚压X
 S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
 MSG("修整轮运行至起始位置")
 IF GRIND[0]<>1;不是内螺纹
     G90 G1 X=WHEEL[10]+10 F1500;多退刀一点，防止齿高过大抬刀不够
@@ -114,6 +133,8 @@ ENDIF
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
     S_WARE_ROLLING;滚压轮修整
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1
@@ -121,6 +142,7 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     ENDIF
     S_DRESS_CALC;次数累积
 ENDWHILE
+M29;修整冷却关
 ROLLING_X_ENDING:
 MSG("修整轮运行至起始位置")
 IF GRIND[0]<>1;不是内螺纹
