@@ -7,7 +7,7 @@
 	VS1=($85006,ac7,se1) 
 
 	PRESS(HS7)
-		LM("MASK18");磨削界面加载
+		LM("MASK1");磨削界面加载
 	END_PRESS
 
 	PRESS(VS1)

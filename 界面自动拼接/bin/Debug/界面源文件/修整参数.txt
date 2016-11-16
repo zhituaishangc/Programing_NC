@@ -1,0 +1,369 @@
+;;;;;;;;;;;;;;;;;;;MASK3:修整参数;;;;;;;;;;;;;;;;;;;;;;;;;
+//M(Mask3/$85022/"panel_3_4_chs.png"/)
+
+	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/110,10,110/200,10,110/);累计修整量
+
+	DEF VAR1=(I/*0=$85344,1=$85345,2=$85346,3=$85347,4=$85348/0/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器V_W
+	DEF VAR1=(I/*0=$85344,1=$85345,2=$85346,3=$85347,4=$85348/1/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器X_Z
+	DEF VAR1=(I/*0=$85344,1=$85345,2=$85346,3=$85347,4=$85348/2/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器成型V
+	DEF VAR1=(I/*0=$85344,1=$85345,2=$85346,3=$85347,4=$85348/3/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器摆缸
+	DEF VAR1=(I/*0=$85344,1=$85345,2=$85346,3=$85347,4=$85348/4/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器成型X
+
+	DEF VAR2=(I/*0=$85380,1=$85381,2=$85382/0/$85388,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型:单滚轮
+	DEF VAR2=(I/*0=$85380,1=$85381,2=$85382/1/$85388,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型:双滚轮
+	DEF VAR2=(I/*0=$85380,1=$85381,2=$85382/2/$85388,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型:方滚轮
+	
+	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形
+
+	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
+	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
+
+	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60/);砂轮状态
+
+	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60/);粗修次数
+	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110/);粗修量
+	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110/);粗修速度
+
+	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,130,110/440,130,60/);精修次数
+	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,150,110/440,150,110/);精修量
+	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,170,110/440,170,110/);精修速度
+
+	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/330,200,110/440,200,110/);砂轮宽度
+	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/330,220,110/440,220,110/);新砂轮直径
+	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/330,240,110/440,240,110/);砂轮当前直径
+	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR2/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,260,110/440,260,110/);砂轮线速度
+	DEF VAR16=(I///$85221,$85221,,$85044/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,280,110/440,280,110/);修整时砂轮转速
+
+	DEF WHEEL_W_MIN=(R/0,1000//$85810,$85810,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);砂轮最小直径
+	DEF WHEEL_W_MAX=(R/0,1000//$85811,$85811,,$85043/WR4/"panel_3_11_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);砂轮最大磨削直径
+	DEF WHEEL_N_MIN=(R/0,1000//$85810,$85810,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);砂轮最小直径
+	DEF WHEEL_N_MAX=(R/0,1000//$85811,$85811,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);砂轮最大磨削直径
+
+	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/0,0,0/);垂直轴
+	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/0,0,0/);水平轴
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);内螺纹成型X前/后
+
+	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);回零时砂轮与修整轮中间距
+	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触
+	DEF VAR32=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/0,0,0/0,0,0/);齿高
+	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
+	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
+
+	HS1=($85380,ac7,se2);"单滚轮"
+	HS2=($85381,ac7,se2);"双滚轮"
+	HS3=($85382,ac7,se2);"方滚轮"
+	HS4=($85379,ac7,se2);"滚压轮"
+	HS5=($85378,ac7,se2);"摆缸"
+
+	VS1=($85383,ac7,se1);"三角"
+	VS2=($85384,ac7,se1);"梯形"
+	VS3=($85385,ac7,se1);"双圆弧"
+	VS8=($85386,ac7,se1);"返回"
+
+	PRESS(HS1)
+		IF VAR1.VAL==0
+			LM("MASK4")
+		ELSE
+			IF VAR1.VAL==1
+				LM("MASK12")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		IF VAR1.VAL==0
+			LM("MASK5")
+		ELSE
+			IF VAR1.VAL==1
+				LM("MASK13")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		IF VAR1.VAL==0
+			LM("MASK6")
+		ELSE
+			IF VAR1.VAL==1
+				LM("MASK14")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS4)
+		IF VAR1.VAL==2
+			LM("MASK11")
+		ELSE
+			IF VAR1.VAL==4
+				IF TYPE.VAL<>1;不是内螺纹
+					LM("MASK16")
+				ELSE
+					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
+						LM("MASK17")
+					ELSE
+						LM("MASK19")
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK15")
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK7")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK8")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK9")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK10")
+	END_PRESS
+
+	CHANGE(VAR1)
+		call("UP2")
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(VAR2)
+		call("UP2")
+	END_CHANGE
+
+	CHANGE(VAR13)
+		call("UP5")
+	END_CHANGE
+
+	CHANGE(VAR4)
+			IF VAR4.VAL==0
+				VAR14.VAL=VAR13.VAL
+			ENDIF
+	END_CHANGE
+
+	CHANGE(VAR14)
+		VAR0.VAL=(VAR13.VAL-VAR14.VAL)/2;累计修整量计算
+		VAR16.VAL=VAR15.VAL*60000/(PI*VAR14.VAL);修整时砂轮转速计算
+	END_CHANGE
+	
+	CHANGE(VAR15)
+		VAR16.VAL=VAR15.VAL*60000/(PI*VAR14.VAL);修整时砂轮转速计算
+	END_CHANGE
+
+	CHANGE(QCHECK)
+		call("UP2")
+	END_CHANGE
+
+	SUB(UP1)
+		IF VAR2.VAL==0
+			HS1.se=1
+			HS2.se=2
+			HS3.se=2
+		ELSE
+			IF VAR2.VAL==1
+				HS1.se=2
+				HS2.se=1
+				HS3.se=2
+			ELSE
+				IF VAR2.VAL==2
+					HS1.se=2
+					HS2.se=2
+					HS3.se=1
+				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP2)
+		call("UP4")
+		IF VAR1.VAL==0
+			ROLLING_1.WR=4
+			HY_1.WR=4
+			HS4.se=2
+			HS5.se=2
+			VS1.se=1
+			VS2.se=1
+			VS3.se=1
+			call("UP1")
+			IF QCHECK.VAL==0
+				VAR2.WR=1
+				VAR3.WR=2
+				VAR12.WR=2
+			ELSE
+				VAR2.WR=1
+				VAR3.WR=1
+				VAR12.WR=1
+			ENDIF
+		ELSE
+			IF VAR1.VAL==1
+				ROLLING_1.WR=4
+				HY_1.WR=4
+				HS4.se=2
+				HS5.se=2
+				VS1.se=1
+				VS2.se=1
+				VS3.se=1
+				call("UP1")
+				IF QCHECK.VAL==0
+					VAR2.WR=1
+					VAR3.WR=2
+					VAR12.WR=2
+				ELSE
+					VAR2.WR=1
+					VAR3.WR=1
+					VAR12.WR=1
+				ENDIF
+			ELSE
+				IF VAR1.VAL==2
+					VAR2.WR=4
+					VAR3.WR=4
+					VAR12.WR=4
+					ROLLING_1.WR=1
+					HY_1.WR=4
+					HS4.se=1
+					HS5.se=2
+					HS1.se=2
+					HS2.se=2
+					HS3.se=2
+					VS1.se=2
+					VS2.se=2
+					VS3.se=2
+				ELSE
+					IF VAR1.VAL==3
+						VAR2.WR=4
+						VAR3.WR=4
+						VAR12.WR=4
+						ROLLING_1.WR=4
+						HY_1.WR=1
+						HS4.se=2
+						HS5.se=1
+						HS1.se=2
+						HS2.se=2
+						HS3.se=2
+						VS1.se=2
+						VS2.se=2
+						VS3.se=2
+					ELSE
+						IF VAR1.VAL==4
+							VAR2.WR=4
+							VAR3.WR=4
+							VAR12.WR=4
+							ROLLING_1.WR=1
+							HY_1.WR=4
+							HS4.se=1
+							HS5.se=2
+							HS1.se=2
+							HS2.se=2
+							HS3.se=2
+							VS1.se=2
+							VS2.se=2
+							VS3.se=2
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP3)
+		IF VAR1.VAL==0
+			VAR20.VAL="V"
+			VAR21.VAL="W"
+		ELSE
+			IF VAR1.VAL==1
+				VAR20.VAL="X"
+				VAR21.VAL="Z"
+			ELSE
+				IF VAR1.VAL==2
+					VAR20.VAL="V"
+					VAR21.VAL=""
+				ELSE
+					IF VAR1.VAL==3
+						VAR20.VAL="V"
+						VAR21.VAL=""
+					ELSE
+						IF VAR1.VAL==4
+							VAR20.VAL="X"
+							VAR21.VAL=""
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP4)
+		IF QCHECK.VAL==1
+			VAR4.WR=1
+			VAR5.WR=1
+			VAR6.WR=1
+			VAR7.WR=1
+			VAR8.WR=1
+			VAR9.WR=1
+			VAR10.WR=1
+			VAR13.WR=1
+			IF TYPE.VAL<>1;不是内螺纹
+				WHEEL_W_MIN.WR=1
+				WHEEL_W_MAX.WR=1
+				WHEEL_N_MIN.WR=4
+				WHEEL_N_MAX.WR=4
+			ELSE
+				WHEEL_W_MIN.WR=4
+				WHEEL_W_MAX.WR=4
+				WHEEL_N_MIN.WR=1
+				WHEEL_N_MAX.WR=1
+			ENDIF
+		ELSE
+			VAR4.WR=2
+			VAR5.WR=2
+			VAR6.WR=2
+			VAR7.WR=2
+			VAR8.WR=2
+			VAR9.WR=2
+			VAR10.WR=2
+			VAR13.WR=2
+			IF TYPE.VAL<>1;不是内螺纹
+				WHEEL_W_MIN.WR=2
+				WHEEL_W_MAX.WR=2
+				WHEEL_N_MIN.WR=4
+				WHEEL_N_MAX.WR=4
+			ELSE
+				WHEEL_W_MIN.WR=4
+				WHEEL_W_MAX.WR=4
+				WHEEL_N_MIN.WR=2
+				WHEEL_N_MAX.WR=2
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP5)
+		IF VAR1.VAL==2;成型V
+			VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
+			VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
+		ELSE
+			IF VAR1.VAL==4;成型X
+				IF TYPE.VAL<>1;不是内螺纹
+					VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
+					VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
+				ELSE
+					IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
+						VAR33.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
+						VAR31.VAL=VAR33.VAL+VAR32.VAL;NC用初始接触
+					ELSE
+						VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
+						VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+//END
