@@ -1,3 +1,5 @@
+#
+
 |数组|全局变量|意义
 |:----:|:----:|:----:|
 |**需要提前手动输入**|
@@ -353,4 +355,3 @@
 |TECH_DRESS_TIME[3]|TECH_DRESS_TIME_F|精磨修整次数
 |TECH_DRESS_TIME[4]|TECH_DRESS_TIME_DIY|DIY修整次数
 |TECH_DRESS_TIME[5]|TECH_DRESS_TIME|当前磨削修整次数
-
