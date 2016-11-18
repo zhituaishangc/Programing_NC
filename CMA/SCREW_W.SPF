@@ -1,5 +1,5 @@
-PROC SCREW_N DISPLON
-;内螺纹主程序
+PROC SCREW_W DISPLON
+;外螺纹主程序
 
 S_PAR_INI;参数初始化子程序
 IF (DRESSER[6]==1)OR(DRESSER[6]==2);有报警标记则退出程序
@@ -9,11 +9,10 @@ S_PARA_TRANS;参数传递
 
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
-    M20;吸雾开
-    M28;修整冷却开
     DRESS;修整
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
+    INI[40]=0;新砂轮磨削接触位计算标记
     GOTOF G_ENDING
 ENDIF
 
@@ -28,7 +27,6 @@ GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
     ;M20;吸雾开
     ;M8;磨削冷却开
-    TOOL_SET[8]=0;改为首次对刀
     OPERATION;对刀
     GOTOF G_ENDING
 ENDIF
@@ -46,13 +44,10 @@ ELSE;选择DIY工艺
     ENDIF
 ENDIF
 ;-------------------------------------------------------
-M20;吸雾开
-M8;内磨削冷却开
-M38;外磨削冷却开
 TOOL_SET[8]=1;改为二次对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
-    S_CYCLE_SN;内螺纹磨削循环
+    S_CYCLE_SW;外螺纹磨削循环
     S_PARA_TRANS;
     IF (DRESSER[6]==1)OR(DRESSER[6]==2);有报警
         GOTOF G_ENDING
@@ -62,6 +57,8 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
     ENDIF
     S_BCYC;工序进给大循环判断
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+    M20;吸雾开
+    M8;磨削冷却开
 ENDWHILE
 ;-------------------------------------------------------
 G_ENDING:

@@ -1,8 +1,8 @@
+#
+
 |数组|全局变量|意义
 |:----:|:----:|:----:|
 |**需要提前手动输入**|
-|MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
-|MD14510[4]|DB4500.DBW8|砂轮风扇停留时间
 |INI[16]|helix_angle_enable|螺旋升角使能
 |INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服)
 |INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服)
@@ -132,6 +132,7 @@
 |INI[37]|DWHEEL_TYPE|修整轮类型选择
 |INI[38|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
+|INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -357,4 +358,3 @@
 |TECH_DRESS_TIME[3]|TECH_DRESS_TIME_F|精磨修整次数
 |TECH_DRESS_TIME[4]|TECH_DRESS_TIME_DIY|DIY修整次数
 |TECH_DRESS_TIME[5]|TECH_DRESS_TIME|当前磨削修整次数
-
