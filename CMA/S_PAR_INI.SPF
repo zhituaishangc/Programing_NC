@@ -1,6 +1,23 @@
 PROC S_PAR_INI SBLOF DISPLOF
 ;参数初始化
 
+;参数初始赋值
+INI[16]=0;螺旋升角使能
+INI[36]=0;轮类型选择(0模拟量/1伺服)
+INI[37]=0;整轮类型选择(0模拟量/1伺服)
+DRESSER[37]=0;内螺纹成型X前/后
+PROCESS[11]=50;磨削工件时X进给速度
+DRESSER[6]=0;报警标记取消
+PROCESS[3]=0;修整标记清零
+PROCESS[7]=0;当前磨削是否修整累计
+TECH_TIME[0]=0;当前粗磨次数
+TECH_TIME[1]=0;当前半粗磨次数
+TECH_TIME[2]=0;当前半精磨次数
+TECH_TIME[3]=0;当前精磨次数
+TECH_TIME[4]=0
+INI[25]=1;退刀计算标志位置1
+WORK[1]=0;当前磨削头数
+
 DRFOF;手轮偏置清除
 
 ;新砂轮时磨削初始和当前接触
@@ -56,18 +73,6 @@ ELSE
 	INI[14]=INI[12]/INI[13]
 ENDIF
 INI[15]=INI[3]*INI[14]/2;X方向的增量
-
-;参数初始化
-DRESSER[6]=0;报警标记取消
-PROCESS[3]=0;修整标记清零
-PROCESS[7]=0;当前磨削是否修整累计
-TECH_TIME[0]=0;当前粗磨次数
-TECH_TIME[1]=0;当前半粗磨次数
-TECH_TIME[2]=0;当前半精磨次数
-TECH_TIME[3]=0;当前精磨次数
-TECH_TIME[4]=0
-INI[25]=1;退刀计算标志位置1
-WORK[1]=0;当前磨削头数
 
 ;X轴初始接触赋值位置选择
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
