@@ -12,7 +12,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
-namespace 界面自动拼接
+namespace CreatNewMachineProgram
 {
 	/// <summary>
 	/// Description of MainForm.
@@ -37,6 +37,10 @@ namespace 界面自动拼接
 		
 		void CreateFileClick(object sender, EventArgs e)
 		{
+			//生成临时需要的分割后的界面文件
+			SplitCustomFile spc=new SplitCustomFile();
+			SplitCustomFile.FormSplit();
+			
 			bool flag=false;
 			try
 			{
@@ -200,17 +204,42 @@ namespace 界面自动拼接
 			#endregion
 			//水平按键处理函数
 			ButtonDeal();
+			
 			//程序结束前的提示信息
 			if(flag)
 			{
 				MessageBox.Show("custom.com文件已生成","提示信息",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				
 			}
 			else
 			{
 				MessageBox.Show("未选择条目","提示信息",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				goto endLabel;
 			}
+			
+			//程序相关处理
+			//生成去掉注释的程序
+			CreatMachineProgram.CopyProgram();
+			//DIY程序不需要去掉注释
+			File.Copy("Programing_NC\\MPF\\USER_DIY.MPF","NewMachineProgram\\MPF\\USER_DIY.MPF",true);
+			//复制HMI文件夹中的内容
+			CopyHMI.CopyFileAndFolder(@"Programing_NC\HMI","NewMachineProgram\\HMI");
+			
+			//用新生成的custom替换原有的
+			if(File.Exists("custom.com"))
+			{
+				File.Copy("custom.com","NewMachineProgram\\HMI\\proj\\custom.com",true);
+				File.Delete("custom.com");
+			}
+			else
+			{
+				MessageBox.Show("新界面文件生成失败,请重新打开程序");
+			}
+			
+			//初始化程序中对机床基本信息的处理
+			PAR_INI_Deal();
 		endLabel:
-			;
+			SplitCustomFile.DeleteSplitFiles();
 		}
 		
 		void MainFormLoad(object sender, EventArgs e)
@@ -221,7 +250,18 @@ namespace 界面自动拼接
 			grindParameterCheckBox.Checked=true;
 			techniqueCheckBox.Checked=true;
 			dressParameterCheckBox.Checked=true;
+			//机床信息默认被选中项
 			grindTypeComboBox.SelectedIndex=0;
+			wheelDriverTypeComboBox.SelectedIndex=0;
+			dressDriverTypeComboBox.SelectedIndex=0;
+			helicAngleEnabledComboBox.SelectedIndex=0;
+			xSpeedTextBox.Text="50";
+			xQ_Or_N_ComboBox.SelectedIndex=0;
+			if(grindTypeComboBox.SelectedItem.ToString()=="外螺纹")
+			{
+				xQ_Or_N_ComboBox.Visible=false;
+				label6.Visible=false;
+			}
 		}
 		void ButtonDeal()
 		{
@@ -229,32 +269,34 @@ namespace 界面自动拼接
 			string[] WheelStr={"$85380,ac7,","$85381,ac7,","$85382,ac7,","$85379,ac7,","$85378,ac7,"};
 			string oldPath=@"temp_custom.com";
 			string newPath=@"custom.com";
-			StreamReader sr=new StreamReader(oldPath,Encoding.UTF8,true,512);
-			StreamWriter sw=new StreamWriter(newPath,false,Encoding.UTF8,1024);
 			
-			//XZ
-			FindAndAddStr(dressParameterCheckBox_VW_D,WheelStr,sr,sw,0,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_VW_S,WheelStr,sr,sw,1,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_VW_F,WheelStr,sr,sw,2,shape,dressType,wheelType);
 			
-			//滚压轮
-			FindAndAddStr(dressParameterCheckBox_GY_V,WheelStr,sr,sw,3,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_GY_X_N_H,WheelStr,sr,sw,3,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_GY_X_N_Q,WheelStr,sr,sw,3,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_GY_X_W,WheelStr,sr,sw,3,shape,dressType,wheelType);
-			
-			//XZ
-			FindAndAddStr(dressParameterCheckBox_XZ_D,WheelStr,sr,sw,0,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_XZ_S,WheelStr,sr,sw,1,shape,dressType,wheelType);
-			FindAndAddStr(dressParameterCheckBox_XZ_F,WheelStr,sr,sw,2,shape,dressType,wheelType);
-		
-			FindAndAddStr(dressParameterCheckBox_BG,WheelStr,sr,sw,4,shape,dressType,wheelType);
-			sr.Close();
-			sw.Close();
-			//删除临时文件
 			if(File.Exists(@"temp_custom.com"))
 			{
-				File.Delete(@"temp_custom.com");
+				var utf8WithoutBOM=new System.Text.UTF8Encoding(false);
+				StreamReader sr=new StreamReader(oldPath,utf8WithoutBOM,true,512);
+				StreamWriter sw=new StreamWriter(newPath,false,utf8WithoutBOM,1024);
+				
+				//XZ
+				FindAndAddStr(dressParameterCheckBox_VW_D,WheelStr,sr,sw,0,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_VW_S,WheelStr,sr,sw,1,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_VW_F,WheelStr,sr,sw,2,shape,dressType,wheelType);
+				
+				//滚压轮
+				FindAndAddStr(dressParameterCheckBox_GY_V,WheelStr,sr,sw,3,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_GY_X_N_H,WheelStr,sr,sw,3,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_GY_X_N_Q,WheelStr,sr,sw,3,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_GY_X_W,WheelStr,sr,sw,3,shape,dressType,wheelType);
+				
+				//XZ
+				FindAndAddStr(dressParameterCheckBox_XZ_D,WheelStr,sr,sw,0,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_XZ_S,WheelStr,sr,sw,1,shape,dressType,wheelType);
+				FindAndAddStr(dressParameterCheckBox_XZ_F,WheelStr,sr,sw,2,shape,dressType,wheelType);
+				
+				FindAndAddStr(dressParameterCheckBox_BG,WheelStr,sr,sw,4,shape,dressType,wheelType);
+				sr.Close();
+				sw.Close();
+				File.Delete(@"temp_custom.com");//删除临时文件
 			}
 		}
 		
@@ -322,9 +364,109 @@ namespace 界面自动拼接
 			}
 		}
 		
+		void PAR_INI_Deal()
+		{
+			string path=@"NewMachineProgram\CMA\S_PAR_INI.SPF";
+			var utf8WithoutBOM=new System.Text.UTF8Encoding(false);
+			StreamReader sr=new StreamReader(path,utf8WithoutBOM,true);
+			StreamWriter sw=new StreamWriter("S_PAR_INI.SPF",false,utf8WithoutBOM,512);
+			while(!sr.EndOfStream)
+			{
+				string oneLineStr=sr.ReadLine();
+				//螺旋升角使能处理
+				int t=oneLineStr.IndexOf("INI[16]=0");
+				if(t!=-1)
+				{
+					string isHelicAngleEnable=helicAngleEnabledComboBox.SelectedItem.ToString();
+					if(isHelicAngleEnable=="开")
+					{
+						oneLineStr="INI[16]=1";
+					}
+					else
+					{
+						oneLineStr="INI[16]=0";
+					}
+				}
+				//砂轮驱动类型处理
+				t=oneLineStr.IndexOf("INI[36]=0");
+				if(t!=-1)
+				{
+					string wheelDriverType=wheelDriverTypeComboBox.SelectedItem.ToString();
+					if(wheelDriverType=="变频器")
+					{
+						oneLineStr="INI[36]=0";
+					}
+					else
+					{
+						oneLineStr="INI[36]=1";
+					}
+				}
+				//修整轮驱动类型处理
+				t=oneLineStr.IndexOf("INI[37]=0");
+				if(t!=-1)
+				{
+					string dressDriverType=dressDriverTypeComboBox.SelectedItem.ToString();
+					if(dressDriverType=="变频器")
+					{
+						oneLineStr="INI[37]=0";
+					}
+					else
+					{
+						oneLineStr="INI[37]=1";
+					}
+				}
+				//内螺纹成型X前/后处理
+				t=oneLineStr.IndexOf("DRESSER[37]=0");
+				if(t!=-1)
+				{
+					string xQN=xQ_Or_N_ComboBox.SelectedItem.ToString();
+					if(xQN=="前")
+					{
+						oneLineStr="DRESSER[37]=0";
+					}
+					else
+					{
+						oneLineStr="DRESSER[37]=1";
+					}
+				}
+				//磨削工件时X进给速度
+				t=oneLineStr.IndexOf("PROCESS[11]=50");
+				if(t!=-1)
+				{
+					oneLineStr="PROCESS[11]="+xSpeedTextBox.Text.Trim();
+				}
+				sw.WriteLine(oneLineStr);
+			}
+			sr.Close();
+			sw.Close();
+			if(File.Exists("S_PAR_INI.SPF"))
+			{
+				File.Copy("S_PAR_INI.SPF","NewMachineProgram\\CMA\\S_PAR_INI.SPF",true);
+				File.Delete("S_PAR_INI.SPF");
+			}
+		}
 		void QuitButtonClick(object sender, EventArgs e)
 		{
 			this.Dispose();
+		}
+		
+		void GrindTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(grindTypeComboBox.SelectedItem.ToString()=="内螺纹")
+			{
+				xQ_Or_N_ComboBox.Visible=true;
+				label6.Visible=true;
+			}
+			else if(grindTypeComboBox.SelectedItem.ToString()=="磨削中心")
+			{
+				xQ_Or_N_ComboBox.Visible=true;
+				label6.Visible=true;
+			}
+			else
+			{
+				xQ_Or_N_ComboBox.Visible=false;
+				label6.Visible=false;
+			}
 		}
 	}
 }

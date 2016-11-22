@@ -9,7 +9,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace 界面自动拼接
+namespace CreatNewMachineProgram
 {
 	/// <summary>
 	/// Class with program entry point.
