@@ -4,8 +4,6 @@ PROC RING_GROOVE DISPLON
 DRFOF;手轮偏置清除
 STOPRE
 
-MSG("砂轮开到起始位置")
-G1 G90 X=INI[10] F=300;开到对刀起始位
 IF INI[36]==0;砂轮类型选择
     R299=2000
     G4 F0.2
@@ -16,7 +14,7 @@ ELSE
 ENDIF
 MSG("等待砂轮转速到位")
 G4 F5
-M8;开磨削冷却
+;M8;开磨削冷却
 
 C_CYCLE:
 MSG("头架旋转中...")

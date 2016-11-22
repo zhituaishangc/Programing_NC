@@ -133,6 +133,9 @@
 |INI[38|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
 |INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
+|INI[41]|X 轴工件夹装安全位置
+|INI[42]|(外螺纹自动对刀)砂轮中心与测头中心重合时Z轴坐标
+|INI[43]|耳朵深度
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
