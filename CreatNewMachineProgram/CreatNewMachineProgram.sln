@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 # SharpDevelop 3.2.1.6466
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "界面自动拼接", "界面自动拼接.csproj", "{8D6D08BC-F38C-4C39-A57D-117ECFDEABC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatNewMachineProgram", "CreatNewMachineProgram.csproj", "{8D6D08BC-F38C-4C39-A57D-117ECFDEABC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
