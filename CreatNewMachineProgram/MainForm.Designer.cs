@@ -6,7 +6,7 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
-namespace 界面自动拼接
+namespace CreatNewMachineProgram
 {
 	partial class MainForm
 	{
@@ -60,6 +60,16 @@ namespace 界面自动拼接
 			this.welcomeCheckBox = new System.Windows.Forms.CheckBox();
 			this.createFile = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.xQ_Or_N_ComboBox = new System.Windows.Forms.ComboBox();
+			this.xSpeedTextBox = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.helicAngleEnabledComboBox = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.dressDriverTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.wheelDriverTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.grindTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.quitButton = new System.Windows.Forms.Button();
@@ -91,7 +101,7 @@ namespace 界面自动拼接
 			this.groupBox1.Controls.Add(this.welcomeCheckBox);
 			this.groupBox1.Location = new System.Drawing.Point(6, 11);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(208, 634);
+			this.groupBox1.Size = new System.Drawing.Size(227, 634);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "界面选择";
@@ -288,14 +298,120 @@ namespace 界面自动拼接
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Controls.Add(this.xQ_Or_N_ComboBox);
+			this.groupBox2.Controls.Add(this.xSpeedTextBox);
+			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.helicAngleEnabledComboBox);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Controls.Add(this.dressDriverTypeComboBox);
+			this.groupBox2.Controls.Add(this.label2);
+			this.groupBox2.Controls.Add(this.wheelDriverTypeComboBox);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.Controls.Add(this.grindTypeComboBox);
-			this.groupBox2.Location = new System.Drawing.Point(239, 10);
+			this.groupBox2.Location = new System.Drawing.Point(252, 10);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(217, 635);
+			this.groupBox2.Size = new System.Drawing.Size(253, 634);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "机床信息选择";
+			// 
+			// label6
+			// 
+			this.label6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label6.Location = new System.Drawing.Point(6, 225);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(115, 30);
+			this.label6.TabIndex = 11;
+			this.label6.Text = "内螺纹成型X前/后";
+			// 
+			// xQ_Or_N_ComboBox
+			// 
+			this.xQ_Or_N_ComboBox.FormattingEnabled = true;
+			this.xQ_Or_N_ComboBox.Items.AddRange(new object[] {
+									"前",
+									"后"});
+			this.xQ_Or_N_ComboBox.Location = new System.Drawing.Point(127, 222);
+			this.xQ_Or_N_ComboBox.Name = "xQ_Or_N_ComboBox";
+			this.xQ_Or_N_ComboBox.Size = new System.Drawing.Size(97, 20);
+			this.xQ_Or_N_ComboBox.TabIndex = 10;
+			// 
+			// xSpeedTextBox
+			// 
+			this.xSpeedTextBox.Location = new System.Drawing.Point(127, 180);
+			this.xSpeedTextBox.Name = "xSpeedTextBox";
+			this.xSpeedTextBox.Size = new System.Drawing.Size(97, 21);
+			this.xSpeedTextBox.TabIndex = 9;
+			// 
+			// label5
+			// 
+			this.label5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label5.Location = new System.Drawing.Point(6, 147);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(115, 30);
+			this.label5.TabIndex = 8;
+			this.label5.Text = "螺旋升角使能";
+			// 
+			// helicAngleEnabledComboBox
+			// 
+			this.helicAngleEnabledComboBox.FormattingEnabled = true;
+			this.helicAngleEnabledComboBox.Items.AddRange(new object[] {
+									"关",
+									"开"});
+			this.helicAngleEnabledComboBox.Location = new System.Drawing.Point(127, 144);
+			this.helicAngleEnabledComboBox.Name = "helicAngleEnabledComboBox";
+			this.helicAngleEnabledComboBox.Size = new System.Drawing.Size(97, 20);
+			this.helicAngleEnabledComboBox.TabIndex = 7;
+			// 
+			// label4
+			// 
+			this.label4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label4.Location = new System.Drawing.Point(6, 183);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(115, 30);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "X轴进给速度";
+			// 
+			// label3
+			// 
+			this.label3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label3.Location = new System.Drawing.Point(6, 104);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(115, 30);
+			this.label3.TabIndex = 5;
+			this.label3.Text = "修整轮驱动类型";
+			// 
+			// dressDriverTypeComboBox
+			// 
+			this.dressDriverTypeComboBox.FormattingEnabled = true;
+			this.dressDriverTypeComboBox.Items.AddRange(new object[] {
+									"变频器",
+									"伺服主轴"});
+			this.dressDriverTypeComboBox.Location = new System.Drawing.Point(127, 101);
+			this.dressDriverTypeComboBox.Name = "dressDriverTypeComboBox";
+			this.dressDriverTypeComboBox.Size = new System.Drawing.Size(97, 20);
+			this.dressDriverTypeComboBox.TabIndex = 4;
+			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.label2.Location = new System.Drawing.Point(6, 65);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(100, 30);
+			this.label2.TabIndex = 3;
+			this.label2.Text = "砂轮驱动类型";
+			// 
+			// wheelDriverTypeComboBox
+			// 
+			this.wheelDriverTypeComboBox.FormattingEnabled = true;
+			this.wheelDriverTypeComboBox.Items.AddRange(new object[] {
+									"变频器",
+									"伺服主轴"});
+			this.wheelDriverTypeComboBox.Location = new System.Drawing.Point(127, 62);
+			this.wheelDriverTypeComboBox.Name = "wheelDriverTypeComboBox";
+			this.wheelDriverTypeComboBox.Size = new System.Drawing.Size(97, 20);
+			this.wheelDriverTypeComboBox.TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -313,10 +429,11 @@ namespace 界面自动拼接
 									"外螺纹",
 									"内螺纹",
 									"磨削中心"});
-			this.grindTypeComboBox.Location = new System.Drawing.Point(112, 25);
+			this.grindTypeComboBox.Location = new System.Drawing.Point(127, 25);
 			this.grindTypeComboBox.Name = "grindTypeComboBox";
 			this.grindTypeComboBox.Size = new System.Drawing.Size(97, 20);
 			this.grindTypeComboBox.TabIndex = 0;
+			this.grindTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.GrindTypeComboBoxSelectedIndexChanged);
 			// 
 			// quitButton
 			// 
@@ -332,7 +449,7 @@ namespace 界面自动拼接
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(477, 688);
+			this.ClientSize = new System.Drawing.Size(525, 688);
 			this.Controls.Add(this.quitButton);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.createFile);
@@ -342,12 +459,23 @@ namespace 界面自动拼接
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "界面自动拼接";
+			this.Text = "创建新机床程序";
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.ComboBox xQ_Or_N_ComboBox;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox xSpeedTextBox;
+		private System.Windows.Forms.ComboBox helicAngleEnabledComboBox;
+		private System.Windows.Forms.ComboBox wheelDriverTypeComboBox;
+		private System.Windows.Forms.ComboBox dressDriverTypeComboBox;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button quitButton;
 		private System.Windows.Forms.CheckBox dressParameterCheckBox_BG;
 		private System.Windows.Forms.CheckBox dressBackCheckBox;
