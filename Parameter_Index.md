@@ -133,6 +133,9 @@
 |INI[38|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
 |INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
+|INI[41]|X 轴工件夹装安全位置
+|INI[42]|(外螺纹自动对刀)砂轮中心与测头中心重合时Z轴坐标
+|INI[43]|耳朵深度
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -163,6 +166,9 @@
 |TOOL_SET[25]|耳朵端面是否测量(1=不测量,0=测量)
 |TOOL_SET[26]|自动对刀完成标志(1=完成,0=未完成)
 |TOOL_SET[27]|自动对刀完成Z轴退刀位置(1=完成,0=未完成)
+|TOOL_SET[28]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
+|TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
+|TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
