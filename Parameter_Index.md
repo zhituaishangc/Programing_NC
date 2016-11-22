@@ -268,6 +268,7 @@
 |PROCESS[12]|GRIND_TOTAL|工艺设定磨削总量
 |PROCESS[13]|WHEEL_POS_INI|初始磨削接触位置
 |PROCESS[14]|GRID_TOTAL_ACCUMULATION|工艺磨削总量累计
+|PROCESS[15]|TECH_DRESS_EXTEND|精简工艺参数/扩展工艺参数
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -303,9 +304,13 @@
 |TECHNOLOGY[62]||精磨头架转速
 |TECHNOLOGY[63]||终磨头架转速
 |TECHNOLOGY[70]||粗磨砂轮转速
-|TECHNOLOGY[71]||半粗磨砂轮架转速
+|TECHNOLOGY[71]||半粗磨砂轮转速
 |TECHNOLOGY[72]||精磨砂轮转速
 |TECHNOLOGY[73]||终磨砂轮转速
+|TECHNOLOGY[74]||粗磨修整砂轮转速
+|TECHNOLOGY[75]||半粗磨修整砂轮转速
+|TECHNOLOGY[76]||精磨修整砂轮转速
+|TECHNOLOGY[77]||终磨修整砂轮转速
 |||
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
