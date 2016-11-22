@@ -4,7 +4,6 @@ PROC RING_GROOVE DISPLON
 DRFOF;手轮偏置清除
 STOPRE
 
-MSG("砂轮开到起始位置")
 IF INI[36]==0;砂轮类型选择
     R299=2000
     G4 F0.2
