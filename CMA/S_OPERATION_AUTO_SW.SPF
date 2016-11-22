@@ -1,86 +1,62 @@
 PROC S_OPERATION_AUTO_SW DISPLOF
-;外螺纹自动对刀程序
+;外螺纹自动对刀程序(接近开关)
 ;---------------------------------------------
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6
 ;---------------------------------------------
-IF TOOL_SET[12]==0;
-    MSG("请将砂轮开至刚接触工件表面并记录下当前X轴坐标")
-    G04 F=60
-ENDIF
-IF TOOL_SET[11]==0
-    MSG("请将测头开至刚接触工件表面并记录下当前X轴坐标")
-    G04 F=60
-    RET
-ENDIF
-;---------------------------------------------
-;测头伸出
-;---------------------------------------------
+G90 G53 C=0 F3600;
+M33																				;测头伸出
 MSG("自动对刀测量已开始,请等待!")
-MEAS=1 G90 G01 X=INI[10] F500;测头接近砂轮退刀安全位置
-;IF $AC_MEA[1]=TRUE GOTOF ERROR1;测头已工作
-STOPRE
-MEAS=1 G01 X=TOOL_SET[11]-5 F50;测头缓慢进给至接触工件
-;IF $AC_MEA[1]=FALSE GOTOF ERROR2
-STOPRE;进刀停止
-TOOL_SET[13]=$AA_MM[X];探头接触工件槽时X坐标
-;-------------------------------------------
-WHILE(TOOL_SET[13]>=TOOL_SET[11]);探头接触工件槽时X坐标>=探头接触工件表面时X坐标
-    G91 X=0.5;测头退回
-    IF INI[0]=1;左旋
-        G91 C=-30
-    ELSE
-        G91 C=30
-    ENDIF
-    MEAS=1 G91 X=-5 F=50;测头再次进给
-    STOPRE
-    TOOL_SET[13]=$AA_MM[X];探头接触工件槽时X坐标
+;----------------寻找齿槽-------------------
+WHILE($AC_MEA[1]=TRUE )											;如果测头已工作
+	G90 G53 G01 C=10 F300 												;C轴正向旋转10°
 ENDWHILE
-STOPRE
-;----------------------------------------------
-MSG("正在测量对刀点信息,请等待!")
-MEAS=1 G91 Z=-INI[4] F=50;测头右移一个螺距
-;IF $AC_MEA[1]=FALSE GOTOF ERROR3
-TOOL_SET[6]=$AA_IM[C];探头接触工件槽时C角度
-
-MEAS=1 G91 Z=INI[4];测头左移一个螺距
-;IF $AC_MEA[1]=FALSE GOTOF ERROR3
-STOPRE
-TOOL_SET[14]=$AA_MM[Z];探头接触工件槽左侧时Z坐标
-
-MEAS=1 G91 Z=-INI[4];测头右移一个螺距
-STOPRE
-TOOL_SET[15]=$AA_MM[Z];探头接触工件槽右侧时Z坐标
-CASE DRESSER[4] OF 0 GOTOF ANG0 1 GOTOF ANG1 DEFAULT ANG2
-ANG0:;三角形	
-TOOL_SET[16]=TRI[9]
-TOOL_SET[17]=TRI[10]
-GOTOF ANG3	
-	
-ANG1:;梯形
-TOOL_SET[16]=TRAP[11]
-TOOL_SET[17]=TRAP[12]
-GOTOF ANG3
-
-ANG2:;双圆弧	
-DR1=TOOL_SET[15]
-DR2=TOOL_SET[14]
-DR5=(DR1+DR2)/2
-GOTOF ANG4
-
-ANG3:
-DR1=TOOL_SET[15]+TOOL_SET[9]/COS(TOOL_SET[17]);右侧接触点坐标换算
-DR2=TOOL_SET[14]-TOOL_SET[9]/COS(TOOL_SET[16]);左侧接触点坐标换算
-DR3=DR1-DR2
-DR4=(DR3*TAN(TOOL_SET[16]))/(TAN(TOOL_SET[16])+TAN(TOOL_SET[17]));左侧换算点到齿高水平距离
-DR5=DR2+DR4;测头对刀点Z轴坐标
-
-ANG4:
-DR6=DR5-TOOL_SET[10];换算到用砂轮对刀完成后Z轴坐标
-;------------------------------------------
-TOOL_SET[1]=DR6;对刀完成后Z轴坐标
-;------------------------------------------
+DR0=$AA_IM[C]															;记录测头不接触工件时C轴角度
+;----------------寻找齿槽中心---------------
+MEAS=1 G90 G53 C=360 F=1800									;C轴正向旋转360
+C=-10 F=1800
+MEAS=1 G90 G53 C=20 F=300
+G04 F=0.5 
+DR1=$AA_IM[C]															;记录测头接触工件时C轴角度DR1
+MEAS=1 G90 G53 C=-360 F=1800								;C轴正向旋转360
+C=10 F=1800
+MEAS=1 G90 G53 C=-20 F=300
+G04 F=0.5 
+DR2=$AA_IM[C]															;记录测头接触工件时C轴角度DR2
+IF DR1>=DR2
+	DR3=(DR0+DR1)/2
+ELSE
+	DR3=180+(DR0+DR1)/2
+ENDIF
+IF DR3>=360
+	DR3=DR3-360	
+ENDIF															;测头位于齿槽中心时C轴角度DR3
+;----------------起始角度计算---------------
+DR4=ABS(INI[42]-INI[6])/INI[5]									;磨削起点到对刀点距离
+DR5=(DR4-TRUNC(DR4))*360
+IF INI[0]==1;左旋
+	TOOL_SET[4]=DR3+DR5
+ELSE
+	TOOL_SET[4]=DR3-DR5
+ENDIF
+IF TOOL_SET[4]>=360
+	TOOL_SET[4]=TOOL_SET[4]-360
+ENDIF
+IF TOOL_SET[4]<0
+	TOOL_SET[4]=TOOL_SET[4]+360	
+ENDIF									;工件磨削起点初始角度计算
+M34																;测头收回
+;----------------齿槽深度对刀---------------
+IF TOOL_SET[8]==0;首次对刀
+	MSG("自动对刀以结束，请手动对刀确任确认X轴初始进刀深度")
+	G90 G53 G01 Z=INI[6]	X=INI[10]								;工件开至磨削起点,X接近工件的安全位置
+	G90 C=TOOL_SET[4]	
+	IF INI[0]==1;左旋
+		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=50	;从工件磨削右端坐标点ZXC开始插补
+	ELSE
+		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=50	;从工件磨削右端坐标点ZXC开始插补
+	ENDIF
+ENDIF	
 RET
-
 
 ;-------------------------------------------
 ;ERROR1:
