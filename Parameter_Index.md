@@ -178,9 +178,9 @@
 |INI[38]|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
 |INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
-|INI[41]|X 轴工件夹装安全位置
-|INI[42]|(外螺纹自动对刀)砂轮中心与测头中心重合时Z轴坐标
-|INI[43]|耳朵深度
+|INI[41]||X轴工件夹装安全位置
+|INI[42]||(外螺纹自动对刀)砂轮中心与测头中心重合时Z轴坐标
+|INI[43]||耳朵深度
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -207,10 +207,10 @@
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
 |TOOL_SET[22]|FXQK|(0=圆形孔,1=腰型孔)
 |TOOL_SET[23]|WHL_HEAD_X|测头中心与砂轮中心距离(X向)
-|TOOL_SET[24]|首件工件端面接触侧头时Z向坐标
-|TOOL_SET[25]|耳朵端面是否测量(1=不测量,0=测量)
-|TOOL_SET[26]|自动对刀完成标志(1=完成,0=未完成)
-|TOOL_SET[27]|自动对刀完成Z轴退刀位置(1=完成,0=未完成)
+|TOOL_SET[24]||首件工件端面接触侧头时Z向坐标
+|TOOL_SET[25]||耳朵端面是否测量(1=不测量,0=测量)
+|TOOL_SET[26]||自动对刀完成标志(1=完成,0=未完成)
+|TOOL_SET[27]||自动对刀完成Z轴退刀位置(1=完成,0=未完成)
 |TOOL_SET[28]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
 |TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
 |TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
@@ -314,6 +314,8 @@
 |PROCESS[13]|WHEEL_POS_INI|初始磨削接触位置
 |PROCESS[14]|GRID_TOTAL_ACCUMULATION|工艺磨削总量累计
 |PROCESS[15]|TECH_DRESS_EXTEND|精简工艺参数/扩展工艺参数
+|PROCESS[16]||
+|PROCESS[17]||
 |磨削中心相关||
 |PROCESS[18]||外圆磨当前所在工艺
 |PROCESS[19]||外圆磨当前循环是否修整累计
@@ -344,8 +346,6 @@
 |PROCESS[43]||磨削中心:是否磨外圆(0是/1否)
 |PROCESS[44]||磨削中心:是否磨左端面(0否/1是)
 |PROCESS[45]||磨削中心:是否磨右端面(0否/1是)
-|||
-
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -457,7 +457,6 @@
 |TECH_TIME[6]||外圆磨当前半精磨次数
 |TECH_TIME[7]||外圆磨当前精磨次数
 |TECH_TIME[8]||外圆磨当前终磨次数
-|||
 |TECH_TIME[9]||外圆磨当前DIY磨削次数
 |||
 |**修整进给量参数**||
