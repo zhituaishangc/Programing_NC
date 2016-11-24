@@ -14,15 +14,15 @@ TECH_TIME[0]=0;当前粗磨次数
 TECH_TIME[1]=0;当前半粗磨次数
 TECH_TIME[2]=0;当前半精磨次数
 TECH_TIME[3]=0;当前精磨次数
-TECH_TIME[4]=0
+TECH_TIME[4]=0;当前DIY次数
 INI[25]=1;退刀计算标志位置1
 WORK[1]=0;当前磨削头数
 DRESSER[38]=0;界面工艺修整量总量
 
-DRFOF;手轮偏置清除
-
 GRIND[1]=$A_DBB[0];是否修整
 GRIND[2]=$A_DBB[1];是否对刀
+
+DRFOF;手轮偏置清除
 
 ;新砂轮时磨削初始和当前接触
 IF GRIND[1]==1
