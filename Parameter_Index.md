@@ -314,7 +314,7 @@
 |PROCESS[13]|WHEEL_POS_INI|初始磨削接触位置
 |PROCESS[14]|GRID_TOTAL_ACCUMULATION|工艺磨削总量累计
 |PROCESS[15]|TECH_DRESS_EXTEND|精简工艺参数/扩展工艺参数
-|PROCESS[16]||
+|PROCESS[16]||磨削安全位置
 |PROCESS[17]||
 |磨削中心相关||
 |PROCESS[18]||外圆磨当前所在工艺
