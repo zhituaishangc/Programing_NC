@@ -21,8 +21,10 @@ DRESSER[38]=0;界面工艺修整量总量
 
 DRFOF;手轮偏置清除
 
-;新砂轮时磨削初始和当前接触
 GRIND[1]=$A_DBB[0];是否修整
+GRIND[2]=$A_DBB[1];是否对刀
+
+;新砂轮时磨削初始和当前接触
 IF GRIND[1]==1
 	IF (DRESSER[5]==0) AND (INI[40]==0);砂轮为新砂轮
 		IF GRIND[0]<>1;不是内螺纹
@@ -91,7 +93,7 @@ IF INI[3]<=0;磨削长度<=0
 	DRESSER[6]=1;工件左端坐标>工件右端坐标
 ENDIF
 
-IF PROCESS[0]==0;选择界面工艺,界面工艺修整量总量
+IF PROCESS[0]==0 AND GRIND[1]==0 AND GRIND[2]==0;选择界面工艺不是对刀不是修整,界面工艺修整量总量
 	IF PROCESS[15]==0;基本工艺
 		IF TECHNOLOGY[10]<>0
 			DRESSER[38]=DRESSER[38]+TRUNC(TECHNOLOGY[10]/TECHNOLOGY[40])*DRESSER[26]*DRESSER[28]
@@ -123,6 +125,12 @@ ENDIF
 
 IF DRESSER[24]-DRESSER[38]*2<DRESSER[35];当前砂轮直径<最小砂轮直径
 	DRESSER[6]=2;砂轮过小,请更换砂轮
+ENDIF
+
+IF GRIND[1]==0;不再修整中
+	IF DRESSER[24]>DRESSER[49];当前砂轮直径>砂轮最大磨削直径
+		DRESSER[6]=3;砂轮过大,请将砂轮修整到小于最大磨削直径
+	ENDIF
 ENDIF
 
 RET
