@@ -35,7 +35,7 @@ IF TOOL_SET[8]==0;首次对刀
 			ENDIF
 		ENDIF
 	ELSE;自动对刀
-		IF	GRIND[0]<>1;不是内螺纹
+		IF GRIND[0]<>1;不是内螺纹
 			TOOL_SET[3]=TOOL_SET[3]+ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 		ELSE
 			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
