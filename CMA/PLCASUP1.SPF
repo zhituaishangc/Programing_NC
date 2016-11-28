@@ -14,7 +14,6 @@ TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 
 IF TOOL_SET[8]==0;首次对刀
-
 	IF TOOL_SET[7]==0;手动对刀
 		IF GRIND[0]<>1;不是内螺纹
 			IF INI[0]==1;左旋
@@ -36,7 +35,7 @@ IF TOOL_SET[8]==0;首次对刀
 			ENDIF
 		ENDIF
 	ELSE;自动对刀
-		IF	GRIND[0]<>1;不是内螺纹
+		IF GRIND[0]<>1;不是内螺纹
 			TOOL_SET[3]=TOOL_SET[3]+ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 		ELSE
 			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
@@ -46,11 +45,10 @@ IF TOOL_SET[8]==0;首次对刀
 	PROCESS[4]=PROCESS[13];当前等于初始
 	TOOL_SET[8]=1;改为二次对刀
 	PROCESS[14]=0;工艺累积进刀清零
-ELSE;非首次对刀
--------------------非首次对刀后X调整--------------------	
+ELSE;非首次对刀	
 	PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
--------------------非首次对刀后C调整--------------------	
+	;---------------非首次对刀后C调整-----------------
 	DR13=TOOL_SET[2]/INI[5]*360
 	IF INI[0]==1;左旋
 		TOOL_SET[4]=TOOL_SET[4]-DR13
