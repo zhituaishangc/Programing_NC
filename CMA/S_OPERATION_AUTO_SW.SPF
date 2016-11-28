@@ -51,9 +51,9 @@ IF TOOL_SET[8]==0;首次对刀
 	G90 G53 G01 Z=INI[6]	X=INI[10]								;工件开至磨削起点,X接近工件的安全位置
 	G90 C=TOOL_SET[4]	
 	IF INI[0]==1;左旋
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=50	;从工件磨削右端坐标点ZXC开始插补
+		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=200	;从工件磨削右端坐标点ZXC开始插补
 	ELSE
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=50	;从工件磨削右端坐标点ZXC开始插补
+		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=200	;从工件磨削右端坐标点ZXC开始插补
 	ENDIF
 ENDIF	
 RET

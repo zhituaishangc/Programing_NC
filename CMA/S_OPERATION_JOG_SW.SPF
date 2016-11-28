@@ -23,9 +23,9 @@ STOPRE
 MSG("手动对刀已启动,对刀完成后请按退刀键结束")
 FGROUP(Z)
 IF INI[0]==1;左旋
-	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50;从任意对刀点ZC开始插补
+	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=200;从任意对刀点ZC开始插补
 ELSE
-	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=50 ;从任意对刀点ZC开始插补
+	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=200 ;从任意对刀点ZC开始插补
 ENDIF
 ;--------------------------------------
 

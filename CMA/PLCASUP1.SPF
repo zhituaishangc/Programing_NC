@@ -3,17 +3,18 @@ PROC PLCASUP1 DISPLOF
 
 DEF REAL DR11,DR12,DR13
 
+IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
+	GOTOF X_BACK
+ENDIF
+
 STOPRE
 TOOL_SET[3]=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
 TOOL_SET[21]=$AA_IM[Z];手动对刀完成后Z轴坐标
 TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 
-IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
-	GOTOF X_BACK
-ENDIF
-
 IF TOOL_SET[8]==0;首次对刀
+
 	IF TOOL_SET[7]==0;手动对刀
 		IF GRIND[0]<>1;不是内螺纹
 			IF INI[0]==1;左旋
@@ -36,18 +37,9 @@ IF TOOL_SET[8]==0;首次对刀
 		ENDIF
 	ELSE;自动对刀
 		IF	GRIND[0]<>1;不是内螺纹
-			TOOL_SET[3]=TOOL_SET[12]+TOOL_SET[18];自动对刀时对刀完成后X轴坐标换算(用于磨削初始进刀位)
-			DR11=ABS(TOOL_SET[1]-INI[6])
-			DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
-			TOOL_SET[4]=TOOL_SET[6]-DR12
+			TOOL_SET[3]=TOOL_SET[3]+ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 		ELSE
-			DR11=ABS(TOOL_SET[1]-INI[6]);理论对刀点到磨削起点距离
-			DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360
-			IF INI[0]==1;左旋
-				TOOL_SET[4]=TOOL_SET[5]+DR12
-			ELSE
-				TOOL_SET[4]=TOOL_SET[5]-DR12
-			ENDIF
+			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 		ENDIF
 	ENDIF
 	PROCESS[13]=TOOL_SET[3];砂轮初始磨削进刀位赋值
@@ -55,10 +47,10 @@ IF TOOL_SET[8]==0;首次对刀
 	TOOL_SET[8]=1;改为二次对刀
 	PROCESS[14]=0;工艺累积进刀清零
 ELSE;非首次对刀
-	IF GRIND[0]==1;是内螺纹,二次对刀影响初值
-		PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
-	ENDIF
+-------------------非首次对刀后X调整--------------------	
+	PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
+-------------------非首次对刀后C调整--------------------	
 	DR13=TOOL_SET[2]/INI[5]*360
 	IF INI[0]==1;左旋
 		TOOL_SET[4]=TOOL_SET[4]-DR13
