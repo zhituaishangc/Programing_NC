@@ -7,13 +7,13 @@ IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
 	GOTOF X_BACK
 ENDIF
 
-IF TOOL_SET[8]==0;首次对刀
-
 STOPRE
 TOOL_SET[3]=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
 TOOL_SET[21]=$AA_IM[Z];手动对刀完成后Z轴坐标
 TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
+
+IF TOOL_SET[8]==0;首次对刀
 
 	IF TOOL_SET[7]==0;手动对刀
 		IF GRIND[0]<>1;不是内螺纹
@@ -47,10 +47,6 @@ TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 	TOOL_SET[8]=1;改为二次对刀
 	PROCESS[14]=0;工艺累积进刀清零
 ELSE;非首次对刀
-	STOPRE
-----------------读取非首次对刀手轮偏置值----------------
-	TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
-	TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 -------------------非首次对刀后X调整--------------------	
 	PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
