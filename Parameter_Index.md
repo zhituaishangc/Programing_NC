@@ -184,6 +184,7 @@
 |INI[44]|QUIT_SN_EXCIRCLE_GRIND_X|外圆磨削X轴安全退刀位置
 |INI[45]|QUIT_SN_EXCIRCLE_GRIND_U|外圆磨削U轴安全退刀位置
 |INI[46]|SN_EXCIRCLE_GRIND_L|外圆磨削图纸上外圆磨削长度
+|INI[47]||磨削中不正常退出标记
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
