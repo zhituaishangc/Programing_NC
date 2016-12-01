@@ -5,7 +5,6 @@ PROC S_PAR_INI SBLOF DISPLOF
 INI[16]=0;螺旋升角使能
 INI[36]=0;轮类型选择(0模拟量/1伺服)
 INI[37]=0;整轮类型选择(0模拟量/1伺服)
-DRESSER[37]=0;内螺纹成型X前/后
 PROCESS[11]=50;磨削工件时X进给速度
 DRESSER[6]=0;报警标记取消
 PROCESS[3]=0;修整标记清零
@@ -23,6 +22,11 @@ GRIND[1]=$A_DBB[0];是否修整
 GRIND[2]=$A_DBB[1];是否对刀
 
 DRFOF;手轮偏置清除
+
+IF INI[44]==1;磨削中不正常退出标记
+	PROCESS[4]=PROCESS[4]+PROCESS[8];当前磨削位回退
+	INI[44]=0;磨削中不正常退出标记
+ENDIF
 
 ;新砂轮时磨削初始和当前接触
 IF GRIND[1]==1
