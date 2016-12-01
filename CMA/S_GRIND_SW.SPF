@@ -53,11 +53,14 @@ WHILE(WORK[1]<WORK[0])
 		ELSE
 			MSG("砂轮退出工件")
 			G90 G01 X=PROCESS[16] F=1000;X退刀
+			INI[44]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
 			G01 Z=INI[6] F=2000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
+			STOPRE
+			INI[44]=1;磨削中不正常退出标记
 		ENDIF
 		STOPRE
 	ELSE;左旋螺纹磨削
@@ -90,11 +93,14 @@ WHILE(WORK[1]<WORK[0])
 		ELSE
 			MSG("砂轮退出工件")
 			G90 G01 X=PROCESS[16] F=1000
+			INI[44]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
 			G01 Z=INI[6] F=2000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
+			STOPRE
+			INI[44]=1;磨削中不正常退出标记
 		ENDIF
 	ENDIF
 	WORK[1]=WORK[1]+1;头数累加
