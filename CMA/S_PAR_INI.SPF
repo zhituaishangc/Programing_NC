@@ -24,6 +24,10 @@ GRIND[2]=$A_DBB[1];是否对刀
 
 DRFOF;手轮偏置清除
 
+IF INI[44]==1;磨削中不正常退出标记
+	PROCESS[4]=PROCESS[4]+PROCESS[8];当前磨削位回退
+ENDIF
+
 ;新砂轮时磨削初始和当前接触
 IF GRIND[1]==1
 	IF (DRESSER[5]==0) AND (INI[40]==0);砂轮为新砂轮
