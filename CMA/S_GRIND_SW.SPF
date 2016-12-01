@@ -59,6 +59,7 @@ WHILE(WORK[1]<WORK[0])
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
+			STOPRE
 			INI[44]=1;磨削中不正常退出标记
 		ENDIF
 		STOPRE
@@ -98,6 +99,7 @@ WHILE(WORK[1]<WORK[0])
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
+			STOPRE
 			INI[44]=1;磨削中不正常退出标记
 		ENDIF
 	ENDIF
