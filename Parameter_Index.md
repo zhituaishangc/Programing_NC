@@ -181,7 +181,10 @@
 |INI[41]||X轴工件夹装安全位置
 |INI[42]||(外螺纹自动对刀)砂轮中心与测头中心重合时Z轴坐标
 |INI[43]||耳朵深度
-|INI[44]||磨削中不正常退出标记
+|INI[44]|QUIT_SN_EXCIRCLE_GRIND_X|外圆磨削X轴安全退刀位置
+|INI[45]|QUIT_SN_EXCIRCLE_GRIND_U|外圆磨削U轴安全退刀位置
+|INI[46]|SN_EXCIRCLE_GRIND_L|外圆磨削图纸上外圆磨削长度
+|INI[47]||磨削中不正常退出标记(0正常/1不正常)
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
