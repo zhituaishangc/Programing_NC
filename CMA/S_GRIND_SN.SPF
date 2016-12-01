@@ -3,6 +3,7 @@ PROC S_GRIND_SN DISPLOF
 
 WORK[1]=0;当前头数
 WORK[2]=360/WORK[0];平均头数角度
+INI[44]=1;磨削中不正常退出标记
 
 WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
@@ -96,6 +97,9 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	WORK[1]=WORK[1]+1;头数累加
 ENDWHILE
+
+STOPRE
+INI[44]=0;磨削中不正常退出标记
 
 RET
 
