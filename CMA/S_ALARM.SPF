@@ -10,6 +10,14 @@ IF DRESSER[6]<>0
         ELSE
             IF DRESSER[6]==3;有报警
                 MSG("砂轮过大,请将砂轮修整到小于最大磨削直径!")
+            ELSE
+                IF DRESSER[6]==4;有报警
+                    MSG(";工件外径设置有误!")
+                ELSE
+                    IF DRESSER[6]==5;有报警
+                        MSG("工件端面到孔距离设置有误!")
+                    ENDIF
+                ENDIF
             ENDIF
         ENDIF
     ENDIF

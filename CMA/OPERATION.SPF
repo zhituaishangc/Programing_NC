@@ -4,7 +4,7 @@ PROC OPERATION DISPLON
 IF GRIND[0]<>1;不是内螺纹
     IF TOOL_SET[8]==0;首次对刀
         CASE TOOL_SET[7] OF 0 GOTOF MASK0_SW DEFAULT GOTOF MASK1_SW
-        MASK0_SW:
+        MASK0_SW:;手动
         IF INI[36]==0;砂轮类型选择
             R299=2000
             G4 F0.2
@@ -15,9 +15,9 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
         G4 F5
         S_OPERATION_JOG_SW;外螺纹手动对刀程序
-        GOTOF MASK3
+        GOTOF MASK2
         
-        MASK1_SW:
+        MASK1_SW:;自动
         S_OPERATION_AUTO_SW;外螺纹自动对刀程序
         GOTOF MASK2
     ELSE
@@ -31,12 +31,12 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
         G4 F5
         S_OPERATION_RAND_SW;外螺纹二次对刀子程序
-        GOTOF MASK3
+        GOTOF MASK2
     ENDIF
  ELSE
     IF TOOL_SET[8]==0;首次对刀
         CASE TOOL_SET[7] OF 0 GOTOF MASK0_SN DEFAULT GOTOF MASK1_SN
-        MASK0_SN:
+        MASK0_SN:;手动
         IF INI[36]==0;砂轮类型选择
             R299=20000
             G4 F0.2
@@ -47,9 +47,9 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
         G4 F5
         S_OPERATION_JOG_SN;内螺纹手动对刀程序
-        GOTOF MASK3
+        GOTOF MASK2
         
-        MASK1_SN:
+        MASK1_SN:;自动
         S_OPERATION_AUTO_SN;内螺纹自动对刀程序
         GOTOF MASK2
     ELSE
@@ -63,32 +63,33 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
         G4 F5
         S_OPERATION_RAND_SN;内螺纹二次对刀子程序
-        GOTOF MASK3
+        GOTOF MASK2
     ENDIF
 ENDIF
 
 MASK2:
-IF TOOL_SET[7]==1
-    ;RETRACT;收回测头 
+IF (DRESSER[6]==4) OR (DRESSER[6]==5);自动对刀过程中有报警
+    RET
 ENDIF
 
-MASK3:
 IF $A_DBB[2]==1;如果按下退刀键
-    GOTOF MASK4
+    GOTOF MASK3
 ELSE
     PLCASUP1;跳转到初始角度计算子程序
     MSG("退刀中,请勿复位程序!")
     IF GRIND[0]<>1;不是内螺纹
         G01 G90 X=INI[23] F1800;退刀时的X值
     ELSE
-        G90 G01 X=INI[10] F=500;X离开螺纹,已清除XDRF值
-        G90 G01 Z=INI[2] F=1500;返回起点
+        IF GRIND[2]<>2;不是单纯的自动对刀
+            G90 G01 X=INI[10] F=500;X离开螺纹,已清除XDRF值
+            G90 G01 Z=INI[2] F=1500;返回起点
+        ENDIF
         G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
         G90 G01 X=INI[23] F2000
     ENDIF
 ENDIF
 
-MASK4:
+MASK3:
 MSG("对刀已完成,请等待程序自动结束!")
 G04 F=0.5
 
