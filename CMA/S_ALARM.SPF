@@ -16,6 +16,10 @@ IF DRESSER[6]<>0
                 ELSE
                     IF DRESSER[6]==5;有报警
                         MSG("工件端面到孔距离设置有误!")
+                    ELSE
+                        IF DRESSER[6]==6;有报警
+                            MSG("工件小径设置有误!")
+                        ENDF
                     ENDIF
                 ENDIF
             ENDIF
