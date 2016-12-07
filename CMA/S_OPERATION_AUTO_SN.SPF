@@ -1,134 +1,154 @@
 PROC S_OPERATION_AUTO_SN DISPLOF
 ;内螺纹自动对刀程序
 
-DEF	REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29
+DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29
 ;----------------------------------------------
-;初始动作到位
-G90	G01	Z=INI[48] C=0 F1500;初始位置Z
-G90	G01	X=INI[49]-INI[34]/2 F1000;测头接触工件外表面位置
-M33;测头伸出
-WHILE($A_DBB[4]==0);等待测头到位
-	G4 F0.2
-ENDWHILE
-G91	G01	X=TOOL_SET[9]*2 F50;测头进入工件内一个测头直径处
-MEAS=1 G91 G01 Z-150 F100;工件向右移动,触碰测头停止
-STOPRE
-IF $AC_MEA[1]==0;如果没挨上工件报警
-    DRESSER[6]=4;工件外径设置有误
-    GOTOF OPERATION_END
-ENDIF
-G91	G01 Z=5 F200;工件左移2mm
-MEAS=1 G91 G01 Z=-10 F=50;工件右移触碰测头停止
-STOPRE
-INI[50]=$AA_MM[Z];测头接触工件端面坐标
-G91	G01	Z=5 F200;工件离开测头5mm
-G90	G01	X=INI[49]-INI[34]/2-5 F1000;测头接触工件外表面位置5MM处
-G90	G01	Z=INI[50]-INI[35] F1500;测头移动到孔处
-MEAS=1 G90 G01 X=INI[49]-INI[34]/2+TOOL_SET[9]*2 F1000;测头伸进孔内
-STOPRE
-IF $AC_MEA[1]==1;碰到外沿
-    DRESSER[6]=5;工件端面到孔距离设置有误
-    GOTOF OPERATION_END
-ENDIF
-IF TOOL_SET[22]==0;工件类型判断
-    GOTOF ROUND;圆形孔
-ELSE
-    GOTOF YXK;腰型孔
-ENDIF
-;****************************************
-ROUND:;圆形孔
-MSG("正在测量垂直中心")
-MEAS=1 G91 G01 C360 F360
-STOPRE
-IF $AC_MEA[1]==0;如果没挨上工件报警
-    DRESSER[6]=4;工件外径设置有误
-    GOTOF OPERATION_END
-ENDIF
-G91 G01 C-2 F360
-MEAS=1 G91 G01 C180 F180
-STOPRE
-DR6=$AA_MM[C];测头接触上边缘时C角度
-MEAS=1 G91 G01 C-180 F360
-G91 G01 C2 F360
-MEAS=1 G91 G01 C-180 F180
-STOPRE
-DR7=$AA_MM[C];测头接触下边缘时C角度DR7
-DR8=180+(DR6+DR7)/2;计算中心C角度
-IF DR8>=360
-    DR8=DR8-360
-ENDIF
-TOOL_SET[5]=DR8;上下中点角度
-G90	G01	C=TOOL_SET[5] F720;旋转C轴使测头在孔中心(垂直方向)
+IF TOOL_SET[31]==0;测头测量
+    ;初始动作到位
+    G90 G01 Z=INI[48] F1500;初始位置Z
+    G90 G01 C=INI[49] F3600
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2 F1000;测头接触工件外表面位置
+    M33;测头伸出
+    WHILE($A_DBB[4]==0);等待测头到位
+        G4 F0.2
+    ENDWHILE
+    G91 G01 X=TOOL_SET[9]*2 F50;测头进入工件内一个测头直径处
+    MEAS=1 G91 G01 Z-200 F200;工件向右移动,触碰测头停止
+    STOPRE
+    IF $AC_MEA[1]==0;如果没挨上工件报警
+        DRESSER[6]=4;工件外径设置有误
+        GOTOF OPERATION_END
+    ENDIF
+    G91 G01 Z=5 F200;工件左移
+    MEAS=1 G91 G01 Z=-10 F=50;工件右移触碰测头停止
+    STOPRE
+    INI[50]=$AA_MM[Z];测头接触工件端面坐标
+    G91 G01 Z=10 F200;工件离开测头
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000;测头接触工件外表面位置5MM处
+    G90 G01 Z=INI[50]-INI[35] F1500;测头移动到孔处
+    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2+TOOL_SET[9]*2 F1000;测头伸进孔内
+    STOPRE
+    IF $AC_MEA[1]==1;碰到外沿
+        DRESSER[6]=5;工件端面到孔距离设置有误
+        GOTOF OPERATION_END
+    ENDIF
+    IF TOOL_SET[22]==0;圆孔
+        MSG("正在测量垂直中心")
+        MEAS=1 G91 G01 C180 F360
+        STOPRE
+        IF $AC_MEA[1]==0;如果没挨上工件报警
+            DRESSER[6]=4;工件外径设置有误
+            GOTOF OPERATION_END
+        ENDIF
+        G91 G01 C-5 F360
+        MEAS=1 G91 G01 C10 F90
+        STOPRE
+        DR6=$AA_MM[C];测头接触上边缘时C角度
+        MEAS=1 G91 G01 C-180 F360
+        G91 G01 C5 F360
+        MEAS=1 G91 G01 C-10 F90
+        STOPRE
+        DR7=$AA_MM[C];测头接触下边缘时C角度
+        DR8=(DR6+DR7+360)/2;防止越过0度情况
+        IF DR8>=360
+            DR8=DR8-360
+        ENDIF
+        TOOL_SET[5]=DR8;上下中点角度
+        G90 G01 C=TOOL_SET[5] F720;旋转C轴使测头在孔中心(垂直方向)
 
-MSG("正在测量水平中心")
-MEAS=1 G91 G01 Z30 F50
-STOPRE
-DR9=$AA_MM[Z];右侧接触点Z坐标DR9
-MEAS=1 G91 G01 Z-10 F50
-STOPRE
-DR10=$AA_MM[Z];左侧接触点Z坐标DR10
-DR11=(DR9+DR10)/2;计算中心Z坐标DR11
-TOOL_SET[1]=DR11-TOOL_SET[10]-0.5*INI[5];将测头到腰型孔中心坐标转化为砂轮到螺旋槽中心坐标
-G90	G01	Z=DR11 F500
-G90	G01	X=INI[49]-INI[34]/2-5 F1000
-GOTOF NEXT
-;*****************************************
-YXK:;腰型孔
-DR12=INI[32]*COS(INI[31]);腰型孔长投影到水平向长度DR12
-DR13=INI[32]*SIN(INI[31]);腰型孔长投影到垂直向长度DR13
-DR14=DR13/($PI*INI[34])*360;将垂直长度转换为C轴旋转角度DR14
-DR15=INI[33]*COS(INI[31]);腰型孔宽投影到水平向长度DR15
-DR16=INI[33]*SIN(INI[31]);腰型孔宽投影到垂直向长度DR16
-DR17=DR16/($PI*INI[34])*360;将垂直宽度转换为C轴旋转角度DR17
+        MSG("正在测量水平中心")
+        MEAS=1 G91 G01 Z30 F50
+        STOPRE
+        DR9=$AA_MM[Z];右侧接触点Z坐标DR9
+        MEAS=1 G91 G01 Z-30 F50
+        STOPRE
+        DR10=$AA_MM[Z];左侧接触点Z坐标DR10
+        DR11=(DR9+DR10)/2;计算中心Z坐标DR11
+        TOOL_SET[1]=DR11+TOOL_SET[10]+0.5*INI[5];将测头到腰型孔中心坐标转化为砂轮到螺旋槽中心坐标
+        G90 G01 Z=DR11 F500
+    ELSE;腰型孔
+        DR12=INI[32]*COS(INI[31]);腰型孔长投影到水平向长度DR12
+        DR13=INI[32]*SIN(INI[31]);腰型孔长投影到垂直向长度DR13
+        DR14=DR13/($PI*INI[34])*360;将垂直长度转换为C轴旋转角度DR14
+        DR15=INI[33]*COS(INI[31]);腰型孔宽投影到水平向长度DR15
+        DR16=INI[33]*SIN(INI[31]);腰型孔宽投影到垂直向长度DR16
+        DR17=DR16/($PI*INI[34])*360;将垂直宽度转换为C轴旋转角度DR17
 
-MSG("正在测量水平中心")
-MEAS=1 G91 G01 Z=-DR15 C=DR17 F=100
-STOPRE
-IF $AC_MEA[1]==0;如果没挨上工件报警
-    DRESSER[6]=4;工件外径设置有误
-    GOTOF OPERATION_END
-ENDIF
-G91	G01	Z=0.1*DR15 C=-0.1*DR17 F100
-MEAS=1 G91 G01 Z=-DR15 C=DR17 F=50
-STOPRE
-DR18=$AA_MM[Z];读取当前Z
-DR19=$AA_MM[C];读取当前C
-MEAS=1 G91 G01 Z=DR15 C=-DR17 F=100
-G91	G01	Z=-0.1*DR15	C=0.1*DR17 F100
-MEAS=1 G91 G01 Z=DR15 C=-DR17 F=50
-STOPRE
-DR20=$AA_MM[Z];读取当前Z
-DR21=$AA_MM[C];读取当前C
-DR22=(DR18+DR20)/2
-DR23=180+(DR19+DR21)/2
-IF DR23>=360
-    DR23=DR23-360
-ENDIF
-G90	G01	Z=DR22 C=DR23 F=100
+        MSG("正在测量水平中心")
+        MEAS=1 G91 G01 Z=-DR15 C=DR17 F=100
+        STOPRE
+        IF $AC_MEA[1]==0;如果没挨上工件报警
+            DRESSER[6]=4;工件外径设置有误
+            GOTOF OPERATION_END
+        ENDIF
+        G91 G01 Z=0.2*DR15 C=-0.2*DR17 F100
+        MEAS=1 G91 G01 Z=-DR15 C=DR17 F=50
+        STOPRE
+        DR18=$AA_MM[Z];读取当前Z
+        DR19=$AA_MM[C];读取当前C
+        MEAS=1 G91 G01 Z=DR15 C=-DR17 F=100
+        G91 G01 Z=-0.2*DR15 C=0.2*DR17 F100
+        MEAS=1 G91 G01 Z=DR15 C=-DR17 F=50
+        STOPRE
+        DR20=$AA_MM[Z];读取当前Z
+        DR21=$AA_MM[C];读取当前C
+        DR22=(DR18+DR20)/2
+        DR23=(DR19+DR21+360)/2
+        IF DR23>=360
+            DR23=DR23-360
+        ENDIF
+        G90 G01 Z=DR22 C=DR23 F=200
 
-MSG("正在测量垂直中心")
-MEAS=1 G91 G01 Z=DR12 C=DR14 F=100
-G91	G01	Z=-0.1*DR12	C=-0.1*DR14	F100
-MEAS=1 G91 G01 Z=DR12 C=DR14 F=50
-STOPRE
-DR24=$AA_MM[Z];读取当前Z
-DR25=$AA_MM[C];读取当前C
-MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=100
-G91	G01	Z=0.1*DR12 C=0.1*DR14 F=100	
-MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=50
-STOPRE
-DR26=$AA_MM[Z];读取当前Z
-DR27=$AA_MM[C];读取当前C
-DR28=(DR24+DR26)/2;腰型孔中心坐标Z
-DR29=180+(DR25+DR27)/2;腰型孔中心坐标C
-IF DR29>=360
-    DR29=DR29-360
+        MSG("正在测量垂直中心")
+        MEAS=1 G91 G01 Z=DR12 C=DR14 F=100
+        G91 G01 Z=-0.2*DR12 C=-0.2*DR14 F100
+        MEAS=1 G91 G01 Z=DR12 C=DR14 F=50
+        STOPRE
+        DR24=$AA_MM[Z];读取当前Z
+        DR25=$AA_MM[C];读取当前C
+        MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=100
+        G91 G01 Z=0.2*DR12 C=0.2*DR14 F=100 
+        MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=50
+        STOPRE
+        DR26=$AA_MM[Z];读取当前Z
+        DR27=$AA_MM[C];读取当前C
+        DR28=(DR24+DR26)/2;腰型孔中心坐标Z
+        DR29=(DR25+DR27+360)/2;腰型孔中心坐标C
+        IF DR29>=360
+            DR29=DR29-360
+        ENDIF
+        TOOL_SET[1]=DR28+TOOL_SET[10]+0.5*INI[5]
+        TOOL_SET[5]=DR29
+        G90 G01 Z=DR28 C=DR29 F=200
+    ENDIF
+ELSE;接近开关测量
+    G90 G01 Z=INI[48] F1500;初始位置
+    G90 G01 C=0 F3600
+    G90 G01 X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
+    G90 G01 Z=INI[52] F500;开始测量位置
+    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]+2 F50;开关接近小径2mm处
+    STOPRE
+    IF $AC_MEA[1]==1;碰到内壁
+        G91 G01 Z=-INI[4]/2 F50
+    ENDIF
+    MEAS=1 G91 G01 Z=-INI[4]*2 F50;移动一段距离
+    STOPRE
+    IF $AC_MEA[1]==0;没碰到
+        DRESSER[6]=6;工件小径设置有误
+        GOTOF OPERATION_END
+    ENDIF
+    DR24=$AA_MM[Z];读取当前Z
+    MEAS=1 G91 G01 Z=-INI[4]*2 F50;移动一段距离
+    STOPRE
+    IF $AC_MEA[1]==0;没碰到
+        DRESSER[6]=6;工件小径设置有误
+        GOTOF OPERATION_END
+    ENDIF
+    DR26=$AA_MM[Z];读取当前Z
+    DR28=(DR24+DR26)/2
+    TOOL_SET[1]=DR28+TOOL_SET[10]
+    TOOL_SET[5]=0
 ENDIF
-TOOL_SET[1]=DR28-TOOL_SET[10]-0.5*INI[5]
-TOOL_SET[5]=DR29
-G90	G01	Z=DR28 C=DR29 F=100
-G90	G01	X=INI[49]-INI[34]/2-5 F1000
-;****************************************
 ;计算C初始角
 DR30=ABS(TOOL_SET[1]-INI[6]);计算理论完成对刀点到磨削起点距离
 DR31=(DR30/INI[5]-TRUNC(DR30/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
@@ -137,30 +157,36 @@ IF INI[0]==1;左旋
 ESLE
     TOOL_SET[4]=TOOL_SET[5]-DR31
 ENDIF
-;*****************************************
+
+OPERATION_END:
+IF TOOL_SET[31]==0;测头测量
+    M34;侧头退回
+    WHILE($A_DBB[3]==0);等待测头缩回
+        G4 F0.2
+    ENDWHILE
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000
+    G90 G01 Z=INI[48] F1500;初始位置Z
+ELSE
+    G90 G01 X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
+    G90 G01 Z=INI[48] F1500;初始位置
+ENDIF
+
 ;x进刀位动作
 IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     G90 G01 C=TOOL_SET[4] F3600;工件旋转到自动对刀后计算出的C轴起始角
-	G90 G01 Z=Z=INI[28] F1500;Z轴开至工件右端偏左
-	MSG("X轴正移至工件中心")
-	G90 G01 X=INI[10] F1000;X开至工件中心
-	MSG("Z轴正移至对刀起点")  
-	G90 G01 Z=INI[2] F=500;Z轴开至工件磨削右端坐标
-	MSG("手动对刀以启动,请进行对刀操作")
-	FGROUP(Z)
-	IF INI[0]==1;左旋
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
-	ELSE
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
-	ENDIF
+    G90 G01 Z=INI[28] F1500;Z轴开至工件右端偏左
+    MSG("X轴正移至工件中心")
+    G90 G01 X=INI[10] F1000;X开至工件中心
+    MSG("Z轴正移至对刀起点")  
+    G90 G01 Z=INI[2] F=500;Z轴开至工件磨削右端坐标
+    MSG("手动对刀以启动,请进行对刀操作")
+    FGROUP(Z)
+    IF INI[0]==1;左旋
+        G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
+    ELSE
+        G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
+    ENDIF
 ENDIF
-
-OPERATION_END:
-M34;侧头退回
-WHILE($A_DBB[3]==0);等待测头缩回
-	G4 F0.2
-ENDWHILE
-G90	G01	X=INI[49]-INI[34]/2-5 F1000
 
 RET
 
