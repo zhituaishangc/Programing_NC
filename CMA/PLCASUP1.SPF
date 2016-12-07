@@ -14,7 +14,7 @@ TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
 TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
 
 IF TOOL_SET[8]==0;首次对刀
-	IF TOOL_SET[7]==0;手动对刀
+	IF GRIND[2]==1;手动对刀
 		IF GRIND[0]<>1;不是内螺纹
 			IF INI[0]==1;左旋
 				DR11=ABS(TOOL_SET[0]-INI[6])+TOOL_SET[2];左旋理论对刀点到磨削起点距离
@@ -34,21 +34,24 @@ IF TOOL_SET[8]==0;首次对刀
 				TOOL_SET[4]=TOOL_SET[5]+DR12
 			ENDIF
 		ENDIF
-	ELSE;自动对刀
-		IF GRIND[0]<>1;不是内螺纹
-			TOOL_SET[3]=TOOL_SET[3]+ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
-		ELSE
-			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
+	ELSE
+		IF GRIND[2]==3;自动对刀(计算C角度+X位置)
+			IF GRIND[0]<>1;不是内螺纹
+				TOOL_SET[3]=TOOL_SET[3]+ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
+			ELSE
+				TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
+			ENDIF
 		ENDIF
 	ENDIF
-	PROCESS[13]=TOOL_SET[3];砂轮初始磨削进刀位赋值
-	PROCESS[4]=PROCESS[13];当前等于初始
+	IF GRIND[2]<>2;不是纯自动对刀
+		PROCESS[13]=TOOL_SET[3];砂轮初始磨削进刀位赋值
+		PROCESS[4]=PROCESS[13];当前等于初始
+	ENDIF
 	TOOL_SET[8]=1;改为二次对刀
 	PROCESS[14]=0;工艺累积进刀清零
 ELSE;非首次对刀
 	PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
-	;---------------非首次对刀后C调整-----------------
 	DR13=TOOL_SET[2]/INI[5]*360
 	IF INI[0]==1;左旋
 		TOOL_SET[4]=TOOL_SET[4]-DR13
@@ -74,8 +77,10 @@ IF $A_DBB[2]==1;按下退刀键
 	IF GRIND[0]<>1;不是内螺纹
 		G01 G90 X=INI[23] F1800;退刀时的X值
 	ELSE
-		G90 G01 X=INI[10] F=500;X离开螺纹
-		G90 G01 Z=INI[2] F=1500;返回起点
+		IF GRIND[2]<>2;不是单纯的自动对刀
+			G90 G01 X=INI[10] F=500;X离开螺纹
+			G90 G01 Z=INI[2] F=1500;返回起点
+		ENDIF
 		G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一点位置
 		G90 G01 X=INI[23] F2000
 	ENDIF

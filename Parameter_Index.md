@@ -11,10 +11,11 @@
 |||
 |**PLC_NC交换变量**|
 |$A_DBB[0]|DB4900.DBX0.0|是否修整
-|$A_DBB[1]|DB4900.DBX1.0|是否对刀
+|$A_DBB[1]|DB4900.DBX1.0|是否手动对刀
 |$A_DBB[2]|DB4900.DBX2.0|是否退刀
 |$A_DBB[3]|DB4900.DBX3.0|液压左开关
 |$A_DBB[4]|DB4900.DBX4.0|液压右开关
+|$A_DBB[5]|DB4900.DBX5.0|是否自动对刀
 |MD14510[0]|DB4500.DBW0|润滑间歇时间(1min)
 |MD14510[1]|DB4500.DBW2|润滑启动时间(10ms)
 |MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
@@ -185,6 +186,11 @@
 |INI[45]|QUIT_SN_EXCIRCLE_GRIND_U|外圆磨削U轴安全退刀位置
 |INI[46]|SN_EXCIRCLE_GRIND_L|外圆磨削图纸上外圆磨削长度
 |INI[47]||磨削中不正常退出标记(0正常/1不正常)
+|INI[48]||自动对刀测头Z轴方向起始位置（此位置手动大概对出来保证安全）
+|INI[49]||自动对刀工件C方向合适角度，换向器孔方便测量
+|INI[50]||自动对刀测头接触工件端面Z坐标
+|INI[51]||内螺纹工件小径
+|INI[52]||自动对刀开关测量方式下，开关进入工件开始测量Z起始位置
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -210,7 +216,7 @@
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
 |TOOL_SET[22]|FXQK|(0=圆形孔,1=腰型孔)
-|TOOL_SET[23]|WHL_HEAD_X|测头中心与砂轮中心距离(X向)
+|TOOL_SET[23]|WHL_HEAD_X|测头球中心/接近开关探测面与磨杆距离(X向)
 |TOOL_SET[24]||首件工件端面接触侧头时Z向坐标
 |TOOL_SET[25]||耳朵端面是否测量(1=不测量,0=测量)
 |TOOL_SET[26]||自动对刀完成标志(1=完成,0=未完成)
@@ -218,6 +224,7 @@
 |TOOL_SET[28]|OPERA_SN_RIGHT_FACE_Z|自动对刀后右端面Z轴坐标，磨削中心
 |TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
 |TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
+|TOOL_SET[31]|OPERA_AUTO_MODEL|自动对刀测头类型(0测头/1开关)
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
@@ -298,7 +305,7 @@
 |**磨削参数(GRIND)**||
 |GRIND[0]|G_TYPE|磨削类型(0外螺纹/1内螺纹/2蜗杆/3外圆/4环形槽)
 |GRIND[1]|DRESS_STA|是否修整(0否/1是)
-|GRIND[2]|OPERA_STA|是否对刀(0否/1是)
+|GRIND[2]|OPERA_STA|是否对刀(0否/1手动/2自动/3自动+手动)
 |GRIND[3]|CYCLE_MODEL|磨削循环类型
 |||
 |**工序基本参数**||
