@@ -23,9 +23,9 @@ IF TOOL_SET[31]==0;测头测量
     MEAS=1 G91 G01 Z=-10 F=50;工件右移触碰测头停止
     STOPRE
     INI[50]=$AA_MM[Z];测头接触工件端面坐标
-    G91	G01	Z=10 F200;工件离开测头
-    G90	G01	X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000;测头接触工件外表面位置5MM处
-    G90	G01	Z=INI[50]-INI[35] F1500;测头移动到孔处
+    G91 G01	Z=10 F200;工件离开测头
+    G90 G01	X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000;测头接触工件外表面位置5MM处
+    G90 G01	Z=INI[50]-INI[35] F1500;测头移动到孔处
     MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2+TOOL_SET[9]*2 F1000;测头伸进孔内
     STOPRE
     IF $AC_MEA[1]==1;碰到外沿
@@ -81,13 +81,13 @@ IF TOOL_SET[31]==0;测头测量
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
-        G91	G01	Z=0.2*DR15 C=-0.2*DR17 F100
+        G91 G01 Z=0.2*DR15 C=-0.2*DR17 F100
         MEAS=1 G91 G01 Z=-DR15 C=DR17 F=50
         STOPRE
         DR18=$AA_MM[Z];读取当前Z
         DR19=$AA_MM[C];读取当前C
         MEAS=1 G91 G01 Z=DR15 C=-DR17 F=100
-        G91	G01	Z=-0.2*DR15	C=0.2*DR17 F100
+        G91 G01	Z=-0.2*DR15	C=0.2*DR17 F100
         MEAS=1 G91 G01 Z=DR15 C=-DR17 F=50
         STOPRE
         DR20=$AA_MM[Z];读取当前Z
@@ -97,17 +97,17 @@ IF TOOL_SET[31]==0;测头测量
         IF DR23>=360
             DR23=DR23-360
         ENDIF
-        G90	G01	Z=DR22 C=DR23 F=200
+        G90 G01	Z=DR22 C=DR23 F=200
 
         MSG("正在测量垂直中心")
         MEAS=1 G91 G01 Z=DR12 C=DR14 F=100
-        G91	G01	Z=-0.2*DR12	C=-0.2*DR14	F100
+        G91 G01	Z=-0.2*DR12	C=-0.2*DR14	F100
         MEAS=1 G91 G01 Z=DR12 C=DR14 F=50
         STOPRE
         DR24=$AA_MM[Z];读取当前Z
         DR25=$AA_MM[C];读取当前C
         MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=100
-        G91	G01	Z=0.2*DR12 C=0.2*DR14 F=100	
+        G91 G01	Z=0.2*DR12 C=0.2*DR14 F=100	
         MEAS=1 G91 G01 Z=-DR12 C=-DR14 F=50
         STOPRE
         DR26=$AA_MM[Z];读取当前Z
@@ -119,13 +119,13 @@ IF TOOL_SET[31]==0;测头测量
         ENDIF
         TOOL_SET[1]=DR28+TOOL_SET[10]+0.5*INI[5]
         TOOL_SET[5]=DR29
-        G90	G01	Z=DR28 C=DR29 F=200
+        G90 G01	Z=DR28 C=DR29 F=200
     ENDIF
 ELSE;接近开关测量
-    G90	G01	Z=INI[48] F1500;初始位置
+    G90 G01	Z=INI[48] F1500;初始位置
     G90 G01 C=0 F3600
-    G90	G01	X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
-    G90	G01	Z=INI[52] F500;开始测量位置
+    G90 G01	X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
+    G90 G01	Z=INI[52] F500;开始测量位置
     MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]+2 F50;开关接近小径2mm处
     STOPRE
     IF $AC_MEA[1]==1;碰到内壁
@@ -164,11 +164,11 @@ IF TOOL_SET[31]==0;测头测量
     WHILE($A_DBB[3]==0);等待测头缩回
         G4 F0.2
     ENDWHILE
-    G90	G01	X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000
-    G90	G01	Z=INI[48] F1500;初始位置Z
+    G90 G01	X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F1000
+    G90 G01	Z=INI[48] F1500;初始位置Z
 ELSE
-    G90	G01	X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
-    G90	G01	Z=INI[48] F1500;初始位置
+    G90 G01	X=INI[10]-TOOL_SET[23] F1000;开关检测面在工件中心
+    G90 G01	Z=INI[48] F1500;初始位置
 ENDIF
 
 ;x进刀位动作
