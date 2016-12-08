@@ -83,6 +83,7 @@
 	HS1=($85001,ac7,se3);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
+	HS4=($85026,ac7,se1);自动对刀
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -101,6 +102,10 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS8)
@@ -338,6 +343,7 @@
 	HS1=($85001,ac7,se3);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
+	HS4=($85026,ac7,se1);自动对刀
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -356,6 +362,10 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS8)
@@ -606,6 +616,7 @@
 	HS1=($85001,ac7,se1);"磨削参数"
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
+	HS4=($85026,ac7,se1);自动对刀
 	HS8=($85005,ac7,se1);"返回"
 
 	VS1=("")
@@ -624,6 +635,10 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS7)
@@ -957,6 +972,7 @@
 	HS1=($85001,ac7,se1);"磨削参数"
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
+	HS4=($85026,ac7,se1);自动对刀
 	HS8=($85005,ac7,se1);"返回"
 
 	VS1=("")
@@ -975,6 +991,10 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS7)
@@ -1692,6 +1712,87 @@
 			ENDIF
 		ENDIF
 	END_SUB
+
+//END
+
+;;;;;;;;;;;;;;;;;;;MASK21:自动对刀;;;;;;;;;;;;;;;;;;;;;;;;
+//M(Mask21/$85026//)
+	DEF VAR0=(I/*0=$85500,1=$85501//$85502,,,/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/440,20,60);测头类型(0测头/1开关)
+	DEF VAR1=(I/*0=$85510,1=$85511//$85509,,,/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/0,0,0/440,40,60);(0=圆形孔,1=腰型孔)
+	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR2//"/NC/_N_NC_GD2_ACX/INI[49]"/330,70,110/440,70,110/);自动对刀测头Z轴方向起始位置
+	DEF VAR3=(R/0,359//$85504,$85504,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[50]"/330,90,110/440,90,110/);自动对刀工件C方向合适角度
+	DEF VAR4=(R/0,500//$85505,$85505,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,110,110/440,110,110/);测头球中心/接近开关探测面与磨杆距离
+	DEF VAR5=(R/0,500//$85506,$85506,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[35]"/330,130,110/440,130,110/);工件大径
+	DEF VAR6=(R/0,500//$85512,$85512,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[52]"/330,130,110/440,130,110/);内螺纹工件小径
+	DEF VAR7=(R/-2000,2000//$85513,$85513,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[53]"/330,150,110/440,150,110/);自动对刀开关测量方式下，开关进入工件开始测量Z起始位置
+	DEF VAR8=(R/0,10//$85507,$85507,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TOOL_SET[10]"/330,170,110/440,170,110/);测头半径
+	DEF VAR9=(R/0,500//$85508,$85508,,$85043/WR2//"/NC/_N_NC_GD2_ACX/INI[36]"/330,190,110/440,190,110/);工件端面到反相器孔距离
+	DEF VAR10=(R/0,359//$85508,$85508,,$85042/WR4//"/NC/_N_NC_GD2_ACX/INI[32]"/330,220,110/440,220,110/);腰型孔角度(展开图尺寸)
+	DEF VAR11=(R/0,100//$85508,$85508,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[33]"/330,240,110/440,240,110/);腰型孔长(展开图尺寸)
+	DEF VAR12=(R/0,100//$85508,$85508,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[34]"/330,260,110/440,260,110/);腰型孔宽(展开图尺寸)
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+
+	HS1=($85001,ac7,se1);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se1);修整参数
+	HS4=($85026,ac7,se3);自动对刀
+	HS8=($85005,ac7,se1);返回
+
+	VS1=("")
+
+	PRESS(HS1)
+		IF TYPE.VAL<>1
+			LM("MASK1")
+		ELSE
+			LM("MASK18")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		IF TECH.VAL==0
+			LM("MASK2")
+		ELSE
+			LM("MASK20")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
+	END_PRESS
+
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	CHANGE(VAR0)
+		IF VAR0.VAL==0
+			VAR5.WR=2
+			VAR6.WR=4
+			VAR7.WR=4
+		ELSE
+			VAR5.WR=4
+			VAR6.WR=2
+			VAR7.WR=2
+		ENDIF
+	END_CHANGE
+
+	CHANGE(VAR1)
+		IF VAR1.VAL==0
+			VAR10.WR=4
+			VAR11.WR=4
+			VAR12.WR=4
+		ELSE
+			VAR10.WR=2
+			VAR11.WR=2
+			VAR12.WR=2
+		ENDIF
+	END_CHANGE
 
 //END
 
@@ -3619,6 +3720,7 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
+	HS4=($85026,ac7,se1);自动对刀
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -3641,6 +3743,10 @@
 
 	PRESS(HS3)
 		LM("MASK3")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21")
 	END_PRESS
 
 	PRESS(HS8)
