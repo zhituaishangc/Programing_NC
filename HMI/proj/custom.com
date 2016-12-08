@@ -1771,11 +1771,11 @@
 	END_PRESS
 
 	CHANGE(VAR0)
-		call(UP1)
+		call("UP1")
 	END_CHANGE
 
 	CHANGE(VAR1)
-		call(UP1)
+		call("UP1")
 	END_CHANGE
 
 	SUB(UP1)
