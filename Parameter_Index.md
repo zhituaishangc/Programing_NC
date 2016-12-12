@@ -228,6 +228,14 @@
 |TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
 |TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
 |TOOL_SET[31]|OPERA_AUTO_MODEL|自动对刀测头类型(0测头/1开关)
+|TOOL_SET[32]||测头接触上边沿C角度
+|TOOL_SET[33]||测头接触下边沿C角度
+|TOOL_SET[34]||测头接触左边沿Z坐标
+|TOOL_SET[35]||测头接触右边沿Z坐标
+|TOOL_SET[36]||测头在孔中间Z坐标
+|TOOL_SET[37]||接近开关接触第一个齿Z坐标
+|TOOL_SET[38]||接近开关接触第二个齿Z坐标
+|TOOL_SET[39]||接近开关接触齿底Z坐标
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
