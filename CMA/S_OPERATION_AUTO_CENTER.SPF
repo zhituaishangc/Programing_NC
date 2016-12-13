@@ -54,7 +54,7 @@ GOTOF YXK
 ENDIF
 
 ----------测量开始，测角度(圆形孔)------------
-ROUND：
+ROUND:
 MSG("测量开始，测角度 C 中心 ")
 G91 G01 C180 F720 MEAS=1		
 G91 G01 C-2 F360
@@ -93,7 +93,7 @@ G90	G01	X=TOOL_SET[11]-5				 ;测头退出圆孔
 GOTOF NEXT
 
 ----------------腰型孔测量--------------------
-YXK：
+YXK:
 DR12=INI[32]*COS(INI[31])				;腰型孔长投影到水平向长度DR12
 DR13=INI[32]*SIN(INI[31])				;腰型孔长投影到垂直向长度DR13
 DR14=DR13/($PI*INI[32])*360				;将垂直长度转换为C轴旋转角度DR14
@@ -163,8 +163,8 @@ G91	G01	Z10 F500
 STOPRE
 GOTOF BACK
 
----------------报警信息：---------------------
-ERROR1：
+---------------报警信息:---------------------
+ERROR1:
 MSG("测头伸出未到位!!,请检查气缸")
 GO4	F=99999
 GOTOB ERROR1
@@ -193,7 +193,7 @@ DR30=ABS(TOOL_SET[1]-INI[6]);计算理论完成对刀点到磨削起点距离
 DR31=(DR30/INI[5]-TRUNC(DR30/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
 IF INI[0]==1;左旋
 TOOL_SET[4]=TOOL_SET[5]+DR31
-ESLE
+ELSE
 TOOL_SET[4]=TOOL_SET[5]-DR31
 ENDIF
 
