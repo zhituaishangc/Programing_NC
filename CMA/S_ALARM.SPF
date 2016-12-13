@@ -19,7 +19,7 @@ IF DRESSER[6]<>0
                     ELSE
                         IF DRESSER[6]==6;有报警
                             MSG("工件小径设置有误!")
-                        ENDF
+                        ENDIF
                     ENDIF
                 ENDIF
             ENDIF
