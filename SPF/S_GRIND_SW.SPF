@@ -8,12 +8,6 @@ ENDIF
 WORK[1]=0;当前头
 WORK[2]=360/WORK[0];每头累加角度
 
-MSG("台面到磨削起点")
-G90 G01 Z=INI[6] F=1500;Z轴到磨削起点
-MSG("砂轮到安全位置")
-G90 G01 X=INI[10] F=800;X轴到对刀起始位置
-STOPRE
-
 WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	MSG("头架到位中")
@@ -24,6 +18,7 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	G90 Z=INI[6] F=PROCESS[9];Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
+	G90 G01 X=PROCESS[4]+1.5 F=1500
 	IF PROCESS[6]==0;根据磨削方式判断进给量
 		X=PROCESS[4] F=PROCESS[11];X进给
 	ELSE
@@ -47,21 +42,21 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1,需要换头时,砂轮退出
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=INI[10] F=1000;换头时,X退刀,返回起点
+				G90 G01 X=PROCESS[16] F=1000;换头时,X退刀,返回起点
 			ENDIF
 			IF PROCESS[3]==1;需要修整,砂轮退出工件
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10] F=1000;双向磨削结束,需要修砂轮,X退刀
+				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,需要修砂轮,X退刀
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
 				MSG("砂轮正在退出工件");双向磨削结束,次数已到设定次数,X退刀
-				G90 G01 X=INI[10] F=1000
+				G90 G01 X=PROCESS[16] F=1000
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=INI[10] F=1000;X退刀
+			G90 G01 X=PROCESS[16] F=1000;X退刀
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] F=2000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
@@ -84,21 +79,21 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1,需要换头时砂轮退出
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=INI[10] F=1000;换头时,X退刀,返回起点
+				G90 G01 X=PROCESS[16] F=1000;换头时,X退刀,返回起点
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10] F=1000;双向磨削结束,需要修砂轮时,X退刀
+				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,需要修砂轮时,X退刀
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10] F=1000;双向磨削结束,次数已到设定次数,X退刀
+				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,次数已到设定次数,X退刀
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=INI[10] F=1000
+			G90 G01 X=PROCESS[16] F=1000
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] C=TOOL_SET[4] F=1500
+			G01 Z=INI[6] F=2000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
