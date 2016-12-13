@@ -32,7 +32,7 @@ M63;变频修整轮1启动
 G4 F0.2
 
 IF DRESSER[18]+DRESSER[19]+DRESSER[20]==0;第一次多停留一段时间
-    G4 F5
+    G4 F0.5
 ELSE
     G4 F0.5
 ENDIF
