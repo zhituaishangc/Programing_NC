@@ -56,7 +56,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("砂轮退出工件")
 			G90 G01 X=PROCESS[16] F=1000;X退刀
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] F=2000
+			G01 Z=INI[6] F=3000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
@@ -93,7 +93,7 @@ WHILE(WORK[1]<WORK[0])
 			MSG("砂轮退出工件")
 			G90 G01 X=PROCESS[16] F=1000
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] F=2000
+			G01 Z=INI[6] F=3000
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
