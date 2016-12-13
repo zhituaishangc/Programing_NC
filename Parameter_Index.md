@@ -18,6 +18,7 @@
 |$A_DBB[5]|DB4900.DBX5.0|是否自动对刀
 |$A_DBB[6]|DB4900.DBX6.0|自动门打开开关
 |$A_DBB[7]|DB4900.DBX7.0|自动门关闭开关
+|$A_DBB[8]|DB4900.DBX8.0|C轴旋转
 |MD14510[0]|DB4500.DBW0|润滑间歇时间(1min)
 |MD14510[1]|DB4500.DBW2|润滑启动时间(10ms)
 |MD14514[0]|DB4500.DBD2000|模拟量砂轮极限速度
@@ -227,6 +228,14 @@
 |TOOL_SET[29]|OPERA_SN_RIGHT_FACE_U|自动对刀后外圆U轴坐标，磨削中心
 |TOOL_SET[30]|OPERA_SN_LEFT_FACE_Z|自动对刀后左端面Z轴坐标，磨削中心
 |TOOL_SET[31]|OPERA_AUTO_MODEL|自动对刀测头类型(0测头/1开关)
+|TOOL_SET[32]||测头接触上边沿C角度
+|TOOL_SET[33]||测头接触下边沿C角度
+|TOOL_SET[34]||测头接触左边沿Z坐标
+|TOOL_SET[35]||测头接触右边沿Z坐标
+|TOOL_SET[36]||测头在孔中间Z坐标
+|TOOL_SET[37]||接近开关接触第一个齿Z坐标
+|TOOL_SET[38]||接近开关接触第二个齿Z坐标
+|TOOL_SET[39]||接近开关接触齿底Z坐标
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
