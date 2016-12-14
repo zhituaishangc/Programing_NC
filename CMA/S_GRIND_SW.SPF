@@ -1,5 +1,8 @@
 PROC S_GRIND_SW DISPLOF
-;外螺纹小循环
+;;**********程序功能**********
+;;外螺纹小循环:
+;;完整磨削一个工件循环
+;;***************************
 
 WORK[1]=0;当前头
 WORK[2]=360/WORK[0];每头累加角度
@@ -9,14 +12,14 @@ WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	MSG("头架到位中")
 	IF (WORK[3]+TOOL_SET[4])>=360
-		G90 G01 C=DC(WORK[3]+TOOL_SET[4]-360) F=3600;头数切换,角度增量累加
+		G90 G01 C=DC(WORK[3]+TOOL_SET[4]-360) F=INI[58];头数切换,角度增量累加
 	ELSE
-		G90 G01 C=DC(WORK[3]+TOOL_SET[4]) F=3600;头数切换,角度增量累加
+		G90 G01 C=DC(WORK[3]+TOOL_SET[4]) F=INI[58];头数切换,角度增量累加
 	ENDIF
 	MSG("到磨削起点")
-	G90 G01 Z=INI[6] F=PROCESS[9];Z轴到磨削起点
+	G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
-	G90 G01 X=PROCESS[4]+1 F=500;X进给
+	G90 G01 X=PROCESS[4]+1 F=INI[55];X进给
 	IF PROCESS[6]==0;根据磨削方式判断进给量
 		X=PROCESS[4] F=PROCESS[11];X进给
 	ELSE
@@ -40,22 +43,22 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1,需要换头时,砂轮退出
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=PROCESS[16] F=1000;换头时,X退刀,返回起点
+				G90 G01 X=PROCESS[16] F=INI[55];换头时,X退刀,返回起点
 			ENDIF
 			IF PROCESS[3]==1;需要修整,砂轮退出工件
 				MSG("砂轮正在退出工件")
-				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,需要修砂轮,X退刀
+				G90 G01 X=PROCESS[16] F=INI[55];双向磨削结束,需要修砂轮,X退刀
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
 				MSG("砂轮正在退出工件");双向磨削结束,次数已到设定次数,X退刀
-				G90 G01 X=PROCESS[16] F=1000
+				G90 G01 X=PROCESS[16] F=INI[55]
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=PROCESS[16] F=1000;X退刀
+			G90 G01 X=PROCESS[16] F=INI[55];X退刀
 			INI[47]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] F=2000
+			G01 Z=INI[6] F=INI[56]
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
@@ -80,22 +83,22 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1,需要换头时砂轮退出
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=PROCESS[16] F=1000;换头时,X退刀,返回起点
+				G90 G01 X=PROCESS[16] F=INI[55];换头时,X退刀,返回起点
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,需要修砂轮时,X退刀
+				G90 G01 X=PROCESS[16] F=INI[55];双向磨削结束,需要修砂轮时,X退刀
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])		
 				MSG("砂轮正在退出工件")
-				G90 G01 X=PROCESS[16] F=1000;双向磨削结束,次数已到设定次数,X退刀
+				G90 G01 X=PROCESS[16] F=INI[55];双向磨削结束,次数已到设定次数,X退刀
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=PROCESS[16] F=1000
+			G90 G01 X=PROCESS[16] F=INI[55]
 			INI[47]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
-			G01 Z=INI[6] F=2000
+			G01 Z=INI[6] F=INI[56]
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF

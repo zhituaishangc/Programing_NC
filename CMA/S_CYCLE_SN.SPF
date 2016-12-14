@@ -1,5 +1,8 @@
 PROC S_CYCLE_SN DISPLON
-;内螺纹磨削循环
+;;**********程序功能**********
+;;内螺纹磨削循环:
+;;内螺纹磨削初始走位及子程序的调用，磨削中修整的调用
+;;***************************
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0;第一次跳出
     RET
@@ -7,9 +10,9 @@ ENDIF
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1
 	MSG("台面快速接近磨削起点")
-	G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
+	G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
 	MSG("砂轮到安全位置")
-	G90 G01 X=INI[10] F=2000;X轴到安全位置
+	G90 G01 X=INI[10] F=INI[55];X轴到安全位置
 ENDIF
 S_GRIND_SN;内螺纹小循环
 PLCASUP1;初始角度计算
@@ -24,7 +27,7 @@ ENDIF
 
 IF PROCESS[3]==1
     MSG("砂轮离开工件中")
-    G90 G01 Z=INI[28] F=1500;Z轴到工件右端偏右一位置
+    G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
     M9;内磨削冷却关
     M39;外磨削冷却关
     DRESS;修整
@@ -35,20 +38,20 @@ IF PROCESS[3]==1
         RET
     ENDIF
     MSG("台面快速接近磨削起点")
-	G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
+	G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
     IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);不是最后一次
         M8;内磨削冷却开
         M38;外磨削冷却开
         MSG("砂轮到安全位置")
-        G90 G01 X=INI[10] F=2000;X轴到安全位置
+        G90 G01 X=INI[10] F=INI[55];X轴到安全位置
     ENDIF
 ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
     MSG("砂轮离开工件中")
-    G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
+    G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
     MSG("砂轮回退到安全位置")
-    G90 G1 X=INI[23] F2000
+    G90 G1 X=INI[23] F=INI[54]
 ENDIF
 
 RET

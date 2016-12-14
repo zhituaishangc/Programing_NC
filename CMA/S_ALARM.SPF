@@ -1,5 +1,8 @@
 PROC S_ALARM DISPLOF
-;报警处理
+;;**********程序功能**********
+;;报警处理:
+;;系统所有报警的处理，及显示
+;;***************************
 
 IF DRESSER[6]<>0
     IF DRESSER[6]==1;有报警
@@ -19,7 +22,7 @@ IF DRESSER[6]<>0
                     ELSE
                         IF DRESSER[6]==6;有报警
                             MSG("工件小径设置有误!")
-                        ENDF
+                        ENDIF
                     ENDIF
                 ENDIF
             ENDIF

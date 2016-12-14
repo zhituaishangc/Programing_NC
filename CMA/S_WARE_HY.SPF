@@ -1,5 +1,7 @@
 PROC S_WARE_HY DISPLON
-;液压修整
+;;**********程序功能**********
+;;液压修整
+;;***************************
 
 DEF AXIS AXIVER;垂直轴名
 DEF REAL SHAPE_VER_REAL_FIX;考虑进给量高度
@@ -23,7 +25,7 @@ ELSE
     WHEEL[10]=WHEEL[10]
 ENDIF
 
-G90 G1 AX[AXIVER]=0 F200
+G90 G1 AX[AXIVER]=0 F=INI[61]
 WHILE($A_DBB[4]<>1);没到初始位置
     M44;回到初始位置
 ENDWHILE
@@ -58,7 +60,7 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
 ENDWHILE
 
 HY_ENDING:
-G90 G1 AX[AXIVER]=0 F200
+G90 G1 AX[AXIVER]=0 F=INI[61]
 
 RET
 
