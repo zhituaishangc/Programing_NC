@@ -1,5 +1,8 @@
 PROC DRESS DISPLON
-;修整主程序
+;;**********程序功能**********
+;;修整主程序:
+;;整合各种不同修整器结构
+;;***************************
 
 S_DRESS_CHOICE;修整参数赋值
 
@@ -22,9 +25,11 @@ S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
 S_LINESPEED_DRESS;砂轮速度
 MSG("垂直初始位")
-G90 G01 V=0 F500;修整开始前V轴到安全位置
+G90 G01 V=0 F=INI[61];修整开始前V轴到安全位置
 MSG("水平初始位")
-G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F500
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F=INI[63]
+MSG("修整轮运行至修整位置")
+G90 G1 V=WHEEL[10]+2 F=INI[62]
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
@@ -39,9 +44,9 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
 ENDWHILE
 M29;修整冷却关
 MSG("水平初始位")
-G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F500
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F=INI[63]
 MSG("垂直初始位")
-G90 G01 V=0 F500;修整结束后V轴到安全位置
+G90 G01 V=0 F=INI[61];修整结束后V轴到安全位置
 GOTOF D_ENDING
 
 WARE_1:;X-Z
@@ -49,10 +54,10 @@ S_WHEL_SHAPE;修整轮选择水平位置计算
 S_DRESS_SHAPE_INIT;垂直位置计算
 S_LINESPEED_DRESS;砂轮速度
 MSG("砂轮架回退到修整位中")
-G1 G90 X=WHEEL[10]+2 F1200;x轴回退到修整接触位+2
+G1 G90 X=WHEEL[10]+2 F=INI[55];x轴回退到修整接触位+2
 S_RESET_ANGLE;升角复位
 MSG("台面到位中")
-G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F2000;z轴快速接近
+G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F=INI[56];z轴快速接近
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
@@ -67,9 +72,9 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
 ENDWHILE
 M29;修整冷却关
 MSG("砂轮架离开中")
-G1 G90 X=WHEEL[10]+2 F1200;x轴回退到修整接触位+2
+G1 G90 X=WHEEL[10]+2 F=INI[55];x轴回退到修整接触位+2
 MSG("台面离开中")
-G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F2000;z轴快速接近
+G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F=INI[56];z轴快速接近
 S_ROTATE_ANGLE;螺旋升角
 GOTOF D_ENDING
 
@@ -77,9 +82,9 @@ WARE_2:;滚压V
 S_DRESS_SHAPE_INIT;垂直位置计算
 S_LINESPEED_DRESS;砂轮速度
 MSG("修整轮运行至起始位置")
-G90 G1 V=0 F500
+G90 G1 V=0 F=INI[61]
 MSG("修整轮运行至修整位置")
-G90 G1 V=WHEEL[10]+1
+G90 G1 V=WHEEL[10]+1 F=INI[62]
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
     STOPRE
     S_LINESPEED_DRESS;砂轮速度
@@ -95,7 +100,7 @@ ENDWHILE
 M29;修整冷却关
 ROLLING_V_ENDING:
 MSG("修整轮运行至起始位置")
-G90 G1 V=0 F500
+G90 G1 V=0 F=INI[61]
 GOTOF D_ENDING
 
 WARE_3:;液压
@@ -107,27 +112,27 @@ S_DRESS_SHAPE_INIT;垂直位置计算
 S_LINESPEED_DRESS;砂轮速度
 MSG("修整轮运行至起始位置")
 IF GRIND[0]<>1;不是内螺纹
-    G90 G1 X=WHEEL[10]+10 F1500;多退刀一点，防止齿高过大抬刀不够
+    G90 G1 X=WHEEL[10]+10 F=INI[55];多退刀一点，防止齿高过大抬刀不够
 ELSE
     IF DRESSER[37]==0;前/后修整
-        G90 G1 X=WHEEL[10]-10 F1500
+        G90 G1 X=WHEEL[10]-10 F=INI[55]
     ELSE
-        G90 G1 X=WHEEL[10]+10 F1500
+        G90 G1 X=WHEEL[10]+10 F=INI[55]
     ENDIF
 ENDIF
 IF DRESSER[37]==0;前/后修整
     S_RESET_ANGLE;升角复位
     MSG("台面到位中")
-    G90 G1 Z=DRESSER[21] F2500
+    G90 G1 Z=DRESSER[21] F=INI[56]
 ENDIF
 MSG("修整轮运行至修整位置")
 IF GRIND[0]<>1;不是内螺纹
-    G90 G1 X=WHEEL[10]+1 F500
+    G90 G1 X=WHEEL[10]+1 F=INI[55]
 ELSE
     IF DRESSER[37]==0;前/后修整
-        G90 G1 X=WHEEL[10]-1 F500
+        G90 G1 X=WHEEL[10]-1 F=INI[55]
     ELSE
-        G90 G1 X=WHEEL[10]+1 F500
+        G90 G1 X=WHEEL[10]+1 F=INI[55]
     ENDIF
 ENDIF
 WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
@@ -146,20 +151,20 @@ M29;修整冷却关
 ROLLING_X_ENDING:
 MSG("修整轮运行至起始位置")
 IF GRIND[0]<>1;不是内螺纹
-    G90 G1 X=WHEEL[10]+10 F1500;多退刀一点，防止齿高过大抬刀不够
+    G90 G1 X=WHEEL[10]+10 F=INI[55];多退刀一点，防止齿高过大抬刀不够
 ELSE
     IF DRESSER[37]==0;前/后修整
-        G90 G1 X=WHEEL[10]-10 F1500
+        G90 G1 X=WHEEL[10]-10 F=INI[55]
     ELSE
-        G90 G1 X=WHEEL[10]+10 F1500
+        G90 G1 X=WHEEL[10]+10 F=INI[55]
     ENDIF
 ENDIF
 IF DRESSER[37]==0;前/后修整
     MSG("台面离开工件中")
     IF GRIND[0]<>1;不是内螺纹
-        G90 G1 Z=INI[6] F2500
+        G90 G1 Z=INI[6] F=INI[56]
     ELSE
-        G90 G1 Z=INI[28] F2500
+        G90 G1 Z=INI[28] F=INI[56]
     ENDIF
     S_ROTATE_ANGLE;螺旋升角
 ENDIF

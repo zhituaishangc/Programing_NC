@@ -1,15 +1,18 @@
 PROC OPERATION DISPLON
-;对刀主程序
+;;**********程序功能**********
+;;对刀主程序:
+;;内外螺纹 首次对刀 二次对刀 自动对刀 角度计算 等子程序的调用
+;;***************************
 
 IF GRIND[0]<>1;不是内螺纹
     IF TOOL_SET[8]==0;首次对刀
         IF GRIND[2]==1;手动对刀
             IF INI[36]==0;砂轮类型选择
-                R299=2000
+                R299=INI[53]
                 G4 F0.2
                 M13;砂轮启动
             ELSE
-                M1=3 S1=2000
+                M1=3 S1=INI[53]
                 WAITS
             ENDIF
             G4 F5
@@ -19,11 +22,11 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
     ELSE;二次对刀
         IF INI[36]==0;砂轮类型选择
-            R299=2000
+            R299=INI[53]
             G4 F0.2
             M13;砂轮启动
         ELSE
-            M1=3 S1=2000
+            M1=3 S1=INI[53]
             WAITS
         ENDIF
         G4 F5
@@ -33,11 +36,11 @@ IF GRIND[0]<>1;不是内螺纹
     IF TOOL_SET[8]==0;首次对刀
         IF GRIND[2]==1;手动对刀
             IF INI[36]==0;砂轮类型选择
-                R299=20000
+                R299=INI[53]
                 G4 F0.2
                 M13;砂轮启动
             ELSE
-                M1=3 S1=20000
+                M1=3 S1=INI[53]
                 WAITS
             ENDIF
             G4 F5
@@ -47,11 +50,11 @@ IF GRIND[0]<>1;不是内螺纹
         ENDIF
     ELSE;二次对刀
         IF INI[36]==0;砂轮类型选择
-            R299=20000
+            R299=INI[53]
             G4 F0.2
             M13;砂轮启动
         ELSE
-            M1=3 S1=20000
+            M1=3 S1=INI[53]
             WAITS
         ENDIF
         G4 F5
@@ -69,14 +72,14 @@ ELSE
     PLCASUP1;跳转到初始角度计算子程序
     MSG("退刀中,请勿复位程序!")
     IF GRIND[0]<>1;不是内螺纹
-        G01 G90 X=INI[23] F1800;退刀时的X值
+        G01 G90 X=INI[23] F=INI[54];退刀时的X值
     ELSE
         IF GRIND[2]<>2;不是单纯的自动对刀
-            G90 G01 X=INI[10] F=500;X离开螺纹,已清除XDRF值
-            G90 G01 Z=INI[2] F=1500;返回起点
+            G90 G01 X=INI[10] F=INI[55];X离开螺纹,已清除XDRF值
+            G90 G01 Z=INI[2] F=INI[56];返回起点
         ENDIF
-        G90 G01 Z=INI[28] F=2500;Z轴到工件右端偏右一位置
-        G90 G01 X=INI[23] F2000
+        G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
+        G90 G01 X=INI[23] F=INI[54]
     ENDIF
 ENDIF
 

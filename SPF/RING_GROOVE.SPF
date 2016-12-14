@@ -18,7 +18,7 @@ G4 F5
 
 C_CYCLE:
 MSG("头架旋转中...")
-G91 C=360000 F=7200;头架旋转
+G91 C=360000 F=INI[58];头架旋转
 IF $A_DBB[2]==1;如果按下退刀键
     GOTOF RING_END
 ENDIF

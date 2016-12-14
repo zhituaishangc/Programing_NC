@@ -1,5 +1,7 @@
 PROC S_TRIANGLE SBLOF DISPLOF
-;三角
+;;**********程序功能**********
+;;三角
+;;***************************
 
 DEF  REAL DR1
 DEF  REAL DR2

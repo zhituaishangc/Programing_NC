@@ -1,5 +1,8 @@
 PROC S_BCYC SBLOF DISPLOF
-;磨削循环
+;;**********程序功能**********
+;;磨削循环:
+;;磨削工艺循环参数的赋值及累加，工艺切换
+;;***************************
 
 ;当前工序判断
 CASE PROCESS[2] OF 0 GOTOF NUM_0 1 GOTOF NUM_1 2 GOTOF NUM_2 3 GOTOF NUM_3 4 GOTOF NUM_DIY DEFAULT GOTOF NUM_EXIT

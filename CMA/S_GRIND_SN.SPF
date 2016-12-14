@@ -1,5 +1,8 @@
 PROC S_GRIND_SN DISPLOF
-;内螺纹小循环
+;;**********程序功能**********
+;;内螺纹小循环:
+;;完整磨削一个工件循环
+;;***************************
 
 WORK[1]=0;当前头数
 WORK[2]=360/WORK[0];平均头数角度
@@ -9,12 +12,12 @@ WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	MSG("正在换头中")
 	IF TOOL_SET[4]+WORK[3]>=360;当前C角度大于等于360度
-		G90 G01 C=DC(TOOL_SET[4]+WORK[3]-360) F=7200;头数切换,角度增量累加
+		G90 G01 C=DC(TOOL_SET[4]+WORK[3]-360) F=INI[58];头数切换,角度增量累加
 	ELSE
-		G90 G01 C=DC(TOOL_SET[4]+WORK[3]) F=7200;头数切换,角度增量累加
+		G90 G01 C=DC(TOOL_SET[4]+WORK[3]) F=INI[58];头数切换,角度增量累加
 	ENDIF
 	MSG("台面到磨削起点")
-	G90 Z=INI[6] F=600;Z轴到磨削起点
+	G90 Z=INI[6] F=INI[56];Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
 	IF PROCESS[6]==0;根据磨削方式判断进给量
 		X=PROCESS[4] F=PROCESS[11];X进给
@@ -39,22 +42,22 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
+			G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			INI[47]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
-			G90 G01 Z=INI[2] F=1500;返回起点
+			G90 G01 Z=INI[2] F=INI[56];返回起点
 			IF $A_DBB[2]==1
 				RET
 			ENDIF
@@ -78,22 +81,22 @@ WHILE(WORK[1]<WORK[0])
 			ENDIF
 			IF WORK[0]<>1;头数不等于1
 				MSG("换头,砂轮退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 			IF PROCESS[3]==1
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 			IF(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
 				MSG("砂轮正在退出工件")
-				G90 G01 X=INI[10]-$AC_DRF[X] F=800;X轴到安全位置
+				G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			ENDIF
 		ELSE
 			MSG("砂轮退出工件")
-			G90 G01 X=INI[10]-$AC_DRF[X] F=500;X轴到安全位置
+			G90 G01 X=INI[10]-$AC_DRF[X] F=INI[55];X轴到安全位置
 			INI[47]=0;磨削中不正常退出标记
 			MSG("台面到磨削起点")
-			G90 G01 Z=INI[2] F=1500;返回起点
+			G90 G01 Z=INI[2] F=INI[56];返回起点
 			IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 				RET
 			ENDIF
