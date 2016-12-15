@@ -8,13 +8,16 @@ DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,D
 
 IF TOOL_SET[31]==0;测头测量
     ;初始动作到位
+    MSG("正在运行到测量位置")
     G90 G01 Z=INI[48] F=INI[56];初始位置Z
     G90 G01 C=INI[49] F=INI[58]
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2 F=INI[55];测头接触工件外表面位置
+    MSG("测头伸出中")
     M33;测头伸出
     WHILE($A_DBB[4]==0);等待测头到位
         G4 F0.2
     ENDWHILE
+    MSG("测头接近工件中")
     G91 G01 X=TOOL_SET[9]*2 F=INI[65];测头进入工件内一个测头直径处
     MEAS=1 G91 G01 Z-200 F=INI[57];工件向右移动,触碰测头停止
     STOPRE
@@ -69,6 +72,7 @@ IF TOOL_SET[31]==0;测头测量
         TOOL_SET[1]=TOOL_SET[36]+TOOL_SET[10]+0.5*INI[5];将测头到腰型孔中心坐标转化为砂轮到螺旋槽中心坐标
         G90 G01 Z=TOOL_SET[36] F=INI[57]
     ELSE;腰型孔
+        MSG("正在运行到测量位置")
         DR12=INI[32]*COS(INI[31]);腰型孔长投影到水平向长度DR12
         DR13=INI[32]*SIN(INI[31]);腰型孔长投影到垂直向长度DR13
         DR14=DR13/($PI*INI[34])*360;将垂直长度转换为C轴旋转角度DR14
@@ -123,15 +127,18 @@ IF TOOL_SET[31]==0;测头测量
         G90 G01 Z=TOOL_SET[36] C=TOOL_SET[5] F=INI[57]
     ENDIF
 ELSE;接近开关测量
+    MSG("正在运行到测量位置")
     G90 G01 Z=INI[48] F=INI[56];初始位置
     G90 G01 C=0 F=INI[58]
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     G90 G01 Z=INI[52] F=INI[56];开始测量位置
-    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]+2 F=INI[55];开关接近小径2mm处
+    MSG("接近工件中")
+    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]+2 F=INI[65];开关接近小径2mm处
     STOPRE
     IF $AC_MEA[1]==1;碰到内壁
         G91 G01 Z=-INI[4]/2 F=INI[57]
     ENDIF
+    MSG("开始检测齿顶1")
     MEAS=1 G91 G01 Z=-INI[4]*2 F=INI[57];移动一段距离
     STOPRE
     IF $AC_MEA[1]==0;没碰到
@@ -139,6 +146,7 @@ ELSE;接近开关测量
         GOTOF OPERATION_END
     ENDIF
     TOOL_SET[37]=$AA_MM[Z];读取当前Z
+    MSG("开始检测齿顶2")
     MEAS=1 G91 G01 Z=-INI[4]*2 F=INI[57];移动一段距离
     STOPRE
     IF $AC_MEA[1]==0;没碰到
@@ -168,19 +176,23 @@ ENDIF
 
 OPERATION_END:
 IF TOOL_SET[31]==0;测头测量
-    M34;侧头退回
+    MSG("测头退回中")
+    M34;测头退回
     WHILE($A_DBB[3]==0);等待测头缩回
         G4 F0.2
     ENDWHILE
+    MSG("测头离开工件中")
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[55]
     G90 G01 Z=INI[48] F=INI[56];初始位置Z
 ELSE
+    MSG("接近开关离开工件中")
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     G90 G01 Z=INI[48] F=INI[56];初始位置
 ENDIF
 
 ;x进刀位动作
 IF GRIND[2]==3;自动对刀(计算C角度+X位置)
+    MSG("开始测量X轴磨削位置")
     G90 G01 C=TOOL_SET[4] F=INI[58];工件旋转到自动对刀后计算出的C轴起始角
     G90 G01 Z=INI[28] F=INI[56];Z轴开至工件右端偏左
     MSG("X轴正移至工件中心")
