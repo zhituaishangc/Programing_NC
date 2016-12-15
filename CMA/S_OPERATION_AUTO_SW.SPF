@@ -5,10 +5,15 @@ PROC S_OPERATION_AUTO_SW DISPLOF
 ;;***************************
 
 MSG("正在运行到测量位置")
-G90 G01 C=0 F=INI[58]
-G90 G01 X=INI[66]-TOOL_SET[23]-INI[34]/2-10 F=INI[55];开关检测面在工件外侧
 G90 G01 Z=INI[52] F=INI[56];开始测量位置
-MSG("接近工件中")
+G90 G01 C=0 F=INI[58]
+MSG("测头伸出中")
+M33;测头伸出
+WHILE($A_DBB[4]==0);等待测头到位
+	G4 F0.2
+ENDWHILE
+MSG("测头接近工件中")
+G90 G01 X=INI[66]-TOOL_SET[23]-INI[34]/2-10 F=INI[55];开关检测面在工件外侧
 MEAS=1 G90 G01 X=INI[66]-TOOL_SET[23]-INI[34]/2-2 F=INI[65];开关接近小径2mm处
 STOPRE
 IF $AC_MEA[1]==1;碰到内壁
@@ -49,6 +54,11 @@ ENDIF
 OPERATION_END:
 MSG("接近开关离开工件中")
 G90 G01 X=INI[66]-TOOL_SET[23]-INI[34]/2-10 F=INI[55];开关检测面在工件外侧
+MSG("测头退回中")
+M34;测头退回
+WHILE($A_DBB[3]==0);等待测头缩回
+	G4 F0.2
+ENDWHILE
 
 ;x进刀位动作
 IF GRIND[2]==3;自动对刀(计算C角度+X位置)

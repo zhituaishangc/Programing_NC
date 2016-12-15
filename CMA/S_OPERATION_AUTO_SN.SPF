@@ -130,6 +130,12 @@ ELSE;接近开关测量
     MSG("正在运行到测量位置")
     G90 G01 Z=INI[48] F=INI[56];初始位置
     G90 G01 C=0 F=INI[58]
+    MSG("测头伸出中")
+    M33;测头伸出
+    WHILE($A_DBB[4]==0);等待测头到位
+        G4 F0.2
+    ENDWHILE
+    MSG("测头接近工件中")
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     G90 G01 Z=INI[52] F=INI[56];开始测量位置
     MSG("接近工件中")
@@ -188,6 +194,11 @@ ELSE
     MSG("接近开关离开工件中")
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     G90 G01 Z=INI[48] F=INI[56];初始位置
+    MSG("测头退回中")
+    M34;测头退回
+    WHILE($A_DBB[3]==0);等待测头缩回
+        G4 F0.2
+    ENDWHILE
 ENDIF
 
 ;x进刀位动作
