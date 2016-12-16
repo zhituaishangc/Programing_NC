@@ -2,13 +2,6 @@
 
 |数组|全局变量|意义
 |:----:|:----:|:----:|
-|**需要提前手动输入**|
-|INI[16]|helix_angle_enable|螺旋升角使能
-|INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服)
-|INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服)
-|DRESSER[37]|N_CX_X_TYPE|内螺纹成型X前/后
-|PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
-|||
 |**PLC_NC交换变量**|
 |$A_DBB[0]|DB4900.DBX0.0|是否修整
 |$A_DBB[1]|DB4900.DBX1.0|是否手动对刀
