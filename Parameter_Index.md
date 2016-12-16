@@ -170,8 +170,8 @@
 |INI[33]||腰型孔宽(展开图尺寸)
 |INI[34]||工件大径
 |INI[35]||工件端面到反相器孔距离
-|INI[36]|WHEEL_TYPE|砂轮类型选择
-|INI[37]|DWHEEL_TYPE|修整轮类型选择
+|INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服/2异步电机)
+|INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服/2异步电机)
 |INI[38]|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
 |INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
