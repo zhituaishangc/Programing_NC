@@ -32,28 +32,28 @@ ENDIF
 WHEEL_RPM=WHEEL_LINESPEED_DRESS[0]*60000/($PI*DRESSER[24])
 DWHEEL_RPM=WHEEL[1]*60000/($PI*WHEEL[0])
 
-IF INI[36]==0;砂轮类型选择
+IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
     R299=WHEEL_RPM
     G4 F0.2
     M13;砂轮启动
 ELSE
     M1=3 S1=WHEEL_RPM
 ENDIF
-IF INI[37]==0;修整轮类型选择
+IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
     R297=DWHEEL_RPM
     G4 F0.2
     M63;修整轮启动
 ELSE
-    IF INI[36]==0
+    IF (INI[36]==0) OR (INI[36]==2)
         M1=3 S1=DWHEEL_RPM
     ELSE
         M2=3 S2=DWHEEL_RPM
     ENDIF
 ENDIF
-IF INI[36]+INI[37]==1
+IF (INI[36]+INI[37]==1) OR (INI[36]+INI[37]==3)
     WAITS
 ELSE
-    IF INI[36]+INI[37]==2
+    IF (INI[36]==1) AND (INI[37]==1)
     WAITS(1,2)
 ENDIF
 
