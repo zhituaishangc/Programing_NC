@@ -206,6 +206,15 @@ IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     MSG("开始测量X轴磨削位置")
     G90 G01 C=TOOL_SET[4] F=INI[58];工件旋转到自动对刀后计算出的C轴起始角
     G90 G01 Z=INI[28] F=INI[56];Z轴开至工件右端偏左
+    IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
+        R299=INI[53]
+        G4 F0.2
+        M13;砂轮启动
+    ELSE
+        M1=3 S1=INI[53]
+        WAITS
+    ENDIF
+    G4 F5
     MSG("X轴正移至工件中心")
     G90 G01 X=INI[10] F=INI[55];X开至工件中心
     MSG("Z轴正移至对刀起点")  
