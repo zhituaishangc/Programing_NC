@@ -8,12 +8,12 @@
 |出厂编号|#002|
 |配置|X Z C V W |异步电机修整 变频砂轮主轴 V-W修整器 双圆弧齿形 无自定义润滑
 |**用户信息**||
-|用户|[丽水](http://www.jiermt.com/)
-|地址|[云南丽水](http://f.amap.com/3LzST_06326kL)
+|用户|[丽水]()
+|地址|[云南丽水]()
 |**调试信息**||
 |调试人员|王挺
 |出厂时间|2016.12
-|软件版本|[V1.1.1](https://github.com/nie11kun/Programing_NC/releases/tag/V1.1.0)
+|软件版本|[V1.1.1](https://github.com/nie11kun/Programing_NC/releases/tag/V1.1.1)
 |特殊处理|(该台机床滚轮类型可切换为滚压轮)
 |**预设参数**||
 |INI[53]|1500|对刀时砂轮转速
