@@ -22,6 +22,10 @@ IF DRESSER[6]<>0
                     ELSE
                         IF DRESSER[6]==6;有报警
                             MSG("工件小径设置有误!")
+                        ELSE
+                            IF DRESSER[6]==7;有报警
+                                MSG("工件大径设置有误!")
+                            ENDIF
                         ENDIF
                     ENDIF
                 ENDIF

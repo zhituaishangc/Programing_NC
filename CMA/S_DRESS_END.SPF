@@ -4,10 +4,10 @@ PROC S_DRESS_END SBLOF DISPLOF
 ;;关闭修整轮
 ;;***************************
 
-IF INI[37]==0;修整轮类型选择
+IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
     M65
 ELSE
-    IF INI[36]==0
+    IF (INI[36]==0) OR (INI[36]==2)
         M1=5
     ELSE
         M2=5

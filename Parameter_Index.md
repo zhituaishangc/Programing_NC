@@ -2,13 +2,6 @@
 
 |数组|全局变量|意义
 |:----:|:----:|:----:|
-|**需要提前手动输入**|
-|INI[16]|helix_angle_enable|螺旋升角使能
-|INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服)
-|INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服)
-|DRESSER[37]|N_CX_X_TYPE|内螺纹成型X前/后
-|PROCESS[11]|X_FEED_SPEED|磨削工件时X进给速度
-|||
 |**PLC_NC交换变量**|
 |$A_DBB[0]|DB4900.DBX0.0|是否修整
 |$A_DBB[1]|DB4900.DBX1.0|是否手动对刀
@@ -177,8 +170,8 @@
 |INI[33]||腰型孔宽(展开图尺寸)
 |INI[34]||工件大径
 |INI[35]||工件端面到反相器孔距离
-|INI[36]|WHEEL_TYPE|砂轮类型选择
-|INI[37]|DWHEEL_TYPE|修整轮类型选择
+|INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服/2异步电机)
+|INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服/2异步电机)
 |INI[38]|helix_angle_auto|螺旋升角自动计算
 |INI[39]|WORK_MID_DIA|工件中径
 |INI[40]|TOUCH_POINT_CACU_FLAG|新砂轮磨削接触位计算标记
@@ -207,6 +200,7 @@
 |INI[63]||W轴快速离开砂轮的速度
 |INI[64]||W轴快速接近砂轮的速度
 |INI[65]||X轴慢速转换的动作的速度
+|INI[66]||砂轮中心到工件中心X坐标
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标

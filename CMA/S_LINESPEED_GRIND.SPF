@@ -30,7 +30,7 @@ ENDIF
 
 WHEEL_RPM=PROCESS[10]*60000/($PI*DRESSER[24])
 
-IF INI[36]==0;砂轮类型选择
+IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
     R299=WHEEL_RPM
     G4 F0.2
     M13;砂轮启动
