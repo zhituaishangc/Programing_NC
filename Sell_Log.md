@@ -14,7 +14,7 @@
 |调试人员|王挺
 |出厂时间|2016.12
 |软件版本|[V1.1.1](https://github.com/nie11kun/Programing_NC/releases/tag/V1.1.1)
-|特殊处理|(该台机床滚轮类型可切换为滚压轮)
+|特殊处理|[该台机床滚轮类型可切换为滚压轮](https://github.com/nie11kun/Programing_NC/tree/master/Special%20Edition/SK7432_15_%23002-%23005)
 |**预设参数**||
 |INI[53]|1500|对刀时砂轮转速
 |INI[54]|2000|X轴快速离开的动作的速度
