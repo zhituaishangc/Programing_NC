@@ -93,7 +93,11 @@ INI[8]=(INI[2]+INI[1])/2;磨削中点
 IF INI[11]==0;判断有无锥度
 	INI[14]=0;锥度值
 ELSE
-	INI[14]=INI[12]/INI[13]
+	IF (INI[12]<>0) AND (INI[13]<>0)
+		INI[14]=INI[12]/INI[13];锥度值
+	ELSE
+		INI[14]=0;锥度值
+	ENDIF
 ENDIF
 INI[15]=INI[3]*INI[14]/2;X方向的增量
 
