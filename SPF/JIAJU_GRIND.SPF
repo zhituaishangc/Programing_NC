@@ -1,11 +1,11 @@
 PROC JIAJU_GRIND DISPLON
 ;夹具磨削
 
-DRESSER[60]=-110;;Z轴左
-DRESSER[61]=-85;;Z轴右
-DRESSER[62]=-99.18;;X轴初始接触
+DRESSER[60]=-110;;砂轮在夹具左侧Z坐标
+DRESSER[61]=-85;;砂轮在夹具右侧Z坐标
+DRESSER[62]=-99.18;;砂轮接触夹具X轴坐标
 DRESSER[69]=0.005;;进刀量
-INI[68]=10;;螺距
+INI[68]=10;;差补螺距
 
 DRFOF
 DRESSER[68]=0
