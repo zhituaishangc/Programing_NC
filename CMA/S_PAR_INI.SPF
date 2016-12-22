@@ -8,6 +8,7 @@ PROC S_PAR_INI SBLOF DISPLOF
 INI[16]=0;螺旋升角使能
 INI[36]=0;轮类型选择(0模拟量/1伺服/2异步电机)
 INI[37]=0;整轮类型选择(0模拟量/1伺服2异步电机)
+INI[69]=0;是否有自动对刀(0没有/1有)
 DRESSER[6]=0;报警标记取消
 PROCESS[3]=0;修整标记清零
 PROCESS[7]=0;当前磨削是否修整累计
@@ -21,17 +22,21 @@ WORK[1]=0;当前磨削头数
 DRESSER[38]=0;界面工艺修整量总量
 
 GRIND[1]=$A_DBB[0];是否修整
-IF ($A_DBB[1]==0) AND ($A_DBB[5]==0)
-	GRIND[2]=0;不对刀
+IF INI[69]==0;无自动对刀
+	GRIND[2]=$A_DBB[1];是否对刀
 ELSE
-	IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
-		GRIND[2]=1;手动对刀
+	IF ($A_DBB[1]==0) AND ($A_DBB[5]==0)
+		GRIND[2]=0;不对刀
 	ELSE
-		IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
-			GRIND[2]=2;自动对刀(只计算C角度)
+		IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
+			GRIND[2]=1;手动对刀
 		ELSE
-			IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
-				GRIND[2]=3;自动对刀(计算C角度+X位置)
+			IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
+				GRIND[2]=2;自动对刀(只计算C角度)
+			ELSE
+				IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
+					GRIND[2]=3;自动对刀(计算C角度+X位置)
+				ENDIF
 			ENDIF
 		ENDIF
 	ENDIF
