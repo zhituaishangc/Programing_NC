@@ -75,7 +75,7 @@ ELSE
         G01 G90 X=INI[23] F=INI[54];退刀时的X值
     ELSE
         IF GRIND[2]<>2;不是单纯的自动对刀
-            G90 G01 X=INI[10] F=INI[55];X离开螺纹,已清除XDRF值
+            G90 G01 X=INI[10] F=PROCESS[11]*4;X离开螺纹,已清除XDRF值
             G90 G01 Z=INI[2] F=INI[56];返回起点
         ENDIF
         G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
