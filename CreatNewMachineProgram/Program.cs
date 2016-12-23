@@ -19,6 +19,7 @@ namespace CreatNewMachineProgram
 		/// <summary>
 		/// Program entry point.
 		/// </summary>
+		
 		[STAThread]
 		private static void Main(string[] args)
 		{
