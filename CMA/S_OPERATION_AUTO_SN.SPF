@@ -14,7 +14,7 @@ IF TOOL_SET[31]==0;测头测量
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2 F=INI[55];测头接触工件外表面位置
     MSG("测头伸出中")
     M33;测头伸出
-    WHILE($A_DBB[4]==0);等待测头到位
+    WHILE($A_DBB[8]==0);等待测头到位
         G4 F0.2
     ENDWHILE
     MSG("测头接近工件中")
@@ -132,7 +132,7 @@ ELSE;接近开关测量
     G90 G01 C=0 F=INI[58]
     MSG("测头伸出中")
     M33;测头伸出
-    WHILE($A_DBB[4]==0);等待测头到位
+    WHILE($A_DBB[8]==0);等待测头到位
         G4 F0.2
     ENDWHILE
     MSG("测头接近工件中")
@@ -184,7 +184,7 @@ OPERATION_END:
 IF TOOL_SET[31]==0;测头测量
     MSG("测头退回中")
     M34;测头退回
-    WHILE($A_DBB[3]==0);等待测头缩回
+    WHILE($A_DBB[7]==0);等待测头缩回
         G4 F0.2
     ENDWHILE
     MSG("测头离开工件中")
@@ -196,7 +196,7 @@ ELSE
     G90 G01 Z=INI[48] F=INI[56];初始位置
     MSG("测头退回中")
     M34;测头退回
-    WHILE($A_DBB[3]==0);等待测头缩回
+    WHILE($A_DBB[7]==0);等待测头缩回
         G4 F0.2
     ENDWHILE
 ENDIF
