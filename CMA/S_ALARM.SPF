@@ -24,7 +24,7 @@ IF DRESSER[6]<>0
                             MSG("工件小径设置有误!")
                         ELSE
                             IF DRESSER[6]==7;有报警
-                                MSG("工件大径设置有误!")
+                                MSG("测头距离工件过远!")
                             ENDIF
                         ENDIF
                     ENDIF
