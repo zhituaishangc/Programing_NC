@@ -46,6 +46,7 @@ namespace CreatNewMachineProgram
 			FormSplit("Programing_NC\\temp\\齿形参数_三角.txt","MASK7:齿形参数_三角");
 			FormSplit("Programing_NC\\temp\\齿形参数_梯形.txt","MASK8:齿形参数_梯形");
 			FormSplit("Programing_NC\\temp\\齿形参数_双圆弧.txt","MASK9:齿形参数_双圆弧");
+			FormSplit("Programing_NC\\temp\\自动对刀.txt",";MASK21:自动对刀;");
 			          
 		}
 		public static void FormSplit(string aimPath,string searchStr)
@@ -94,7 +95,7 @@ namespace CreatNewMachineProgram
 					sw.WriteLine(oneLineStr);
 				}
 				t=oneLineStr.IndexOf("//END");
-				//找到关键字并且找到结尾符号时停止写文件
+				//两个关键字都已经被查找到过,并且找到结尾符号时停止写文件
 				if(t!=-1&&isWrite&&isWrite2) break;
 			}
 			sw.Close();

@@ -12,3 +12,4 @@ D:\sharp_code\CreatNewMachineProgram\obj\x86\Debug\CreatNewMachineProgram.csproj
 D:\sharp_code\CreatNewMachineProgram\obj\x86\Debug\CreatNewMachineProgram.exe
 D:\sharp_code\CreatNewMachineProgram\obj\x86\Debug\CreatNewMachineProgram.pdb
 D:\sharp_code\CreatNewMachineProgram\obj\x86\Debug\CreatNewMachineProgram.MainForm.resources
+D:\sharp_code\CreatNewMachineProgram\obj\x86\Debug\CreatNewMachineProgram.BasicInformationForm.resources
