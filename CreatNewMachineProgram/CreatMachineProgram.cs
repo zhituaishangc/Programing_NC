@@ -58,7 +58,16 @@ namespace CreatNewMachineProgram
 					{
 						char ch=';';
 						string[] oneLineArr=oneLineStr.Split(ch);
-						oneLineStr=oneLineArr[0];
+						//数组长度大于2表示该行有有效的注释内容
+						if(oneLineArr.Length>=2)
+						{
+							int t=oneLineStr.IndexOf(";;");//表示该行有连续的两个分号,是程序信息的描述行
+							if(t==-1) oneLineStr=oneLineArr[0];
+						}
+						else
+						{
+							oneLineStr=oneLineArr[0];
+						}
 						sw.WriteLine(oneLineStr);
 					}
 					else
