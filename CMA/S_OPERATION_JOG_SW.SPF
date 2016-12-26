@@ -16,11 +16,12 @@ G01 G90 Z=INI[6] F=INI[56];快速的移动到对刀起点
 GOTOF DDD2
 
 DDD2:
+G90 G01 C=0 F=INI[58];C轴初始位
 MSG("X轴开至对刀起始位")
 G01 G90 X=INI[10] F=INI[55]
+STOPRE
 TOOL_SET[5]=$AA_IM[C];读取C轴初始角度 
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
-STOPRE
 
 MSG("手动对刀已启动,对刀完成后请按退刀键结束")
 FGROUP(Z)
