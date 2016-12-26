@@ -1,4 +1,4 @@
-PROC S_OPERATION_AUTO_SW DISPLON
+PROC S_OPERATION_AUTO_SW DISPLOF
 ;;**********程序功能**********
 ;;外螺纹自动对刀程序:
 ;;包含测量头和接近开关类型
@@ -18,35 +18,35 @@ WHILE($A_PROBE[1]==1);如果触碰到齿顶,正向旋转离开齿顶
 ENDWHILE
 
 MSG("开始检测齿顶一侧")
-MEAS=1 G91 G01 C=300 F=INI[59]*2	;第一次快速触碰齿顶
+MEAS=1 G91 G01 C=300 F=INI[59]*2;第一次快速触碰齿顶
 STOPRE
 IF $AC_MEA[1]==0;没碰到
 	DRESSER[6]=7;测头距离工件过远
 	GOTOF OPERATION_END
 ENDIF
 
-WHILE($A_PROBE[1]==1)					;触碰后离开
+WHILE($A_PROBE[1]==1);触碰后离开
 	G91 G01 C=-10 F=INI[59]*2
 ENDWHILE
-MEAS=1 G91 G01 C=200 F=INI[59]		;第二次慢速触碰并采集数据
+MEAS=1 G91 G01 C=200 F=INI[59];第二次慢速触碰并采集数据
 STOPRE
 TOOL_SET[37]=$AA_IM[C];读取当前C
-WHILE($A_PROBE[1]==1)					;二次触碰后离开齿顶
+WHILE($A_PROBE[1]==1);二次触碰后离开齿顶
 	G91 G01 C=-10 F=INI[59]*2
 ENDWHILE
 MSG("开始检测齿顶另一侧")
-MEAS=1 G91 G01 C=-300 F=INI[59]*2	;反向快速旋转第一次寻找齿顶另一侧
+MEAS=1 G91 G01 C=-300 F=INI[59]*2;反向快速旋转第一次寻找齿顶另一侧
 STOPRE
 IF $AC_MEA[1]==0;没碰到
 	DRESSER[6]=7;测头距离工件过远
 	GOTOF OPERATION_END
 ENDIF
 
-WHILE($A_PROBE[1]==1)					;第一次触碰后离开
+WHILE($A_PROBE[1]==1);第一次触碰后离开
 G91 G01 C=10 F=INI[59]*2
 ENDWHILE
 
-MEAS=1 G91 G01 C=-200 F=INI[59]		;慢速第二次触碰并采集数据
+MEAS=1 G91 G01 C=-200 F=INI[59];慢速第二次触碰并采集数据
 STOPRE
 TOOL_SET[38]=$AA_IM[C];读取当前C
 IF TOOL_SET[37]>=TOOL_SET[38]
