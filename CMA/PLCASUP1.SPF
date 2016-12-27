@@ -7,7 +7,7 @@ STOPRE
 TOOL_SET[3]=$AA_IM[X];对刀完成后x轴坐标(用于磨削初始进刀位)
 TOOL_SET[21]=$AA_IM[Z];手动对刀完成后Z轴坐标
 TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
-TOOL_SET[20]=$AC_DRF[X];对刀完成时手轮偏置值
+TOOL_SET[20]=$AC_DRF[X];对刀完成时X轴手轮偏置值
 
 IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
 	GOTOF X_BACK
