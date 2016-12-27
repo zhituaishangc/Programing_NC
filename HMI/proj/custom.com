@@ -574,28 +574,28 @@
 			IF QCHECK.VAL==1
 				IF TECH_CHECK.VAL==0
 					VAR10.WR=1
-					VAR19.WR=1
+					VAR19.WR=2
 				ELSE
 					VAR10.WR=2
 					VAR19.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==1
 					VAR11.WR=1
-					VAR20.WR=1
+					VAR20.WR=2
 				ELSE
 					VAR11.WR=2
 					VAR20.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==2
 					VAR12.WR=1
-					VAR21.WR=1
+					VAR21.WR=2
 				ELSE
 					VAR12.WR=2
 					VAR21.WR=2
 				ENDIF
 				IF TECH_CHECK.VAL==3
 					VAR13.WR=1
-					VAR22.WR=1
+					VAR22.WR=2
 				ELSE
 					VAR13.WR=2
 					VAR22.WR=2
