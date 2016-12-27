@@ -3,7 +3,7 @@ PROC S_PAR_INI SBLOF DISPLOF
 
 DRFOF;手轮偏置清除
 INI[25]=1;退刀计算标志位置1
-
+TOOL_SET[41]=0;程序开始运行时将二次对刀是否运行的标志改为否
 ;新砂轮时磨削初始和当前接触
 GRIND[1]=$A_DBB[0];是否修整
 IF GRIND[1]==1
