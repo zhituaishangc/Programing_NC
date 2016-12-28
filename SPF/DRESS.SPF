@@ -25,14 +25,15 @@ G90 G01 V=0 F=INI[61];修整开始前V轴到安全位置
 WHILE(DRESSER[18]+DRESSER[19]<DRESSER[11]+DRESSER[12])
     STOPRE
 	S_DRESS_CHOICE;修整参数赋值
-    S_LINESPEED_DRESS;砂轮速度
 	S_DRESS_CALC;次数累积
+	S_LINESPEED_DRESS;砂轮速度
     S_DRESS_SHAPE;齿形选择
 	STOPRE
     IF $A_DBB[2]==1;修整中途安全结束程序
         DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
         GOTOF D_ENDING
     ENDIF
+	S_DRESS_CHOICE;修整参数赋值
 ENDWHILE
 MSG("修整轮运行至起始位置")
 G90 G01 V=0 F=INI[61];修整结束后V轴到安全位置
