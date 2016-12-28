@@ -40,7 +40,9 @@ ELSE;选择DIY工艺
     ENDIF
 ENDIF
 ;-------------------------------------------------------
+STOPRE
 TOOL_SET[8]=1;改为二次对刀
+GRIND[2]=0;不对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
     S_CYCLE_SW;外螺纹磨削循环

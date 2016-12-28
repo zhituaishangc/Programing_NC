@@ -21,10 +21,10 @@ IF DRESSER[6]<>0
                         MSG("工件端面到孔距离设置有误!")
                     ELSE
                         IF DRESSER[6]==6;有报警
-                            MSG("工件小径设置有误!")
+                            MSG("工件小径设置有误,或检测位置太靠外侧!")
                         ELSE
                             IF DRESSER[6]==7;有报警
-                                MSG("测头距离工件过远!")
+                                MSG("测头距离工件过远,或检测位置太靠外侧!")
                             ENDIF
                         ENDIF
                     ENDIF
