@@ -7,19 +7,7 @@ CASE PROCESS[2] OF 0 GOTOF NUM_0 1 GOTOF NUM_1 2 GOTOF NUM_2 3 GOTOF NUM_3 4 GOT
 NUM_0:;粗磨
 IF TECH_TIME[0]<TECHNOLOGY[10];当前粗磨次数<粗磨次数
     TECH_TIME[0]=TECH_TIME[0]+1;当前粗磨次数累计
-    IF PROCESS[7]<TECHNOLOGY[40];修整判断
-        PROCESS[7]=PROCESS[7]+1;当前磨削是否修整累计
-        IF PROCESS[7]==TECHNOLOGY[40];修整次数到位标记
-            PROCESS[3]=1
-            PROCESS[7]=0;次数清零
-        ENDIF
-        IF TECH_TIME[0]==TECHNOLOGY[10];如果是最后一刀
-            PROCESS[7]=0;累计清零
-        ENDIF
-	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
-    ENDIF
+    
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[20];进刀位置
     PROCESS[6]=TECHNOLOGY[0];单双磨
@@ -40,19 +28,7 @@ NUM_1:;半粗磨
 TECH_TIME[0]=TECHNOLOGY[10];前几个工序次数匹配
 IF TECH_TIME[1]<TECHNOLOGY[11]
     TECH_TIME[1]=TECH_TIME[1]+1
-    IF PROCESS[7]<TECHNOLOGY[41]
-        PROCESS[7]=PROCESS[7]+1
-        IF PROCESS[7]==TECHNOLOGY[41]
-            PROCESS[3]=1
-            PROCESS[7]=0
-        ENDIF
-        IF TECH_TIME[1]==TECHNOLOGY[11]
-            PROCESS[7]=0
-        ENDIF
-	ELSE	
-		PROCESS[3]=1
-		PROCESS[7]=0
-    ENDIF
+    
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[21];进刀位置
     PROCESS[6]=TECHNOLOGY[1];单双磨
@@ -74,19 +50,7 @@ TECH_TIME[0]=TECHNOLOGY[10];前几个工序次数匹配
 TECH_TIME[1]=TECHNOLOGY[11];前几个工序次数匹配
 IF TECH_TIME[2]<TECHNOLOGY[12]
     TECH_TIME[2]=TECH_TIME[2]+1
-    IF PROCESS[7]<TECHNOLOGY[42]
-        PROCESS[7]=PROCESS[7]+1
-        IF PROCESS[7]==TECHNOLOGY[42]
-            PROCESS[3]=1
-            PROCESS[7]=0
-        ENDIF
-        IF TECH_TIME[2]==TECHNOLOGY[12]
-            PROCESS[7]=0
-        ENDIF
-	ELSE	
-		PROCESS[3]=1
-		PROCESS[7]=0	
-    ENDIF
+    
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[22];进刀位置
     PROCESS[6]=TECHNOLOGY[2];单双磨
@@ -109,19 +73,7 @@ TECH_TIME[1]=TECHNOLOGY[11];前几个工序次数匹配
 TECH_TIME[2]=TECHNOLOGY[12];前几个工序次数匹配
 IF TECH_TIME[3]<TECHNOLOGY[13]
     TECH_TIME[3]=TECH_TIME[3]+1
-    IF PROCESS[7]<TECHNOLOGY[43]
-        PROCESS[7]=PROCESS[7]+1
-        IF PROCESS[7]==TECHNOLOGY[43]
-            PROCESS[3]=1
-            PROCESS[7]=0
-        ENDIF
-        IF TECH_TIME[3]==TECHNOLOGY[13]
-            PROCESS[7]=0
-        ENDIF
-	ELSE	
-		PROCESS[3]=1
-		PROCESS[7]=0	
-    ENDIF
+    
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[23];进刀位置
     PROCESS[6]=TECHNOLOGY[3];单双磨
@@ -145,19 +97,7 @@ TECH_TIME[2]=TECHNOLOGY[12];前几个工序次数匹配
 TECH_TIME[3]=TECHNOLOGY[13];前几个工序次数匹配
 IF TECH_TIME[4]<DIY[1]
     TECH_TIME[4]=TECH_TIME[4]+1
-    IF PROCESS[7]<DIY[4]
-        PROCESS[7]=PROCESS[7]+1
-        IF PROCESS[7]==DIY[4]
-            PROCESS[3]=1
-            PROCESS[7]=0
-        ENDIF
-        IF TECH_TIME[4]==DIY[1]
-            PROCESS[7]=0
-        ENDIF
-	ELSE	
-		PROCESS[3]=1
-		PROCESS[7]=0	
-    ENDIF
+    
     ;传递参数
     PROCESS[4]=PROCESS[4]-DIY[2];进刀位置
     PROCESS[6]=DIY[0];单双磨

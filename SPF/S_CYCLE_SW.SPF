@@ -13,7 +13,7 @@ IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
 ENDIF
 
 S_GRIND_SW;外螺纹小循环
-
+STOPRE
 PLCASUP1;初始角度计算
 
 PROCESS[14]=PROCESS[14]+PROCESS[8];累计工艺磨削量累计
@@ -22,6 +22,14 @@ IF $A_DBB[2]==1;按下退刀键跳转到结束程序
     RET
 ENDIF
 
+IF PROCESS[7]<TECHNOLOGY[40];修整判断
+	PROCESS[7]=PROCESS[7]+1;当前磨削是否修整累计
+ENDIF
+
+IF (PROCESS[7]>=TECHNOLOGY[40])AND(TECHNOLOGY[40]<>0);再次判断修整次数是否到位
+    PROCESS[3]=1
+    PROCESS[7]=0;次数清零
+ENDIF
 IF PROCESS[3]==1
     M9;磨削冷却关
     M28;修整冷却开
