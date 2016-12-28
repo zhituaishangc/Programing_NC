@@ -86,7 +86,7 @@ IF $A_DBB[2]==1;按下退刀键
 	IF GRIND[0]<>1;不是内螺纹
 		IF GRIND[2]<>2;不是单纯的自动对刀
             G01 G90 X=INI[23] F=INI[54];退刀时的X值
-        ENDIF
+		ENDIF
 	ELSE
 		IF GRIND[2]<>2;不是单纯的自动对刀
 			G90 G01 X=INI[10] F=PROCESS[11]*4;X离开螺纹
