@@ -1820,6 +1820,7 @@
 			VAR4.WR=2
 			VAR23.WR=2
 			IF VAR0.VAL==0;测量类型
+				VAR1.WR=2;孔类型
 				IF VAR1.VAL==0;圆形孔
 					VAR10.WR=4
 					VAR11.WR=4
