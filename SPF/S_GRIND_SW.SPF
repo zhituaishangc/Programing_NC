@@ -2,7 +2,7 @@ PROC S_GRIND_SW DISPLOF
 ;外螺纹小循环
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
-	RET;第一次空运行,直接跳出
+	;RET;第一次空运行,直接跳出
 ENDIF
 
 WORK[1]=0;当前头
