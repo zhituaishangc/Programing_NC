@@ -76,6 +76,7 @@ ENDIF
 IF PROCESS[3]==1
     M9;磨削冷却关
     M28;修整冷却开
+	G90 G01 X=PROCESS[16] F=INI[55];要进行修整就将X退刀安全位置
 	;使Z回程和砂轮修整同时进行
 	G90
 	ID=1 EVERY $R100==3.141592 DO POS[Z]=INI[6]
