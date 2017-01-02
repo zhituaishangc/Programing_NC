@@ -184,7 +184,7 @@ ELSE;接近开关测量
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     G90 G01 Z=INI[52] F=INI[56];开始测量位置
     MSG("接近工件中")
-    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]+2 F=INI[65];开关接近小径2mm处
+    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]/2+2 F=INI[65];开关接近小径2mm处
     STOPRE
     WHILE($A_PROBE[1]==1);碰到内壁
         G91 G01 Z=-INI[4]/4 F=INI[57]
