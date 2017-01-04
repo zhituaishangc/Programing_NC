@@ -84,8 +84,9 @@ IF PROCESS[3]==1
 	R100=3.141592
     DRESS;修整
     PROCESS[3]=0;修整标记清零
-	R100=0
 	CANCEL(1)
+	STOPRE
+	R100=0
 	G90 G01 Z=INI[6] F=INI[56]
     M29;修整冷却关
     M8;磨削冷却开
