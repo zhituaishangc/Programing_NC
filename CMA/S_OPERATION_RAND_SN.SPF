@@ -10,9 +10,10 @@ MSG("Z轴正移至对刀起点")
 G90 G01 Z=INI[2] F=INI[56];Z轴开至工件磨削右端坐标
 MSG("头架到位中")
 C=TOOL_SET[4] F=INI[58];C轴旋转至首次对刀计算出的C轴起始角度
-MSG("砂轮正在进入工件螺纹")
-G01 X=PROCESS[4] F=PROCESS[11];X进入螺纹
+MSG("砂轮正在进入工件螺纹2mm处")
+G01 X=PROCESS[4]+2 F=PROCESS[11];X进入螺纹
 STOPRE
+TOOL_SET[40]=1;已执行过二次对刀的标记
 
 MSG("二次对刀以启动,请在砂轮进入螺旋槽后进行对刀操作")
 FGROUP(Z)
