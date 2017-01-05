@@ -187,11 +187,12 @@ ELSE;接近开关测量
     MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[51]/2+2 F=INI[65];开关接近小径2mm处
     STOPRE
     WHILE($A_PROBE[1]==1);碰到内壁
-        G91 G01 Z=-INI[4]/4 F=INI[57]
+        G91 G01 Z=-INI[4]/4 F=INI[57]*6
+        G4 F0.1
     ENDWHILE
     
     MSG("开始检测齿顶一侧")
-    MEAS=1 G91 G01 C=300 F=INI[59]*6;第一次快速触碰齿顶
+    MEAS=1 G91 G01 Z=-INI[4]*2 F=INI[57]*6;第一次快速触碰齿顶
     STOPRE
     IF $AC_MEA[1]==0;没碰到
         DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
@@ -199,16 +200,18 @@ ELSE;接近开关测量
     ENDIF
 
     WHILE($A_PROBE[1]==1);触碰后离开
-        G91 G01 C=-10 F=INI[59]*6
+        G91 G01 Z=1 F=INI[57]*6
+        G4 F0.1
     ENDWHILE
-    MEAS=1 G91 G01 C=200 F=INI[59];第二次慢速触碰并采集数据
+    MEAS=1 G91 G01 Z=-INI[4] F=INI[57];第二次慢速触碰并采集数据
     STOPRE
-    TOOL_SET[37]=$AA_IM[C];读取当前C
+    TOOL_SET[37]=$AA_IM[Z];读取当前Z
     WHILE($A_PROBE[1]==1);二次触碰后离开齿顶
-        G91 G01 C=-10 F=INI[59]*6
+        G91 G01 Z=1 F=INI[57]*6
+        G4 F0.1
     ENDWHILE
     MSG("开始检测齿顶另一侧")
-    MEAS=1 G91 G01 C=-300 F=INI[59]*6;反向快速旋转第一次寻找齿顶另一侧
+    MEAS=1 G91 G01 Z=INI[4]*2 F=INI[57]*6;反向快速旋转第一次寻找齿顶另一侧
     STOPRE
     IF $AC_MEA[1]==0;没碰到
         DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
@@ -216,22 +219,15 @@ ELSE;接近开关测量
     ENDIF
 
     WHILE($A_PROBE[1]==1);触碰后离开
-        G91 G01 C=10 F=INI[59]*6
+        G91 G01 Z=-1 F=INI[57]*6
     ENDWHILE
 
-    MEAS=1 G91 G01 C=-200 F=INI[59];慢速第二次触碰并采集数据
+    MEAS=1 G91 G01 Z=INI[4] F=INI[57];慢速第二次触碰并采集数据
     STOPRE
-    TOOL_SET[38]=$AA_IM[C];读取当前C
-    IF TOOL_SET[37]>=TOOL_SET[38]
-        TOOL_SET[39]=(TOOL_SET[37]+TOOL_SET[38])/2
-    ELSE
-        TOOL_SET[39]=(TOOL_SET[37]+TOOL_SET[38]+360)/2
-    ENDIF
-    IF TOOL_SET[39]>=360
-        TOOL_SET[39]=TOOL_SET[39]-360
-    ENDIF
-    TOOL_SET[5]=TOOL_SET[39]
-    TOOL_SET[1]=$AA_MM[Z]+TOOL_SET[10]
+    TOOL_SET[38]=$AA_IM[Z];读取当前Z
+    TOOL_SET[39]=(TOOL_SET[37]+TOOL_SET[38])/2
+    TOOL_SET[5]=0
+    TOOL_SET[1]=TOOL_SET[39]+TOOL_SET[10]
 ENDIF
 ;计算C初始角
 DR30=ABS(TOOL_SET[1]-INI[6]);计算理论完成对刀点到磨削起点距离
@@ -261,7 +257,7 @@ IF TOOL_SET[31]==0;测头测量
     G90 G01 Z=INI[48] F=INI[56];初始位置Z
 ELSE
     MSG("接近开关离开工件中")
-    G90 G01 X=INI[10]-TOOL_SET[23] F=INI[65]*4;开关检测面在工件中心
+    G90 G01 X=INI[10]-TOOL_SET[23] F=INI[65]*8;开关检测面在工件中心
     G90 G01 Z=INI[48] F=INI[56];初始位置
     MSG("测头退回中")
     M34;测头退回
