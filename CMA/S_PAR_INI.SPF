@@ -45,6 +45,15 @@ ENDIF
 
 DRFOF;手轮偏置清除
 
+IF INI[69]==1;有自动对刀(0没有/1有)
+	IF (GRIND[2]==0) OR (GRIND[2]==1);不对刀或手动对刀过程
+		M34;测头退回
+		WHILE($A_DBB[7]==0);等待测头缩回
+			G4 F0.2
+		ENDWHILE
+	ENDIF
+ENDIF
+
 IF INI[47]==1;磨削中不正常退出标记
 	PROCESS[4]=PROCESS[4]+PROCESS[8];当前磨削位回退
 	INI[47]=0;磨削中不正常退出标记
