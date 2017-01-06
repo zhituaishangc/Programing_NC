@@ -22,6 +22,7 @@ GRIND[2]=$A_DBB[1];是否对刀
 IF GRIND[2]==1
     M20;吸雾开
     ;M8;磨削冷却开
+	M70
     OPERATION;对刀
     GOTOF G_ENDING
 ENDIF
