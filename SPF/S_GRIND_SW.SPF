@@ -12,9 +12,9 @@ WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	MSG("头架到位中")
 	IF (WORK[3]+TOOL_SET[4])>=360
-		G90 G01 C=DC(WORK[3]+TOOL_SET[4]-360) F=3600;头数切换,角度增量累加
+		G90 G01 C=ACP(WORK[3]+TOOL_SET[4]-360) F=3600;头数切换,角度增量累加
 	ELSE
-		G90 G01 C=DC(WORK[3]+TOOL_SET[4]) F=3600;头数切换,角度增量累加
+		G90 G01 C=ACP(WORK[3]+TOOL_SET[4]) F=3600;头数切换,角度增量累加
 	ENDIF
 	G90 Z=INI[6] F=INI[56];Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
