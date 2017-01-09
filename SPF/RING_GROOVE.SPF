@@ -15,7 +15,7 @@ M8;开磨削冷却
 
 C_CYCLE:
 MSG("头架旋转中...")
-G91 C=3600 F=3600;头架旋转
+G91 C=36000 F=3600;头架旋转
 IF $A_DBB[2]==1;如果按下退刀键
     GOTOF RING_END
 ENDIF

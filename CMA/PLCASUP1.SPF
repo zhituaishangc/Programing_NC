@@ -33,6 +33,7 @@ IF TOOL_SET[8]==0;首次对刀
 	PROCESS[13]=TOOL_SET[3];初始磨削进刀位赋值
 	PROCESS[4]=PROCESS[13];当前等于初始
 	TOOL_SET[8]=1;改为二次对刀
+	PROCESS[14]=0;工艺磨削总量累计清零
 ELSE;非首次对刀
 	PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
 	DR13=TOOL_SET[2]/INI[5]*360

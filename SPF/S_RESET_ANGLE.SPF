@@ -2,7 +2,7 @@ PROC S_RESET_ANGLE DISPLOF
 ;螺旋升角复位
 
 IF INI[16]==1
-	IF $AA_IM[A]<>0
+	IF TRUNC($AA_IM[A]*1000)<>0
 		M35;松开
 		WHILE($A_DBB[3]==0)
 			G4 F0.2
