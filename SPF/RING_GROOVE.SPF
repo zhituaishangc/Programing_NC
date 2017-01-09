@@ -32,7 +32,7 @@ IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
 ELSE
     M1=5
 ENDIF
-G4 F1
+G4 F0.1
 
 RET
 

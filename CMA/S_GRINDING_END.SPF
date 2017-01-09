@@ -29,7 +29,7 @@ IF PROCESS[0]==0;如果不是DIY
             M2=5
         ENDIF
     ENDIF
-    G4 F1
+    G4 F0.1
 ENDIF
 
 RET

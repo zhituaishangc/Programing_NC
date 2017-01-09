@@ -13,7 +13,7 @@ ELSE
         M2=5
     ENDIF
 ENDIF
-G4 F0.5
+G4 F0.1
 
 RET
 
