@@ -12,9 +12,9 @@ WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	MSG("正在换头中")
 	IF TOOL_SET[4]+WORK[3]>=360;当前C角度大于等于360度
-		G90 G01 C=DC(TOOL_SET[4]+WORK[3]-360) F=INI[58];头数切换,角度增量累加
+		G90 G01 C=ACP(TOOL_SET[4]+WORK[3]-360) F=INI[58];头数切换,角度增量累加
 	ELSE
-		G90 G01 C=DC(TOOL_SET[4]+WORK[3]) F=INI[58];头数切换,角度增量累加
+		G90 G01 C=ACP(TOOL_SET[4]+WORK[3]) F=INI[58];头数切换,角度增量累加
 	ENDIF
 	MSG("台面到磨削起点")
 	G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
