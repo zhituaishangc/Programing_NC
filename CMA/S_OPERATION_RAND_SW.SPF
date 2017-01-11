@@ -28,7 +28,7 @@ IF DR4>=360
 	DR4=DR4-360
 ENDIF
 MSG("头架到位中")
-G90 G01 C=DR4 F=INI[58]
+G90 G01 C=ACP(DR4) F=INI[58]
 MSG("X轴开至对刀起始位")
 G01 G90 X=INI[10] F=INI[55];砂轮快速进给到头数切换退刀时的X值
 MSG("砂轮正在进入距离螺纹槽2mm处")
