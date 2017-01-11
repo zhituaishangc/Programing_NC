@@ -19,6 +19,9 @@ IF TECH_TIME[0]<TECHNOLOGY[10];当前粗磨次数<粗磨次数
         IF TECH_TIME[0]==TECHNOLOGY[10];如果是最后一刀
             PROCESS[7]=0;累计清零
         ENDIF
+	ELSE
+		PROCESS[3]=1
+		PROCESS[7]=0
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[20];进刀位置
@@ -49,6 +52,9 @@ IF TECH_TIME[1]<TECHNOLOGY[11]
         IF TECH_TIME[1]==TECHNOLOGY[11]
             PROCESS[7]=0
         ENDIF
+	ELSE
+		PROCESS[3]=1
+		PROCESS[7]=0
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[21];进刀位置
@@ -80,6 +86,9 @@ IF TECH_TIME[2]<TECHNOLOGY[12]
         IF TECH_TIME[2]==TECHNOLOGY[12]
             PROCESS[7]=0
         ENDIF
+	ELSE
+		PROCESS[3]=1
+		PROCESS[7]=0
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[22];进刀位置
@@ -112,6 +121,9 @@ IF TECH_TIME[3]<TECHNOLOGY[13]
         IF TECH_TIME[3]==TECHNOLOGY[13]
             PROCESS[7]=0
         ENDIF
+	ELSE
+		PROCESS[3]=1
+		PROCESS[7]=0
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[23];进刀位置
@@ -145,6 +157,9 @@ IF TECH_TIME[4]<DIY[1]
         IF TECH_TIME[4]==DIY[1]
             PROCESS[7]=0
         ENDIF
+	ELSE
+		PROCESS[3]=1
+		PROCESS[7]=0
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-DIY[2];进刀位置
