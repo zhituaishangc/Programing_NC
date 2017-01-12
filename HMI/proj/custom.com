@@ -210,11 +210,11 @@
 	END_CHANGE
 
 	SUB(UP1)
-		IF VAR3.VAL==0;不对刀或自动对刀
+		IF VAR3.VAL==0;不对刀
 			VAR4.WR=1;首次二次
 			VAR11.WR=1;对刀位置
 		ELSE
-			IF (VAR3.VAL==1) OR (VAR3.VAL==2) OR (VAR3.VAL==3);手动或自动+手动
+			IF (VAR3.VAL==1) OR (VAR3.VAL==2) OR (VAR3.VAL==3);手动或自动对刀或自动+手动
 				VAR4.WR=2;首次二次
 				VAR11.WR=2;对刀位置
 			ENDIF
