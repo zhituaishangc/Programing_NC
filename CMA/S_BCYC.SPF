@@ -13,15 +13,15 @@ IF TECH_TIME[0]<TECHNOLOGY[10];当前粗磨次数<粗磨次数
     IF PROCESS[7]<TECHNOLOGY[40];修整判断
         PROCESS[7]=PROCESS[7]+1;当前磨削是否修整累计
         IF PROCESS[7]==TECHNOLOGY[40];修整次数到位标记
-            PROCESS[3]=1
+            PROCESS[3]=1;修整标记
             PROCESS[7]=0;次数清零
         ENDIF
         IF TECH_TIME[0]==TECHNOLOGY[10];如果是最后一刀
             PROCESS[7]=0;累计清零
         ENDIF
-	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
+	ELSE;磨削中修改了修整设定
+		PROCESS[3]=1;修整标记
+		PROCESS[7]=0;次数清零
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[20];进刀位置
