@@ -137,11 +137,9 @@
 			ELSE
 				IF (VAR18.VAL==0) AND (VAR46.VAL==1)
 					VAR3.VAL=2;自动对刀
-					VAR4.VAL=0;首次对刀
 				ELSE
 					IF (VAR18.VAL==1) AND (VAR46.VAL==1)
 						VAR3.VAL=3;自动+手动
-						VAR4.VAL=0;首次对刀
 					ENDIF
 				ENDIF
 			ENDIF
@@ -158,11 +156,9 @@
 			ELSE
 				IF (VAR18.VAL==0) AND (VAR46.VAL==1)
 					VAR3.VAL=2;自动对刀
-					VAR4.VAL=0;首次对刀
 				ELSE
 					IF (VAR18.VAL==1) AND (VAR46.VAL==1)
 						VAR3.VAL=3;自动+手动
-						VAR4.VAL=0;首次对刀
 					ENDIF
 				ENDIF
 			ENDIF
