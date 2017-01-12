@@ -24,7 +24,12 @@ IF GRIND[2]<>0
     ;M20;吸雾开
     ;M8;磨削冷却开
     OPERATION;对刀
-    GOTOF G_ENDING
+    IF (DRESSER[6]==4) OR (DRESSER[6]==5) OR (DRESSER[6]==6) OR (DRESSER[6]==7);自动对刀过程中有报警
+        GOTOF G_ENDING
+    ENDIF
+    IF GRIND[2]<>2;不是纯自动对刀(只计算C角度)
+        GOTOF G_ENDING
+    ENDIF
 ENDIF
 
 ;使用界面参数还是DIY参数
