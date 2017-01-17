@@ -3,7 +3,7 @@ PROC S_OPERATION_AUTO_SW DISPLOF
 ;;外螺纹自动对刀程序:
 ;;包含测量头和接近开关类型
 ;;***************************
-DEF REAL DR30,DR31
+DEF REAL DR1,DR2,DR3,DR4,DR30,DR31
 MSG("测头伸出中")
 M33;测头伸出
 WHILE($A_DBB[8]==0);等待测头到位
@@ -83,9 +83,23 @@ ENDWHILE
 
 ;x进刀位动作
 IF GRIND[2]==3;自动对刀(计算C角度+X位置)
-    MSG("开始测量X轴磨削位置")
-    G90 G01 C=TOOL_SET[4] F=INI[58];工件旋转到自动对刀后计算出的C轴起始角
+    MSG("正在开至工件起点")
     G90 G01 Z=INI[6] F=INI[56];Z轴开至磨削起点
+    IF TOOL_SET[19]==0;中点对刀
+        MSG("正在开至工件中点")
+        G01 G90 Z=INI[8] F=INI[56];开至工件中点
+    ENDIF
+    STOPRE
+    TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
+    DR1=ABS(TOOL_SET[0]-INI[6]);计算对刀点到起始点的距离
+    DR2=DR1/INI[5]
+    DR3=(DR2-TRUNC(DR2))*360;起点到对刀点C轴等效旋转角度
+    DR4=TOOL_SET[4]+DR3;工件旋转DR4角度时,砂轮在对刀点等效为首次对刀完成状态
+    IF DR4>=360
+        DR4=DR4-360
+    ENDIF
+    MSG("头架到位中")
+    G90 G01 C=ACP(DR4) F=INI[58]
     IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
         R299=INI[53]
         G4 F0.2
@@ -100,9 +114,9 @@ IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     MSG("手动对刀以启动,请进行对刀操作")
     FGROUP(Z)
     IF INI[0]==1;左旋
-        G91 Z=INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=TECHNOLOGY[30]/4;从工件磨削右端坐标点ZXC开始插补
+        G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=TECHNOLOGY[30]/4;从任意对刀点ZC开始插补
     ELSE
-        G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=TECHNOLOGY[30]/4;从工件磨削右端坐标点ZXC开始插补
+        G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=TECHNOLOGY[30]/4;从任意对刀点ZC开始插补
     ENDIF
 ENDIF
 
