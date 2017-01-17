@@ -23,7 +23,7 @@ STOPRE
 TOOL_SET[5]=$AA_IM[C];读取C轴初始角度 
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
 
-MSG("手动对刀已启动,对刀完成后请按退刀键结束")
+MSG("手动对刀已启动,请进行对刀操作")
 FGROUP(Z)
 IF INI[0]==1;左旋
 	G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=ABS((INI[7]-TOOL_SET[0])/INI[5]*360) F=TECHNOLOGY[30]/4;从任意对刀点ZC开始插补
