@@ -20,8 +20,10 @@ IF TECH_TIME[0]<TECHNOLOGY[10];当前粗磨次数<粗磨次数
             PROCESS[7]=0;累计清零
         ENDIF
 	ELSE;磨削中修改了修整设定
-		PROCESS[3]=1;修整标记
-		PROCESS[7]=0;次数清零
+        IF TECHNOLOGY[40]<>0
+            PROCESS[3]=1;修整标记
+            PROCESS[7]=0;次数清零
+        ENDIF
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[20];进刀位置
@@ -53,8 +55,10 @@ IF TECH_TIME[1]<TECHNOLOGY[11]
             PROCESS[7]=0
         ENDIF
 	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
+        IF TECHNOLOGY[41]<>0
+            PROCESS[3]=1;修整标记
+            PROCESS[7]=0;次数清零
+        ENDIF
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[21];进刀位置
@@ -87,8 +91,10 @@ IF TECH_TIME[2]<TECHNOLOGY[12]
             PROCESS[7]=0
         ENDIF
 	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
+        IF TECHNOLOGY[42]<>0
+            PROCESS[3]=1;修整标记
+            PROCESS[7]=0;次数清零
+        ENDIF
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[22];进刀位置
@@ -122,8 +128,10 @@ IF TECH_TIME[3]<TECHNOLOGY[13]
             PROCESS[7]=0
         ENDIF
 	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
+        IF TECHNOLOGY[43]<>0
+            PROCESS[3]=1;修整标记
+            PROCESS[7]=0;次数清零
+        ENDIF
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-TECHNOLOGY[23];进刀位置
@@ -158,8 +166,10 @@ IF TECH_TIME[4]<DIY[1]
             PROCESS[7]=0
         ENDIF
 	ELSE
-		PROCESS[3]=1
-		PROCESS[7]=0
+        IF DIY[4]<>0
+            PROCESS[3]=1;修整标记
+            PROCESS[7]=0;次数清零
+        ENDIF
     ENDIF
     ;传递参数
     PROCESS[4]=PROCESS[4]-DIY[2];进刀位置
