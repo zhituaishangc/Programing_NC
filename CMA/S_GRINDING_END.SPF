@@ -12,7 +12,7 @@ IF PROCESS[0]==0;如果不是DIY
     M9;内磨削冷却关
     M39;外磨削冷却关
     M29;修整冷却关
-    M21;吸雾关
+    ;M21;吸雾关
     M57;退刀关
     M61;对刀关
     IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
@@ -28,6 +28,12 @@ IF PROCESS[0]==0;如果不是DIY
         ELSE
             M2=5
         ENDIF
+    ENDIF
+    IF INI[70]==1;有自动门(0没有/1有)
+        M47;罩壳门打开
+        WHILE($A_DBB[9]==0);等待罩壳门打开
+            G4 F0.2
+        ENDWHILE
     ENDIF
     G4 F0.1
 ENDIF
