@@ -1412,7 +1412,7 @@
 	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
 	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
 	
-	DEF SHAPE_TYPE=(S////WR4//"/NC/_N_NC_GD2_ACX/SHAPE"/0,0,0/0,0,0/);修整轮直径
+	DEF SHAPE_TYPE=(S////WR4//"/NC/_N_NC_GD2_ACX/SHAPE"/0,0,0/0,0,0/);存储齿形程序名
 
 	
 	HS1=($85380,ac7,se2);"单滚轮"
