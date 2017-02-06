@@ -114,6 +114,7 @@
 |TOOL_SET[19]|TOOL_SET_POS|(0中点对刀/1起点对刀/2任意)
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
+|TOOL_SET[40]||是否已进行过二次对刀的标记
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
