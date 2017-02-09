@@ -23,6 +23,18 @@ WORK[1]=0;当前磨削头数
 DRESSER[38]=0;界面工艺修整量总量
 TOOL_SET[40]=0;是否已执行过二次对刀的标记
 
+;非蜗杆磨床时对存储齿形程序的变量赋值
+IF GRIND[0]<>2
+	IF DRESSER[4]=0
+		SHAPE="S_TRIANGLE"
+	ELSE
+		IF DRESSER[4]=1
+			SHAPE="S_TRAPEZOIDAL"
+		ELSE
+			SHAPE="S_DOUBLE_ARC"
+		ENDIF
+	ENDIF
+ENDIF
 GRIND[1]=$A_DBB[0];是否修整
 IF INI[69]==0;无自动对刀
 	GRIND[2]=$A_DBB[1];是否对刀
