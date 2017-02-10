@@ -5,7 +5,7 @@ PROC S_DRESS_CHOICE SBLOF DISPLOF
 ;;***************************
 
 IF PROCESS[3]==0;纯修整
-    IF DRESSER[5]==0;新砂轮
+    IF (DRESSER[5]==0)AND(GRIND[0]==1);内螺纹新砂轮修整时精确计算成型尺寸
         DRESSER[11]=ROUNDUP(((DRESSER[23]-DRESSER[49])/2-DRESSER[28]*5)/DRESSER[27])
         IF DRESSER[11]*DRESSER[27]>=(DRESSER[23]-DRESSER[49])/2
             DRESSER[11]=DRESSER[11]-1
