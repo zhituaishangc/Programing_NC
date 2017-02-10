@@ -1700,7 +1700,7 @@
 			VAR5.WR=2
 			VAR6.WR=2
 			VAR7.WR=2
-			VAR8.WR=2
+			VAR8.WR=2;蜗杆磨时精修次数不用输入
 			VAR9.WR=2
 			VAR10.WR=2
 			VAR13.WR=2
