@@ -16,7 +16,7 @@ ENDIF
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI[72]==1);第一次磨削或者修整后的磨削
     INI[72]=0;标记清零
     MSG("砂轮到安全位置")
-	G90 G01 X=INI[10] F=INI[55];X轴到安全位置
+    G90 G01 X=INI[10] F=INI[55];X轴到安全位置
 ENDIF
 
 S_GRIND_SN;内螺纹小循环
