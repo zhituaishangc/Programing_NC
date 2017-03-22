@@ -65,6 +65,7 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
         M8;磨削冷却开
     ENDIF
 ENDWHILE
+INI[73]=INI[73]+1;磨削工件计数
 ;-------------------------------------------------------
 G_ENDING:
 

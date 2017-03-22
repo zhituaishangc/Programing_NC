@@ -8,6 +8,23 @@ IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
     RET
 ENDIF
 
+IF INI[75]==1;磨削几件后修整标记位
+    INI[75]=0;标记位
+    M9;磨削冷却关
+    DRESS;修整
+    PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始X轴位置累积
+    PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前X轴位置累积
+    IF DRESSER[6]==2;砂轮过小
+        RET
+    ENDIF
+    MSG("台面到磨削起点")
+    G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
+    M8;磨削冷却开
+    S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+    MSG("砂轮到安全位置")
+    G90 G01 X=PROCESS[16] F=INI[55];X轴到安全位置
+ENDIF
+
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1
     MSG("台面到磨削起点")
     G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
@@ -52,6 +69,11 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY
     G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
     MSG("砂轮回退到安全位置")
     G90 G1 X=INI[23] F=INI[54]
+    IF INI[74]<>0;磨削几件后修整不为零
+        IF INI[73]/INI[74]-TRUNC(INI[73]/INI[74])==0
+            INI[75]=1;标记位
+        ENDIF
+    ENDIF
 ENDIF
 
 RET
