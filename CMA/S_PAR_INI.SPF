@@ -22,6 +22,7 @@ INI[25]=1;退刀计算标志位置1
 WORK[1]=0;当前磨削头数
 DRESSER[38]=0;界面工艺修整量总量
 TOOL_SET[40]=0;是否已执行过二次对刀的标记
+INI[72]=0;磨削中进行过修整后的标记
 
 GRIND[1]=$A_DBB[0];是否修整
 IF INI[69]==0;无自动对刀
@@ -64,6 +65,10 @@ IF INI[70]==1;有自动门(0没有/1有)
 			G4 F0.2
 		ENDWHILE
 	ENDIF
+ENDIF
+
+IF (INI[74]==0) OR (INI[73]<INI[74]);磨削几件后修整为零或当前几件小于设定值
+    INI[75]=0;标记位
 ENDIF
 
 IF INI[47]==1;磨削中不正常退出标记
@@ -146,6 +151,9 @@ ENDIF
 
 IF (PROCESS[0]==0) AND (GRIND[1]==0) AND (GRIND[2]==0);选择界面工艺不是对刀不是修整,界面工艺修整量总量
 	IF PROCESS[15]==0;基本工艺
+		IF INI[75]==1;磨削几件后修整标记位
+			DRESSER[38]=DRESSER[38]+DRESSER[26]*DRESSER[28]
+		ENDIF
 		IF (TECHNOLOGY[10]<>0) AND (TECHNOLOGY[40]<>0)
 			DRESSER[38]=DRESSER[38]+TRUNC(TECHNOLOGY[10]/TECHNOLOGY[40])*DRESSER[26]*DRESSER[28]
 		ENDIF
