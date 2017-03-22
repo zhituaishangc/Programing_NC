@@ -67,6 +67,10 @@ IF INI[70]==1;有自动门(0没有/1有)
 	ENDIF
 ENDIF
 
+IF (INI[74]==0) OR (INI[73]<INI[74]);磨削几件后修整为零或当前几件小于设定值
+    INI[75]=0;标记位
+ENDIF
+
 IF INI[47]==1;磨削中不正常退出标记
 	PROCESS[4]=PROCESS[4]+PROCESS[8];当前磨削位回退
 	INI[47]=0;磨削中不正常退出标记
