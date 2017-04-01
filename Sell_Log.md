@@ -9,11 +9,11 @@
 |配置|X Z C SP|伺服主轴修整 变频砂轮 成型X-前修整器 无自定义润滑
 |**用户信息**||
 |用户|[CW广德锦汭轴承有限公司](http://cwbearing.cn.ningboexport.com/)
-|地址|[安徽省广德县经济开发区建设路5号](http://f.amap.com/4qUae_0272qKK)
+|地址|[安徽省广德县经济开发区](http://f.amap.com/4qUae_0272qKK)
 |**调试信息**||
 |调试人员|聂坤
 |出厂时间|2017.1
-|软件版本|[V1.1.7](https://github.com/nie11kun/Programing_NC/releases/tag/V1.1.7)
+|软件版本|[V1.1.8](https://github.com/nie11kun/Programing_NC/releases/tag/V1.1.7)
 |特殊处理|
 |**预设参数**||
 |INI[53]|0|对刀时砂轮转速
