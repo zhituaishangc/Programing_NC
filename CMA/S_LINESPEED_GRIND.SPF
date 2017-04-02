@@ -42,7 +42,6 @@ IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
     M13;砂轮启动
 ELSE
     M1=3 S1=WHEEL_RPM
-    WAITS
 ENDIF
 
 G4 F=INI[71];砂轮转速等待时间

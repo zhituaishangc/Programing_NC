@@ -23,7 +23,6 @@ IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
     M13;砂轮启动
 ELSE
     M1=3 S1=15000
-    WAITS
 ENDIF
 G4 F5
 M8;内磨削冷却开
