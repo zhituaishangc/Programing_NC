@@ -42,14 +42,6 @@ IF DRESSER[37]==0;内螺纹成型X前
     ENDIF
 ENDIF
 
-IF (INI[36]+INI[37]==1) OR (INI[36]+INI[37]==3)
-    WAITS
-ELSE
-    IF (INI[36]==1) AND (INI[37]==1)
-        WAITS(1,2)
-    ENDIF
-ENDIF
-
 G4 F5
 IF DRESSER[37]==0;内螺纹成型X前
     M28;修整冷却开

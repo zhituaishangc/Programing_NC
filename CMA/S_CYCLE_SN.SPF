@@ -22,8 +22,6 @@ IF INI[75]==1;磨削几件后修整标记位
     ENDIF
     MSG("台面快速接近磨削起点")
 	G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
-    M8;内磨削冷却开
-    M38;外磨削冷却开
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
     MSG("砂轮到安全位置")
     G90 G01 X=INI[10] F=INI[55];X轴到安全位置
@@ -39,6 +37,10 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI
     MSG("砂轮到安全位置")
     G90 G01 X=INI[10] F=INI[55];X轴到安全位置
 ENDIF
+
+M20;吸雾开
+M8;内磨削冷却开
+M38;外磨削冷却开
 
 S_GRIND_SN;内螺纹小循环
 PLCASUP1;初始角度计算
@@ -65,10 +67,6 @@ IF PROCESS[3]==1
     ENDIF
     MSG("台面快速接近磨削起点")
 	G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
-    IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);不是最后一次
-        M8;内磨削冷却开
-        M38;外磨削冷却开
-    ENDIF
     INI[72]=1;磨削中进行过修整后的标记
 ENDIF
 

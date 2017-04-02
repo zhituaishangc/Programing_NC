@@ -32,7 +32,7 @@ ENDIF
 WHEEL_RPM=WHEEL_LINESPEED_DRESS[0]*60000/($PI*DRESSER[24])
 DWHEEL_RPM=WHEEL[1]*60000/($PI*WHEEL[0])
 
-IF ($A_DBB[12]==0) OR ($A_DBB[13]==0);砂轮或修整轮当前未启动
+IF $A_DBB[12]==0;砂轮当前未启动
     INI[71]=4;砂轮启动等待转速到位延时时间
 ELSE
     INI[71]=0.2
@@ -54,13 +54,6 @@ ELSE
         M1=3 S1=DWHEEL_RPM
     ELSE
         M2=3 S2=DWHEEL_RPM
-    ENDIF
-ENDIF
-IF (INI[36]+INI[37]==1) OR (INI[36]+INI[37]==3)
-    WAITS
-ELSE
-    IF (INI[36]==1) AND (INI[37]==1)
-        WAITS(1,2)
     ENDIF
 ENDIF
 

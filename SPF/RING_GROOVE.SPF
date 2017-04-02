@@ -12,7 +12,6 @@ IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
     M13;砂轮启动
 ELSE
     M1=3 S1=1500
-    WAITS
 ENDIF
 MSG("等待砂轮转速到位")
 G4 F5
