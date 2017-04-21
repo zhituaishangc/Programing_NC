@@ -8,7 +8,7 @@ IF INI[16]==1
 		M73;液压开
 		G4 F1
 		M35;松开
-		WHILE($A_DBB[3]==0);液压开关未到位
+		WHILE($A_DBB[14]==0);未松开
 			G4 F0.2
 		ENDWHILE
 		G4 F1
