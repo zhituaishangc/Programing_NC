@@ -26,10 +26,10 @@ INI[72]=0;磨削中进行过修整后的标记
 
 ;非蜗杆磨床时对存储齿形程序的变量赋值
 IF GRIND[0]<>2
-	IF DRESSER[4]=0
+	IF DRESSER[4]==0
 		SHAPE="S_TRIANGLE"
 	ELSE
-		IF DRESSER[4]=1
+		IF DRESSER[4]==1
 			SHAPE="S_TRAPEZOIDAL"
 		ELSE
 			SHAPE="S_DOUBLE_ARC"
