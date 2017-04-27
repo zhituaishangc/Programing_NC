@@ -202,7 +202,7 @@ IF DRESSER[24]-DRESSER[38]*2<DRESSER[35];当前砂轮直径<最小砂轮直径
 ENDIF
 
 IF GRIND[1]==0;不再修整中
-	IF DRESSER[24]>DRESSER[49];当前砂轮直径>砂轮最大磨削直径
+	IF (DRESSER[24]>DRESSER[49])AND(GRIND[0]==1);当前砂轮直径>砂轮最大磨削直径,并且是内螺纹磨时
 		DRESSER[6]=3;砂轮过大,请将砂轮修整到小于最大磨削直径
 	ENDIF
 ENDIF
