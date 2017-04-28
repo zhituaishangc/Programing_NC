@@ -297,6 +297,8 @@
 |TRI[8]|TRIANGLE_ANG_RADD|调整右角
 |TRI[9]|TRIANGLE_ANG_L|当前左角
 |TRI[10]|TRIANGLE_ANG_R|当前右角
+|TRI[11]||调整左圆弧
+|TRI[12]||调整右圆弧
 |||
 |**梯形(TRAP)**||
 |TRAP[0]|TRAP_VER|齿高
