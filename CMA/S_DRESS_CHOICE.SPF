@@ -4,7 +4,7 @@ PROC S_DRESS_CHOICE SBLOF DISPLOF
 ;;判读纯修整砂轮还是磨削中修整，新砂轮修整自动计算修整次数修整到最大磨削直径，磨削中修整调用精修部分
 ;;***************************
 
-IF PROCESS[3]==0;纯修整
+IF GRIND[1]<>0;纯修整
     IF (DRESSER[5]==0)AND(GRIND[0]==1);内螺纹新砂轮修整时精确计算成型尺寸
         DRESSER[11]=ROUNDUP(((DRESSER[23]-DRESSER[49])/2-DRESSER[28]*5)/DRESSER[27])
         IF DRESSER[11]*DRESSER[27]>=(DRESSER[23]-DRESSER[49])/2
