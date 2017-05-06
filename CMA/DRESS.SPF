@@ -184,7 +184,7 @@ IF GRIND[1]<>0;纯修整
 	R21=DRESSER[28];传递精修进给量
 	R42=WHEEL_LINESPEED_DRESS[1];砂轮线速度
 ELSE;磨削中修整
-	IF R3>=5
+	IF R3>=5;修整总次数大于5
 		R3=5
 		DRESSER[25]=R3-1
 	ENDIF
@@ -198,8 +198,8 @@ R22=500;修整定位速度
 R23=1000;修整返回速度
 EXECSTRING(SHAPE);调用由SHAPE指定的修型程序
 DRESSER[24]=R9;改变原程序使用的当前砂轮直径变量值
-DRESSER[5]=1
-WHEEL[10]=R7
+DRESSER[5]=1;砂轮状态
+WHEEL[10]=R7;当前砂轮直径
 M29;关修整冷却
 
 D_ENDING:
