@@ -3,9 +3,9 @@ PROC WORM DISPLON
 ;;外螺纹主程序:
 ;;修整 对刀 磨削 程序的调用
 ;;***************************
-WHEEL[10]=R7;
+WHEEL[10]=R7;当前修整接触赋值
 WHEEL[12]=R15+DRESSER[23]/2+R29;根据砂轮中心的V坐标计算初始接触位置
-DRESSER[24]=R9
+DRESSER[24]=R9;当前砂轮直径
 S_PAR_INI;参数初始化子程序
 IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警标记则退出程序
     GOTOF G_ENDING
@@ -62,11 +62,13 @@ WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLO
     ENDIF
     S_BCYC;工序进给大循环判断
     S_LINESPEED_GRIND;磨削时砂轮速度调节子程序
-    IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);循环未结束
-        M20;吸雾开
-        M8;磨削冷却开
-    ENDIF
 ENDWHILE
+INI[73]=INI[73]+1;磨削工件计数
+IF (INI[74]<>0) AND (INI[73]>=INI[74]);磨削几件后修整不为零或当前几件大于设定值
+    IF INI[73]/INI[74]-TRUNC(INI[73]/INI[74])==0
+        INI[75]=1;标记位
+    ENDIF
+ENDIF
 ;-------------------------------------------------------
 G_ENDING:
 
