@@ -263,6 +263,7 @@
 |TOOL_SET[39]||接近开关接触齿底C坐标
 |TOOL_SET[40]||是否已进行过二次对刀的标记
 |TOOL_SET[41]||自动对刀结果调整
+|TOOL_SET[42]||Z轴偏刀微调
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
