@@ -77,7 +77,7 @@
 	DEF VAR19=(R///$85158,$85158,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,$85043,/WR1/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
 	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
-	DEF DuiDaoTiaoZheng=(R/-100,100//$85175,$85175,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
+	DEF PianDaoTiaoZheng=(R/-100,100//$85175,$85175,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[43]"/205,330,170/275,330,60/);Z轴偏刀调整
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	
@@ -357,7 +357,7 @@
 	DEF VAR19=(R///$85158,$85158,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,$85043,/WR1/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
 	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
-	DEF DuiDaoTiaoZheng=(R/-100,100//$85175,$85175,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
+	DEF PianDaoTiaoZheng=(R/-100,100//$85175,$85175,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[43]"/205,330,170/275,330,60/);Z轴偏刀调整
 
 	DEF VAR14=(R///,,,/WR4//"/Plc/DB4900.DBX0.0"/0,0,0/0,0,0/);面板修整键
 	DEF VAR18=(R///,,,/WR4//"/Plc/DB4900.DBX1.0"/0,0,0/0,0,0/);面板手动对刀键
@@ -1781,6 +1781,7 @@
 	DEF VAR1=(I/*0=$85510,1=$85511//$85509,,,/WR4/"panel_21_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/0,0,0/440,40,60);(0=圆形孔,1=腰型孔)
 	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR4/"panel_21_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[49]"/330,70,110/440,70,110/);内螺纹自动对刀测头Z轴方向起始位置
 	DEF VAR24=(R/-2000,2000//$85528,$85528,,$85043/WR2/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,70,150/440,70,110/);砂轮中心与测头中心重合Z坐标，外螺纹自动对刀用
+	DEF DuiDaoTiaoZheng=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,90,150/440,90,110/);对刀结果调整
 	DEF VAR3=(R/0,359//$85504,$85504,,$85042/WR4/"panel_21_5_chs.png"/"/NC/_N_NC_GD2_ACX/INI[50]"/330,90,110/440,90,110/);内螺纹测头自动对刀工件C方向合适角度
 	DEF VAR4=(R/0,500//$85505,$85505,,$85043/WR4/"panel_21_6_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,110,110/440,110,110/);内螺纹测头球中心/接近开关探测面与磨杆距离(X向)
 	DEF VAR23=(R/-500,500//$85527,$85527,,$85043/WR4/"panel_21_7_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[11]"/330,130,110/440,130,110/);内螺纹测头/开关与砂轮距离(Z向)
