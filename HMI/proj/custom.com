@@ -76,8 +76,8 @@
 	DEF VAR17=(R///$85157,$85157,$85043,/WR1//"$AC_DRF[Z]"/10,310,210/120,310,60/);DRF_Z
 	DEF VAR19=(R///$85158,$85158,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,$85043,/WR1/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
-	DEF DIAMETER_ADJ=(R///$85027,$85027,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
-	DEF DuiDaoTiaoZheng=(R/-100,100//$85028,$85028,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
+	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
+	DEF DuiDaoTiaoZheng=(R/-100,100//$85175,$85175,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	
@@ -356,8 +356,8 @@
 	DEF VAR17=(R///$85157,$85157,$85043,/WR1//"$AC_DRF[Z]"/10,310,210/120,310,60/);DRF_Z
 	DEF VAR19=(R///$85158,$85158,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,$85043,/WR1/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
-	DEF DIAMETER_ADJ=(R///$85027,$85027,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
-	DEF DuiDaoTiaoZheng=(R/-100,100//$85028,$85028,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
+	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/205,350,170/275,350,60/);单次中径调整值
+	DEF DuiDaoTiaoZheng=(R/-100,100//$85175,$85175,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/205,330,170/275,330,60/);Z轴偏刀调整
 
 	DEF VAR14=(R///,,,/WR4//"/Plc/DB4900.DBX0.0"/0,0,0/0,0,0/);面板修整键
 	DEF VAR18=(R///,,,/WR4//"/Plc/DB4900.DBX1.0"/0,0,0/0,0,0/);面板手动对刀键

@@ -8,7 +8,7 @@ WORK[1]=0;当前头
 WORK[2]=360/WORK[0];每头累加角度
 INI[47]=1;磨削中不正常退出标记
 
-IF INI[0]==11;左旋
+IF INI[0]==1;左旋
 	TEMPC=-TOOL_SET[41]/INI[5]*360
 ELSE
 	TEMPC=TOOL_SET[41]/INI[5]*360;自动对刀结果调整
