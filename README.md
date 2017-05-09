@@ -11,7 +11,7 @@ workstation only for HJMT Programing segment
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
 * [参数含义索引表](https://github.com/nie11kun/Programing_NC/blob/master/Parameter_Index.md)
-* [M代码标准](https://github.com/nie11kun/Programing_NC/wiki/M%E4%BB%A3%E7%A0%81%E6%A0%87%E5%87%86)
+* [M代码标准](https://github.com/nie11kun/Programing_NC/blob/master/M-sympol_Index.md)
 * [SinuTrain配置样例](https://github.com/nie11kun/Programing_NC/wiki/SinuTrain导出文件样例)
 * [反馈通道](https://github.com/nie11kun/Programing_NC/issues)(请详细描述问题或意见细节)
 

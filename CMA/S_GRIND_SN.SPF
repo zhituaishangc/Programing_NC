@@ -8,11 +8,18 @@ WORK[1]=0;当前头数
 WORK[2]=360/WORK[0];平均头数角度
 INI[47]=1;磨削中不正常退出标记
 
-IF INI[0]==1
+IF INI[0]==1;左旋
 	TEMPC=-TOOL_SET[41]/INI[5]*360
 ELSE
 	TEMPC=TOOL_SET[41]/INI[5]*360;自动对刀结果调整
 ENDIF
+
+IF INI[0]==1;左旋
+	TOOL_SET[4]=TOOL_SET[4]-TOOL_SET[42]/INI[5]*360
+ELSE
+	TOOL_SET[4]=TOOL_SET[4]+TOOL_SET[42]/INI[5]*360;Z轴偏刀调整
+ENDIF
+TOOL_SET[42]=0;清零
 
 IF (GRIND[4]>-1)AND(GRIND[4]<1);中径微调值
 	PROCESS[4]=PROCESS[4]-GRIND[4]/2;将中径调整值累计到X磨削起点
@@ -43,7 +50,7 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	FGROUP(Z)
 	IF INI[0]==0;0右旋,1左旋
-		S_CYCLE_SW_MESSAGE
+		S_CYCLE_MESSAGE
 		G301;右旋正向磨削,台面向右运动
 		IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 			RET
@@ -52,7 +59,7 @@ WHILE(WORK[1]<WORK[0])
 		IF PROCESS[6]==1;判断是否进行反向磨削
 			G4 F0.5
 			G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
-			S_CYCLE_SW_MESSAGE
+			S_CYCLE_MESSAGE
 			G302;右旋反向磨削,台面向左运动
 			IF $A_DBB[2]==1
 				RET
@@ -82,7 +89,7 @@ WHILE(WORK[1]<WORK[0])
 			INI[47]=1;磨削中不正常退出标记
 		ENDIF
 	ELSE;左旋螺纹磨削
-		S_CYCLE_SW_MESSAGE
+		S_CYCLE_MESSAGE
 		G305;左旋正向磨削,台面向右运动
 		IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 			RET
@@ -91,7 +98,7 @@ WHILE(WORK[1]<WORK[0])
 		IF PROCESS[6]==1
 			G4 F0.5
 			G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
-			S_CYCLE_SW_MESSAGE
+			S_CYCLE_MESSAGE
 			G306;左旋反向磨削,台面向右运动
 			IF $A_DBB[2]==1
 				RET
