@@ -1,4 +1,4 @@
-PROC DRESS DISPLON
+PROC M_DRESS DISPLON
 ;;**********程序功能**********
 ;;修整主程序:
 ;;整合各种不同修整器结构
@@ -17,7 +17,7 @@ IF DRESSER[6]==2;砂轮过小
     GOTOF D_ENDING
 ENDIF
 
-WARE;选择修整方式
+S_WARE;选择修整方式
 
 D_ENDING:
 IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择

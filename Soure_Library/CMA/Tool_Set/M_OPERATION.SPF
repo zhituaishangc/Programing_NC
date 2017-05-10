@@ -1,4 +1,4 @@
-PROC OPERATION DISPLON
+PROC M_OPERATION DISPLON
 ;;**********程序功能**********
 ;;对刀主程序:
 ;;首次对刀 二次对刀 自动对刀 角度计算 等子程序的调用
@@ -11,17 +11,16 @@ ELSE
 	M1=3 S1=INI[53]
 ENDIF
 G4 F5
-			
-IF TOOL_SET[8]==0;首次对刀
-		IF GRIND[2]==1;手动对刀
-			S_OPERATION_JOG;手动对刀程序
-		ELSE
-			S_OPERATION_AUTO;自动对刀程序
-		ENDIF
-ELSE;二次对刀
-		S_OPERATION_RAND;二次对刀子程序
-ENDIF
 
+IF TOOL_SET[8]==0;首次对刀
+    IF GRIND[2]==1;手动对刀
+        S_OPERATION_JOG;手动对刀程序
+    ELSE
+        S_OPERATION_AUTO;自动对刀程序
+    ENDIF
+ELSE;二次对刀
+    S_OPERATION_RAND;二次对刀子程序
+ENDIF
 
 IF (DRESSER[6]==4) OR (DRESSER[6]==5) OR (DRESSER[6]==6) OR (DRESSER[6]==7);自动对刀过程中有报警
     RET

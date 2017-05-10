@@ -14,7 +14,7 @@ IF INI[75]==1;磨削几件后修整标记位
     G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
     M9;内磨削冷却关
     M39;外磨削冷却关
-    DRESS;修整,修整参数是修整界面参数或扩展工艺使用的第一道工艺里的修整参数
+    M_DRESS;修整,修整参数是修整界面参数或扩展工艺使用的第一道工艺里的修整参数
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
     IF DRESSER[6]==2;砂轮过小
@@ -58,7 +58,7 @@ IF PROCESS[3]==1
     G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一位置
     M9;内磨削冷却关
     M39;外磨削冷却关
-    DRESS;修整
+    M_DRESS;修整
     PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
     PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
     PROCESS[3]=0;修整标记清零

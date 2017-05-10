@@ -11,8 +11,8 @@ ENDIF
 IF INI[75]==1;磨削几件后修整标记位
     INI[75]=0;标记位
     M9;磨削冷却关
-    DRESS;修整
-	PROCESS[13]=PROCESS[13]-(R25-2)*R20-R21;初始进刀位置计算
+    M_DRESS;修整
+    PROCESS[13]=PROCESS[13]-(R25-2)*R20-R21;初始进刀位置计算
     PROCESS[4]=PROCESS[4]-(R25-2)*R20-R21;当前进刀位置计算
     IF DRESSER[6]==2;砂轮过小
         RET
@@ -51,9 +51,9 @@ ENDIF
 
 IF PROCESS[3]==1
     M9;磨削冷却关
-    DRESS;修整
-	PROCESS[13]=PROCESS[13]-(R25-2)*R20-R21;初始进刀位置计算
-	PROCESS[4]=PROCESS[4]-(R25-2)*R20-R21;当前进刀位置计算
+    M_DRESS;修整
+    PROCESS[13]=PROCESS[13]-(R25-2)*R20-R21;初始进刀位置计算
+    PROCESS[4]=PROCESS[4]-(R25-2)*R20-R21;当前进刀位置计算
     PROCESS[3]=0;修整标记清零
     IF DRESSER[6]==2;砂轮过小
         RET

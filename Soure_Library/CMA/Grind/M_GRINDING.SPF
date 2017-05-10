@@ -9,7 +9,7 @@ IF $A_DBB[6]==1;C轴旋转键选中
     GOTOF ENDING
 ENDIF
 
-SCREW;磨削主程序
+M_SCREW;磨削主程序
 
 ENDING:
 
