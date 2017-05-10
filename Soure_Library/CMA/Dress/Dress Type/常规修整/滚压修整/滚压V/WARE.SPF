@@ -1,0 +1,30 @@
+PROC WARE DISPLON
+;;**********程序功能**********
+;;滚压V修整方式
+;;***************************
+
+S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
+MSG("修整轮运行至起始位置")
+G90 G1 V=0 F=INI[61]
+MSG("修整轮运行至修整位置")
+G90 G1 V=WHEEL[10]+1 F=INI[62]
+WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
+    STOPRE
+    S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
+    S_WARE_ROLLING;滚压轮修整
+    IF $A_DBB[2]==1;修整中途安全结束程序
+        DRESSER[19]=DRESSER[19]+1
+        GOTOF ROLLING_V_ENDING
+    ENDIF
+    S_DRESS_CALC;次数累积
+ENDWHILE
+M29;修整冷却关
+ROLLING_V_ENDING:
+MSG("修整轮运行至起始位置")
+G90 G1 V=0 F=INI[61]
+
+RET
+

@@ -1,0 +1,35 @@
+PROC DRESS DISPLON
+;;**********程序功能**********
+;;修整主程序:
+;;整合各种不同修整器结构
+;;***************************
+
+S_DRESS_CHOICE;修整参数赋值
+
+IF DRESSER[11]+DRESSER[12]==0
+    GOTOF D_ENDING
+ENDIF
+
+S_DRESS_START;报警及参数初始化
+
+IF DRESSER[6]==2;砂轮过小
+    DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
+    GOTOF D_ENDING
+ENDIF
+
+WARE;选择修整方式
+
+D_ENDING:
+IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
+    M65
+ELSE
+    IF (INI[36]==0) OR (INI[36]==2)
+        M1=5
+    ELSE
+        M2=5
+    ENDIF
+ENDIF
+G4 F0.1
+
+RET
+

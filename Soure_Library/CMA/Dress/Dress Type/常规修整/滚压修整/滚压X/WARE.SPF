@@ -1,0 +1,68 @@
+PROC WARE DISPLON
+;;**********程序功能**********
+;;滚压X修整方式
+;;***************************
+
+S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
+MSG("修整轮运行至起始位置")
+IF GRIND[0]<>1;不是内螺纹
+    G90 G1 X=WHEEL[10]+10 F=INI[55];多退刀一点，防止齿高过大抬刀不够
+ELSE
+    IF DRESSER[37]==0;前/后修整
+        G90 G1 X=WHEEL[10]-10 F=INI[55]
+    ELSE
+        G90 G1 X=WHEEL[10]+10 F=INI[55]
+    ENDIF
+ENDIF
+IF DRESSER[37]==0;前/后修整
+    S_RESET_ANGLE;升角复位
+    MSG("台面到位中")
+    G90 G1 Z=DRESSER[21] F=INI[56]
+ENDIF
+MSG("修整轮运行至修整位置")
+IF GRIND[0]<>1;不是内螺纹
+    G90 G1 X=WHEEL[10]+1 F=INI[55]
+ELSE
+    IF DRESSER[37]==0;前/后修整
+        G90 G1 X=WHEEL[10]-1 F=INI[55]
+    ELSE
+        G90 G1 X=WHEEL[10]+1 F=INI[55]
+    ENDIF
+ENDIF
+WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
+    STOPRE
+    S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
+    S_WARE_ROLLING;滚压轮修整
+    IF $A_DBB[2]==1;修整中途安全结束程序
+        DRESSER[19]=DRESSER[19]+1
+        GOTOF ROLLING_X_ENDING
+    ENDIF
+    S_DRESS_CALC;次数累积
+ENDWHILE
+M29;修整冷却关
+ROLLING_X_ENDING:
+MSG("修整轮运行至起始位置")
+IF GRIND[0]<>1;不是内螺纹
+    G90 G1 X=WHEEL[10]+10 F=INI[55];多退刀一点，防止齿高过大抬刀不够
+ELSE
+    IF DRESSER[37]==0;前/后修整
+        G90 G1 X=WHEEL[10]-10 F=INI[55]
+    ELSE
+        G90 G1 X=WHEEL[10]+10 F=INI[55]
+    ENDIF
+ENDIF
+IF DRESSER[37]==0;前/后修整
+    MSG("台面离开工件中")
+    IF GRIND[0]<>1;不是内螺纹
+        G90 G1 Z=INI[6] F=INI[56]
+    ELSE
+        G90 G1 Z=INI[28] F=INI[56]
+    ENDIF
+    S_ROTATE_ANGLE;螺旋升角
+ENDIF
+
+RET
+
