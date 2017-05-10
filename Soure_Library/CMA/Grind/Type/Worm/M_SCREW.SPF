@@ -1,8 +1,12 @@
-PROC SCREW DISPLON
+PROC M_SCREW DISPLON															
 ;;**********程序功能**********
-;;外螺纹主程序:
+;;蜗杆主程序:
 ;;修整 对刀 磨削 程序的调用
 ;;***************************
+
+WHEEL[10]=R7;当前修整接触赋值
+WHEEL[12]=R15+DRESSER[23]/2+R29;根据砂轮中心的V坐标计算初始接触位置
+DRESSER[24]=R9;当前砂轮直径
 
 S_PAR_INI;参数初始化子程序
 IF (DRESSER[6]==1)OR(DRESSER[6]==2)OR(DRESSER[6]==3);有报警标记则退出程序
@@ -11,9 +15,9 @@ ENDIF
 S_PARA_TRANS;参数传递
 
 IF GRIND[1]<>0
-    DRESS;修整
-    PROCESS[13]=PROCESS[13]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];初始进刀位置计算
-    PROCESS[4]=PROCESS[4]-DRESSER[18]*DRESSER[14]-(DRESSER[19]-1)*DRESSER[15];当前进刀位置计算
+    M_DRESS;修整
+    PROCESS[13]=PROCESS[13]-(R25-2)*R20-R21;初始进刀位置计算
+    PROCESS[4]=PROCESS[4]-(R25-2)*R20-R21;当前进刀位置计算
     INI[40]=0;新砂轮磨削接触位计算标记
     GOTOF G_ENDING
 ENDIF
@@ -23,7 +27,7 @@ S_ROTATE_ANGLE;螺旋升角
 IF GRIND[2]<>0
     ;M20;吸雾开
     ;M8;磨削冷却开
-    OPERATION;对刀
+    M_OPERATION;对刀
     IF (DRESSER[6]==4) OR (DRESSER[6]==5) OR (DRESSER[6]==6) OR (DRESSER[6]==7);自动对刀过程中有报警
         GOTOF G_ENDING
     ENDIF
@@ -51,7 +55,7 @@ GRIND[1]=0;不修整
 GRIND[2]=0;不对刀
 WHILE(TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]<=TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1])
     STOPRE
-    S_CYCLE;外螺纹磨削循环
+    S_CYCLE;蜗杆磨削循环
     S_PARA_TRANS;
     IF (DRESSER[6]==1)OR(DRESSER[6]==2);有报警
         GOTOF G_ENDING

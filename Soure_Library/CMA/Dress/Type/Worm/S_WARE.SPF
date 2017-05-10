@@ -1,4 +1,4 @@
-PROC WARE DISPLON
+PROC S_WARE DISPLON
 ;;**********程序功能**********
 ;;蜗杆修整方式
 ;;***************************
@@ -30,6 +30,8 @@ DRESSER[24]=R9;改变原程序使用的当前砂轮直径变量值
 DRESSER[5]=1;砂轮状态
 WHEEL[10]=R7;当前砂轮直径
 M29;关修整冷却
+
+S_ROTATE_ANGLE;螺旋升角
 
 RET
 
