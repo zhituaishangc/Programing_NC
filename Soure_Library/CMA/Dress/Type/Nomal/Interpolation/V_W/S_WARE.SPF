@@ -1,0 +1,34 @@
+PROC S_WARE DISPLON
+;;**********程序功能**********
+;;V_W修整方式
+;;***************************
+
+S_WHEL_SHAPE;修整轮选择水平位置计算
+S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
+MSG("垂直初始位")
+G90 G01 V=0 F=INI[61];修整开始前V轴到安全位置
+MSG("水平初始位")
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F=INI[63]
+MSG("修整轮运行至修整位置")
+G90 G1 V=WHEEL[10]+2 F=INI[62]
+WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
+    STOPRE
+    S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
+    S_DRESS_SHAPE;齿形选择
+    IF $A_DBB[2]==1;修整中途安全结束程序
+        DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
+        RET
+    ENDIF
+    S_DRESS_CALC;次数累积
+ENDWHILE
+M29;修整冷却关
+MSG("垂直初始位")
+G90 G01 V=0 F=INI[61];修整结束后V轴到安全位置
+MSG("水平初始位")
+G90 G01 W=DRESSER[33]+DRESSER[22]/2+5 F=INI[63]
+
+RET
+
