@@ -372,7 +372,7 @@
 	HS3=($85003,ac7,se1);修整参数
 	HS4=($85010,ac7,se1);自动对刀
 	HS5=($85011,ac7,se1);程序选项
-	HS6=($85012,ac7,se1);外磨工艺
+	HS6=($85012,ac7,se1);端面和外圆
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -4445,6 +4445,7 @@
 	HS6=($85012,ac7,se1);端面和外圆
 	VS1=($85035,ac7,se3);调用公共参数界面
 	VS2=($85032,ac7,se1);调用外磨工艺表格
+	VS3=($85033,ac7,se1);
 	HS8=($85005,ac7,se1);返回
 	
 	PRESS(HS1)
@@ -4480,7 +4481,7 @@
 	END_PRESS
 	
 	PRESS(VS3)
-		LM("MASK12")
+		LM("MASK26")
 	END_PRESS
 	
 	PRESS(VS4)
@@ -4491,6 +4492,83 @@
 		EXIT
 	END_PRESS
     
+//END
+
+;;;;;;;;;;;;;;;;;;;MASK26:左端面磨削参数设置;;;;;;;;;;;;;;;;
+//M(Mask26/$85029//)
+	;左端面部分
+	DEF VAR2=(R///$85072,$85072,,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[49]"/40,20,140/130,20,60/);左端面Z轴对刀位置
+	DEF VAR3=(R///$85075,$85075,,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[35]"/40,50,140/130,50,60/);左端面Z轴当前接触位置
+    DEF VAR4=(I/0,100//$85209,$85209,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[100]"/40,80,120/130,80,110/);左端面磨削设定循环次数
+	DEF VAR5=(I/0,100//$85210,$85210,,$85050/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[107]"/40,200,120/130,200,110/);左端面磨削中修整设定
+	DEF VAR6=(R/0,1//$85230,$85230,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[41]"/40,110,120/130,110,110/);左端面磨削进给量
+    
+	DEF VAR7=(R///$87012,$85220,,$85044/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[40]"/40,140,120/130,140,110/);C轴转速
+	DEF VAR8=(R///$85215,$85215,,$85045/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[36]"/40,170,120/130,170,110/);左端面磨削速度
+    DEF VAR9=(R///$85222,$85222,,$85043/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[105]"/40,50,120/130,50,110/);磨削量累计
+	;右端面部分
+
+	HS1=($85001,ac7,se1);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se1);修整参数
+	HS4=($85010,ac7,se1);自动对刀
+	HS5=($85011,ac7,se1);程序选项
+	HS6=($85012,ac7,se1);端面和外圆
+	VS1=($85035,ac7,se1);调用公共参数界面
+	VS2=($85032,ac7,se1);调用外磨工艺表格
+	VS3=($85033,ac7,se3);端面磨削
+	HS8=($85005,ac7,se1);返回
+
+    HS8=($85005,ac7,se1);返回
+
+	PRESS(HS1)
+		LM("MASK1")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3")
+	END_PRESS
+	
+	PRESS(HS4)
+		LM("MASK4")
+	END_PRESS
+	
+    PRESS(HS5)
+		LM("MASK23")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK25")
+	END_PRESS
+	
+	PRESS(VS1)
+		LM("MASK25")
+	END_PRESS
+	
+	PRESS(VS2)
+		LM("MASK24")
+	END_PRESS
+	
+	PRESS(VS3)
+		LM("MASK26")
+	END_PRESS
+	
+	PRESS(VS4)
+		LM("MASK9")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	CHANGE(VAR3)
+		VAR9.VAL=VAR2.VAL-VAR3.VAL
+	END_CHANGE
+
 //END
 
 
