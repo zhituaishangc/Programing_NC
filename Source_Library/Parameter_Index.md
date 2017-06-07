@@ -63,8 +63,8 @@
 |DRESSER[29]|D_DRESS_FEED_R|纯修整粗修速度
 |DRESSER[30]|D_DRESS_FEED_F|纯修整精修速度
 |||
-|DRESSER[31]|DWHEEL_RND_L|齿形相对修整轮左圆弧半径
-|DRESSER[32]|DWHEEL_RND_R|齿形相对修整轮右圆弧半径
+|DRESSER[31]|DWHEEL_RND_L|修左侧砂轮齿形时使用的滚轮半径
+|DRESSER[32]|DWHEEL_RND_R|修右侧砂轮齿形时使用的滚轮半径
 |DRESSER[33]|DWHEEL_MID_L|左修整轮对砂轮中心
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
