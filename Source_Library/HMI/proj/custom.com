@@ -4907,7 +4907,7 @@
 			VAR8.WR=2
 			VAR9.WR=2
 			VAR10.WR=2
-			ENDIF
+		ENDIF
 
 //END
 
