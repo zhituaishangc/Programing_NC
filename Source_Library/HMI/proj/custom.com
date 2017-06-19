@@ -665,6 +665,9 @@
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
 	HS4=($85010,ac7,se1);自动对刀
+	HS5=($85011,ac7,se1);程序选项
+	HS6=($85012,ac7,se1);端面和外圆
+	HS7=($85017,ac7,se1);外磨修整
 	HS8=($85005,ac7,se1);"返回"
 
 	VS1=("")
@@ -689,8 +692,16 @@
 		LM("MASK21")
 	END_PRESS
 
+	PRESS(HS5)
+		LM("MASK23")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK25")
+	END_PRESS
+	
 	PRESS(HS7)
-		LM("MASK7")
+		LM("MASK26")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1024,6 +1035,9 @@
 	HS2=($85002,ac7,se3);"工艺参数"
 	HS3=($85003,ac7,se1);"修整参数"
 	HS4=($85010,ac7,se1);自动对刀
+	HS5=($85011,ac7,se1);程序选项
+	HS6=($85012,ac7,se1);端面和外圆
+	HS7=($85017,ac7,se1);外磨修整
 	HS8=($85005,ac7,se1);"返回"
 
 	VS1=("")
@@ -1048,8 +1062,16 @@
 		LM("MASK21")
 	END_PRESS
 
+	PRESS(HS5)
+		LM("MASK23")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK25")
+	END_PRESS
+	
 	PRESS(HS7)
-		LM("MASK7")
+		LM("MASK26")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1791,7 +1813,7 @@
 
 //END
 
-;;;;;;;;;;;;;;;;;;;MASK21:自动对刀:panel_21:;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;MASK21:内外螺纹磨自动对刀:panel_21:;;;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask21/$85026/"panel_21_2_chs.png"/)
 	DEF VAR0=(I/*0=$85500,1=$85501//$85502,,,/WR2/"panel_21_2_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/440,20,65);测头类型(0测头/1开关),界面调试用
 	;DEF VAR0=(I/*0=$85500,1=$85501/0/$85502,,,/WR1/"panel_21_2_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/440,20,65);测头类型(测头),生成文件用
@@ -4797,7 +4819,7 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK28:磨削中心自动对刀:panel_28:;;;;;;;;;;;;;;;;;;;;;;;;
-//M(Mask28/$85027/"panel_21_2_chs.png"/)
+//M(Mask21/$85027/"panel_21_2_chs.png"/)
 	DEF VAR0=(I/*0=$85500,1=$85501/0/$85502,$85502,,/WR3/"panel_21_2_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/330,20,110/440,20,65);测头类型(0测头/1开关),界面调试用
 	DEF VAR1=(I/*0=$85510,1=$85511//$85509,$85509,,/WR2/"panel_21_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/330,40,110/440,40,60);(0=圆形孔,1=腰型孔)
 	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR2/"panel_21_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[49]"/330,70,110/440,70,110/);内螺纹自动对刀测头Z轴方向起始位置
@@ -4826,6 +4848,9 @@
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
 	HS4=($85010,ac7,se3);自动对刀
+	HS5=($85011,ac7,se1);程序选项
+	HS6=($85012,ac7,se1);端面和外圆
+	HS7=($85017,ac7,se1);外磨修整
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -4850,9 +4875,21 @@
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK28")
+		LM("MASK21")
 	END_PRESS
 
+	PRESS(HS5)
+		LM("MASK23")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK25")
+	END_PRESS
+	
+    PRESS(HS7)
+		LM("MASK26")
+	END_PRESS
+	
 	PRESS(HS8)
 		EXIT
 	END_PRESS
