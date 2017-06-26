@@ -197,6 +197,16 @@ ELSE
 TOOL_SET[4]=TOOL_SET[5]-DR31
 ENDIF
 
+WHILE((TOOL_SET[4]>=360) OR (TOOL_SET[4]<0));起始角不在0-360范围内
+	IF TOOL_SET[4]>=360
+		TOOL_SET[4]=TOOL_SET[4]-360
+	ELSE
+		IF TOOL_SET[4]<0
+			TOOL_SET[4]=360+TOOL_SET[4]
+		ENDIF
+	ENDIF
+ENDWHILE
+
 ---------内滚道磨削X轴初始接触位对刀----------
 IF TOOL_SET[8]==0;首次对刀
 	MSG("即将开始内滚道磨削X轴初始接触位对刀,请按循环启动键继续！")
