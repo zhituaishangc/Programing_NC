@@ -27,12 +27,12 @@ workstation only for HJMT Programing segment
 
 ## Quick Links
 
-* [参数含义索引表](https://github.com/nie11kun/Programing_NC/blob/master/Soure_Library/Parameter_Index.md)
-* [M代码标准](https://github.com/nie11kun/Programing_NC/blob/master/Soure_Library/M-sympol_Index.md)
+* [参数含义索引表](https://github.com/nie11kun/Programing_NC/blob/master/Source_Library/Parameter_Index.md)
+* [M代码标准](https://github.com/nie11kun/Programing_NC/blob/master/Source_Library/M-sympol_Index.md)
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
 * [SinuTrain配置样例](https://github.com/nie11kun/Programing_NC/wiki/SinuTrain导出文件样例)
-* [出厂机床信息](https://github.com/nie11kun/Programing_NC/blob/master/Soure_Library/Sell_Log.md)
+* [出厂机床信息](https://github.com/nie11kun/Programing_NC/blob/master/Source_Library/Sell_Log.md)
 
 ## Contribute
 
