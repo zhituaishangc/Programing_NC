@@ -1,0 +1,22 @@
+PROC SN_EXCIRCLE_GRIND DISPLOF
+;;外圆磨削子程序
+
+G90 G1 Z=PROCESS[48]+0.1 F1000         ;Z轴开至磨削起点,左端面
+
+G90 G1 U=PROCESS[20]+1 F1000            ;U轴开至磨削接触点外位置 
+
+MSG("C轴启动,外圆磨削开始")
+
+M3 S=PROCESS[29]
+
+G90 G1 U=PROCESS[20] F=PROCESS[24]      ;磨削进刀 
+
+EXCIRCLE_MESSAGE                             ;调用磨削信息显示
+
+G90 G1 Z=PROCESS[47]+1 F=PROCESS[22]   ;Z轴移动进给开始磨削外圆
+
+G90 G1 U=PROCESS[20]+1 F1000            ;U轴退刀
+STOPRE
+
+RET
+
