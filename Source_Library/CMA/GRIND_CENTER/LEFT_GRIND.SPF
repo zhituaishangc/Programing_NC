@@ -1,0 +1,56 @@
+PROC LEFT_GRIND DISPLOF
+;磨削中心左端面磨削
+DEF REAL TEMP
+G90 G01 U=PROCESS[46]+50 F=2000
+
+R298=PROCESS[49]
+M23
+MSG("C轴启动,左端面磨削开始")
+
+M3 S=PROCESS[29]                           ;C轴启动
+
+M26	                                       ;控制箱空调启动
+M20                                        ;吸雾器启动
+M38                                        ;磨削冷却开
+
+TECHNOLOGY[98]=0                           ;循环计数清空
+DRESSER[109]=0
+PROCESS[34]=PROCESS[48]
+WHILE TECHNOLOGY[98]<TECHNOLOGY[99]
+G90 G1 Z=PROCESS[34]+0.1 F1000            ;Z轴开至磨削位置
+G90 G1 U=PROCESS[20]+1 F2000              ;U轴开至磨削位置
+
+TECHNOLOGY[98]=TECHNOLOGY[98]+1             ;磨削循环计数
+PROCESS[34]=PROCESS[34]-PROCESS[40]       ;当前磨削位置
+
+MSG("左端面磨削，当前为第"<< TECHNOLOGY[98]<<"次磨削，还剩"<<TECHNOLOGY[99]-TECHNOLOGY[98]<<"次，进给量为"<<PROCESS[40]<<"mm")
+G94 G90 G01 Z=PROCESS[34] U=PROCESS[20]+0.1 F=PROCESS[36]         ;Z/U插补法进刀 磨削左端面
+DRESSER[109]=DRESSER[109]+1
+
+G4 F3
+
+G94 G90 G01 Z=PROCESS[34]+0.1 U=PROCESS[20]+1 F1000    ;Z/U插补退刀 
+
+STOPRE
+
+;磨削中修整相关
+IF DRESSER[109]==TECHNOLOGY[106] AND TECHNOLOGY[106]<>0
+	TEMP=DRESSER[94];临时保存界面上的粗修次数
+	DRESSER[94]=0;
+	SIDE_DRESS                          ;调用侧面修整子程序
+	DRESSER[94]=TEMP;恢复界面上的粗修次数
+	DRESSER[109]=0;
+ENDIF
+ENDWHILE
+
+STOPRE
+
+M39                                         ;磨削冷却关
+M21	                                        ;吸雾器停止
+M27	                                        ;控制箱空调停止
+
+G90 G1 Z=PROCESS[48]+10 F3000             ;退刀至左端面初始接触位置
+
+
+RET
+
