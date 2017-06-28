@@ -4,12 +4,9 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;;各种参数初始化赋值，判断及运算
 ;;***************************
 
+DRFOF;手轮偏置清除
+
 ;参数初始赋值
-INI[16]=0;螺旋升角使能
-INI[36]=0;轮类型选择(0模拟量/1伺服/2异步电机)
-INI[37]=0;整轮类型选择(0模拟量/1伺服2异步电机)
-INI[69]=0;是否有自动对刀(0没有/1有)
-INI[70]=0;是否有自动门(0没有/1有)
 DRESSER[6]=0;报警标记取消
 PROCESS[3]=0;修整标记清零
 PROCESS[7]=0;当前磨削是否修整累计
@@ -36,7 +33,9 @@ IF GRIND[0]<>2
 		ENDIF
 	ENDIF
 ENDIF
+
 GRIND[1]=$A_DBB[0];是否修整
+
 IF INI[69]==0;无自动对刀
 	GRIND[2]=$A_DBB[1];是否对刀
 ELSE
@@ -59,8 +58,6 @@ ELSE
 	ENDIF
 ENDIF
 
-DRFOF;手轮偏置清除
-
 IF INI[69]==1;有自动对刀(0没有/1有)
 	IF (GRIND[2]==0) OR (GRIND[2]==1);不对刀或手动对刀过程
 		M34;测头退回
@@ -79,7 +76,7 @@ IF INI[70]==1;有自动门(0没有/1有)
 	ENDIF
 ENDIF
 
-IF (INI[74]==0) OR (INI[73]<INI[74]);磨削几件后修整为零或当前几件小于设定值
+IF (INI[74]==0) OR (INI[73]<INI[74]);修整为零或当前几件小于设定值
     INI[75]=0;标记位
 ENDIF
 
@@ -89,7 +86,7 @@ IF INI[47]==1;磨削中不正常退出标记
 ENDIF
 
 ;新砂轮时磨削初始和当前接触
-IF GRIND[1]==1
+IF GRIND[1]==1;修整
 	IF (DRESSER[5]==0) AND (INI[40]==0);砂轮为新砂轮
 		IF GRIND[0]<>1;不是内螺纹
 			PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
@@ -121,17 +118,17 @@ ELSE
 	INI[20]=INI[17]+INI[18]/60+INI[19]/3600;计算升角值
 ENDIF
 
-;工件左右
+;工件磨削起点/终点
 IF GRIND[0]==1;是内螺纹磨削
-	INI[6]=INI[2]
-	INI[7]=INI[1]
+	INI[6]=INI[2];工件右端
+	INI[7]=INI[1];工件左端
 ELSE;不是内螺纹磨削
 	IF INI[0]==1;左旋
-		INI[6]=INI[1]
-		INI[7]=INI[2]
+		INI[6]=INI[1];工件左端
+		INI[7]=INI[2];工件右端
 	ELSE;右旋
-		INI[6]=INI[2];磨削起点
-		INI[7]=INI[1];磨削终点
+		INI[6]=INI[2];工件右端
+		INI[7]=INI[1];工件左端
 	ENDIF
 ENDIF
 
@@ -141,7 +138,7 @@ INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
 INI[8]=(INI[2]+INI[1])/2;磨削中点
 
 ;锥度相关计算,内螺纹大头往小头磨,外螺纹小头往大头磨
-IF GRIND[0]==2
+IF GRIND[0]==2;蜗杆
 	INI[11]=0;蜗杆无锥度磨削
 ENDIF
 IF INI[11]==0;判断有无锥度
@@ -157,13 +154,13 @@ INI[15]=INI[3]*INI[14]/2;X方向的增量
 
 ;X轴初始接触赋值位置选择
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
-	PROCESS[2]=0
+	PROCESS[2]=0;当前工艺
 	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
-		PROCESS[4]=PROCESS[13];砂轮当前等于初始
+		PROCESS[4]=PROCESS[13];磨削位置当前等于初始
 		PROCESS[14]=0;工艺累积进刀清零
 	ENDIF
 ELSE
-	PROCESS[2]=4
+	PROCESS[2]=4;当前工艺
 ENDIF
 
 ;报警判断
