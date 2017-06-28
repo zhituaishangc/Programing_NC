@@ -1,43 +1,24 @@
-PROC RING_GROOVE DISPLON
+PROC RING_GROOVE DISPLOF
 ;;**********程序功能**********
 ;;环形槽
 ;;***************************
 
-DRFOF;手轮偏置清除
-STOPRE
+EXTERN S_GRINDWHEEL_RUN(REAL);砂轮启动
 
-IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
-    R299=1500
-    G4 F0.2
-    M13;砂轮启动
-ELSE
-    M1=3 S1=1500
-ENDIF
-MSG("等待砂轮转速到位")
-G4 F5
-;M8;开磨削冷却
+DEF REAL SPEED=1500
 
-C_CYCLE:
-MSG("头架旋转中...")
-IF GRIND[0]<>1;不是内螺纹
-    G91 C=360000 F=INI[58];头架旋转
-ELSE
-    G91 C=-360000 F=INI[58];头架旋转
-ENDIF
-IF $A_DBB[2]==1;如果按下退刀键
-    GOTOF RING_END
-ENDIF
-GOTOB C_CYCLE
+IF $A_DBB[6]==1;C轴旋转键选中
+    S_GRINDWHEEL_RUN(SPEED);砂轮启动
 
-RING_END:
-DRFOF;手轮偏置清除
-M9;关磨削冷却
-IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
-    M15
-ELSE
-    M1=5
+    C_CYCLE:
+    MSG("头架旋转中...")
+    IF GRIND[0]<>1;不是内螺纹
+        G91 C=360000 F=INI[58];头架旋转
+    ELSE
+        G91 C=-360000 F=INI[58];头架旋转
+    ENDIF
+    GOTOB C_CYCLE
 ENDIF
-G4 F0.1
 
 RET
 
