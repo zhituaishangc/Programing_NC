@@ -4,13 +4,17 @@ PROC S_CYCLE DISPLON
 ;;外螺纹磨削初始走位及子程序的调用，磨削中修整的调用
 ;;***************************
 
+EXTERN S_GRIND_INIT_POSITON(REAL,REAL,REAL,REAL)
+
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
     RET
 ENDIF
 
 IF INI[75]==1;磨削几件后修整标记位
     INI[75]=0;标记位
-    M9;磨削冷却关
+    S_DRESS_START_POSITION;修整初始位置
+    M9;内磨削冷却关
+    M39;外磨削冷却关
     M_DRESS;修整
     S_GRIND_POSITON;修整后磨削位置计算
     IF DRESSER[6]<>0;有报警标记则退出程序
@@ -21,14 +25,12 @@ ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI[72]==1);第一次磨削或者修整后的磨削
     INI[72]=0;标记清零
-    MSG("台面到磨削起点")
-    G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
-    MSG("砂轮到安全位置")
-    G90 G01 X=PROCESS[16] F=INI[55];X轴到安全位置
+    S_GRIND_INIT_POSITON(INI[6],PROCESS[16],INI[56],INI[55])
 ENDIF
 
 M20;吸雾开
-M8;磨削冷却开
+M8;内磨削冷却开
+M38;外磨削冷却开
 
 S_GRIND;外螺纹小循环
 PLCASUP1;初始角度计算
@@ -42,7 +44,9 @@ IF $A_DBB[2]==1;按下退刀键跳转到结束程序
 ENDIF
 
 IF PROCESS[3]==1
-    M9;磨削冷却关
+    S_DRESS_START_POSITION;修整初始位置
+    M9;内磨削冷却关
+    M39;外磨削冷却关
     M_DRESS;修整
     S_GRIND_POSITON;修整后磨削位置计算
     PROCESS[3]=0;修整标记清零
@@ -53,10 +57,7 @@ IF PROCESS[3]==1
 ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
-    MSG("台面到磨削起点")
-    G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
-    MSG("砂轮回退到安全位置")
-    G90 G1 X=INI[23] F=INI[54]
+    S_GRIND_INIT_POSITON(INI[6],INI[23],INI[56],INI[54])
 ENDIF
 
 RET

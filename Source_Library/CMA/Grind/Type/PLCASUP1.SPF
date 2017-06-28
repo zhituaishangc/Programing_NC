@@ -4,6 +4,8 @@ PROC PLCASUP1 DISPLOF
 ;;首次对刀 手动对刀 自动对刀 二次对刀 下的C角度及X初始位计算，退刀键的回退动作
 ;;***************************
 
+EXTERN S_C_MODIFY_BY_Z(REAL)
+
 DEF REAL DR11,DR12,DR13
 
 IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算
@@ -21,15 +23,12 @@ IF TOOL_SET[8]==0;首次对刀
 		IF GRIND[0]<>1;不是内螺纹
 			IF INI[0]==1;左旋
 				DR11=ABS(TOOL_SET[0]-INI[6])+TOOL_SET[2];左旋理论对刀点到磨削起点距离
-				TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 			ELSE;右旋
 				DR11=ABS(TOOL_SET[0]-INI[6])-TOOL_SET[2];右旋理论对刀点到磨削起点距离
-				TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
 			ENDIF
 			DR12=(DR11/INI[5]-TRUNC(DR11/INI[5]))*360;磨削起点到对刀点C轴旋转角度计算
 			TOOL_SET[4]=TOOL_SET[5]-DR12
 		ELSE
-			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2
 			DR12=TOOL_SET[2]/INI[5]*360;Z轴DRF换算出的角度
 			IF INI[0]==1;左旋
 				TOOL_SET[4]=TOOL_SET[5]-DR12
@@ -37,19 +36,11 @@ IF TOOL_SET[8]==0;首次对刀
 				TOOL_SET[4]=TOOL_SET[5]+DR12
 			ENDIF
 		ENDIF
+		TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2
 	ELSE
 		IF GRIND[2]==3;自动对刀(计算C角度+X位置)
-			IF GRIND[0]<>1;不是内螺纹
-				TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
-			ELSE
-				TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
-			ENDIF
-			DR13=TOOL_SET[2]/INI[5]*360
-			IF INI[0]==1;左旋
-				TOOL_SET[4]=TOOL_SET[4]-DR13
-			ELSE;右旋
-				TOOL_SET[4]=TOOL_SET[4]+DR13
-			ENDIF
+			TOOL_SET[3]=TOOL_SET[3]-ABS(TOOL_SET[21]-INI[6])*INI[14]/2;磨削起点初始进刀位置计算
+			S_C_MODIFY_BY_Z(TOOL_SET[2]);手动对刀调整值
 		ENDIF
 	ENDIF
 	IF GRIND[2]<>2;不是纯自动对刀
@@ -67,12 +58,7 @@ ELSE;非首次对刀
 		PROCESS[13]=PROCESS[13]+TOOL_SET[20];磨削过程中调整X
 		PROCESS[4]=PROCESS[4]+TOOL_SET[20];磨削过程中调整X
 	ENDIF
-	DR13=TOOL_SET[2]/INI[5]*360
-	IF INI[0]==1;左旋
-		TOOL_SET[4]=TOOL_SET[4]-DR13
-	ELSE;右旋
-		TOOL_SET[4]=TOOL_SET[4]+DR13
-	ENDIF
+	S_C_MODIFY_BY_Z(TOOL_SET[2]);调整值
 ENDIF
 
 WHILE((TOOL_SET[4]>=360) OR (TOOL_SET[4]<0));起始角不在0-360范围内
@@ -90,21 +76,7 @@ DRFOF
 
 X_BACK:
 IF $A_DBB[2]==1;按下退刀键
-	MSG("退刀中,请勿复位程序!")
-	IF GRIND[0]<>1;不是内螺纹
-		IF GRIND[2]<>2;不是单纯的自动对刀
-            G01 G90 X=INI[23] F=INI[54];退刀时的X值
-		ENDIF
-	ELSE
-		IF GRIND[2]<>2;不是单纯的自动对刀
-			G90 G01 X=INI[10] F=PROCESS[11]*4;X离开螺纹
-			G90 G01 Z=INI[2] F=INI[56];返回起点
-		ENDIF
-		G90 G01 Z=INI[28] F=INI[56];Z轴到工件右端偏右一点位置
-		IF GRIND[2]<>2;不是单纯的自动对刀
-			G90 G01 X=INI[23] F=INI[54]
-		ENDIF
-	ENDIF
+	S_EXITWORK;退出工件范围
 ENDIF
 
 RET
