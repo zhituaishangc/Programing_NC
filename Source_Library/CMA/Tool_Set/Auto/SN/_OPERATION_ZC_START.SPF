@@ -1,0 +1,14 @@
+PROC S_OPERATION_ZC_START DISPLOF
+;;**********程序功能**********
+;;ZC插补运行
+;;***************************
+
+FGROUP(Z)
+IF INI[0]==1;左旋
+    G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=(INI[7]-TOOL_SET[0])/INI[5]*360 F=TECHNOLOGY[30]/4
+ELSE
+    G91 Z=(INI[7]-TOOL_SET[0]) X=ABS(INI[7]-TOOL_SET[0])*INI[14]/2 C=(TOOL_SET[0]-INI[7])/INI[5]*360 F=TECHNOLOGY[30]/4
+ENDIF
+
+RET
+
