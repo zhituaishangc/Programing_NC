@@ -5,6 +5,7 @@ PROC S_CYCLE DISPLON
 ;;***************************
 
 EXTERN S_GRIND_INIT_POSITON(REAL,REAL,REAL,REAL)
+EXTERN S_Z_POSITION(REAL)
 
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
     RET
@@ -12,7 +13,9 @@ ENDIF
 
 IF INI[75]==1;磨削几件后修整标记位
     INI[75]=0;标记位
-    S_DRESS_START_POSITION;修整初始位置
+    ;******************************
+    S_Z_POSITION(INI[28]);修整初始位置
+    ;******************************
     M9;内磨削冷却关
     M39;外磨削冷却关
     M_DRESS;修整
@@ -44,7 +47,9 @@ IF $A_DBB[2]==1;按下退刀键跳转到结束程序
 ENDIF
 
 IF PROCESS[3]==1
-    S_DRESS_START_POSITION;修整初始位置
+    ;******************************
+    S_Z_POSITION(INI[28]);修整初始位置
+    ;******************************
     M9;内磨削冷却关
     M39;外磨削冷却关
     M_DRESS;修整
