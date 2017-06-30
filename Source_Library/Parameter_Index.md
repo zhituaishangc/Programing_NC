@@ -69,7 +69,7 @@
 |DRESSER[34]|DWHEEL_MID_R|右修整轮对砂轮中心
 |DRESSER[35]|WHEEL_MIN_diameter|砂轮最小直径
 |DRESSER[36]|DRESS_WHEEL_RPM|修整时砂轮转速
-|DRESSER[37]|N_CX_X_TYPE|内螺纹成型X前/后
+|DRESSER[37]|N_CX_X_TYPE|成型X修整时,修整器在前还是在后,前(0)/后(1)
 |DRESSER[38]|TECH_DRESS_CUMU|界面工艺修整量总量
 |DRESSER[39]|
 |DRESSER[40]|
@@ -305,6 +305,8 @@
 |TRI[11]||调整左圆弧
 |TRI[12]||调整右圆弧
 |TRI[13]||过渡圆弧带直线段长度
+|TRI[14]||新砂轮抬刀高度
+|TRI[15]||齿形结束时修出线与水平线的角度
 |||
 |**梯形(TRAP)**||
 |TRAP[0]|TRAP_VER|齿高
