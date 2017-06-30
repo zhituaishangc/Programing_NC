@@ -4,6 +4,8 @@ PROC S_PAR_INI SBLOF DISPLOF
 ;;各种参数初始化赋值，判断及运算
 ;;***************************
 
+DRFOF;手轮偏置清除
+
 ;参数初始赋值
 DRESSER[6]=0;报警标记取消
 PROCESS[3]=0;修整标记清零
@@ -39,8 +41,6 @@ IF GRIND[0]<>2;非蜗杆
 		ENDIF
 	ENDIF
 ENDIF
-
-DRFOF;手轮偏置清除
 
 GRIND[1]=$A_DBB[0];是否修整
 
