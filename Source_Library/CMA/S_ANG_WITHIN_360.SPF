@@ -1,15 +1,15 @@
-PROC S_ANG_WITHIN_360(VAR REAL ANG) DISPLOF
+PROC S_ANG_WITHIN_360(VAR REAL C_ANG) DISPLOF
 ;;**********程序功能**********
 ;;将角度调整到0-360内
-;;ANG:角度
+;;C_ANG:角度
 ;;***************************
 
-WHILE((ANG>=360) OR (ANG<0));起始角不在0-360范围内
-	IF ANG>=360
-		ANG=ANG-360
+WHILE((C_ANG>=360) OR (C_ANG<0));起始角不在0-360范围内
+	IF C_ANG>=360
+		C_ANG=C_ANG-360
 	ELSE
-		IF ANG<0
-			ANG=360+ANG
+		IF C_ANG<0
+			C_ANG=360+C_ANG
 		ENDIF
 	ENDIF
 ENDWHILE
