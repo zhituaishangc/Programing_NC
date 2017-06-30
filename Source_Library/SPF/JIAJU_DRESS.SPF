@@ -15,7 +15,7 @@ INI[67]=0;;自磨修整头架修整器C起始角度
 
 DRFOF
 DRESSER[68]=0
-S_RESET_ANGLE;升角复位
+C_RESET_ANGLE;升角复位
 G90 G01 C=INI[67] F=INI[58]
 G90 G01 Z=INI[28] F=INI[56];内螺纹时台面起始位置
 G90 G01 X=DRESSER[65]-10 F=INI[55];修整轮相对砂轮1&2修整起点位置

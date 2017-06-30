@@ -1,4 +1,4 @@
-PROC S_GRIND DISPLOF
+PROC D_GRIND DISPLOF
 ;;**********程序功能**********
 ;;蜗杆小循环:
 ;;完整磨削一个工件循环
@@ -60,7 +60,7 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	FGROUP(Z)
 	IF INI[0]==0;0右旋,1左旋
-		S_CYCLE_MESSAGE
+		E_CYCLE_MESSAGE
 		G301;右旋正向磨削,台面向右运动
 		IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 			RET
@@ -69,7 +69,7 @@ WHILE(WORK[1]<WORK[0])
 		IF PROCESS[6]==1;判断是否进行反向磨削
 			G4 F0.5
 			G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
-			S_CYCLE_MESSAGE
+			E_CYCLE_MESSAGE
 			G302;右旋反向磨削,台面向左运动
 			IF $A_DBB[2]==1
 				RET
@@ -100,7 +100,7 @@ WHILE(WORK[1]<WORK[0])
 		ENDIF
 		STOPRE
 	ELSE;左旋螺纹磨削
-		S_CYCLE_MESSAGE
+		E_CYCLE_MESSAGE
 		G303;左旋正向磨削,台面向左运动
 		IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 			RET
@@ -109,7 +109,7 @@ WHILE(WORK[1]<WORK[0])
 		IF PROCESS[6]==1
 			G4 F0.5
 			G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
-			S_CYCLE_MESSAGE
+			E_CYCLE_MESSAGE
 			G304;左旋反向磨削,台面向右运动
 			IF $A_DBB[2]==1
 				RET

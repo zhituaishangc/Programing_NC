@@ -31,7 +31,7 @@ DRESSER[5]=1;砂轮状态
 WHEEL[10]=R7;当前砂轮直径
 M29;关修整冷却
 
-S_ROTATE_ANGLE;螺旋升角
+C_ROTATE_ANGLE;螺旋升角
 
 RET
 
