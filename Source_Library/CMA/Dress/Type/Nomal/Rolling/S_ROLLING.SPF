@@ -1,4 +1,4 @@
-PROC S_WARE_ROLLING DISPLOF
+PROC S_ROLLING DISPLOF
 ;;**********程序功能**********
 ;;滚压修整
 ;;***************************
@@ -6,10 +6,6 @@ PROC S_WARE_ROLLING DISPLOF
 DEF AXIS AXIVER;垂直轴名
 
 AXIVER=AXNAME(AXIS_VER);竖直轴
-
-IF DRESSER[18]+DRESSER[19]+DRESSER[20]==0;第一次跳过
-    RET
-ENDIF
 
 G90 G1 AX[AXIVER]=WHEEL[10] F=DRESSER[10];到达修整位置
 G4 F=WHEEL[18];修整接触停留中
@@ -22,7 +18,6 @@ ELSE
         G91 G1 AX[AXIVER]=1 F=DRESSER[10]*4;修整轮回退
     ENDIF
 ENDIF
-DRESSER[5]=1;旧砂轮
 
 RET
 
