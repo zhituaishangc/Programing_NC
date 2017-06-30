@@ -1,0 +1,23 @@
+PROC S_ROLLING DISPLOF
+;;**********程序功能**********
+;;滚压修整
+;;***************************
+
+DEF AXIS AXIVER;垂直轴名
+
+AXIVER=AXNAME(AXIS_VER);竖直轴
+
+G90 G1 AX[AXIVER]=WHEEL[10] F=DRESSER[10];到达修整位置
+
+G4 F0.2
+WHILE($A_DBB[3]<>1);没压到左开关
+    M43;摆到左端
+ENDWHILE
+
+G4 F0.2
+WHILE($A_DBB[4]<>1);没压到右开关
+    M44;摆到右端
+ENDWHILE
+
+RET
+

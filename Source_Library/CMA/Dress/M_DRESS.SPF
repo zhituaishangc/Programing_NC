@@ -1,23 +1,35 @@
 PROC M_DRESS DISPLON
 ;;**********程序功能**********
-;;修整主程序:
-;;整合各种不同修整器结构
+;;修整主程序
 ;;***************************
 
 S_DRESS_CHOICE;修整参数赋值
-
-IF DRESSER[11]+DRESSER[12]==0
-    GOTOF D_ENDING
-ENDIF
-
 S_DRESS_START;报警及参数初始化
 
-IF DRESSER[6]<>0;有报警标记
+IF (DRESSER[6]<>0) OR (DRESSER[11]+DRESSER[12]==0);有报警标记/修整次数为零
     DRESSER[19]=DRESSER[19]+1;精修当前次数加一,匹配完整修整完成时的结果
     GOTOF D_ENDING
 ENDIF
 
-S_WARE;选择修整方式
+S_WHEL_SHAPE;修整轮选择水平位置计算
+S_DRESS_SHAPE_INIT;垂直位置计算
+S_LINESPEED_DRESS;砂轮速度
+S_DRESS_INIT_POSITON;修整轮运行至起始位置
+WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
+    STOPRE
+    S_LINESPEED_DRESS;砂轮速度
+    M20;吸雾开
+    M28;修整冷却开
+    S_DRESS_SHAPE;修整
+    IF $A_DBB[2]==1;修整中途安全结束程序
+        DRESSER[19]=DRESSER[19]+1
+        GOTOF DRESS_ENDING
+    ENDIF
+    S_DRESS_CALC;次数累积
+ENDWHILE
+M29;修整冷却关
+DRESS_ENDING:
+S_DRESS_END_POSITON;修整轮运行至结束位置
 
 D_ENDING:
 S_DRESSWHEEL_STOP;修整轮停止
