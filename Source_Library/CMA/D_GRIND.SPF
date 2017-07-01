@@ -69,9 +69,17 @@ WHILE(WORK[1]<WORK[0])
 		IF $A_DBB[2]==1
 			RET
 		ENDIF
+		;******************************
+		;外螺纹:PROCESS[16]
+		;内螺纹:INI[10]
 		E_DOUBLEGRIND_XBACK(PROCESS[16])
+		;******************************
 	ELSE
+		;******************************
+		;外螺纹:PROCESS[16]
+		;内螺纹:INI[10]
 		E_SINGLEGRIND_XZBACK(PROCESS[16])
+		;******************************
 		IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 			RET
 		ENDIF
