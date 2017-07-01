@@ -22,7 +22,6 @@ IF PROCESS[0]==0;如果不是DIY
             G4 F0.2
         ENDWHILE
     ENDIF
-    G4 F0.1
 ENDIF
 
 RET
