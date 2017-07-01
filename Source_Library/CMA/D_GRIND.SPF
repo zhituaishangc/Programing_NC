@@ -1,6 +1,6 @@
 PROC D_GRIND DISPLOF
 ;;**********程序功能**********
-;;外螺纹小循环:
+;;螺纹小循环:
 ;;完整磨削一个工件循环
 ;;***************************
 
@@ -9,6 +9,7 @@ EXTERN F_ANG_WITHIN_360(VAR REAL)
 EXTERN E_DOUBLEGRIND_XBACK(REAL)
 EXTERN E_SINGLEGRIND_XZBACK(REAL)
 EXTERN E_ZHONGJIN_FIX(REAL)
+EXTERN F_Z_POSITION(REAL)
 
 DEF REAL TEMPC
 DEF REAL TEMPANG
@@ -36,7 +37,7 @@ WHILE(WORK[1]<WORK[0])
 	F_ANG_WITHIN_360(TEMPANG)
 	G90 G01 C=ACP(TEMPANG) F=INI[58];头数切换,角度增量累加
 	MSG("到磨削起点")
-	G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
+	F_Z_POSITION(INI[6]);Z轴到磨削起点
 	MSG("砂轮正在进入工件螺纹")
 	G90 G01 X=PROCESS[4]+PROCESS[8]*4 F=PROCESS[11]*4;快速到达磨削位置附近
 	IF PROCESS[6]==0;单向/双向

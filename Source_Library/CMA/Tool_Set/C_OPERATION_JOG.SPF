@@ -5,25 +5,36 @@ PROC C_OPERATION_JOG DISPLOF
 
 EXTERN F_Z_POSITION(REAL)
 
+;******************************
+;内螺纹时删除此处
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD0
+;******************************
 
 DDD0:
 MSG("正在开至工件起点")
+;******************************
+;外螺纹INI[6]
+;内螺纹INI[28]
 F_Z_POSITION(INI[6]);快速的移动到对刀起点
+;******************************
 GOTOF DDD2
 
+;******************************
+;内螺纹时删除此处
 DDD1:
 MSG("正在开至工件中点")
 F_Z_POSITION(INI[8]);快速移动到对刀中点
 GOTOF DDD2
+;******************************
 
 DDD2:
-G90 G01 C=ACP(0) F=INI[58];C轴初始位
 MSG("X轴开至对刀起始位")
 G01 G90 X=INI[10] F=INI[55];X开至对刀起始位
 ;******************************
+;外螺纹时删除此处
 F_Z_POSITION(INI[6])
 ;******************************
+G90 G01 C=ACP(0) F=INI[58];C轴初始位
 STOPRE
 TOOL_SET[5]=$AA_IM[C];读取C轴初始角度 
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标

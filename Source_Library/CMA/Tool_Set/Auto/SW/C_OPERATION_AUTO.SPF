@@ -68,6 +68,8 @@ IF GRIND[2]==3;自动对刀(计算C角度+X位置)
         MSG("正在移动到工件中点")
         F_Z_POSITION(INI[8]);开至工件中点
     ENDIF
+    MSG("X轴正移至对刀安全位置")
+    G90 G01 X=INI[10] F=INI[55];X开至对刀位置
     STOPRE
     TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
     F_C_ANG_AT_CURNTZ_POS(TOOL_SET[0],DR4)
@@ -75,8 +77,7 @@ IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     G90 G01 C=ACP(DR4) F=INI[58]
 
     F_GRINDWHEEL_RUN(INI[53])
-    MSG("X轴正移至对刀安全位置")
-    G90 G01 X=INI[10] F=INI[55];X开至对刀位置
+    
     MSG("手动对刀已启动,请进行对刀操作")
     D_OPERATION_ZC_START
 ENDIF
