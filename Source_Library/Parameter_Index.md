@@ -220,6 +220,8 @@
 |INI[75]||磨削几件后修整标记位
 |INI[76]||蜗杆模数输入
 |INI[77]||上一次新砂轮直径缓存
+|INI[78]||有无二次对刀(0无1有)
+|INI[79]||程序结束砂轮是否停止(0停/1不停)
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -241,7 +243,7 @@
 |TOOL_SET[16]|ANG_L|左齿形角
 |TOOL_SET[17]|ANG_R|右齿形角
 |TOOL_SET[18]|WORK_DEPTH_INIT|工件初开深度
-|TOOL_SET[19]|TOOL_SET_POS|(0中点对刀/1起点对刀/2任意)
+|TOOL_SET[19]|TOOL_SET_POS|(0起点对刀/1中点对刀/2任意)
 |TOOL_SET[20]|DRF_X|对刀完成时手轮偏置值
 |TOOL_SET[21]|JOG_Z|对刀完成后Z轴坐标(手动对刀)
 |TOOL_SET[22]|FXQK|(0=圆形孔,1=腰型孔)
