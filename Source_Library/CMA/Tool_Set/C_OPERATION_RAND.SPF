@@ -8,30 +8,40 @@ EXTERN F_C_ANG_AT_CURNTZ_POS(REAL,VAR REAL)
 
 DEF REAL DR1,DR2,DR3,DR4
 
+;******************************
+;内螺纹时删除此处
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD0
+;******************************
 
 DDD0:
 MSG("正在开至工件起点")
-F_Z_POSITION(INI[6]);开至工件起点
+;******************************
+;外螺纹INI[6]
+;内螺纹INI[28]
+F_Z_POSITION(INI[6]);快速的移动到对刀起点
+;******************************
 GOTOF DDD2
 
+;******************************
+;内螺纹时删除此处
 DDD1:
 MSG("正在开至工件中点")
-F_Z_POSITION(INI[8]);开至工件中点
+F_Z_POSITION(INI[8]);快速移动到对刀中点
 GOTOF DDD2
+;******************************
 
 DDD2:
+MSG("X轴开至对刀起始位")
+G01 G90 X=INI[10] F=INI[55];X开至对刀起始位
+;******************************
+;外螺纹时删除此处
+F_Z_POSITION(INI[6])
+;******************************
 STOPRE
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
 F_C_ANG_AT_CURNTZ_POS(TOOL_SET[0],DR4)
 MSG("头架到位中")
 G90 G01 C=ACP(DR4) F=INI[58]
-
-MSG("X轴开至对刀起始位")
-G01 G90 X=INI[10] F=INI[55];X开至对刀起始位
-;******************************
-F_Z_POSITION(INI[6])
-;******************************
 
 MSG("砂轮正在进入距离螺纹槽2mm处")
 G01 X=PROCESS[4]+ABS(TOOL_SET[0]-INI[6])*INI[14]/2+2 F=PROCESS[11]
@@ -39,7 +49,6 @@ STOPRE
 TOOL_SET[40]=1;已执行过二次对刀的标记
 
 MSG("二次对刀已启动,请进行对刀操作")
-FGROUP(Z)
 D_OPERATION_ZC_START
 
 RET

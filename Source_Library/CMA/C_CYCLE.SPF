@@ -1,7 +1,7 @@
 PROC C_CYCLE DISPLON
 ;;**********程序功能**********
-;;外螺纹磨削循环:
-;;外螺纹磨削初始走位及子程序的调用，磨削中修整的调用
+;;螺纹磨削循环:
+;;螺纹磨削初始走位及子程序的调用，磨削中修整的调用
 ;;***************************
 
 EXTERN D_GRIND_INIT_POSITION(REAL,REAL,REAL,REAL)
@@ -14,6 +14,7 @@ ENDIF
 IF INI[75]==1;磨削几件后修整标记位
     INI[75]=0;标记位
     ;******************************
+    ;外螺纹时删除此处
     F_Z_POSITION(INI[28]);修整初始位置
     ;******************************
     M9;内磨削冷却关
@@ -28,14 +29,18 @@ ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI[72]==1);第一次磨削或者修整后的磨削
     INI[72]=0;标记清零
+    ;******************************
+    ;外螺纹:INI[6],PROCESS[16],INI[56],INI[55]
+    ;内螺纹:INI[28],INI[10],INI[56],INI[55]
     D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55])
+    ;******************************
 ENDIF
 
 M20;吸雾开
 M8;内磨削冷却开
 M38;外磨削冷却开
 
-D_GRIND;外螺纹小循环
+D_GRIND;螺纹小循环
 PLCASUP1;初始角度计算
 
 IF INI[47]==0;磨削中不正常退出标记
@@ -48,6 +53,7 @@ ENDIF
 
 IF PROCESS[3]==1
     ;******************************
+    ;外螺纹时删除此处
     F_Z_POSITION(INI[28]);修整初始位置
     ;******************************
     M9;内磨削冷却关
@@ -62,7 +68,11 @@ IF PROCESS[3]==1
 ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
-    D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[54])
+    ;******************************
+    ;外螺纹:INI[6],INI[23],INI[56],INI[55]
+    ;内螺纹:INI[28],INI[23],INI[56],INI[55]
+    D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55])
+    ;******************************
 ENDIF
 
 RET

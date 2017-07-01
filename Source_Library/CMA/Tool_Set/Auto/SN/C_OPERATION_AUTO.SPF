@@ -214,14 +214,17 @@ ENDIF
 IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     MSG("正在移动到起始位置")
     F_Z_POSITION(INI[28]);Z轴开至工件右端偏左
-    MSG("头架到位中")
-    G90 G01 C=TOOL_SET[4] F=INI[58];工件旋转到自动对刀后计算出的C轴起始角
-    F_GRINDWHEEL_RUN(INI[53])
-
     MSG("X轴正移至工件中心")
     G90 G01 X=INI[10] F=INI[55];X开至工件中心
     MSG("Z轴正移至对刀起点")
     F_Z_POSITION(INI[6]);Z轴开至工件磨削右端坐标
+    STOPRE
+    TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
+    MSG("头架到位中")
+    G90 G01 C=TOOL_SET[4] F=INI[58];工件旋转到自动对刀后计算出的C轴起始角
+
+    F_GRINDWHEEL_RUN(INI[53])
+
     MSG("手动对刀已启动,请进行对刀操作")
     D_OPERATION_ZC_START
 ENDIF
