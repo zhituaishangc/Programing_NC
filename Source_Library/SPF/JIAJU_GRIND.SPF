@@ -4,27 +4,25 @@ PROC JIAJU_GRIND DISPLON
 ;;使用前需手动测量初始参数,注意坐标的左右方向
 ;;***************************
 
+EXTERN F_GRINDWHEEL_RUN(REAL)
+
+;;***************************
+DEF SPEED=15000
 DRESSER[60]=0;;砂轮在夹具左侧Z坐标
 DRESSER[61]=0;;砂轮在夹具右侧Z坐标
 DRESSER[62]=0;;砂轮接触夹具X轴坐标
 DRESSER[69]=0;;进刀量
 INI[68]=0;;差补螺距
-
 ;;***************************
+
+B_MACHINE_INI;机床初始化
 
 DRFOF
 DRESSER[68]=0
 C_RESET_ANGLE;升角复位
 G90 G01 Z=INI[28] F=INI[56];内螺纹时台面起始位置
 G90 G01 X=INI[10] F=INI[55];砂轮中心与头架中心重合
-IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
-    R299=15000
-    G4 F0.2
-    M13;砂轮启动
-ELSE
-    M1=3 S1=15000
-ENDIF
-G4 F5
+F_GRINDWHEEL_RUN(SPEED)
 M8;内磨削冷却开
 M38;外磨削冷却开
 G90 G01 Z=DRESSER[61] F=INI[56];Z轴右
@@ -50,15 +48,7 @@ G4 F1
 DRESSER[68]=DRESSER[68]+1
 GOTOB CYCLE
 
-WAITP
-IF (INI[36]==0) OR (INI[36]==2);砂轮类型选择
-    M15
-ELSE
-    M1=5
-ENDIF
-M9
-M39
-G4 F1
+F_GRINDWHEEL_STOP
 
 M30
 
