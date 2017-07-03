@@ -21,11 +21,14 @@ ENDIF
 MSG("修整轮运行至修整位置")
 IF GRIND[0]<>1;不是内螺纹
     G90 G1 X=WHEEL[10]+1 F=INI[55]
+    G90 G1 X=WHEEL[10]+0.1 F=200
 ELSE
     IF DRESSER[37]==0;前/后修整
         G90 G1 X=WHEEL[10]-1 F=INI[55]
+        G90 G1 X=WHEEL[10]-0.1 F=200
     ELSE
         G90 G1 X=WHEEL[10]+1 F=INI[55]
+        G90 G1 X=WHEEL[10]+0.1 F=200
     ENDIF
 ENDIF
 

@@ -1,6 +1,6 @@
 PROC C_OPERATION_RAND DISPLOF
 ;;**********程序功能**********
-;;外螺纹二次对刀程序
+;;螺纹二次对刀程序
 ;;***************************
 
 EXTERN F_Z_POSITION(REAL)

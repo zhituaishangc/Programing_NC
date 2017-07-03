@@ -7,6 +7,7 @@ MSG("修整轮运行至起始位置")
 G90 G1 V=0 F=INI[61]
 MSG("修整轮运行至修整位置")
 G90 G1 V=WHEEL[10]+1 F=INI[62]
+G90 G1 V=WHEEL[10]+0.1 F=200
 
 RET
 
