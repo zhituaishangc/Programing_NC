@@ -1,7 +1,7 @@
 PROC F_C_MODIFY_BY_Z(REAL Z_VALUE) DISPLOF
 ;;**********程序功能**********
 ;;调整Z修改C初始角
-;;Z_VALUE:Z调整量，区分正负
+;Z_VALUE:Z调整量，区分正负
 ;;***************************
 
 EXTERN F_ANG_WITHIN_360(VAR REAL)

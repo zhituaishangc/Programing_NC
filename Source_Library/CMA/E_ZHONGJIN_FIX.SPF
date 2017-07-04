@@ -1,7 +1,7 @@
 PROC E_ZHONGJIN_FIX(REAL VALUE) DISPLOF
 ;;**********程序功能**********
 ;;中径微调:
-;;VALUE
+;VALUE:调整值
 ;;***************************
 
 IF GRIND[0]<>1;不是内螺纹
