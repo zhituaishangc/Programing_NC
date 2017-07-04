@@ -1,7 +1,7 @@
 PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;;**********程序功能**********
 ;;修整轮启动
-;;SPEED:转速
+;SPEED:转速
 ;;***************************
 
 IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择

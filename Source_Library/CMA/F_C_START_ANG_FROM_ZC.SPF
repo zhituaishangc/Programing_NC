@@ -1,8 +1,8 @@
 PROC F_C_START_ANG_FROM_ZC(REAL ZPOSITION,REAL C_ANG) DISPLOF
 ;;**********程序功能**********
 ;;根据当前zc，推算初始c
-;;ZPOSITION:z当前位置
-;;C_ANG:c角度
+;ZPOSITION:z当前位置
+;C_ANG:c角度
 ;;***************************
 
 EXTERN F_ANG_WITHIN_360(VAR REAL)

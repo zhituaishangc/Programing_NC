@@ -1,9 +1,9 @@
 PROC F_ZC_START(REAL Z_START_POSITION,REAL Z_END_POSITION,REAL SPEED) DISPLOF
 ;;**********程序功能**********
 ;;ZC插补反向运行
-;;Z_START_POSITION:z轴起点
-;;Z_END_POSITION:z轴终点
-;;SPEED:插补速度(z轴)
+;Z_START_POSITION:z轴起点
+;Z_END_POSITION:z轴终点
+;SPEED:插补速度(z轴)
 ;;***************************
 
 FGROUP(Z)
