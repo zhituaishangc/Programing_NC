@@ -4,10 +4,6 @@ PROC PLCASUP1 DISPLOF
 ;;首次对刀 手动对刀 自动对刀 二次对刀 下的C角度及X初始位计算，退刀键的回退动作
 ;;***************************
 
-EXTERN F_C_MODIFY_BY_Z(REAL)
-EXTERN F_ANG_WITHIN_360(VAR REAL)
-EXTERN F_C_START_ANG_FROM_ZC(REAL,REAL)
-
 DEF REAL DR11,DR12,DR13
 
 IF INI[25]==0;不在磨削程序中退刀就不进行C角度计算

@@ -3,8 +3,6 @@ PROC D_GRINDWHEEL_DIACURNT DISPLOF
 ;;当前砂轮直径计算
 ;;***************************
 
-EXTERN D_GRINDWHEEL_DIACRT_S(REAL,REAL);当前砂轮直径计算
-
 IF GRIND[0]<>1;不是内螺纹
     D_GRINDWHEEL_DIACRT_S(WHEEL[12],WHEEL[10]);当前砂轮直径计算
 ELSE

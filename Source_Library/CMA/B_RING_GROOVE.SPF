@@ -3,8 +3,6 @@ PROC B_RING_GROOVE DISPLOF
 ;;环形槽
 ;;***************************
 
-EXTERN F_GRINDWHEEL_RUN(REAL);砂轮启动
-
 DEF REAL SPEED=1500
 
 IF $A_DBB[6]==1;C轴旋转键选中

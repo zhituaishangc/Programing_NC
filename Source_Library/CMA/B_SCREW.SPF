@@ -4,8 +4,6 @@ PROC B_SCREW DISPLON
 ;;修整 对刀 磨削 程序的调用
 ;;***************************
 
-EXTERN C_PARA_TRAN(REAL,REAL,REAL,REAL)
-
 ;******************************
 ;非蜗杆时删除此部分
 C_WORM_INIT;蜗杆初始化参数

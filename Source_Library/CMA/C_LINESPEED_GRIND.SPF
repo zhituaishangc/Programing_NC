@@ -4,8 +4,6 @@ PROC C_LINESPEED_GRIND SBLOF DISPLOF
 ;;砂轮转速计算及执行
 ;;***************************
 
-EXTERN F_GRINDWHEEL_RUN(REAL);砂轮启动
-
 DEF REAL WHEEL_RPM;砂轮转速
 
 D_GRINDWHEEL_DIACURNT;当前砂轮直径计算
