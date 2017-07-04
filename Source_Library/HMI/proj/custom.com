@@ -1947,7 +1947,6 @@
 ;;;;;;;;;;;;;;;;;;;MASK4:修整参数_VW单滚轮:panel_4:;;;;;;;;;;;;;;;;;
 //M(Mask4/$85380/"panel_4_1_chs.png"/)
 
-	DEF VAR11=(R/-500,500//$85342,$85342,,$85043/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
 	DEF VAR0=(R/0,300//$85390,$85390,,$85043/WR4//""/330,60,110/440,60,110/);滚轮间距
 
 	DEF VAR1=(R/0,10//$85358,$85358,,$85043/WR2/"panel_4_2_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[5]"/330,90,110/440,90,110/);圆弧半径
@@ -1965,6 +1964,9 @@
 	DEF DWHEEL_RPM=(I///$85325,$85325,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,280,110/440,280,110/);修整轮转速
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+
+	DEF VAR11=(R/-500,500//$85342,$85342,,$85043/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[1]"/0,0,0/530,40,18/);参数锁定开关
 
 	HS1=($85380,ac7,se3);"单滚轮"
 	HS2=($85381,ac7,se2);"双滚轮"
@@ -2033,6 +2035,10 @@
 		DWHEEL_RPM.VAL=60000*VAR8.VAL/(PI*VAR7.VAL)
 	END_CHANGE
 	
+	CHANGE(para_switch)
+		CALL("UP1")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR1.WR=1
@@ -2040,14 +2046,24 @@
 			VAR5.WR=1
 			VAR7.WR=1
 			VAR11.WR=1
+			para_switch.WR=1
 		ELSE
 			VAR1.WR=2
 			VAR3.WR=2
 			VAR5.WR=2
 			VAR7.WR=2
-			VAR11.WR=2
+			para_switch.WR=2
+			CALL("UP1")
 		ENDIF
 	END_CHANGE
+
+	SUB(UP1)
+		IF para_switch.VAL==0
+			VAR11.WR=2
+		ELSE
+			VAR11.WR=1
+		ENDIF
+	END_SUB
 
 //END
 
@@ -2055,6 +2071,8 @@
 //M(Mask5/$85381//)
 
 	DEF VAR11=(R/-500,500//$85343,$85342,,$85043/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,20,110/440,20,110/);砂轮修整轮中心
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2//"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[2]"/0,0,0/530,20,18/);参数锁定开关
+
 	DEF VAR0=(R/0,300//$85390,$85390,,$85043/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[3]"/330,40,110/440,40,110/);双滚轮间距
 
 	DEF VAR1=(R/0,10//$85355,$85355,,$85043/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[7]"/330,70,110/440,70,110/);左圆弧半径
@@ -2137,6 +2155,10 @@
 		call("UP2")
 	END_CHANGE
 
+	CHANGE(para_switch)
+		CALL("UP1")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
@@ -2149,6 +2171,7 @@
 			VAR6.WR=1
 			VAR7.WR=1
 			VAR11.WR=1
+			para_switch.WR=1
 		ELSE
 			VAR0.WR=2
 			VAR1.WR=2
@@ -2159,12 +2182,21 @@
 			VAR5.WR=2
 			VAR6.WR=2
 			VAR7.WR=2
-			VAR11.WR=2
+			para_switch.WR=2
+			CALL("UP1")
 		ENDIF
 	END_CHANGE
 
 	SUB(UP2)
 		VAR4.VAL=VAR3.VAL+VAR9.VAL
+	END_SUB
+
+	SUB(UP1)
+		IF para_switch.VAL==0
+			VAR11.WR=2
+		ELSE
+			VAR11.WR=1
+		ENDIF
 	END_SUB
 
 //END
@@ -2173,6 +2205,8 @@
 //M(MASK_WORM_DRESS/$85918//)
 
 	DEF VAR11=(R/-500,500//$85343,$85903,,/WR2//"$R[14]"/330,30,115/440,30,60/);双滚轮间距的中心和砂轮中心重合时的W坐标
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2//"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[3]"/0,0,0/530,30,18/);参数锁定开关
+
 	DEF VAR0=(R/0,300//$85902,$85390,,$85043/WR2//"$R[10]"/330,50,110/440,50,110/);修整轮圆弧中心间的距离
 
 	DEF VAR9=(R/-5,5//$85901,$85900,,$85043/WR2//"$R[11]"/300,90,130/440,90,110/);左修整轮高出距离
@@ -2255,6 +2289,10 @@
 		call("UP2")
 	END_CHANGE
 
+	CHANGE(para_switch)
+		CALL("UP1")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
@@ -2267,6 +2305,7 @@
 			VAR6.WR=1
 			VAR7.WR=1
 			VAR11.WR=1
+			para_switch.WR=1
 			LEFT_R.WR=1
 			CURRENT_V.WR=1
 			PianYi.WR=1
@@ -2280,7 +2319,8 @@
 			VAR5.WR=2
 			VAR6.WR=2
 			VAR7.WR=2
-			VAR11.WR=2
+			para_switch.WR=2
+			CALL("UP1")
 			LEFT_R.WR=2
 			CURRENT_V.WR=2
 			PianYi.WR=2
@@ -2289,6 +2329,14 @@
 
 	SUB(UP2)
 		VAR4.VAL=VAR3.VAL+VAR9.VAL
+	END_SUB
+
+	SUB(UP1)
+		IF para_switch.VAL==0
+			VAR11.WR=2
+		ELSE
+			VAR11.WR=1
+		ENDIF
 	END_SUB
 
 //END
@@ -2408,6 +2456,8 @@
 //M(Mask12/$85380/"panel_12_1_chs.png"/)
 
 	DEF VAR11=(R/-500,500//$85342,$85342,,$85043/WR2/"panel_12_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_12_1_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[4]"/0,0,0/530,40,18/);参数锁定开关
+
 	DEF VAR0=(R/0,300//$85390,$85390,,$85043/WR4//""/330,60,110/440,60,110/);滚轮间距
 
 	DEF VAR1=(R/0,10//$85358,$85358,,$85043/WR2/"panel_12_2_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[5]"/330,90,110/440,90,110/);圆弧半径
@@ -2493,6 +2543,10 @@
 		DWHEEL_RPM.VAL=60000*VAR8.VAL/(PI*VAR7.VAL)
 	END_CHANGE
 	
+	CHANGE(para_switch)
+		call("UP1")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR1.WR=1
@@ -2500,14 +2554,24 @@
 			VAR5.WR=1
 			VAR7.WR=1
 			VAR11.WR=1
+			para_switch.WR=1
 		ELSE
 			VAR1.WR=2
 			VAR3.WR=2
 			VAR5.WR=2
 			VAR7.WR=2
-			VAR11.WR=2
+			para_switch.WR=2
+			CALL("UP1")
 		ENDIF
 	END_CHANGE
+
+	SUB(UP1)
+		IF para_switch.VAL==0
+			VAR11.WR=2
+		ELSE
+			VAR11.WR=1
+		ENDIF
+	END_SUB
 
 //END
 
@@ -2755,7 +2819,9 @@
 	DEF VAR7=(R/0,500//$85396,$85396,,$85043/WR2/"panel_11_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/330,240,110/440,240,110/);修整轮直径
 	DEF VAR8=(R/0,60//$85397,$85397,,$85046/WR2/"panel_11_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/330,260,110/440,260,110/);修整轮线速度
 	DEF VAR9=(I///$85325,$85325,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,280,110/440,280,110/);修整轮转速
+
 	DEF VAR0=(R/0,800//$85329,$85329,,$85043/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,35,110/440,35,110);回零时两轮中间距
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[5]"/0,0,0/530,35,18/);参数锁定开关
 
 	DEF VAR10=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
 
@@ -2810,17 +2876,23 @@
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL)
 	END_CHANGE
 	
+	CHANGE(para_switch)
+		CALL("UP2")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
 			VAR2.WR=1
 			VAR5.WR=1
 			VAR7.WR=1
+			para_switch.WR=1
 		ELSE
-			VAR0.WR=2
 			VAR2.WR=2
 			VAR5.WR=2
 			VAR7.WR=2
+			para_switch.WR=2
+			CALL("UP2")
 		ENDIF
 	END_CHANGE
 
@@ -2829,12 +2901,21 @@
 		VAR1.VAL=VAR3.VAL-VAR2.VAL;NC用初始接触位
 	END_SUB
 
+	SUB(UP2)
+		IF para_switch.VAL==0
+			VAR0.WR=2
+		ELSE
+			VAR0.WR=1
+		ENDIF
+	END_SUB
+
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK16:修整参数_滚压轮X_外:panel_16:;;;;;;;;;;;;;;;
 //M(Mask16/$85379/"panel_16_1_chs.png"/)
 
 	DEF VAR0=(R/-800,800//$85329,$85329,,$85043/WR2/"panel_16_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时两轮中间距
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_16_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[6]"/0,0,0/530,40,18/);参数锁定开关
 
 	DEF VAR12=(R/-500,500//$85342,$85342,,$85043/WR2/"panel_16_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,70,110/440,70,110/);砂轮修整轮中心
 	;DEF VAR20=(R/-800,800//$85808,$85808,,$85043/WR2/"panel_16_8_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[48]"/325,90,115/440,90,110/);砂轮开到修整端面位置
@@ -2912,6 +2993,10 @@
 		call("UP2")
 	END_CHANGE
 
+	CHANGE(para_switch)
+		CALL("UP3")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
@@ -2920,13 +3005,15 @@
 			VAR12.WR=1
 			VAR20.WR=1
 			VAR21.WR=1
+			para_switch.WR=1
 		ELSE
-			VAR0.WR=2
 			VAR2.WR=2
 			VAR7.WR=2
 			VAR12.WR=2
 			VAR20.WR=2
 			VAR21.WR=2
+			para_switch.WR=2
+			CALL("UP3")
 		ENDIF
 	END_CHANGE
 
@@ -2939,16 +3026,29 @@
 		;VAR12.VAL=VAR20.VAL+VAR21.VAL
 	END_SUB
 
+	SUB(UP3)
+		IF para_switch.VAL==0
+			VAR0.WR=2
+		ELSE
+			VAR0.WR=1
+		ENDIF
+	END_SUB
+
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK17:修整参数_滚压轮X_内_前:panel_17:;;;;;;;;;;;;
 //M(Mask17/$85379/"panel_17_1_chs.png"/)
 
 	DEF VAR0=(R/-800,800//$85329,$85329,,$85043/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时砂轮与修整轮中间距
+	DEF para_switch1=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[7]"/0,0,0/530,40,18/);参数锁定开关
 
 	DEF VAR12=(R/-800,800//$85342,$85342,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,70,110/440,70,110/);砂轮与修整轮Z中心
+
 	DEF VAR20=(R/-800,800//$85808,$85808,,$85043/WR2/"panel_17_8_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[48]"/325,90,115/440,90,110/);砂轮开到修整端面位置
+	DEF para_switch2=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_8_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[8]"/0,0,0/530,90,18/);参数锁定开关
+
 	DEF VAR21=(R/-100,100//$85809,$85809,,$85043/WR2/"panel_17_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[49]"/325,110,115/440,110,110/);修整轮齿槽到修整端面距离
+	DEF para_switch3=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_9_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[9]"/0,0,0/530,110,18/);参数锁定开关
 
 	DEF VAR11=(R/0,80//$85332,$85332,,$85047/WR2/"panel_17_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110/);滚压轮停留时间
 
@@ -3026,6 +3126,18 @@
 		call("UP2")
 	END_CHANGE
 
+	CHANGE(para_switch1)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(para_switch2)
+		call("UP4")
+	END_CHANGE
+
+	CHANGE(para_switch3)
+		call("UP5")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
@@ -3033,12 +3145,18 @@
 			VAR7.WR=1
 			VAR20.WR=1
 			VAR21.WR=1
+			para_switch1.WR=1
+			para_switch2.WR=1
+			para_switch3.WR=1
 		ELSE
-			VAR0.WR=2
 			VAR2.WR=2
 			VAR7.WR=2
-			VAR20.WR=2
-			VAR21.WR=2
+			para_switch1.WR=2
+			para_switch2.WR=2
+			para_switch3.WR=2
+			CALL("UP3")
+			CALL("UP4")
+			CALL("UP5")
 		ENDIF
 	END_CHANGE
 
@@ -3051,12 +3169,37 @@
 		VAR12.VAL=VAR20.VAL+VAR21.VAL
 	END_SUB
 
+	SUB(UP3)
+		IF para_switch1.VAL==0
+			VAR0.WR=2
+		ELSE
+			VAR0.WR=1
+		ENDIF
+	END_SUB
+
+	SUB(UP4)
+		IF para_switch2.VAL==0
+			VAR20.WR=2
+		ELSE
+			VAR20.WR=1
+		ENDIF
+	END_SUB
+
+	SUB(UP5)
+		IF para_switch3.VAL==0
+			VAR21.WR=2
+		ELSE
+			VAR21.WR=1
+		ENDIF
+	END_SUB
+
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK19:修整参数_滚压轮X_内_后:panel_19:;;;;;;;;;;;;
 //M(Mask19/$85379/"panel_19_1_chs.png"/)
 
 	DEF VAR0=(R/-800,800//$85329,$85329,,$85043/WR2/"panel_19_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时砂轮与修整轮中间距
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_19_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[10]"/0,0,0/530,40,18/);参数锁定开关
 
 	DEF VAR11=(R/0,80//$85332,$85332,,$85047/WR2/"panel_19_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110/);滚压轮停留时间
 
@@ -3126,21 +3269,34 @@
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL);修整轮转速计算
 	END_CHANGE
 
+	CHANGE(para_switch)
+		CALL("UP2")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
 			VAR2.WR=1
 			VAR7.WR=1
 		ELSE
-			VAR0.WR=2
 			VAR2.WR=2
 			VAR7.WR=2
+			para_switch.WR=2
+			CALL("UP2")
 		ENDIF
 	END_CHANGE
 
 	SUB(UP1)
 		VAR3.VAL=-(VAR0.VAL-VAR7.VAL/2-VAR10.VAL/2);初始接触位
 		VAR1.VAL=VAR3.VAL-VAR2.VAL;NC用初始接触
+	END_SUB
+
+	SUB(UP2)
+		IF para_switch.VAL==0
+			VAR0.WR=2
+		ELSE
+			VAR0.WR=1
+		ENDIF
 	END_SUB
 
 //END
