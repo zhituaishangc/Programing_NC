@@ -4,13 +4,6 @@ PROC D_GRIND DISPLOF
 ;;完整磨削一个工件循环
 ;;***************************
 
-EXTERN F_C_MODIFY_BY_Z(REAL);调整Z修改C初始角
-EXTERN F_ANG_WITHIN_360(VAR REAL)
-EXTERN E_DOUBLEGRIND_XBACK(REAL)
-EXTERN E_SINGLEGRIND_XZBACK(REAL)
-EXTERN E_ZHONGJIN_FIX(REAL)
-EXTERN F_Z_POSITION(REAL)
-
 DEF REAL TEMPC
 DEF REAL TEMPANG
 
@@ -48,15 +41,7 @@ WHILE(WORK[1]<WORK[0])
 	
 	FGROUP(Z)
 	E_CYCLE_MESSAGE
-	IF INI[0]==0;0右旋,1左旋
-		G301;右旋正向磨削,台面向右运动
-	ELSE
-		;******************************
-		;外螺纹:G303
-		;内螺纹:G305
-		G303
-		;******************************
-	ENDIF
+	F_ZC_START(INI[6],INI[7],PROCESS[9])
 	IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 		RET
 	ENDIF
@@ -65,15 +50,7 @@ WHILE(WORK[1]<WORK[0])
 		G4 F0.5
 		G91 G01 X=-PROCESS[8]/2 F=PROCESS[11]
 		E_CYCLE_MESSAGE
-		IF INI[0]==0;0右旋,1左旋
-			G302;右旋反向磨削,台面向左运动
-		ELSE
-			;******************************
-			;外螺纹:G304
-			;内螺纹:G306
-			G304
-			;******************************
-		ENDIF
+		F_ZC_START(INI[7],INI[6],PROCESS[9])
 		IF $A_DBB[2]==1
 			RET
 		ENDIF

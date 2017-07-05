@@ -1,11 +1,7 @@
 PROC D_GRINDWHEEL_DIACURNT DISPLOF
 ;;**********程序功能**********
 ;;当前砂轮直径计算
-;;DRESS_POSITION1:初始/当前修整接触位置
-;;DRESS_POSITION2:初始/当前修整接触位置
 ;;***************************
-
-EXTERN D_GRINDWHEEL_DIACRT_S(REAL,REAL);当前砂轮直径计算
 
 IF GRIND[0]<>1;不是内螺纹
     D_GRINDWHEEL_DIACRT_S(WHEEL[12],WHEEL[10]);当前砂轮直径计算

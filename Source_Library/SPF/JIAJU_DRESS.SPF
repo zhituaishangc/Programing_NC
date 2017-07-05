@@ -4,9 +4,6 @@ PROC JIAJU_DRESS DISPLON
 ;;使用前需手动测量初始参数,注意坐标的左右方向
 ;;***************************
 
-EXTERN F_GRINDWHEEL_RUN(REAL)
-EXTERN F_DRESSWHEEL_RUN(REAL)
-
 ;;***************************
 DEF GRINDWHEEL_SPEED=15000
 DEF DRESSWHEEL_SPEED=3000
