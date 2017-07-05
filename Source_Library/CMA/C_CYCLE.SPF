@@ -10,10 +10,9 @@ ENDIF
 
 IF INI[75]==1;磨削几件后修整标记位
     INI[75]=0;标记位
-    ;******************************
-    ;外螺纹时删除此处
+    ;++++not-sn-delete-begain++++
     F_Z_POSITION(INI[28]);修整初始位置
-    ;******************************
+    ;++++not-sn-delete-end++++
     M9;内磨削冷却关
     M39;外磨削冷却关
     B_DRESS;修整
@@ -26,11 +25,11 @@ ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI[72]==1);第一次磨削或者修整后的磨削
     INI[72]=0;标记清零
-    ;******************************
-    ;外螺纹:INI[6],PROCESS[16],INI[56],INI[55]
-    ;内螺纹:INI[28],INI[10],INI[56],INI[55]
+    ;++++sw-or-sn-begain++++
+    ;SW:D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55])
+    ;SN:D_GRIND_INIT_POSITION(INI[28],INI[10],INI[56],INI[55])
     D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55])
-    ;******************************
+    ;++++sw-or-sn-end++++
 ENDIF
 
 M20;吸雾开
@@ -49,10 +48,9 @@ IF $A_DBB[2]==1;按下退刀键跳转到结束程序
 ENDIF
 
 IF PROCESS[3]==1
-    ;******************************
-    ;外螺纹时删除此处
+    ;++++not-sn-delete-begain++++
     F_Z_POSITION(INI[28]);修整初始位置
-    ;******************************
+    ;++++not-sn-delete-end++++
     M9;内磨削冷却关
     M39;外磨削冷却关
     B_DRESS;修整
@@ -65,11 +63,11 @@ IF PROCESS[3]==1
 ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
-    ;******************************
-    ;外螺纹:INI[6],INI[23],INI[56],INI[55]
-    ;内螺纹:INI[28],INI[23],INI[56],INI[55]
+    ;++++sw-or-sn-begain++++
+    ;SW:D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55])
+    ;SN:D_GRIND_INIT_POSITION(INI[28],INI[23],INI[56],INI[55])
     D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55])
-    ;******************************
+    ;++++sw-or-sn-end++++
 ENDIF
 
 RET
