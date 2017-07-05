@@ -39,9 +39,8 @@ IF TOOL_SET[31]==0;测头测量
     G91 G01 Z=30 F=INI[56];工件离开测头
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[55];测头接触工件外表面位置5MM处
     G90 G01 Z=INI[50]-INI[35] F=INI[56];测头移动到孔处
-    MEAS=1 G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2+TOOL_SET[9]*2 F=INI[65];测头伸进孔内
-    STOPRE
-
+    X_INI_POSITION=5+TOOL_SET[9]*2
+    E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);测头伸进孔内
     IF $AC_MEA[1]==1;碰到外沿
         DRESSER[6]=5;工件端面到孔距离设置有误
         GOTOF OPERATION_END
