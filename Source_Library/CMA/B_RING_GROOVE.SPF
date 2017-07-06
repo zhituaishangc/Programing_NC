@@ -6,14 +6,14 @@ PROC B_RING_GROOVE DISPLOF
 IF $A_DBB[6]==1;C轴旋转键选中
     F_GRINDWHEEL_RUN(INI[81]);砂轮启动
 
-    C_CYCLE:
+    CYCLE:
     MSG("头架旋转中...")
     IF GRIND[0]<>1;不是内螺纹
         G91 C=360000 F=INI[58];头架旋转
     ELSE
         G91 C=-360000 F=INI[58];头架旋转
     ENDIF
-    GOTOB C_CYCLE
+    GOTOB CYCLE
 ENDIF
 
 RET
