@@ -5,7 +5,7 @@ PROC JIAJU_GRIND DISPLON
 ;;***************************
 
 ;;***************************
-DEF SPEED=15000
+DEF REAL SPEED=15000
 DRESSER[60]=0;;砂轮在夹具左侧Z坐标
 DRESSER[61]=0;;砂轮在夹具右侧Z坐标
 DRESSER[62]=0;;砂轮接触夹具X轴坐标
