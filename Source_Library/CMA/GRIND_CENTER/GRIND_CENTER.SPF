@@ -19,7 +19,6 @@ IF GRIND[6]==1;端面磨砂轮修整
 	GOTOF CENTER_END
 ENDIF
 
-<<<<<<< HEAD
 IF ($A_DBB[1]==1)OR($A_DBB[5]==1);内螺纹对刀
 	A_GRINDING
 	GOTOF CENTER_END
