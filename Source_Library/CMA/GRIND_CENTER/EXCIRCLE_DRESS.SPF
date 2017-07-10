@@ -8,7 +8,7 @@ EXCIRCLE_DRESS_CHOICE;选择是纯修整还是磨削中修整
 G90 G01 X0 F2000;螺纹磨砂轮架退回
 MSG("移动到修整位置")
 EXCIRCLE_LINESPEED_DRESS;纯修整,砂轮线速度计算
-
+M38
 G90 G01 U=DRESSER[88]+5 F2000;金刚笔快速到与砂轮外圆接触位置附近
 G01 Z=DRESSER[93] ;Z轴快速到砂轮修整起点
 G90 G01 U=DRESSER[88]+1 F100
