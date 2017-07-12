@@ -57,6 +57,9 @@ IF TOOL_SET[31]==0;测头测量
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
+        IF TOOL_SET[32]<TOOL_SET[33]
+            TOOL_SET[33]=TOOL_SET[33]-360
+        ENDIF
         TOOL_SET[5]=(TOOL_SET[32]+TOOL_SET[33])/2;上下中点角度,防止越过0度情况
         F_ANG_WITHIN_360(TOOL_SET[5])
         G90 G01 C=TOOL_SET[5] F=INI[59]*6;旋转C轴使测头在孔中心(垂直方向)
@@ -86,6 +89,9 @@ IF TOOL_SET[31]==0;测头测量
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
+        IF DR19<DR21
+            DR21=DR21-360
+        ENDIF
         DR22=(DR18+DR20)/2
         DR23=(DR19+DR21)/2
         F_ANG_WITHIN_360(DR23)
@@ -100,6 +106,9 @@ IF TOOL_SET[31]==0;测头测量
         IF $AC_MEA[1]==0;如果没挨上工件报警
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
+        ENDIF
+        IF DR25<DR27
+            DR27=DR27-360
         ENDIF
         TOOL_SET[36]=(DR24+DR26)/2;腰型孔中心坐标Z
         TOOL_SET[5]=(DR25+DR27)/2;腰型孔中心坐标C
