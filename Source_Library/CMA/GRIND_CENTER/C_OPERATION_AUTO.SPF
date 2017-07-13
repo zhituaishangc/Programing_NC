@@ -97,8 +97,8 @@ YXK:
 DR12=INI[32]*COS(INI[31])				;腰型孔长投影到水平向长度DR12
 DR13=INI[32]*SIN(INI[31])				;腰型孔长投影到垂直向长度DR13
 DR14=DR13/($PI*INI[32])*360				;将垂直长度转换为C轴旋转角度DR14
-DR15=INI[33]*COS(INI[31])				;腰型孔宽投影到水平向长度DR15
-DR16=INI[33]*SIN(INI[31])				;腰型孔宽投影到垂直向长度DR16
+DR15=INI[33]*SIN(INI[31])				;腰型孔宽投影到水平向长度DR15
+DR16=INI[33]*COS(INI[31])				;腰型孔宽投影到垂直向长度DR16
 DR17=DR16/($PI*INI[32])*360				;将垂直宽度转换为C轴旋转角度DR17
 
 MSG("腰型孔测量开始,请等待测量结束！")
@@ -139,7 +139,7 @@ G04	F=0.1
 DR26=$AA_MM[Z]							 ;读取当前Z	DR26
 DR27=$AA_MM[C]							 ;读取当前C	DR27
 DR28=(DR24+DR26)/2						 ;腰型孔中心坐标Z
-DR29=180+(DR25+DR27)/2						 ;腰型孔中心坐标C
+DR29=180+(DR25+DR27)/2						;腰型孔中心坐标C
 IF DR29>=360
 DR29=DR29-360
 ENDIF
@@ -155,7 +155,7 @@ NEXT:
 G90	G53	G01	X=TOOL_SET[11]-INI[43]+2*TOOL_SET[9]	;测头X向开到耳朵端面外缘
 IF TOOL_SET[25]==10 GOTOF BACK									;判断耳朵端面是否磨削
 
-G94 G91 G1 Z=-[INI30] MEAS=1
+G94 G91 G1 Z=-INI[30] MEAS=1
 G91	G01	Z2 F500
 G94 G91 G1 Z-8 F50 MEAS=1
 R282=$AA_MM[Z]                			;工件安装终点Z坐标
