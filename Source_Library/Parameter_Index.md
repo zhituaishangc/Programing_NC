@@ -413,6 +413,7 @@
 |PROCESS[47]||磨削中心:右端面磨削初始接触位置
 |PROCESS[48]||磨削中心:左端面磨削初始接触位置
 |PROCESS[49]||磨削中心:磨端面时砂轮转速
+|PROCESS[50]||磨削中心:测头中心和外磨砂轮侧面间的距离
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
