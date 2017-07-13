@@ -21,7 +21,7 @@ PROC C_OPERATION_AUTO DISPLOF
 DEF	REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29,DR30,DR31
 ;----------------------------------------------
 TOOL_SET[11]=INI[10]-INI[34]/2-(TOOL_SET[23]+TOOL_SET[9]);测头接触工件外圆坐标计算(测头从后方伸出)
-DR1=INI[6]+TOOL_SET[10];测头与工件端面距离=工件在磨削起点与砂轮磨距离，时Z坐标(DR1)
+DR1=INI[6]+TOOL_SET[10];测头移动到磨削起点时的Z坐标(DR1)
 SPOF						
 DRFOF;关闭DRF
 G94	G90	G53	G01	Z=DR1 C=0	;工件移动到相对测头位置的起始点
@@ -207,22 +207,4 @@ WHILE((TOOL_SET[4]>=360) OR (TOOL_SET[4]<0));起始角不在0-360范围内
 	ENDIF
 ENDWHILE
 
----------内滚道磨削X轴初始接触位对刀----------
-IF TOOL_SET[8]==0;首次对刀
-	MSG("即将开始内滚道磨削X轴初始接触位对刀,请按循环启动键继续！")
-	M0
-	G90 G01 C=TOOL_SET[4] F1000;工件旋转到自动对刀后计算出的C轴起始角
-	G90 G01 Z=INI[6]+20 F1500;Z轴开至工件右端偏左20mm处
-	MSG("X轴正移至工件中心")
-	G90 G01 X=INI[10] F1000;X开至工件中心
-	MSG("Z轴正移至对刀起点")  
-	G90 G01 Z=INI[6] F=500;Z轴开至工件磨削右端坐标
-	MSG("手动对刀以启动,请进行对刀操作")
-	FGROUP(Z)
-	IF INI[0]==1;左旋
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=-INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
-	ELSE
-		G91 Z=-INI[3] X=INI[3]*INI[14]/2 C=INI[3]/INI[5]*360 F=50;从工件磨削右端坐标点ZXC开始插补
-	ENDIF
-ENDIF
 RET
