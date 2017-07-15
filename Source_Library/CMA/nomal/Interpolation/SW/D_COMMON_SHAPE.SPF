@@ -3,7 +3,9 @@ PROC D_COMMON_SHAPE DISPLOF
 ;;
 ;;***************************
 
-;每段线角度已竖直向下的夹角考虑，右半边角度向右为正，左半边角度向左为正(角度范围为0-180)
+;每段线角度以竖直向下的夹角考虑,右半边角度向右为正,左半边角度向左为正(角度范围为0-180)
+;需定义的参数:LENGTH ANG RND AX_HORI AX_VER WHEEL_R WHEEL_WIDTH HORI_FORCE VER_FORCE
+;根据不同齿形,可提前通过给的齿形参数计算各线段参数的关系及值
 
 DEF AXIS AX_HORI,AX_VER
 DEF REAL WHEEL_R=1,WHEEL_WIDTH=70
