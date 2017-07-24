@@ -1745,7 +1745,7 @@
 	SUB(UP4)
 		IF QCHECK.VAL==1
 			VAR4.WR=1
-			VAR5.WR=1
+			VAR5.WR=1;生成程序使用,蜗杆磨时修整次数运行期间可改
 			VAR6.WR=1
 			VAR7.WR=1
 			VAR8.WR=1
