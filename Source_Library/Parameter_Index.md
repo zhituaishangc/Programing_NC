@@ -416,6 +416,9 @@
 |PROCESS[49]||磨削中心:磨端面时砂轮转速
 |PROCESS[50]||磨削中心:测头中心和外磨砂轮侧面间的距离
 |PROCESS[51]||磨削中心:是否已进行过侧面修整的标记
+|PROCESS[52]||磨削中心:U轴砂轮外圆在工件中心时的U坐标
+|PROCESS[53]||磨削中心:测头在工件中心时的X坐标
+|PROCESS[54]||磨削中心:腰形孔深度
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
