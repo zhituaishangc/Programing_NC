@@ -20,6 +20,7 @@ ENDIF
 
 IF PROCESS[45]==1;右端面程序
 	RIGHT_MAIN
+	MoTaiJie
 ENDIF
 
 IF PROCESS[44]==1;左端面程序
