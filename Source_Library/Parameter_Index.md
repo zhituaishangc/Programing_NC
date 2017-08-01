@@ -419,6 +419,8 @@
 |PROCESS[52]||磨削中心:U轴砂轮外圆在工件中心时的U坐标
 |PROCESS[53]||磨削中心:测头在工件中心时的X坐标
 |PROCESS[54]||磨削中心:腰形孔深度
+|PROCESS[55]||磨削中心:外圆上台阶的长度,从右端面算起
+|PROCESS[56]||磨削中心:外圆上的台阶深度
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
