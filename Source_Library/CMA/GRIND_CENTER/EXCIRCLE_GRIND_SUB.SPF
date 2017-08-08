@@ -1,8 +1,9 @@
 PROC EXCIRCLE_GRIND_SUB DISPLOF
 ;;外圆磨削子程序
 
-G90 G1 Z=PROCESS[48]+0.1 F1000         ;Z轴开至磨削起点,左端面
+G90 G1 Z=PROCESS[48]+0.1 F2000         ;Z轴开至磨削起点,左端面
 
+G90 G1 U=PROCESS[20]+30 F2000
 G90 G1 U=PROCESS[20]+1 F1000            ;U轴开至磨削接触点外位置 
 
 MSG("C轴启动,外圆磨削开始")
