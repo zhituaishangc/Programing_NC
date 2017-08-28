@@ -14,6 +14,9 @@ TECHNOLOGY[100]=0                          ;循环计数清空
 DRESSER[98]=0
 PROCESS[37]=PROCESS[47]
 WHILE TECHNOLOGY[100]<TECHNOLOGY[101]
+M3 S=PROCESS[29]
+M23
+M38
 G90 G1 Z=PROCESS[37]+0.1 F2000            ;Z轴开至右端面磨削起点外
 G90 G1 U=PROCESS[20]+1 F2000              ;U轴开至磨削位置
 
