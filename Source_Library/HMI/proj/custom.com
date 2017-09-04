@@ -2587,6 +2587,10 @@
 		call("UP1")
 	END_CHANGE
 
+	CHANGE(para_switch2)
+		call("UP2")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR1.WR=1
@@ -2599,7 +2603,7 @@
 			para_switch2.WR=1
 		ELSE
 			VAR1.WR=2
-			VAR3.WR=2
+			VAR3.WR=1
 			VAR5.WR=2
 			VAR7.WR=2
 			para_switch.WR=2
