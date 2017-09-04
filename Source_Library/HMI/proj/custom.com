@@ -4192,6 +4192,7 @@
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
 
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR1/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60/);砂轮状态,螺纹磨修整返回
+	DEF CHENGXING=(I/*0=$85703,1=$85704//$85702,,,/WR4/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40/);新砂轮是否是成型砂轮(0否1是)
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,$85350,,/WR1/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/330,30,70/440,30,60/);砂轮状态,蜗杆磨修整返回
 	DEF VAR5=(I/0,1000//$85340,$85340,,/WR1/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60/);粗修次数
 	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR1/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110/);粗修量
@@ -4271,6 +4272,7 @@
 
 	CHANGE(VAR1)
 		call("UP2")
+		call("UP6")
 	END_CHANGE
 
 	SUB(UP2)
@@ -4311,6 +4313,19 @@
 						ENDIF
 					ENDIF
 				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP6)
+		IF TYPE.VAL<>1;不是内螺纹
+			CHENGXING.WR=4
+			CHENGXING.VAL=0
+		ELSE
+			IF VAR4.VAL==0;新砂轮
+				CHENGXING.WR=1
+			ELSE
+				CHENGXING.WR=4
 			ENDIF
 		ENDIF
 	END_SUB
