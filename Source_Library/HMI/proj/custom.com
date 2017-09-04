@@ -402,7 +402,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -694,7 +694,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -1064,7 +1064,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -4234,7 +4234,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -4399,7 +4399,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -4479,8 +4479,8 @@
 	;HS5=($85011,ac7,se1);程序选项
 	HS6=($85012,ac7,se3);端面和外圆
 	HS7=($85017,ac7,se1);外磨修整
-	VS1=($85029,ac7,se1);端面磨削
-	VS2=($85032,ac7,se3);外圆磨削
+	VS1=($85032,ac7,se3);外圆磨削
+	VS2=($85029,ac7,se1);端面磨削
 	HS8=($85005,ac7,se1);返回
 	
 	PRESS(HS1)
@@ -4520,11 +4520,11 @@
 	END_PRESS
 	
 	PRESS(VS1)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK25")
 	END_PRESS
 	
 	PRESS(VS3)
@@ -4776,11 +4776,9 @@
 	;HS5=($85011,ac7,se1);程序选项
 	HS6=($85012,ac7,se3);端面和外圆
 	HS7=($85017,ac7,se1);外磨修整
-	VS1=($85029,ac7,se3);端面磨削
-	VS2=($85032,ac7,se1);调用外磨工艺表格
+	VS1=($85032,ac7,se1);外磨工艺表格
+	VS2=($85029,ac7,se3);端面磨削
 	HS8=($85005,ac7,se1);返回
-
-    HS8=($85005,ac7,se1);返回
 
 	PRESS(HS1)
 	IF TYPE.VAL==1
@@ -4807,15 +4805,15 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(VS1)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK25")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -4909,7 +4907,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -5020,7 +5018,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
     PRESS(HS7)
@@ -5124,7 +5122,7 @@
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK25")
+		LM("MASK24")
 	END_PRESS
 	
     PRESS(HS7)
