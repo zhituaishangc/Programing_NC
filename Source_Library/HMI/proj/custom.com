@@ -1428,6 +1428,7 @@
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
 
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60/);非蜗杆磨砂轮状态
+	DEF CHENGXING=(I/*0=$85703,1=$85704//$85702,,,/WR4/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40/);新砂轮是否是成型砂轮(0否1是)
 	;DEF VAR4=(I/*0=$85327,1=$85328//$85350,$85350,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/330,30,70/440,30,60/);蜗杆磨砂轮状态,选择蜗杆磨床时使用	
 	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60/);粗修次数
 	;DEF WORM_DRESSE_TIME=(I/0,1000//$85340,$85340,,/WR4/"panel_3_5_chs.png"/"$R[3]"/330,60,110/440,60,60/);蜗杆磨时的总修整次数,注释不可改
@@ -1590,6 +1591,7 @@
 		IF VAR4.VAL==0
 			VAR14.VAL=VAR13.VAL
 		ENDIF
+		call("UP6")
 	END_CHANGE
 
 	CHANGE(VAR14)
@@ -1603,6 +1605,7 @@
 
 	CHANGE(QCHECK)
 		call("UP2")
+		call("UP6")
 	END_CHANGE
 
 	SUB(UP1)
@@ -1813,6 +1816,23 @@
 						VAR31.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
 					ENDIF
 				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP6)
+		IF TYPE.VAL<>1;不是内螺纹
+			CHENGXING.WR=4
+			CHENGXING.VAL=0
+		ELSE
+			IF VAR4.VAL==0;新砂轮
+				IF QCHECK==1
+					CHENGXING.WR=1
+				ELSE
+					CHENGXING.WR=2
+				ENDIF
+			ELSE
+				CHENGXING.WR=4
 			ENDIF
 		ENDIF
 	END_SUB
