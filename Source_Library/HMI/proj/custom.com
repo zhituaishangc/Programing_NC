@@ -1461,7 +1461,8 @@
 	;DEF N_CX_X_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在后,生成文件用,注释不可改
 
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);回零时砂轮与修整轮中间距
-	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触
+	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触左
+	DEF VAR40=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[14]"/0,0,0/0,0,0/);NC用初始接触右
 	DEF VAR32=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/0,0,0/0,0,0/);齿高
 	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
 	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
@@ -1809,12 +1810,13 @@
 					ENDIF
 				ENDIF
 			ELSE
-				IF VAR1.VAL==1;XZ
+				IF (VAR1.VAL==1) AND (VAR2.VAL==0);XZ单滚轮
 					IF TYPE.VAL<>1;不是内螺纹
 						VAR31.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
 					ELSE
 						VAR31.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
 					ENDIF
+					VAR40.VAL=VAR31.VAL
 				ENDIF
 			ENDIF
 		ENDIF
@@ -2635,6 +2637,7 @@
 		ELSE
 			VAR3.VAL=-(VAR12.VAL+VAR7.VAL/2+VAR10.VAL/2);初始接触位
 		ENDIF
+		VAR4.VAL=VAR3.VAL
 	END_SUB
 
 //END
@@ -4192,6 +4195,7 @@
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
 
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR1/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60/);砂轮状态,螺纹磨修整返回
+	DEF CHENGXING=(I/*0=$85703,1=$85704//$85702,,,/WR4/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40/);新砂轮是否是成型砂轮(0否1是)
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,$85350,,/WR1/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/330,30,70/440,30,60/);砂轮状态,蜗杆磨修整返回
 	DEF VAR5=(I/0,1000//$85340,$85340,,/WR1/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60/);粗修次数
 	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR1/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110/);粗修量
@@ -4271,6 +4275,7 @@
 
 	CHANGE(VAR1)
 		call("UP2")
+		call("UP6")
 	END_CHANGE
 
 	SUB(UP2)
@@ -4311,6 +4316,19 @@
 						ENDIF
 					ENDIF
 				ENDIF
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(UP6)
+		IF TYPE.VAL<>1;不是内螺纹
+			CHENGXING.WR=4
+			CHENGXING.VAL=0
+		ELSE
+			IF VAR4.VAL==0;新砂轮
+				CHENGXING.WR=1
+			ELSE
+				CHENGXING.WR=4
 			ENDIF
 		ENDIF
 	END_SUB
