@@ -32,6 +32,7 @@ IF PROCESS[44]==1;左端面程序
 	MoTaiJie
 	M39
 ENDIF
+M25
 
 SCREW_START:
 IF PROCESS[41]==1;螺纹
