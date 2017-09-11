@@ -5985,6 +5985,7 @@
 	DEF VAR10=(R/0,100//$85516,$85516,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[34]"/330,290,110/440,290,110/);腰型孔宽(展开图尺寸)
 	DEF VAR15=(R/0,100//$85531,$85531,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[55]"/330,310,110/440,310,110/);腰型孔宽缺口的深度
 
+	DEF ERGAO=(R/0,100//$85708,$85708,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,290,130/140,290,110/);工件耳高
 	DEF FIRSTPOSITION=(R/-2000,2000//$85707,$85707,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[25]"/10,310,130/140,310,110/);首件工件端面接触侧头时Z向坐标
 	DEF WUCHA=(R/0,10//$85705,$85705,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[30]"/10,330,110/140,330,110/);工件安装位置允许的最大误差
 	DEF WORKLONGTH=(R/0,500//$85706,$85706,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,350,110/140,350,110/);工件长度
