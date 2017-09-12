@@ -7,7 +7,7 @@ R298=PROCESS[49]
 M23
 MSG("C轴启动,左端面磨削开始")
 
-M3 S=PROCESS[29]                           ;C轴启动
+M3 S=PROCESS[39]                           ;C轴启动
 
 M26	                                       ;控制箱空调启动
 M20                                        ;吸雾器启动
@@ -17,7 +17,7 @@ TECHNOLOGY[98]=0                           ;循环计数清空
 DRESSER[109]=0
 PROCESS[34]=PROCESS[48]
 WHILE TECHNOLOGY[98]<TECHNOLOGY[99]
-M3 S=PROCESS[29]
+M3 S=PROCESS[39]
 M23
 M38
 G90 G1 Z=PROCESS[34]+0.1 F1000            ;Z轴开至磨削位置
