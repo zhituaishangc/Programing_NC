@@ -690,7 +690,8 @@
 |TECH_DRESS_TIME[31]|TECH_DRESS_TIME_MR|单件半粗磨修整次数
 |TECH_DRESS_TIME[32]|TECH_DRESS_TIME_MF|单件半精磨修整次数
 |TECH_DRESS_TIME[33]|TECH_DRESS_TIME_F|单件精磨修整次数
-|蜗杆用R参数||
+|||
+|**蜗杆用R参数**||
 |R3|修整次数||
 |R7|当前V轴修整位置|
 |R8|砂轮宽度|
@@ -716,3 +717,11 @@
 |R25|当前修整次数|
 |R26|当前修整进给速度|
 |R27|当前修整进给量|
+|||
+|**SHAPE MODEL**||
+|SHAPE_MODEL[0]||齿顶长度
+|SHAPE_MODEL[1]||上段垂直线高度
+|SHAPE_MODEL[2]||右斜线角度
+|SHAPE_MODEL[3]||左斜线角度
+|SHAPE_MODEL[4]||齿高
+|SHAPE_MODEL[5]||锥度
