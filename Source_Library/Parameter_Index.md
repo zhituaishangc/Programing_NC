@@ -725,3 +725,4 @@
 |SHAPE_MODEL[3]||左斜线角度
 |SHAPE_MODEL[4]||齿高
 |SHAPE_MODEL[5]||锥度
+|SHAPE_MODEL[6]||最后斜线角度
