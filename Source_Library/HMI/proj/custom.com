@@ -46,9 +46,9 @@
 	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,40,70/460,40,60/);螺纹旋向
 	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,60,202/460,60,60/);工件头数
 	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,80,202/460,80,60/);工件螺距输入,螺纹磨时使用
-	;DEF MOSHU=(R3/0,50//$85173,$85173,$85043,/WR2/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[77]"/360,80,202/460,80,60/);蜗杆模数输入
+	;DEF MOSHU=(R3/0,50//$85173,$85173,$85043,/WR4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[77]"/360,80,202/460,80,60/);蜗杆模数输入
 	;DEF SCREW_PITCH=(R////WR4//"/NC/_N_NC_GD2_ACX/INI[5]"/0,0,0/0,0,0);蜗杆齿距引用
-	;DEF M_OR_L=(R3/0,50//$85173,$85173,$85043,/WR2/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[77]"/360,80,202/460,80,60/);选择输入模数还是输入螺距	
+	;DEF M_OR_L=(I/*0=$85179,1=$85178//,,,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[87]"/0,0,0/270,80,70/);选择输入模数还是输入螺距	
 	DEF VAR8=(R3/-2000,2000//$85108,$85108,,/WR2/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/INI[2]"/360,100,202/460,100,60/);工件左端
 	DEF VAR9=(R3/-2000,2000//$85109,$85109,,/WR2/"panel_1_8_chs.png"/"/NC/_N_NC_GD2_ACX/INI[3]"/360,120,202/460,120,60/);工件右端
 	DEF VAR10=(R/-500,500//$85165,$85165,,/WR2/"panel_1_9_chs.png"/"/NC/_N_NC_GD2_ACX/INI[11]"/360,150,202/460,150,60/);对刀起始位置
@@ -124,7 +124,19 @@
 			LM("MASK18")
 		ENDIF
 	END_CHANGE
-
+	
+	CHANGE(M_OR_L);多行删除开始
+		IF VAR1.VAL==2
+			IF M_OR_L.VAL==0
+				MOSHU.WR=2
+				VAR7.WR=4
+			ELSE
+				MOSHU.WR=4
+				VAR7.WR=2
+			ENDIF
+		ENDIF
+	END_CHANGE;多行删除结束
+	
 	CHANGE(MOSHU)
 		IF VAR1.VAL==2
 			SCREW_PITCH.VAL=PI*MOSHU.VAL;蜗杆齿距计算
@@ -244,6 +256,12 @@
 			SCREW_R.WR=1
 			VAR6.WR=1
 			VAR7.WR=1
+			IF M_OR_L.VAL==0;多行删除开始
+				VAR7.WR=4
+				MOSHU.WR=1
+			ENDIF;多行删除结束
+			VAR7.WR=4;选择蜗杆时,保留这一行,其余均删除
+			MOSHU.WR=1;选择蜗杆时,保留这一行,其余均删除
 			VAR8.WR=1
 			VAR9.WR=1
 			VAR10.WR=1
@@ -270,6 +288,12 @@
 			SCREW_R.WR=2
 			VAR6.WR=2
 			VAR7.WR=2
+			IF M_OR_L.VAL==0;多行删除开始
+				VAR7.WR=4
+				MOSHU.WR=2
+			ENDIF;多行删除结束
+			VAR7.WR=4;选择蜗杆时,保留这一行,其余均删除
+			MOSHU.WR=2;选择蜗杆时,保留这一行,其余均删除
 			VAR8.WR=2
 			VAR9.WR=2
 			VAR10.WR=2
