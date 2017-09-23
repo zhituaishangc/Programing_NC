@@ -811,3 +811,9 @@
 |SHAPE_MODEL[13]||左斜线角度
 |SHAPE_MODEL[14]||右斜线角度
 |SHAPE_MODEL[15]||锥度
+|SHAPE_MODEL[20]||齿顶圆弧半径
+|SHAPE_MODEL[21]||第一斜边角度
+|SHAPE_MODEL[22]||第一斜边高度
+|SHAPE_MODEL[23]||第二斜边角度
+|SHAPE_MODEL[24]||齿高
+|SHAPE_MODEL[25]||锥度
