@@ -797,7 +797,6 @@
 |COMMON_POINT_REF_HORI[9]||第9点相对水平坐标
 |COMMON_POINT_REF_HORI[10]||第10点相对水平坐标
 |||
-|||
 |**SHAPE MODEL**||
 |SHAPE_MODEL[0]||齿顶长度
 |SHAPE_MODEL[1]||上段垂直线高度
@@ -806,3 +805,22 @@
 |SHAPE_MODEL[4]||齿高
 |SHAPE_MODEL[5]||锥度
 |SHAPE_MODEL[6]||最后斜线角度
+|SHAPE_MODEL[10]||弧顶圆弧半径
+|SHAPE_MODEL[11]||弧底圆弧半径
+|SHAPE_MODEL[12]||齿高
+|SHAPE_MODEL[13]||左斜线角度
+|SHAPE_MODEL[14]||右斜线角度
+|SHAPE_MODEL[15]||锥度
+|SHAPE_MODEL[20]||齿顶圆弧半径
+|SHAPE_MODEL[21]||第一斜边角度
+|SHAPE_MODEL[22]||第一斜边高度
+|SHAPE_MODEL[23]||第二斜边角度
+|SHAPE_MODEL[24]||齿高
+|SHAPE_MODEL[25]||锥度
+|SHAPE_MODEL[30]||右侧斜线角度
+|SHAPE_MODEL[31]||左侧斜线1角度
+|SHAPE_MODEL[32]||左侧斜线2角度
+|SHAPE_MODEL[33]||齿高
+|SHAPE_MODEL[34]||锥度
+|SHAPE_MODEL[35]||左边第一段高度
+|SHAPE_MODEL[36]||顶部长度
