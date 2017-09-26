@@ -3756,9 +3756,9 @@
 			VAR1.WR=2
 			VAR2.WR=2
 			VAR3.WR=2
-			VAR4.WR=2
+			VAR4.WR=1
 			VAR5.WR=2
-			VAR6.WR=2
+			VAR6.WR=1
 			VAR7.WR=2
 			VAR11.WR=2
 		ENDIF
