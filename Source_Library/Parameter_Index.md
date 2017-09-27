@@ -441,6 +441,7 @@
 |PROCESS[54]||磨削中心:腰形孔缺口深度
 |PROCESS[55]||磨削中心:外圆上台阶的长度,从左端面算起
 |PROCESS[56]||磨削中心:外圆上的台阶深度
+|PROCESS[57]||磨削中心:区分是否有U轴,是(1),否(-1)
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
