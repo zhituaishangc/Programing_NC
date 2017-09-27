@@ -46,8 +46,9 @@
 	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,40,70/460,40,60/);螺纹旋向
 	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,60,202/460,60,60/);工件头数
 	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,80,202/460,80,60/);工件螺距输入,螺纹磨时使用
-	;DEF VAR7=(R3/0,50//$85173,$85173,$85043,/WR2/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[77]"/360,80,202/460,80,60/);蜗杆模数输入
+	;DEF MOSHU=(R3/0,50//$85173,$85173,,/WR4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[77]"/360,80,202/460,80,60/);蜗杆模数输入
 	;DEF SCREW_PITCH=(R////WR4//"/NC/_N_NC_GD2_ACX/INI[5]"/0,0,0/0,0,0);蜗杆齿距引用
+	;DEF M_OR_L=(I/*0=$85179,1=$85178//,,,/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/INI[87]"/0,0,0/270,80,70/);选择输入模数还是输入螺距	
 	DEF VAR8=(R3/-2000,2000//$85108,$85108,,/WR2/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/INI[2]"/360,100,202/460,100,60/);工件左端
 	DEF VAR9=(R3/-2000,2000//$85109,$85109,,/WR2/"panel_1_8_chs.png"/"/NC/_N_NC_GD2_ACX/INI[3]"/360,120,202/460,120,60/);工件右端
 	DEF VAR10=(R/-500,500//$85165,$85165,,/WR2/"panel_1_9_chs.png"/"/NC/_N_NC_GD2_ACX/INI[11]"/360,150,202/460,150,60/);对刀起始位置
@@ -123,10 +124,22 @@
 			LM("MASK18")
 		ENDIF
 	END_CHANGE
-
-	CHANGE(VAR7)
+	
+	CHANGE(M_OR_L);多行删除开始
 		IF VAR1.VAL==2
-			SCREW_PITCH.VAL=PI*VAR7.VAL;蜗杆齿距计算
+			IF M_OR_L.VAL==0
+				MOSHU.WR=2
+				VAR7.WR=4
+			ELSE
+				MOSHU.WR=4
+				VAR7.WR=2
+			ENDIF
+		ENDIF
+	END_CHANGE;多行删除结束
+	
+	CHANGE(MOSHU)
+		IF VAR1.VAL==2
+			SCREW_PITCH.VAL=PI*MOSHU.VAL;蜗杆齿距计算
 		ENDIF
 		CALL("UP3")
 	END_CHANGE
@@ -243,6 +256,12 @@
 			SCREW_R.WR=1
 			VAR6.WR=1
 			VAR7.WR=1
+			IF M_OR_L.VAL==0;多行删除开始
+				VAR7.WR=4
+				MOSHU.WR=1
+			ENDIF;多行删除结束
+			VAR7.WR=4;选择蜗杆时,保留这一行,其余均删除
+			MOSHU.WR=1;选择蜗杆时,保留这一行,其余均删除
 			VAR8.WR=1
 			VAR9.WR=1
 			VAR10.WR=1
@@ -269,6 +288,12 @@
 			SCREW_R.WR=2
 			VAR6.WR=2
 			VAR7.WR=2
+			IF M_OR_L.VAL==0;多行删除开始
+				VAR7.WR=4
+				MOSHU.WR=2
+			ENDIF;多行删除结束
+			VAR7.WR=4;选择蜗杆时,保留这一行,其余均删除
+			MOSHU.WR=2;选择蜗杆时,保留这一行,其余均删除
 			VAR8.WR=2
 			VAR9.WR=2
 			VAR10.WR=2
@@ -3623,6 +3648,8 @@
 ;;;;;;;;;;;;;;;;;;;MASK14:修整参数_XZ方滚轮:panel_14:;;;;;;;;;;;;;;;;
 //M(Mask14/$85382//)
 
+	DEF VAR12=(R/-800,800//$85329,$85329,,$85043/WR2/"panel_12_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,20,110/440,20,110);回零时砂轮与修整轮中间距
+	DEF para_switch2=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_12_7_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[11]"/0,0,0/530,20,18/);参数锁定开关
 	DEF VAR11=(R/-2000,2000//$85342,$85342,,$85043/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
 	DEF VAR0=(R/0,100//$85391,$85391,,$85043/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[4]"/330,60,110/440,60,110/);方滚轮厚度
 
@@ -3639,6 +3666,9 @@
 	DEF VAR8=(R/0,60//$85397,$85397,,$85045/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[2]"/330,260,110/440,260,110/);修整轮线速度
 
 	DEF VAR9=(I///$85325,$85325,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,280,110/440,280,110/);修整轮转速
+	DEF VAR10=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
+	
+	DEF GRIND_TYPE=(R////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型变量的引用
 	
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
@@ -3699,11 +3729,16 @@
 	
 	CHANGE(VAR7);修整轮转速计算
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL)
+		CALL("UP3")
 	END_CHANGE
 	
 	CHANGE(VAR8);修整轮转速计算
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL)
-	END_CHANGE	
+	END_CHANGE
+
+	CHANGE(VAR12)
+		CALL("UP3")
+	END_CHANGE
 
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
@@ -3721,13 +3756,22 @@
 			VAR1.WR=2
 			VAR2.WR=2
 			VAR3.WR=2
-			VAR4.WR=2
+			VAR4.WR=1
 			VAR5.WR=2
-			VAR6.WR=2
+			VAR6.WR=1
 			VAR7.WR=2
 			VAR11.WR=2
 		ENDIF
 	END_CHANGE	
+	
+	SUB(UP3)
+		IF GRIND_TYPE.VAL<>1;不是内螺纹
+			VAR3.VAL=-(VAR12.VAL-VAR7.VAL/2-VAR10.VAL/2);初始接触
+		ELSE
+			VAR3.VAL=-(VAR12.VAL+VAR7.VAL/2+VAR10.VAL/2);初始接触位
+		ENDIF
+		VAR4.VAL=VAR3.VAL
+	END_SUB
 
 //END
 
