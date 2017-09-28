@@ -2695,7 +2695,7 @@
 					ENDIF
 				ENDIF
 			ELSE
-				IF (VAR1.VAL==1) AND (VAR2.VAL==0);XZ单滚轮
+				IF VAR1.VAL==1;XZ
 					IF TYPE.VAL<>1;不是内螺纹
 						VAR31.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
 					ELSE

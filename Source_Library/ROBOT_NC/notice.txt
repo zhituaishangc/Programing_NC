@@ -1,1 +1,1 @@
-1.以前的主程序调用A_GRINDING,当机床配机械手时,主程序调用JXS_MAIN
+1.浠ュ墠鐨勪富绋嬪簭璋冪敤A_GRINDING,褰撴満搴婇厤鏈烘鎵嬫椂,涓荤▼搴忚皟鐢↗XS_MAIN
