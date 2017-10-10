@@ -3,6 +3,10 @@ PROC B_DRESS DISPLOF
 ;;蜗杆修整
 ;;***************************
 
+IF DRESSER[0]==1;只有XZ修整器时需要复位螺旋角
+	C_RESET_ANGLE
+ENDIF
+
 DRESSER[26]=1;将界面上的精修次数固定为1
 R8=DRESSER[22];传递砂轮宽度
 IF GRIND[1]<>0;纯修整
