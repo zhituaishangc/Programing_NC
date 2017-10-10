@@ -100,10 +100,18 @@
 	END_PRESS
 
 	PRESS(HS2)
-		IF VAR45.VAL==0
-			LM("MASK2")
+		IF VAR45.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
 		ELSE
-			LM("MASK20")
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
 		ENDIF
 	END_PRESS
 
@@ -409,10 +417,18 @@
 	END_PRESS
 
 	PRESS(HS2)
-		IF VAR45.VAL==0
-			LM("MASK2")
+		IF VAR45.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
 		ELSE
-			LM("MASK20")
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
 		ENDIF
 	END_PRESS
 
@@ -2906,6 +2922,7 @@
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -2924,10 +2941,18 @@
 	END_PRESS
 
 	PRESS(HS2)
-		IF TECH.VAL==0
-			LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
 		ELSE
-			LM("MASK20")
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
 		ENDIF
 	END_PRESS
 
@@ -5124,7 +5149,8 @@
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
-	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5146,10 +5172,18 @@
 	END_PRESS
 
 	PRESS(HS2)
-		IF VAR45.VAL==0
-			LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
 		ELSE
-			LM("MASK20")
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
 		ENDIF
 	END_PRESS
 
@@ -5254,7 +5288,9 @@
 	;DEF VAR8=(I/*0=$85014,1=$85013//$85068,$85068,,/WR1//"/NC/_N_NC_GD2_ACX/GRIND[2]"/400,290,100/490,290,30/);螺纹修整开关
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
-	
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -5329,7 +5365,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
@@ -5417,7 +5465,9 @@
 	DEF TECH_CHECK=(I///$85220,$85219,$85043,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[3]"/0,0,0/0,0,0);当前执行那道工艺检测
 	
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
-	
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+
     HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -5438,7 +5488,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
@@ -5716,7 +5778,9 @@
     DEF TAIJIESHENDU=(R///$85086,$85086,,$85043/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[57]"/320,320,120/440,320,110/);台阶深度
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
-	
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
@@ -5737,7 +5801,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
@@ -5816,6 +5892,8 @@
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5839,7 +5917,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
@@ -5929,6 +6019,8 @@
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5950,7 +6042,19 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
+		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
@@ -6038,6 +6142,7 @@
 	DEF VAR14=(R///$85523,$85523,,$85043/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[2]"/330,350,110/440,350,110/);磨削中心自动对刀测头在孔中间Z坐标
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	
 	DEF SIGNAL=(I/*0=$85014,1=$85013//$85534,$85534,,/WR1//"/Plc/DB2700.DBX1.0"/110,10,40/150,10,50/);测头信号
 
@@ -6050,6 +6155,7 @@
 	HS7=($85017,ac7,se1);外磨修整
 	HS8=($85005,ac7,se1);返回
 	VS1=("")
+
 	PRESS(HS1)
 		IF TYPE.VAL<>1
 			LM("MASK1")
@@ -6057,13 +6163,23 @@
 			LM("MASK18")
 		ENDIF
 	END_PRESS
+
 	PRESS(HS2)
-		IF TECH.VAL==0
-			LM("MASK2")
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29")
+			ELSE
+				LM("MASK2")
+			ENDIF
 		ELSE
-			LM("MASK20")
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30")
+			ELSE
+				LM("MASK20")
+			ENDIF
 		ENDIF
 	END_PRESS
+
 	PRESS(HS3)
 		LM("MASK3")
 	END_PRESS
