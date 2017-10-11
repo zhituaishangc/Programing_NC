@@ -2368,7 +2368,7 @@
 	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
 	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
 	DEF GRIND_TYPE=(R////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型变量的引用
-		
+	
 	HS1=($85380,ac7,se2);"单滚轮"
 	HS2=($85381,ac7,se2);"双滚轮"
 	HS3=($85382,ac7,se2);"方滚轮"
