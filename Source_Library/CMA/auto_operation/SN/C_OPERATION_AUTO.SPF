@@ -198,7 +198,7 @@ IF GRIND[2]==3;自动对刀(计算C角度+X位置)
     F_GRINDWHEEL_RUN(INI[53])
 
     MSG("手动对刀已启动,请进行对刀操作")
-    F_ZC_START(TOOL_SET[0],INI[7],INI[80],1)
+    F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
 ENDIF
 
 RET
