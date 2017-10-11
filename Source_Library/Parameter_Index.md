@@ -156,6 +156,9 @@
 |DRESSER[113]||新砂轮是否是成型砂轮(0否1是)
 |DRESSER[114]||是否使用通用齿形程序(0否1是)
 |DRESSER[115]||通用齿形程序选择
+|DRESSER[116]||夹具修整砂轮转速
+|DRESSER[117]||夹具修整修整轮转速
+|DRESSER[118]||夹具磨削砂轮转速
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -245,6 +248,9 @@
 |INI[84]||内螺纹是否螺旋退出工件(0否1是)
 |INI[85]||是否使用机械手(1是0否)
 |INI[86]||蜗杆磨时选择输入模数(0)还是输入螺距(1)
+|INI[87]||夹具修整是否修砂轮正面
+|INI[88]||夹具修整是否修砂轮端面
+|INI[89]||夹具磨削z轴安全起始位置
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -291,6 +297,11 @@
 |TOOL_SET[41]||自动对刀结果调整
 |TOOL_SET[42]||Z轴偏刀微调
 |TOOL_SET[43]||自动对刀测量外圆面初始接触位
+|TOOL_SET[44]||砂轮在修整器上侧X坐标
+|TOOL_SET[45]||砂轮在修整器下侧X坐标
+|TOOL_SET[46]||砂轮接触修整器Z坐标
+|TOOL_SET[47]||修整次数
+|TOOL_SET[48]||进刀量
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
@@ -583,6 +594,15 @@
 |TECHNOLOGY[222]|WHEEL_LINESPEED_GRIND_MF|单件磨削磨削砂轮线速度
 |TECHNOLOGY[223]|WHEEL_LINESPEED_GRIND_F|单件磨削磨削砂轮线速度
 |||
+|TECHNOLOGY[230]||夹具磨削砂轮当前直径
+|TECHNOLOGY[231]||夹具磨削夹具终直径尺寸
+|TECHNOLOGY[232]||夹具磨削是否磨爪子平面
+|TECHNOLOGY[233]||夹具磨削是否磨爪子端面
+|TECHNOLOGY[234]||夹具磨削端面部分砂轮磨削X起点坐标(靠近头架中心的位置)
+|TECHNOLOGY[235]||夹具磨削端面部分砂轮磨削X终点坐标(靠近爪子平面的位置)
+|TECHNOLOGY[236]||夹具磨削端面部分砂轮接触夹具Z初始坐标
+|TECHNOLOGY[237]||夹具磨削端面部分磨削次数
+|TECHNOLOGY[238]||夹具磨削端面部分进刀量
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
