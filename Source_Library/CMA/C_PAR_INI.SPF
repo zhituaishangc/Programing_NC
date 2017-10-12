@@ -47,6 +47,10 @@ IF GRIND[0]<>2;非蜗杆
 					ELSE
 						IF DRESSER[115]==3;齿形4
 							WHICH_COMMON_SHAPE="F_COMMON_SHAPE_4"
+						ELSE
+							IF DRESSER[115]==4;齿形5
+								WHICH_COMMON_SHAPE="F_COMMON_SHAPE_5"
+							ENDIF
 						ENDIF
 					ENDIF
 				ENDIF
