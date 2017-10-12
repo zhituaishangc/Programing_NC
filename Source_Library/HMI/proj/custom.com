@@ -3673,9 +3673,12 @@
 ;;;;;;;;;;;;;;;;;;;MASK14:修整参数_XZ方滚轮:panel_14:;;;;;;;;;;;;;;;;
 //M(Mask14/$85382//)
 
-	DEF VAR12=(R/-800,800//$85329,$85329,,$85043/WR2/"panel_12_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,20,110/440,20,110);回零时砂轮与修整轮中间距
-	DEF para_switch2=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_12_7_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[11]"/0,0,0/530,20,18/);参数锁定开关
+	DEF VAR12=(R/-800,800//$85329,$85329,,$85043/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,20,110/440,20,110);回零时砂轮与修整轮中间距
+	DEF para_switch2=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2//"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[11]"/0,0,0/530,20,18/);参数锁定开关
+
 	DEF VAR11=(R/-2000,2000//$85342,$85342,,$85043/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2//"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[4]"/0,0,0/530,40,18/);参数锁定开关
+
 	DEF VAR0=(R/0,100//$85391,$85391,,$85043/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[4]"/330,60,110/440,60,110/);方滚轮厚度
 
 	DEF VAR1=(R/0,10//$85355,$85355,,$85043/WR2//"/NC/_N_NC_GD2_ACX/WHEEL[9]"/330,90,110/440,90,110/);左圆弧半径
@@ -3765,6 +3768,14 @@
 		CALL("UP3")
 	END_CHANGE
 
+	CHANGE(para_switch)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(para_switch2)
+		call("UP2")
+	END_CHANGE
+
 	CHANGE(QCHECK)
 		IF QCHECK.VAL==1
 			VAR0.WR=1
@@ -3776,6 +3787,9 @@
 			VAR6.WR=1
 			VAR7.WR=1
 			VAR11.WR=1
+			VAR12.WR=1
+			para_switch.WR=1
+			para_switch2.WR=1
 		ELSE
 			VAR0.WR=2
 			VAR1.WR=2
@@ -3785,10 +3799,29 @@
 			VAR5.WR=2
 			VAR6.WR=1
 			VAR7.WR=2
-			VAR11.WR=2
+			para_switch.WR=2
+			para_switch2.WR=2
+			CALL("UP1")
+			CALL("UP2")
 		ENDIF
 	END_CHANGE	
 	
+	SUB(UP1)
+		IF para_switch.VAL==0
+			VAR11.WR=2
+		ELSE
+			VAR11.WR=1
+		ENDIF
+	END_SUB
+
+	SUB(UP2)
+		IF para_switch2.VAL==0
+			VAR12.WR=2
+		ELSE
+			VAR12.WR=1
+		ENDIF
+	END_SUB
+
 	SUB(UP3)
 		IF GRIND_TYPE.VAL<>1;不是内螺纹
 			VAR3.VAL=-(VAR12.VAL-VAR7.VAL/2-VAR10.VAL/2);初始接触
