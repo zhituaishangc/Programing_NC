@@ -3794,9 +3794,9 @@
 			VAR0.WR=2
 			VAR1.WR=2
 			VAR2.WR=2
-			VAR3.WR=2
+			VAR3.WR=1
 			VAR4.WR=1
-			VAR5.WR=2
+			VAR5.WR=1
 			VAR6.WR=1
 			VAR7.WR=2
 			para_switch.WR=2
