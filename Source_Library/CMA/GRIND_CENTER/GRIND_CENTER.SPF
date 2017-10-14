@@ -3,8 +3,6 @@ PROC GRIND_CENTER DISPLON
 ;;磨削中心主程序
 ;;***************************
 
-DRFOF
-
 PROCESS[51]=0;修整标记
 PROCESS[57]=1;是否有U轴
 
@@ -14,7 +12,7 @@ ENDIF
 
 GRIND_START_POINT:
 IF PROCESS[43]==1;外圆程序
-	EXCIRCLE_MAIN
+	H_GRINDING
 ENDIF
 
 IF PROCESS[45]==1;右端面程序

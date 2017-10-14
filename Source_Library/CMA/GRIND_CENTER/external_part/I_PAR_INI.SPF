@@ -1,0 +1,59 @@
+PROC I_PAR_INI SBLOF DISPLOF
+;;**********程序功能**********
+;;参数初始化:
+;;各种参数初始化赋值，判断及运算
+;;***************************
+
+DRFOF;手轮偏置清除
+
+;参数初始赋值
+DRESSER[6]=0;报警标记取消
+PROCESS[28]=0;修整标记清零
+PROCESS[19]=0;当前磨削是否修整累计
+TECH_TIME[5]=0;当前粗磨次数
+TECH_TIME[6]=0;当前半粗磨次数
+TECH_TIME[7]=0;当前半精磨次数
+TECH_TIME[8]=0;当前精磨次数
+TECH_TIME[9]=0;当前DIY次数
+INI[72]=0;磨削中进行过修整后的标记
+
+GRIND[5]=$A_DBB[0];是否外圆修整
+
+IF INI[70]==1;有自动门(0没有/1有)
+	IF (GRIND[2]==0) OR (GRIND[2]==2);不对刀或自动对刀(只计算C角度)
+		M48;罩壳门关闭
+		WHILE($A_DBB[10]==0);等待罩壳门关闭
+			G4 F0.2
+		ENDWHILE
+	ENDIF
+ENDIF
+
+IF (INI[94]==0) OR (INI[93]<INI[94]);修整为零或当前几件小于设定值
+    INI[95]=0;标记位
+ENDIF
+
+IF INI[96]==1;磨削中不正常退出标记
+	PROCESS[20]=PROCESS[20]+PROCESS[21];当前磨削位回退
+	INI[96]=0;磨削中不正常退出标记
+ENDIF
+
+;工件磨削起点/终点
+INI[6]=PROCESS[47]+0.1;工件右端
+INI[7]=PROCESS[48]+0.1;工件左端
+
+INI[3]=INI[6]-INI[7];磨削长度
+
+;X轴初始接触赋值位置选择
+PROCESS[18]=0;当前工艺
+IF INI[97]<>0;0是单件磨削模式,1是批量磨削模式
+	PROCESS[20]=PROCESS[46];磨削位置当前等于初始
+	PROCESS[58]=0;工艺累积进刀清零
+ENDIF
+
+;报警判断
+IF INI[3]<=0;磨削长度<=0
+	DRESSER[6]=1;工件左端坐标>工件右端坐标
+ENDIF
+
+RET
+

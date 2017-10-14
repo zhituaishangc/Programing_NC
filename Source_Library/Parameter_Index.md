@@ -159,6 +159,7 @@
 |DRESSER[116]||夹具修整砂轮转速
 |DRESSER[117]||夹具修整修整轮转速
 |DRESSER[118]||夹具磨削砂轮转速
+|DRESSER[119]||金刚笔与U轴砂轮外圆初始接触时的U坐标
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -252,6 +253,13 @@
 |INI[88]||夹具修整是否修砂轮端面
 |INI[89]||夹具磨削z轴安全起始位置
 |INI[90]||自动对刀后是否直接磨削(0否1是)
+|INI[91]||外圆砂轮类型选择(0模拟量/1伺服/2异步电机)
+|INI[92]||外圆砂轮程序结束砂轮是否停止(0停/1不停)
+|INI[93]||外圆磨削工件计数(磨削完毕后累加)
+|INI[94]||外圆磨削几件后修整(次数到达后,下一次开始时修整)
+|INI[95]||外圆磨削几件后修整标记位
+|INI[96]||外圆磨削中不正常退出标记(0正常/1不正常)
+|INI[97]||外圆0是单件磨削模式,1是批量磨削模式
 |||
 |**对刀(TOOL_SET)**||
 |TOOL_SET[0]|RANDOM_POS|初始对刀点Z轴坐标
@@ -455,6 +463,8 @@
 |PROCESS[55]||磨削中心:外圆上台阶的长度,从左端面算起
 |PROCESS[56]||磨削中心:外圆上的台阶深度
 |PROCESS[57]||磨削中心:区分是否有U轴,是(1),否(-1)
+|PROCESS[58]|GRID_TOTAL_ACCUMULATION|外圆工艺磨削总量累计
+|PROCESS[59]||外圆单双向
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -604,6 +614,10 @@
 |TECHNOLOGY[236]||夹具磨削端面部分砂轮接触夹具Z初始坐标
 |TECHNOLOGY[237]||夹具磨削端面部分磨削次数
 |TECHNOLOGY[238]||夹具磨削端面部分进刀量
+|TECHNOLOGY[239]|GRIND_METHOD_R|外圆粗修单双磨削
+|TECHNOLOGY[240]|GRIND_METHOD_MR|外圆半粗修单双磨削
+|TECHNOLOGY[241]|GRIND_METHOD_MF|外圆半精修单双磨削
+|TECHNOLOGY[242]|GRIND_METHOD_F|外圆精修单双磨削
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
@@ -618,6 +632,7 @@
 |DIY[10]||DIY外圆磨削进给速度
 |DIY[11]||DIY外圆磨削砂轮线速度
 |DIY[12]||外圆磨时C轴旋转速度
+|DIY[13]|GRIND_METHOD_DIY|外圆DIY单双磨削
 |||
 |**工件头数参数**||
 |WORK[0]|WORK_TH|头数
