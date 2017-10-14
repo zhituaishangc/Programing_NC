@@ -1,0 +1,13 @@
+PROC J_DRESS_SHAPE_INIT SBLOF DISPLOF
+;;**********程序功能**********
+;;垂直位置计算:
+;;***************************
+
+IF DRESSER[89]==0;新砂轮
+    DRESSER[88]=DRESSER[119];当前接触位置
+ELSE;旧砂轮
+    DRESSER[88]=DRESSER[88];当前接触位置
+ENDIF
+
+RET
+

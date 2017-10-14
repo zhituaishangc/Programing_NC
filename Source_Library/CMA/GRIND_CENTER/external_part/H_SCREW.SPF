@@ -1,0 +1,43 @@
+PROC H_SCREW DISPLON
+;;**********程序功能**********
+;;外圆主程序:
+;;***************************
+
+I_PAR_INI;参数初始化子程序
+
+IF DRESSER[6]<>0;有报警标记则退出程序
+    GOTOF EXT_G_ENDING
+ENDIF
+
+I_PARA_TRAN;参数传递
+
+IF GRIND[5]<>0
+    H_DRESS;修整
+    J_GRIND_POSITION;修整后磨削位置计算
+    GOTOF EXT_G_ENDING
+ENDIF
+
+IF TECHNOLOGY[78]+TECHNOLOGY[83]+TECHNOLOGY[88]+TECHNOLOGY[93]==0;工艺参数中设置的总磨削次数
+    RET
+ENDIF
+
+STOPRE
+GRIND[5]=0;不修整
+WHILE(TECH_TIME[5]+TECH_TIME[6]+TECH_TIME[7]+TECH_TIME[8]+TECH_TIME[9]<=TECHNOLOGY[78]+TECHNOLOGY[83]+TECHNOLOGY[88]+TECHNOLOGY[93]+DIY[7])
+    STOPRE
+    I_CYCLE;螺纹磨削循环
+    I_PARA_TRAN;参数传递
+    IF (DRESSER[6]<>0) OR ($A_DBB[2]==1);有报警/按下退刀键则退出程序
+        GOTOF EXT_G_ENDING
+    ENDIF
+    I_BCYC;工序进给大循环判断
+	J_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+ENDWHILE
+I_WORKS_CUMU;工件计数
+
+EXT_G_ENDING:
+I_GRINDING_END;运行结束
+C_ALARM;机床报警
+
+RET
+

@@ -1,0 +1,40 @@
+PROC H_DRESS DISPLON
+;;**********程序功能**********
+;;修整主程序
+;;***************************
+
+J_DRESS_CHOICE;修整参数赋值
+J_DRESS_START;报警及参数初始化
+
+IF (DRESSER[6]<>0) OR (DRESSER[75]+DRESSER[76]==0);有报警标记/修整次数为零
+    DRESSER[74]=DRESSER[74]+1;精修当前次数加一,匹配完整修整完成时的结果
+    GOTOF D_ENDING
+ENDIF
+
+J_DRESS_SHAPE_INIT;垂直位置计算
+J_LINESPEED_DRESS;砂轮速度
+J_DRESS_INIT_POSITION;修整轮运行至起始位置
+WHILE(DRESSER[73]+DRESSER[74]<DRESSER[75]+DRESSER[76])
+    STOPRE
+    IF (DRESSER[73]+DRESSER[74]<>0) AND ((DRESSER[73]+DRESSER[74])/20-TRUNC((DRESSER[73]+DRESSER[74])/20)==0)
+        J_LINESPEED_DRESS;砂轮速度
+        G4 F1.5;重新计算转速后的延时
+    ENDIF
+    K_GRINDWHEEL_DIACURNT;当前砂轮直径计算
+    M20;吸雾开
+    M38;修整冷却开
+    J_DRESS_SHAPE;修整
+    IF $A_DBB[2]==1;修整中途安全结束程序
+        DRESSER[74]=DRESSER[74]+1
+        GOTOF EXT_DRESS_ENDING
+    ENDIF
+    J_DRESS_CALC;次数累积
+ENDWHILE
+M29;修整冷却关
+EXT_DRESS_ENDING:
+J_DRESS_END_POSITION;修整轮运行至结束位置
+
+D_ENDING:
+
+RET
+
