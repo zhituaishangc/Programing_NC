@@ -3,7 +3,7 @@ PROC O_DRESS_SHAPE_INIT SBLOF DISPLOF
 ;;垂直位置计算:
 ;;***************************
 
-IF DRESSER[89]==0;新砂轮
+IF DRESSER[129]==0;新砂轮
     DRESSER[88]=DRESSER[119];U外圆当前接触位置
     DRESSER[108]=DRESSER[126];Z侧面当前接触位置
 ELSE;旧砂轮
