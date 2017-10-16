@@ -27,7 +27,11 @@ IF (TECHNOLOGY[98]+TECHNOLOGY[100]==1) OR (INI[72]==1);第一次磨削或者修�
         G01 Z=PROCESS[37]+1 F=INI[56] ;Z轴快速到磨削起点
     ENDIF
     MSG("砂轮到安全位置")
-    G90 G01 U=INI[6]+1 F=2000;U轴到安全位置
+    IF PROCESS[57]==1;外磨砂轮轴类型
+        G90 G01 AX[AXNAME(AXIS_EW)]=INI[6]+1 F=INI[105];U轴到安全位置
+    ELSE
+        G90 G01 AX[AXNAME(AXIS_EW)]=INI[6]-1 F=INI[55];X轴到安全位置
+    ENDIF
 ENDIF
 
 M20;吸雾开
@@ -64,7 +68,11 @@ IF (TECHNOLOGY[98]+TECHNOLOGY[100]==TECHNOLOGY[245]+TECHNOLOGY[246]);最后一�
         G01 Z=PROCESS[37]+1 F=INI[56] ;Z轴快速到磨削起点
     ENDIF
     MSG("砂轮到安全位置")
-    G90 G01 U=$AA_SOFTENDP[U]-1 F=INI[105];外磨砂轮架退至安全位置
+    IF PROCESS[57]==1;外磨砂轮轴类型
+        G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[105];外磨砂轮架退至安全位置
+    ELSE
+        G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[54];外磨砂轮架退至安全位置
+    ENDIF
 ENDIF
 
 RET

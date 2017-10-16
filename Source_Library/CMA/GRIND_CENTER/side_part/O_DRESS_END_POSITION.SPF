@@ -4,7 +4,11 @@ PROC O_DRESS_END_POSITION DISPLOF
 ;;***************************
 
 MSG("砂轮架回退到修整位中")
-G90 G01 U=DRESSER[100]+2 F=INI[106];金刚笔快速到与砂轮外圆接触位置附近
+IF PROCESS[57]==1;外磨砂轮轴类型
+    G90 G01 AX[AXNAME(AXIS_EW)]=DRESSER[100]+2 F=INI[106];金刚笔快速到与砂轮外圆接触位置附近
+ELSE
+    G90 G01 AX[AXNAME(AXIS_EW)]=DRESSER[100]-2 F=INI[65];金刚笔快速到与砂轮外圆接触位置附近
+ENDIF
 MSG("台面离开中")
 IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
     G01 Z=PROCESS[34]+1 F=INI[56] ;Z轴快速到磨削起点

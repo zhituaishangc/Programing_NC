@@ -12,7 +12,7 @@ ENDIF
 M3 S=PROCESS[38];头架启动
 
 ;MSG("到磨削起点")
-G90 G01 U=INI[6] F=100;快速到达磨削位置附近
+G90 G01 AX[AXNAME(AXIS_EW)]=INI[6] F=100;快速到达磨削位置附近
 ;MSG("砂轮正在进入工件")
 IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
 	G01 Z=PROCESS[34]+PROCESS[40]*4 F=PROCESS[35]*4;Z轴快速到磨削起点
@@ -34,7 +34,7 @@ ELSE
 ENDIF
 
 P_CYCLE_MESSAGE
-G90 G1 U=INI[7] F=PROCESS[35];U轴移动进给开始磨削外圆
+G90 G1 AX[AXNAME(AXIS_EW)]=INI[7] F=PROCESS[35];U轴移动进给开始磨削外圆
 IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 	RET
 ENDIF
@@ -43,7 +43,7 @@ IF PROCESS[62]==1;单向/双向
 	G4 F0.5
 	G91 G01 Z=-PROCESS[40]/2 F=PROCESS[35];
 	K_CYCLE_MESSAGE
-	G90 G1 U=INI[6] F=PROCESS[35];Z轴移动进给开始磨削外圆
+	G90 G1 AX[AXNAME(AXIS_EW)]=INI[6] F=PROCESS[35];移动进给开始磨削外圆
 	IF $A_DBB[2]==1
 		RET
 	ENDIF

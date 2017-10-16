@@ -48,7 +48,7 @@ IF $AC_MEA[1]==0;如果没挨上工件报警
 	DRESSER[6]=4;工件外径设置有误
 	GOTOF OPERATION_END
 ENDIF
-TOOL_SET[43]=PROCESS[52]+ABS(DR32-PROCESS[53]);自动对刀测量外圆面初始接触位
+TOOL_SET[43]=PROCESS[52]+PROCESS[57]*ABS(DR32-PROCESS[53]);自动对刀测量外圆面初始接触位
 
 ;测头伸进孔内
 G90 G01 Z=INI[50]-INI[35] F=INI[56];测头移动到孔处
