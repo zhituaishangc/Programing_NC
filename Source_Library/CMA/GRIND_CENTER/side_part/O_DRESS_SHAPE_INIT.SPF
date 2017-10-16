@@ -1,4 +1,4 @@
-PROC J_DRESS_SHAPE_INIT SBLOF DISPLOF
+PROC O_DRESS_SHAPE_INIT SBLOF DISPLOF
 ;;**********程序功能**********
 ;;垂直位置计算:
 ;;***************************

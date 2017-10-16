@@ -36,6 +36,8 @@ IF $AC_MEA[1]==0;如果没挨上工件报警
 	GOTOF OPERATION_END
 ENDIF
 PROCESS[47]=INI[50]+PROCESS[50]-TOOL_SET[9];给右端面磨削初始接触位置赋值
+PROCESS[37]=PROCESS[47];右磨削位置当前等于初始
+PROCESS[61]=0;工艺累积进刀清零
 
 ;测量外圆面
 G91 G01 Z=30 F=INI[56];工件离开测头
@@ -137,6 +139,8 @@ IF PROCESS[44]==1;左端面选择
 		GOTOF OPERATION_END
 	ENDIF
 	PROCESS[48]=DR33+PROCESS[50]-TOOL_SET[9];给左端面初始磨削接触位置赋值
+	PROCESS[34]=PROCESS[48];左磨削位置当前等于初始
+	PROCESS[60]=0;工艺累积进刀清零
 	INI[30]=PROCESS[47]-PROCESS[48];计算螺母小外圆部分长度
 	G91 G01 Z=30 F=INI[56];工件离开测头
 ENDIF

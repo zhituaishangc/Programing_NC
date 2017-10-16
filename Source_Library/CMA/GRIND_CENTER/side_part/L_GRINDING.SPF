@@ -1,0 +1,22 @@
+PROC L_GRINDING DISPLON
+;;**********程序功能**********
+;;端面磨削主程序
+;;***************************
+
+H_MACHINE_INI;参数初始化
+INI[104]=0;右端面进行过纯修整标记
+
+IF PROCESS[45]==1;右端面程序
+    GRIND[7]=1;当前磨削左端面/右端面(0左/1右)
+	M_SCREW
+ENDIF
+
+IF PROCESS[44]==1;左端面程序
+    GRIND[7]=0;当前磨削左端面/右端面(0左/1右)
+	M_SCREW
+ENDIF
+
+ENDING:
+
+RET
+

@@ -1,0 +1,41 @@
+PROC A_GRIND_CENTER DISPLON
+;;**********程序功能**********
+;;磨削中心主程序
+;;***************************
+
+PROCESS[57]=1;是否有U轴
+
+IF ($A_DBB[1]==1) OR ($A_DBB[5]==1);如果选择了对刀
+	GOTOF SCREW_START
+ENDIF
+
+GRIND_START_POINT:
+IF PROCESS[43]==1;外圆程序
+	H_GRINDING
+ENDIF
+
+IF PROCESS[45]==1;右端面程序
+	RIGHT_MAIN
+ENDIF
+
+IF PROCESS[44]==1;左端面程序
+	LEFT_MAIN
+	MoTaiJie
+	M39
+ENDIF
+
+SCREW_START:
+IF PROCESS[41]==1;螺纹
+	G90 G0 U=$AA_SOFTENDP[U]-1;外磨砂轮架退至安全位置
+	A_GRINDING
+	IF GRIND[2]==2;自动对刀
+		GRIND[2]=0
+		GOTOB GRIND_START_POINT
+	ENDIF
+ENDIF
+
+CENTER_END:
+G90 G0 U=$AA_SOFTENDP[U]-1;外磨砂轮架退至安全位置
+
+RET
+

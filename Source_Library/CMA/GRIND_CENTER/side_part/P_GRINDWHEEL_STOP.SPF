@@ -1,0 +1,15 @@
+PROC P_GRINDWHEEL_STOP DISPLOF
+;;**********程序功能**********
+;;砂轮停止
+;;***************************
+
+IF (GRIND[7]==0) OR (PROCESS[44]==0);当前磨削左端面或不磨左端面
+    IF (INI[91]==0) OR (INI[91]==2);砂轮类型选择
+        M25
+    ELSE
+        M1=5
+    ENDIF
+ENDIF
+
+RET
+

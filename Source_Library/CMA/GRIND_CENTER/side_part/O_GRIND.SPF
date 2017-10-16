@@ -1,0 +1,80 @@
+PROC O_GRIND DISPLOF
+;;**********程序功能**********
+;;螺纹小循环:
+;;完整磨削一个工件循环
+;;***************************
+IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+	INI[101]=1;磨削中不正常退出标记
+ELSE
+	INI[102]=1;磨削中不正常退出标记
+ENDIF
+
+M3 S=PROCESS[38];头架启动
+
+;MSG("到磨削起点")
+G90 G01 U=INI[6] F=100;快速到达磨削位置附近
+;MSG("砂轮正在进入工件")
+IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+	G01 Z=PROCESS[34]+PROCESS[40]*4 F=PROCESS[35]*4;Z轴快速到磨削起点
+ELSE
+	G01 Z=PROCESS[37]+PROCESS[40]*4 F=PROCESS[35]*4;Z轴快速到磨削起点
+ENDIF
+IF PROCESS[62]==0;单向/双向
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		G01 Z=PROCESS[34] F=PROCESS[35];
+	ELSE
+		G01 Z=PROCESS[37] F=PROCESS[35];
+	ENDIF
+ELSE
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		G01 Z=PROCESS[34]+PROCESS[40]/2 F=PROCESS[35];
+	ELSE
+		G01 Z=PROCESS[37]+PROCESS[40]/2 F=PROCESS[35];
+	ENDIF
+ENDIF
+
+P_CYCLE_MESSAGE
+G90 G1 U=INI[7] F=PROCESS[35];U轴移动进给开始磨削外圆
+IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
+	RET
+ENDIF
+STOPRE
+IF PROCESS[62]==1;单向/双向
+	G4 F0.5
+	G91 G01 Z=-PROCESS[40]/2 F=PROCESS[35];
+	K_CYCLE_MESSAGE
+	G90 G1 U=INI[6] F=PROCESS[35];Z轴移动进给开始磨削外圆
+	IF $A_DBB[2]==1
+		RET
+	ENDIF
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		P_DOUBLEGRIND_ZBACK(PROCESS[34]+1)
+	ELSE
+		P_DOUBLEGRIND_ZBACK(PROCESS[37]+1)
+	ENDIF
+ELSE
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		P_SINGLEGRIND_ZUBACK(PROCESS[34]+1)
+	ELSE
+		P_SINGLEGRIND_ZUBACK(PROCESS[37]+1)
+	ENDIF
+	IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
+		RET
+	ENDIF
+	STOPRE
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		INI[101]=1;磨削中不正常退出标记
+	ELSE
+		INI[102]=1;磨削中不正常退出标记
+	ENDIF
+ENDIF
+
+STOPRE
+IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+	INI[101]=0;磨削中不正常退出标记
+ELSE
+	INI[102]=0;磨削中不正常退出标记
+ENDIF
+
+RET
+

@@ -14,8 +14,8 @@ M20                                        ;吸雾器启动
 M38                                        ;磨削冷却开
 
 TECHNOLOGY[98]=0                           ;循环计数清空
-DRESSER[109]=0
-PROCESS[34]=PROCESS[48]
+DRESSER[109]=0  ;修整标记
+PROCESS[34]=PROCESS[48]；当前初始接触
 WHILE TECHNOLOGY[98]<TECHNOLOGY[99]
 M3 S=PROCESS[39]
 M23
