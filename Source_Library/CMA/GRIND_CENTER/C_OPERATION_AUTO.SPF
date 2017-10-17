@@ -11,8 +11,8 @@ IF (TOOL_SET[31]==0) AND (TOOL_SET[22]==1);测头&腰型孔
     DR12=INI[32]*COS(INI[31]);腰型孔长投影到水平向长度DR12
     DR13=INI[32]*SIN(INI[31]);腰型孔长投影到垂直向长度DR13
     DR14=DR13/($PI*INI[34])*360;将垂直长度转换为C轴旋转角度DR14
-    DR15=INI[33]*COS(INI[31]);腰型孔宽投影到水平向长度DR15
-    DR16=INI[33]*SIN(INI[31]);腰型孔宽投影到垂直向长度DR16
+    DR15=INI[33]*SIN(INI[31]);腰型孔宽投影到水平向长度DR15
+    DR16=INI[33]*COS(INI[31]);腰型孔宽投影到垂直向长度DR16
     DR17=DR16/($PI*INI[34])*360;将垂直宽度转换为C轴旋转角度DR17
 ENDIF
 
