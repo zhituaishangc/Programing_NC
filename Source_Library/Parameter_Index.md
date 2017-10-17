@@ -170,6 +170,7 @@
 |DRESSER[127]||外磨累积修整量
 |DRESSER[128]||端面累积修整量
 |DRESSER[129]||外圆端面部分磨砂轮新旧(0新1旧)
+|DRESSER[130]||端面修整砂轮当前转速
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -690,6 +691,10 @@
 |TECHNOLOGY[256]||左端面精磨磨削中修整设定
 |TECHNOLOGY[257]||右端面粗磨磨削中修整设定
 |TECHNOLOGY[258]||右端面精磨磨削中修整设定
+|TECHNOLOGY[259]||界面左端面工艺粗磨当前砂轮转速
+|TECHNOLOGY[260]||界面左端面工艺精磨当前砂轮转速
+|TECHNOLOGY[261]||界面右端面工艺粗磨当前砂轮转速
+|TECHNOLOGY[262]||界面右端面工艺精磨当前砂轮转速
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数

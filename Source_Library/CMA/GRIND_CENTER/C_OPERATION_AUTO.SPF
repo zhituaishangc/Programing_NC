@@ -49,6 +49,8 @@ IF $AC_MEA[1]==0;如果没挨上工件报警
 	GOTOF OPERATION_END
 ENDIF
 TOOL_SET[43]=PROCESS[52]+PROCESS[57]*ABS(DR32-PROCESS[53]);自动对刀测量外圆面初始接触位
+PROCESS[20]=PROCESS[46];磨削位置当前等于初始
+PROCESS[58]=0;工艺累积进刀清零
 
 ;测头伸进孔内
 G90 G01 Z=INI[50]-INI[35] F=INI[56];测头移动到孔处
