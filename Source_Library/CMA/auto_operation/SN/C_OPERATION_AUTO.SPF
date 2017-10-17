@@ -163,13 +163,13 @@ F_ANG_WITHIN_360(TOOL_SET[4])
 
 OPERATION_END:
 IF TOOL_SET[31]==0;测头测量
+    MSG("测头离开工件中")
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[65]*4
     MSG("测头退回中")
     M34;测头退回
     WHILE($A_DBB[7]==0);等待测头缩回
         G4 F0.2
     ENDWHILE
-    MSG("测头离开工件中")
-    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[65]*4
     F_Z_POSITION(INI[48]);初始位置Z
 ELSE
     MSG("接近开关离开工件中")
