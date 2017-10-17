@@ -690,6 +690,10 @@
 |TECHNOLOGY[256]||左端面精磨磨削中修整设定
 |TECHNOLOGY[257]||右端面粗磨磨削中修整设定
 |TECHNOLOGY[258]||右端面精磨磨削中修整设定
+|TECHNOLOGY[259]||界面左端面工艺粗磨当前砂轮转速
+|TECHNOLOGY[260]||界面左端面工艺精磨当前砂轮转速
+|TECHNOLOGY[261]||界面右端面工艺粗磨当前砂轮转速
+|TECHNOLOGY[262]||界面右端面工艺精磨当前砂轮转速
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
