@@ -1,0 +1,22 @@
+PROC P_SINGLEGRIND_ZUBACK(REAL POSITION) DISPLOF
+;;**********程序功能**********
+;;单向磨削后Z后退情况
+;POSITION:Z后退位置
+;;***************************
+
+MSG("砂轮退出工件")
+G90 G01 Z=POSITION-$AC_DRF[Z] F=PROCESS[35]*4
+IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+	INI[101]=0;磨削中不正常退出标记
+ELSE
+	INI[102]=0;磨削中不正常退出标记
+ENDIF
+MSG("台面到磨削起点")
+IF PROCESS[57]==1;外磨砂轮轴类型
+	G01 AX[AXNAME(AXIS_EW)]=INI[6] F=INI[106]
+ELSE
+	G01 AX[AXNAME(AXIS_EW)]=INI[6] F=INI[65]
+ENDIF
+
+RET
+

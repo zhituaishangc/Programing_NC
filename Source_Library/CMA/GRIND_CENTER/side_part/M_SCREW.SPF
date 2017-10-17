@@ -1,0 +1,49 @@
+PROC M_SCREW DISPLON
+;;**********程序功能**********
+;;端面主程序:
+;;***************************
+
+N_PAR_INI;参数初始化子程序
+
+IF DRESSER[6]<>0;有报警标记则退出程序
+    GOTOF SIDE_G_ENDING
+ENDIF
+
+N_PARA_TRAN;参数传递
+N_TECH_PARA_TRAN;左右端面设定参数切换
+
+IF GRIND[6]<>0;修整
+    IF (GRIND[7]==0) AND (INI[104]==1);当前要修整左端面且已经修整过端面了
+        GOTOF SIDE_G_ENDING
+    ELSE
+        N_DRESS;修整
+        O_GRIND_POSITION;修整后磨削位置计算
+        GOTOF SIDE_G_ENDING
+    ENDIF
+ENDIF
+
+IF TECHNOLOGY[245]+TECHNOLOGY[246]==0;工艺参数中设置的总磨削次数
+    RET
+ENDIF
+
+STOPRE
+GRIND[6]=0;不修整
+WHILE(TECHNOLOGY[98]+TECHNOLOGY[100]<=TECHNOLOGY[245]+TECHNOLOGY[246])
+    STOPRE
+    N_CYCLE;螺纹磨削循环
+    N_PARA_TRAN;参数传递
+    N_TECH_PARA_TRAN;左右端面设定参数切换
+    IF (DRESSER[6]<>0) OR ($A_DBB[2]==1);有报警/按下退刀键则退出程序
+        GOTOF SIDE_G_ENDING
+    ENDIF
+    N_BCYC;工序进给大循环判断
+	O_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+ENDWHILE
+N_WORKS_CUMU;工件计数
+
+SIDE_G_ENDING:
+N_GRINDING_END;运行结束
+C_ALARM;机床报警
+
+RET
+

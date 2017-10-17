@@ -1,0 +1,13 @@
+PROC O_DRESS_SHAPE_INIT SBLOF DISPLOF
+;;**********程序功能**********
+;;垂直位置计算:
+;;***************************
+
+IF DRESSER[129]==0;新砂轮
+    DRESSER[108]=DRESSER[126];Z侧面当前接触位置
+ELSE;旧砂轮
+    DRESSER[108]=DRESSER[108];Z当前接触位置
+ENDIF
+
+RET
+

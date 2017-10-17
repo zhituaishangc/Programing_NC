@@ -4,9 +4,9 @@ PROC J_DRESS_SHAPE_INIT SBLOF DISPLOF
 ;;***************************
 
 IF DRESSER[89]==0;新砂轮
-    DRESSER[88]=DRESSER[119];当前接触位置
+    DRESSER[88]=DRESSER[119];U外圆当前接触位置
 ELSE;旧砂轮
-    DRESSER[88]=DRESSER[88];当前接触位置
+    DRESSER[88]=DRESSER[88];U当前接触位置
 ENDIF
 
 RET

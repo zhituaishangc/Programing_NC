@@ -1,0 +1,43 @@
+PROC A_GRIND_CENTER DISPLON
+;;**********程序功能**********
+;;磨削中心主程序
+;;***************************
+
+PROCESS[57]=1;外圆砂轮轴方向(后正1/后负-1)
+AXIS_EW="U"
+
+IF ($A_DBB[1]==1) OR ($A_DBB[5]==1);如果选择了对刀
+	GOTOF SCREW_START
+ENDIF
+
+GRIND_START_POINT:
+IF PROCESS[43]==1;外圆程序
+	H_GRINDING
+ENDIF
+
+IF (PROCESS[45]==1) OR (PROCESS[44]==1);端面程序
+	L_GRINDING
+ENDIF
+
+IF PROCESS[94]==1;台阶程序
+	Q_GRINDING
+ENDIF
+
+SCREW_START:
+IF PROCESS[41]==1;螺纹
+	IF PROCESS[57]==1;外磨砂轮轴类型
+		G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[105];外磨砂轮架退至安全位置
+	ELSE
+		G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[54];外磨砂轮架退至安全位置
+	ENDIF
+	A_GRINDING
+	IF GRIND[2]==2;自动对刀
+		GRIND[2]=0
+		GOTOB GRIND_START_POINT
+	ENDIF
+ENDIF
+
+CENTER_END:
+
+RET
+

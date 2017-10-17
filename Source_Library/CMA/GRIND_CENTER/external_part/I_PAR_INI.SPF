@@ -33,7 +33,7 @@ IF (INI[94]==0) OR (INI[93]<INI[94]);修整为零或当前几件小于设定值
 ENDIF
 
 IF INI[96]==1;磨削中不正常退出标记
-	PROCESS[20]=PROCESS[20]+PROCESS[21];当前磨削位回退
+	PROCESS[20]=PROCESS[20]+PROCESS[21]*PROCESS[57];当前磨削位回退
 	INI[96]=0;磨削中不正常退出标记
 ENDIF
 
