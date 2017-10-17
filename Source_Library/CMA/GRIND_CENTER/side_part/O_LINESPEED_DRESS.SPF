@@ -9,7 +9,7 @@ K_GRINDWHEEL_DIACURNT;
 
 WHEEL_RPM=WHEEL_LINESPEED_DRESS[40]*60000/($PI*DRESSER[91])
 
-IF $A_DBB[15]==0;砂轮当前未启动
+IF $A_DBB[16]==0;砂轮当前未启动
     INI[71]=4;砂轮启动等待转速到位延时时间
 ELSE
     INI[71]=0.2
