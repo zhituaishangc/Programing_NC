@@ -56,14 +56,14 @@ IF (TECH_TIME[5]+TECH_TIME[6]+TECH_TIME[7]+TECH_TIME[8]+TECH_TIME[9]==TECHNOLOGY
     MSG("台面到磨削起点")
     G90 G01 Z=INI[7] F=INI[56];Z轴到磨削起点
     MSG("砂轮到安全位置")
-    IF (PROCESS[44]==0) AND (PROCESS[45]==0)
+    IF (PROCESS[44]==0) AND (PROCESS[45]==0) AND (PROCESS[94]==0)
         IF PROCESS[57]==1;外磨砂轮轴类型
             G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[105];外磨砂轮架退至安全位置
         ELSE
             G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[54];外磨砂轮架退至安全位置
         ENDIF
     ELSE
-        IF PROCESS[45]==1;右端面程序
+        IF (PROCESS[45]==1) OR (PROCESS[94]==1);右端面程序/台阶
             IF PROCESS[57]==1;外磨砂轮轴类型
                 G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]+2 F=INI[105];U轴到安全位置
             ELSE
