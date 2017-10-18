@@ -3,9 +3,6 @@ PROC A_GRIND_CENTER DISPLON
 ;;磨削中心主程序
 ;;***************************
 
-PROCESS[57]=1;外圆砂轮轴方向(后正1/后负-1)
-AXIS_EW="U"
-
 IF ($A_DBB[1]==1) OR ($A_DBB[5]==1);如果选择了对刀
 	GOTOF SCREW_START
 ENDIF
