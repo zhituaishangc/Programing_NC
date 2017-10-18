@@ -63,10 +63,18 @@ IF (TECH_TIME[5]+TECH_TIME[6]+TECH_TIME[7]+TECH_TIME[8]+TECH_TIME[9]==TECHNOLOGY
             G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[54];外磨砂轮架退至安全位置
         ENDIF
     ELSE
-        IF PROCESS[57]==1;外磨砂轮轴类型
-            G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]+1 F=INI[105];U轴到安全位置
+        IF PROCESS[45]==1;右端面程序
+            IF PROCESS[57]==1;外磨砂轮轴类型
+                G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]+2 F=INI[105];U轴到安全位置
+            ELSE
+                G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]-2 F=INI[55];X轴到安全位置
+            ENDIF
         ELSE
-            G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]-1 F=INI[55];X轴到安全位置
+            IF PROCESS[57]==1;外磨砂轮轴类型
+                G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]+INI[43]+2 F=INI[105];U轴到安全位置
+            ELSE
+                G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]-INI[43]-2 F=INI[55];X轴到安全位置
+            ENDIF
         ENDIF
     ENDIF
 ENDIF
