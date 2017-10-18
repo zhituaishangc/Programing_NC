@@ -8,7 +8,7 @@ IF PROCESS[57]==1;外磨砂轮轴类型
 ELSE
 	G90 G01 AX[AXNAME(AXIS_EW)]=INI[107] F=INI[54];外磨砂轮架退至安全位置
 ENDIF
-G90 G01 Z=0 F=INI[56]
+G90 G01 Z=INI[108] F=INI[56];开到外圆磨削安全位置
 
 RET
 
