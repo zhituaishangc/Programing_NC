@@ -5,6 +5,10 @@ PROC R_SCREW DISPLON
 
 S_PAR_INI;参数初始化子程序
 
+IF DRESSER[6]<>0;有报警标记则退出程序
+    GOTOF TJ_G_ENDING
+ENDIF
+
 IF TECHNOLOGY[265]+TECHNOLOGY[266]==0;工艺参数中设置的总磨削次数
     RET
 ENDIF
