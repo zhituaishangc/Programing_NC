@@ -12,7 +12,7 @@ IF PROCESS[0]==0;如果不是DIY
     M29;修整冷却关
     M57;退刀关
     M61;对刀关
-    K_GRINDWHEEL_STOP;砂轮停止
+    T_GRINDWHEEL_STOP;砂轮停止
 ENDIF
 
 RET
