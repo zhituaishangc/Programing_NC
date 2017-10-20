@@ -21,14 +21,14 @@ IF TOOL_SET[31]==0;测头测量
     MSG("正在运行到测量位置")
     F_Z_POSITION(INI[48]);初始位置Z
     G90 G01 C=INI[49] F=INI[58]
-    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2 F=INI[55];测头接触工件外表面位置
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[55];测头接触工件外表面位置
     MSG("测头伸出中")
     M33;测头伸出
     WHILE($A_DBB[8]==0);等待测头到位
         G4 F0.2
     ENDWHILE
     MSG("测头接近工件中")
-    G91 G01 X=TOOL_SET[9]*2 F=INI[65];测头进入工件内一个测头直径处
+    G91 G01 X=TOOL_SET[9]*3+5 F=INI[65];测头进入工件内1.5个测头直径处
 
     ;测量右端面
     D_PROBE_DETECT_ZPOSITION(-200,5,INI[57],INI[57]/4,INI[50])
@@ -38,9 +38,9 @@ IF TOOL_SET[31]==0;测头测量
     ENDIF
 
     G91 G01 Z=30 F=INI[56];工件离开测头
-    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[55];测头接触工件外表面位置5MM处
-    G90 G01 Z=INI[50]-INI[35] F=INI[56];测头移动到孔处
-    X_INI_POSITION=5+TOOL_SET[9]*2
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[55];测头接触工件外表面位置5MM处
+    G90 G01 Z=INI[50]-INI[35]-TOOL_SET[9] F=INI[56];测头移动到孔处
+    X_INI_POSITION=5+TOOL_SET[9]*3
     E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);测头伸进孔内
     IF $AC_MEA[1]==1;碰到外沿
         DRESSER[6]=5;工件端面到孔距离设置有误
@@ -164,7 +164,7 @@ F_ANG_WITHIN_360(TOOL_SET[4])
 OPERATION_END:
 IF TOOL_SET[31]==0;测头测量
     MSG("测头离开工件中")
-    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-5 F=INI[65]*4
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[65]*4
     MSG("测头退回中")
     M34;测头退回
     WHILE($A_DBB[7]==0);等待测头缩回
