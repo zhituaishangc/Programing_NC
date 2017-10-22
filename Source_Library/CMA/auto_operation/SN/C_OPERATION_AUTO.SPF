@@ -80,7 +80,7 @@ IF TOOL_SET[31]==0;测头测量
         G90 G01 Z=TOOL_SET[36] F=INI[57]
     ELSE;腰型孔
         FGROUP(Z)
-    	D_PROBE_DETECT_ZCPOS(-DR15,-DR17,DR15*0.2,DR17*0.2,INI[57],INI[57]/4,DR18,DR19)
+        D_PROBE_DETECT_ZCPOS(-DR15,-DR17,DR15*0.2,DR17*0.2,INI[57],INI[57]/4,DR18,DR19)
         IF $AC_MEA[1]==0;如果没挨上工件报警
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
