@@ -56,10 +56,13 @@ INI[3]=PROCESS[57]*(INI[6]-INI[7]);磨削长度
 ;U轴初始接触赋值位置选择
 PROCESS[18]=0;当前工艺
 IF INI[103]<>0;0是单件磨削模式,1是批量磨削模式
-	PROCESS[34]=PROCESS[48];左磨削位置当前等于初始
-	PROCESS[37]=PROCESS[47];右磨削位置当前等于初始
-	PROCESS[60]=0;工艺累积进刀清零
-	PROCESS[61]=0;工艺累积进刀清零
+	IF GRIND[7]==0;当前磨削左端面/右端面(0左/1右)
+		PROCESS[34]=PROCESS[48];左磨削位置当前等于初始
+		PROCESS[60]=0;工艺累积进刀清零
+	ELSE
+		PROCESS[37]=PROCESS[47];右磨削位置当前等于初始
+		PROCESS[61]=0;工艺累积进刀清零
+	ENDIF
 ENDIF
 
 ;报警判断
