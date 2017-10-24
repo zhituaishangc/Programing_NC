@@ -998,8 +998,8 @@
 |SHAPE_MODEL[4]||齿高
 |SHAPE_MODEL[5]||锥度
 |SHAPE_MODEL[6]||最后斜线角度
-|SHAPE_MODEL[10]||弧顶圆弧半径
-|SHAPE_MODEL[11]||弧底圆弧半径
+|SHAPE_MODEL[10]||弧底圆弧半径
+|SHAPE_MODEL[11]||弧顶圆弧半径
 |SHAPE_MODEL[12]||齿高
 |SHAPE_MODEL[13]||左斜线角度
 |SHAPE_MODEL[14]||右斜线角度
