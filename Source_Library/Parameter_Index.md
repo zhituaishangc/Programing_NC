@@ -1004,6 +1004,7 @@
 |SHAPE_MODEL[13]||左斜线角度
 |SHAPE_MODEL[14]||右斜线角度
 |SHAPE_MODEL[15]||锥度
+|SHAPE_MODEL[16]||过度线角度(0-90)
 |SHAPE_MODEL[20]||齿顶圆弧半径
 |SHAPE_MODEL[21]||第一斜边角度
 |SHAPE_MODEL[22]||第一斜边高度
@@ -1020,3 +1021,8 @@
 |SHAPE_MODEL[40]||齿高
 |SHAPE_MODEL[41]||左半角
 |SHAPE_MODEL[42]||右半角
+|SHAPE_MODEL[50]||左圆弧半径
+|SHAPE_MODEL[51]||右圆弧半径
+|SHAPE_MODEL[52]||左偏心
+|SHAPE_MODEL[53]||右偏心
+|SHAPE_MODEL[54]||过度斜线角度
