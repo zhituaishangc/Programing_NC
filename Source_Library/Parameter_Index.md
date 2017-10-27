@@ -172,6 +172,8 @@
 |DRESSER[128]||端面累积修整量
 |DRESSER[129]||外圆端面部分磨砂轮新旧(0新1旧)
 |DRESSER[130]||端面修整砂轮当前转速
+|DRESSER[131]||外圆磨削方向(0从里往外1从外往里)
+|DRESSER[132]||外圆修整锥度微调(正 左低右高/负 左高右低)
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -1004,6 +1006,7 @@
 |SHAPE_MODEL[13]||左斜线角度
 |SHAPE_MODEL[14]||右斜线角度
 |SHAPE_MODEL[15]||锥度
+|SHAPE_MODEL[16]||过度线角度(0-90)
 |SHAPE_MODEL[20]||齿顶圆弧半径
 |SHAPE_MODEL[21]||第一斜边角度
 |SHAPE_MODEL[22]||第一斜边高度
@@ -1020,3 +1023,8 @@
 |SHAPE_MODEL[40]||齿高
 |SHAPE_MODEL[41]||左半角
 |SHAPE_MODEL[42]||右半角
+|SHAPE_MODEL[50]||左圆弧半径
+|SHAPE_MODEL[51]||右圆弧半径
+|SHAPE_MODEL[52]||左偏心
+|SHAPE_MODEL[53]||右偏心
+|SHAPE_MODEL[54]||过度斜线角度
