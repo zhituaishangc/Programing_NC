@@ -1013,6 +1013,7 @@
 |SHAPE_MODEL[23]||第二斜边角度
 |SHAPE_MODEL[24]||齿高
 |SHAPE_MODEL[25]||锥度
+|SHAPE_MODEL[26]||最后斜线角度
 |SHAPE_MODEL[30]||右侧斜线角度
 |SHAPE_MODEL[31]||左侧斜线1角度
 |SHAPE_MODEL[32]||左侧斜线2角度
@@ -1020,6 +1021,7 @@
 |SHAPE_MODEL[34]||锥度
 |SHAPE_MODEL[35]||左边第一段高度
 |SHAPE_MODEL[36]||顶部长度
+|SHAPE_MODEL[37]||最后斜线角度
 |SHAPE_MODEL[40]||齿高
 |SHAPE_MODEL[41]||左半角
 |SHAPE_MODEL[42]||右半角
