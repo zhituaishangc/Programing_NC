@@ -28,10 +28,10 @@ IF TOOL_SET[31]==0;测头测量
         G4 F0.2
     ENDWHILE
     MSG("测头接近工件中")
-    G91 G01 X=TOOL_SET[9]*3+5 F=INI[65];测头进入工件内1.5个测头直径处
+    G91 G01 X=TOOL_SET[9]*3+5 F=INI[65]*4;测头进入工件内1.5个测头直径处
 
     ;测量右端面
-    D_PROBE_DETECT_ZPOSITION(-200,5,INI[57],INI[57]/4,INI[50])
+    D_PROBE_DETECT_ZPOSITION(-200,1,INI[57]*4,INI[57]/4,INI[50])
     IF $AC_MEA[1]==0;如果没挨上工件报警
         DRESSER[6]=4;工件外径设置有误
         GOTOF OPERATION_END
