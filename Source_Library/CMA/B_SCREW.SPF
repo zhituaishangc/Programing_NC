@@ -4,10 +4,6 @@ PROC B_SCREW DISPLON
 ;;修整 对刀 磨削 程序的调用
 ;;***************************
 
-;++++not-worm-delete_begain++++
-C_WORM_INIT;蜗杆初始化参数
-;++++not-worm-delete_end++++
-
 C_PAR_INI;参数初始化子程序
 
 IF DRESSER[6]<>0;有报警标记则退出程序
