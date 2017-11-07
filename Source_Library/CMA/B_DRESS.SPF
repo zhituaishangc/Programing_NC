@@ -32,9 +32,6 @@ WHILE(DRESSER[18]+DRESSER[19]<=DRESSER[11]+DRESSER[12])
         GOTOF DRESS_ENDING
     ENDIF
     C_DRESS_CALC;次数累积
-    ;++++not-worm-delete_begain++++
-    C_WORM_PARA_TRANS;蜗杆参数传递
-    ;++++not-worm-delete_end++++
 ENDWHILE
 M29;修整冷却关
 DRESS_ENDING:
