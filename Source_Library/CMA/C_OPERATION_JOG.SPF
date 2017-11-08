@@ -35,7 +35,11 @@ TOOL_SET[5]=$AA_IM[C];读取C轴初始角度
 TOOL_SET[0]=$AA_IM[Z];读取对刀开始时Z轴坐标
 
 MSG("手动对刀已启动,请进行对刀操作")
-F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
+IF INI[109]=0;;对刀模式(zc插补0/静止对刀1)
+    F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
+ELSE
+    M0
+ENDIF
 
 RET
 

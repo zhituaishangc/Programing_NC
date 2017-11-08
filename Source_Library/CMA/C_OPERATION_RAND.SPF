@@ -43,7 +43,11 @@ STOPRE
 TOOL_SET[40]=1;已执行过二次对刀的标记
 
 MSG("二次对刀已启动,请进行对刀操作")
-F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
+IF INI[109]=0;;对刀模式(zc插补0/静止对刀1)
+    F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
+ELSE
+    M0
+ENDIF
 
 RET
 
