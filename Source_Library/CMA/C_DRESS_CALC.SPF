@@ -13,7 +13,7 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
             D_DRESS_HORI_CURNT(DRESSER[14]);新砂轮修整模式1下当前左右修整位置
         ENDIF
         DRESSER[10]=DRESSER[16];修整速度赋值
-        MSG("新砂轮轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[14]<<"mm")
+        MSG("轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[14]<<"mm")
     ELSE
         IF DRESSER[133]==0;新砂轮修整模式(0抬齿高/1偏半个砂轮宽度)
             D_DRESS_TOUCH_CURNT(DRESSER[15]);当前接触位置
@@ -21,7 +21,7 @@ IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
             D_DRESS_HORI_CURNT(DRESSER[15]);新砂轮修整模式1下当前左右修整位置
         ENDIF
         DRESSER[10]=DRESSER[17]
-        MSG("新砂轮轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[15]<<"mm")
+        MSG("轮廓初始修型中-->正在进行第"<<DRESSER[20]<<"次,还剩"<<DRESSER[13]-DRESSER[20]<<"次完成,进给量:"<<DRESSER[15]<<"mm")
     ENDIF
 ELSE
     IF DRESSER[18]<DRESSER[11]
