@@ -24,8 +24,8 @@ LDRES_R=DRESSER[31];修左边齿形时的圆角半径传递
 RDRES_R=DRESSER[32];修右边齿形时的圆角半径传递
 SUML=WHEEL[10];左滚轮与砂轮竖直接触位置
 SUMR=WHEEL[11];右滚轮与砂轮竖直接触位置
-PLWS=DRESSER[33];修左侧齿形时坐标系水平方向平移距离
-PRWS=DRESSER[34];修右侧齿形时坐标系水平方向平移距离
+PLWS=DRESSER[134];修左侧齿形时坐标系水平方向平移距离
+PRWS=DRESSER[135];修右侧齿形时坐标系水平方向平移距离
 DF=DRESSER[10];当前修整速度传递
 LRHIGHT_ERR=SUML-SUMR;计算左右轮接触点高度差
 ;;;
