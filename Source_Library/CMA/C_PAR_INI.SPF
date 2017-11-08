@@ -64,7 +64,7 @@ IF GRIND[0]<>2;非蜗杆
 		ENDIF
 	ENDIF
 ELSE;蜗杆
-	IF DRESSER[136]==0;;蜗杆修整时用蜗杆齿形0还是螺纹齿形1
+	IF INI[86]==0;;蜗杆修整时用蜗杆齿形0还是螺纹齿形1
 		SHAPE=WORM_SHAPE
 	ELSE
 		IF DRESSER[4]==0;齿形选择(0三角/1梯形/2双圆弧)
