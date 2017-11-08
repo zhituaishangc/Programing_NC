@@ -85,8 +85,14 @@ ELSE;旧砂轮
     ELSE;偏半个砂轮宽度
         IF DRESSER[134]>DRESSER[33]
             SHAPE_VER_REAL=DRESSER[134]-DRESSER[33]
+            DRESSER[135]=DRESSER[34]-SHAPE_VER_REAL
         ELSE
-            SHAPE_VER_REAL=0
+            IF DRESSER[135]<DRESSER[34]
+                SHAPE_VER_REAL=DRESSER[34]-DRESSER[135]
+                DRESSER[134]=DRESSER[33]+SHAPE_VER_REAL
+            ELSE
+                SHAPE_VER_REAL=0
+            ENDIF
         ENDIF
     ENDIF
 ENDIF
