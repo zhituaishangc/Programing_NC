@@ -1055,7 +1055,7 @@
 |SHAPE_MODEL[67]||小径
 |SHAPE_MODEL[68]||底部斜线延长长度(水平)
 |SHAPE_MODEL[69]||过度线角度(0-90)
-
+|双圆弧||
 |SHAPE_MODEL[80]||左圆弧半径
 |SHAPE_MODEL[81]||右圆弧半径
 |SHAPE_MODEL[82]||左偏心
@@ -1064,3 +1064,12 @@
 |SHAPE_MODEL[85]||过度1斜线长度延长
 |SHAPE_MODEL[86]||过度2斜线角度
 |SHAPE_MODEL[87]||过度2斜线长度
+|梯形||
+|SHAPE_MODEL[90]||顶部长度
+|SHAPE_MODEL[91]||左圆弧过渡半径
+|SHAPE_MODEL[92]||右圆弧过渡半径
+|SHAPE_MODEL[93]||左角度
+|SHAPE_MODEL[94]||右角度
+|SHAPE_MODEL[95]||齿高
+|SHAPE_MODEL[96]||斜线角度
+
