@@ -88,7 +88,6 @@ ELSE
 				TOOL_SET[8]=0;首次对刀
 			ELSE
 				IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
-					;GRIND[2]=3;自动对刀(计算C角度+X位置)
 					GRIND[2]=2;自动对刀(只计算C角度)
 					TOOL_SET[8]=0;首次对刀
 				ENDIF
