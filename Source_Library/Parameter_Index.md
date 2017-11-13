@@ -1075,4 +1075,10 @@
 |SHAPE_MODEL[94]||右角度
 |SHAPE_MODEL[95]||齿高
 |SHAPE_MODEL[96]||斜线角度
+|三角||
+|SHAPE_MODEL[100]||齿底圆弧半径
+|SHAPE_MODEL[101]||左半角
+|SHAPE_MODEL[102]||右半角
+|SHAPE_MODEL[103]||齿高
+|SHAPE_MODEL[104]||延长线角度
 
