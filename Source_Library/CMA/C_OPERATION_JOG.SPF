@@ -39,6 +39,9 @@ IF INI[109]==0;;对刀模式(zc插补0/静止对刀1)
     F_ZC_START(TOOL_SET[0],INI[7],INI[5],INI[80],1)
 ELSE
     M0
+    STOPRE
+    R280=$AA_IM[X]
+    R281=$AA_IM[Z]
 ENDIF
 
 RET
