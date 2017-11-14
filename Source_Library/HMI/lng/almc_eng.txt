@@ -100,7 +100,7 @@
 85098 0 0 ""  ;
 85099 0 0 ""  ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;磨削参数;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-85100 0 0 "Init Angle"  ;
+85100 0 0 "Initial Angle"  ;
 85101 0 0 "Grind Position"  ;
 85102 0 0 "Screw"  ;
 85103 0 0 "Handedness"  ;
@@ -169,10 +169,10 @@
 85166 0 0 "Single"  ;
 85167 0 0 "Mass";
 85168 0 0 ""  ;
-85169 0 0 "Init Point"  ;
+85169 0 0 "Initial Point"  ;
 85170 0 0 "Mode"  ;
 85171 0 0 "Medium diameter"  ;
-85172 0 0 "Grinding Safe"  ;
+85172 0 0 "Grinding start"  ;
 85173 0 0 "Module"  ;
 85174 0 0 "Medium-D Adjust"  ;
 85175 0 0 "Deviation Adjust"  ;
