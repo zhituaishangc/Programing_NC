@@ -164,8 +164,8 @@
 85161 0 0 "Denominator"  ;
 85162 0 0 ""  ;
 85163 0 0 ""  ;
-85164 0 0 "Thread angle"  ;
-85165 0 0 "Measure Start"  ;
+85164 0 0 "Thread Angle"  ;
+85165 0 0 "Measure start"  ;
 85166 0 0 "Single"  ;
 85167 0 0 "Mass";
 85168 0 0 ""  ;
