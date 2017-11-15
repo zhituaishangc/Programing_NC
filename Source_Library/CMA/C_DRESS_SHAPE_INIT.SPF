@@ -35,8 +35,8 @@ IF DRESSER[5]==0;新砂轮
                     GOTOF NEXT
 
                     VER_2:
-                    SHAPE_VER_REAL_L=(DARC[9]-DARC[14])+ABS(TAN(45)*((DRESSER[22]/2+DARC[12])-(DARC[9]+DRESSER[31])))
-                    SHAPE_VER_REAL_R=(DARC[10]-DARC[15])+ABS(TAN(45)*((DRESSER[22]/2+DARC[13])-(DARC[10]+DRESSER[32])))
+                    SHAPE_VER_REAL_L=(DARC[9]-DARC[14])+ABS(TAN(45)*((DRESSER[22]/2+DARC[12])-(DARC[9]+DRESSER[31])))+DRESSER[31]
+                    SHAPE_VER_REAL_R=(DARC[10]-DARC[15])+ABS(TAN(45)*((DRESSER[22]/2+DARC[13])-(DARC[10]+DRESSER[32])))+DRESSER[32]
                     GOTOF NEXT
 
                     ;初始修整位置及对应修整次数
