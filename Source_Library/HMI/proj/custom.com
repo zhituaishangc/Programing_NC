@@ -5036,7 +5036,7 @@
 //END
 
 ;;;;;;;;;;;;;;;;;;;MASK23:程序选项界面:panel_23:;;;;;;;;;;;;;;;;;;;;
-//M(MASK23/$85027//)
+//M(MASK23/$85027/"panel_23_0_chs.png"/)
 
 	DEF VAR1=(I/*0=$85081,1=$85080//$85032,$85032,,/WR1,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/PROCESS[44]"/320,85,100/440,85,60);外圆磨削开关
 	DEF VAR2=(I/*0=$85081,1=$85080//$85034,$85034,,/WR1,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/PROCESS[46]"/320,137,100/440,137,60);右端面磨削开关
@@ -5044,6 +5044,12 @@
 	DEF VAR4=(I/*0=$85081,1=$85080//$85030,$85030,,/WR1,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/PROCESS[95]"/320,240,150/440,240,60);台阶磨削开关
 	DEF VAR5=(I/*0=$85081,1=$85080//$85031,$85031,,/WR1,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/PROCESS[42]"/320,290,100/440,290,60);内螺纹磨削开关
 	
+	DEF VAR10=(V///,$85725,,/WR4///0,0,400,300);
+	DEF VAR11=(V///,$85726,,/WR4///0,0,400,300);
+	DEF VAR12=(V///,$85727,,/WR4///0,0,400,300);
+	DEF VAR13=(V///,$85728,,/WR4///0,0,400,300);
+	DEF VAR14=(V///,$85729,,/WR4///0,0,400,300);
+
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
@@ -5057,7 +5063,7 @@
 	HS7=($85011,ac7,se3);程序选项界面
 	HS8=($85005,ac7,se1);返回
 	
-	VS3=($85032,ac7,se1);返回外圆
+	VS3=($85032,ac7,se1);外圆
 	VS4=($85034,ac7,se1);左端面
 	VS5=($85033,ac7,se1);右端面
 	VS6=($85030,ac7,se1);台阶
@@ -5066,27 +5072,34 @@
 	LOAD
 		IF VAR1.VAL==1
 			VS3.SE=3
+			VAR10.WR=1
 		ENDIF
 		IF VAR2.VAL==1
 			VS4.SE=3
+			VAR11.WR=1
 		ENDIF
 		IF VAR3.VAL==1
 			VS5.SE=3
+			VAR12.WR=1
 		ENDIF
 		IF VAR4.VAL==1
 			VS6.SE=3
+			VAR13.WR=1
 		ENDIF
 		IF VAR5.VAL==1
 			VS7.SE=3
+			VAR14.WR=1
 		ENDIF
 	END_LOAD
 	
 	PRESS(VS3)
 		IF VAR1.VAL==0
 			VAR1.VAL=1
+			VAR10.WR=1
 			VS3.SE=3
 		ELSE
 			VAR1.VAL=0
+			VAR10.WR=4
 			VS3.SE=1
 		ENDIF	
 	END_PRESS
@@ -5094,9 +5107,11 @@
 	PRESS(VS4)
 		IF VAR2.VAL==0
 			VAR2.VAL=1
+			VAR11.WR=1
 			VS4.SE=3
 		ELSE
 			VAR2.VAL=0
+			VAR11.WR=4
 			VS4.SE=1
 		ENDIF	
 	END_PRESS
@@ -5104,9 +5119,11 @@
 	PRESS(VS5)
 		IF VAR3.VAL==0
 			VAR3.VAL=1
+			VAR12.WR=1
 			VS5.SE=3
 		ELSE
 			VAR3.VAL=0
+			VAR12.WR=4
 			VS5.SE=1
 		ENDIF	
 	END_PRESS
@@ -5114,9 +5131,11 @@
 	PRESS(VS6)
 		IF VAR4.VAL==0
 			VAR4.VAL=1
+			VAR13.WR=1
 			VS6.SE=3
 		ELSE
 			VAR4.VAL=0
+			VAR13.WR=4
 			VS6.SE=1
 		ENDIF	
 	END_PRESS
@@ -5124,9 +5143,11 @@
 	PRESS(VS7)
 		IF VAR5.VAL==0
 			VAR5.VAL=1
+			VAR14.WR=1
 			VS7.SE=3
 		ELSE
 			VAR5.VAL=0
+			VAR14.WR=4
 			VS7.SE=1
 		ENDIF	
 	END_PRESS
