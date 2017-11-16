@@ -7,7 +7,7 @@ PROC C_OPERATION_AUTO DISPLOF
 DEF REAL DR0,DR1,DR2,DR3,DR4,DR5,DR6,DR7,DR8,DR9,DR10,DR11,DR12,DR13,DR14,DR15,DR16,DR17,DR18,DR19,DR20,DR21,DR22,DR23,DR24,DR25,DR26,DR27,DR28,DR29,DR30,DR31
 DEF REAL X_INI_POSITION
 
-IF (TOOL_SET[31]==0) AND (TOOL_SET[22]==1);测头&腰型孔
+IF (TOOL_SET[49]==1) AND (TOOL_SET[22]==1);测头&腰型孔
     DR12=INI[32]*COS(INI[31]);腰型孔长投影到水平向长度DR12
     DR13=INI[32]*SIN(INI[31]);腰型孔长投影到垂直向长度DR13
     DR14=DR13/($PI*INI[34])*360;将垂直长度转换为C轴旋转角度DR14
@@ -16,15 +16,49 @@ IF (TOOL_SET[31]==0) AND (TOOL_SET[22]==1);测头&腰型孔
     DR17=DR16/($PI*INI[34])*360;将垂直宽度转换为C轴旋转角度DR17
 ENDIF
 
-IF TOOL_SET[31]==0;测头测量
+IF TOOL_SET[31]==1;接近开关测量机构
+    MSG("正在运行到测量位置")
+    F_Z_POSITION(INI[48]);初始位置
+    G90 G01 C=0 F=INI[58]
+    MSG("测头伸出中")
+    M33;接近开关伸出
+    WHILE($A_DBB[8]==0);等待接近开关到位
+        G4 F0.2
+    ENDWHILE
+    MSG("测头接近工件中")
+    G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
+    F_Z_POSITION(INI[52]);开始测量位置
+
+    MSG("接近工件中")
+    X_INI_POSITION=-INI[51]/2+2
+    E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);开关接近小径2mm处
+    
+    E_PROBE_DETECTED_ZMOVE(-INI[4]/4,INI[57])
+    
+    D_PROBE_DETECT_ZPOSITION(-INI[4]*2,INI[4]/4,INI[57],INI[57]/4,TOOL_SET[37])
+    IF $AC_MEA[1]==0;没碰到
+        DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
+        GOTOF OPERATION_END
+    ENDIF
+    D_PROBE_DETECT_ZPOSITION(INI[4]*2,-INI[4]/4,INI[57],INI[57]/4,TOOL_SET[38])
+    IF $AC_MEA[1]==0;没碰到
+        DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
+        GOTOF OPERATION_END
+    ENDIF
+    TOOL_SET[39]=(TOOL_SET[37]+TOOL_SET[38])/2
+    TOOL_SET[5]=0
+    TOOL_SET[1]=TOOL_SET[39]-TOOL_SET[10]
+ENDIF
+
+IF TOOL_SET[49]==1;测量头测量结构
     ;初始动作到位
     MSG("正在运行到测量位置")
     F_Z_POSITION(INI[48]);初始位置Z
     G90 G01 C=INI[49] F=INI[58]
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[55];测头接触工件外表面位置
     MSG("测头伸出中")
-    M33;测头伸出
-    WHILE($A_DBB[8]==0);等待测头到位
+    M90;测量头伸出
+    WHILE($A_DBB[21]==0);等待测量头到位
         G4 F0.2
     ENDWHILE
     MSG("测头接近工件中")
@@ -40,7 +74,7 @@ IF TOOL_SET[31]==0;测头测量
     G91 G01 Z=30 F=INI[56];工件离开测头
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[55];测头接触工件外表面位置5MM处
     G90 G01 Z=INI[50]-INI[35]-TOOL_SET[9] F=INI[56];测头移动到孔处
-    X_INI_POSITION=5+TOOL_SET[9]*3
+    X_INI_POSITION=5+TOOL_SET[9]*3+PROCESS[54]
     E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);测头伸进孔内
     IF $AC_MEA[1]==1;碰到外沿
         DRESSER[6]=5;工件端面到孔距离设置有误
@@ -117,38 +151,6 @@ IF TOOL_SET[31]==0;测头测量
         TOOL_SET[1]=TOOL_SET[36]-TOOL_SET[10]+0.5*INI[5]
         G90 G01 Z=TOOL_SET[36] C=TOOL_SET[5] F=INI[57]
     ENDIF
-ELSE;接近开关测量
-    MSG("正在运行到测量位置")
-    F_Z_POSITION(INI[48]);初始位置
-    G90 G01 C=0 F=INI[58]
-    MSG("测头伸出中")
-    M33;测头伸出
-    WHILE($A_DBB[8]==0);等待测头到位
-        G4 F0.2
-    ENDWHILE
-    MSG("测头接近工件中")
-    G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
-    F_Z_POSITION(INI[52]);开始测量位置
-
-    MSG("接近工件中")
-    X_INI_POSITION=-INI[51]/2+2
-    E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);开关接近小径2mm处
-    
-    E_PROBE_DETECTED_ZMOVE(-INI[4]/4,INI[57])
-    
-    D_PROBE_DETECT_ZPOSITION(-INI[4]*2,INI[4]/4,INI[57],INI[57]/4,TOOL_SET[37])
-    IF $AC_MEA[1]==0;没碰到
-        DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
-        GOTOF OPERATION_END
-    ENDIF
-    D_PROBE_DETECT_ZPOSITION(INI[4]*2,-INI[4]/4,INI[57],INI[57]/4,TOOL_SET[38])
-    IF $AC_MEA[1]==0;没碰到
-        DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
-        GOTOF OPERATION_END
-    ENDIF
-    TOOL_SET[39]=(TOOL_SET[37]+TOOL_SET[38])/2
-    TOOL_SET[5]=0
-    TOOL_SET[1]=TOOL_SET[39]-TOOL_SET[10]
 ENDIF
 
 ;计算C初始角
@@ -162,24 +164,27 @@ ENDIF
 F_ANG_WITHIN_360(TOOL_SET[4])
 
 OPERATION_END:
-IF TOOL_SET[31]==0;测头测量
-    MSG("测头离开工件中")
-    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[65]*4
-    MSG("测头退回中")
-    M34;测头退回
-    WHILE($A_DBB[7]==0);等待测头缩回
-        G4 F0.2
-    ENDWHILE
-    F_Z_POSITION(INI[48]);初始位置Z
-ELSE
+
+IF TOOL_SET[31]==1;接近开关测量机构
     MSG("接近开关离开工件中")
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[65]*8;开关检测面在工件中心
     F_Z_POSITION(INI[48]);初始位置
     MSG("测头退回中")
-    M34;测头退回
-    WHILE($A_DBB[7]==0);等待测头缩回
+    M34;接近开关退回
+    WHILE($A_DBB[7]==0);等待接近开关缩回
         G4 F0.2
     ENDWHILE
+ENDIF
+
+IF TOOL_SET[49]==1;测头测量
+    MSG("测头离开工件中")
+    G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[65]*4
+    MSG("测头退回中")
+    M91;测量头退回
+    WHILE($A_DBB[20]==0);等待测量头缩回
+        G4 F0.2
+    ENDWHILE
+    F_Z_POSITION(INI[48]);初始位置Z
 ENDIF
 
 RET

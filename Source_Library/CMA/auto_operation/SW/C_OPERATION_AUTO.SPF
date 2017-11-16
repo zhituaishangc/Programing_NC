@@ -7,8 +7,8 @@ PROC C_OPERATION_AUTO DISPLOF
 DEF REAL DR1,DR2,DR3,DR4,DR30,DR31
 
 MSG("测头伸出中")
-M33;测头伸出
-WHILE($A_DBB[8]==0);等待测头到位
+M33;接近开关伸出
+WHILE($A_DBB[8]==0);等待接近开关到位
 	G4 F0.2
 ENDWHILE
 MSG("正在运行到测量位置")
@@ -42,8 +42,8 @@ F_ANG_WITHIN_360(TOOL_SET[4])
 
 OPERATION_END:
 MSG("测头退回中")
-M34;测头退回
-WHILE($A_DBB[7]==0);等待测头缩回
+M34;接近开关退回
+WHILE($A_DBB[7]==0);等待接近开关缩回
 	G4 F0.2
 ENDWHILE
 
