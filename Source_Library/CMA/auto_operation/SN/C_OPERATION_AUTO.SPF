@@ -17,14 +17,13 @@ IF (TOOL_SET[49]==1) AND (TOOL_SET[22]==1);测头&腰型孔
 ENDIF
 
 IF TOOL_SET[31]==1;接近开关测量机构
+    TOOL_SET[55]=0;当前正在进行接近开关0/测量头1机构测量
     MSG("正在运行到测量位置")
     F_Z_POSITION(INI[48]);初始位置
     G90 G01 C=0 F=INI[58]
     MSG("测头伸出中")
-    M33;接近开关伸出
-    WHILE($A_DBB[8]==0);等待接近开关到位
-        G4 F0.2
-    ENDWHILE
+    F_PROBE_M_OUT(TOOL_SET[51]);接近开关伸出
+    F_PROBE_DBB_OUT(TOOL_SET[51]);测量机构伸出到位DBB信号
     MSG("测头接近工件中")
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[55];开关检测面在工件中心
     F_Z_POSITION(INI[52]);开始测量位置
@@ -36,12 +35,17 @@ IF TOOL_SET[31]==1;接近开关测量机构
     E_PROBE_DETECTED_ZMOVE(-INI[4]/4,INI[57])
     
     D_PROBE_DETECT_ZPOSITION(-INI[4]*2,INI[4]/4,INI[57],INI[57]/4,TOOL_SET[37])
-    IF $AC_MEA[1]==0;没碰到
+
+    F_PROBE_AC_MEA(TOOL_SET[51])
+    IF TOOL_SET[53]==0;没碰到
         DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
         GOTOF OPERATION_END
     ENDIF
+
     D_PROBE_DETECT_ZPOSITION(INI[4]*2,-INI[4]/4,INI[57],INI[57]/4,TOOL_SET[38])
-    IF $AC_MEA[1]==0;没碰到
+
+    F_PROBE_AC_MEA(TOOL_SET[51])
+    IF TOOL_SET[53]==0;没碰到
         DRESSER[6]=6;工件小径设置有误,或检测位置太靠外侧
         GOTOF OPERATION_END
     ENDIF
@@ -51,22 +55,23 @@ IF TOOL_SET[31]==1;接近开关测量机构
 ENDIF
 
 IF TOOL_SET[49]==1;测量头测量结构
+    TOOL_SET[55]=1;当前正在进行接近开关0/测量头1机构测量
     ;初始动作到位
     MSG("正在运行到测量位置")
     F_Z_POSITION(INI[48]);初始位置Z
     G90 G01 C=INI[49] F=INI[58]
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[55];测头接触工件外表面位置
     MSG("测头伸出中")
-    M90;测量头伸出
-    WHILE($A_DBB[21]==0);等待测量头到位
-        G4 F0.2
-    ENDWHILE
+    F_PROBE_M_OUT(TOOL_SET[52]);测量头伸出
+    F_PROBE_DBB_OUT(TOOL_SET[52]);测量机构伸出到位DBB信号
     MSG("测头接近工件中")
     G91 G01 X=TOOL_SET[9]*3+5 F=INI[65]*4;测头进入工件内1.5个测头直径处
 
     ;测量右端面
     D_PROBE_DETECT_ZPOSITION(-200,1,INI[57]*4,INI[57]/4,INI[50])
-    IF $AC_MEA[1]==0;如果没挨上工件报警
+
+    F_PROBE_AC_MEA(TOOL_SET[52])
+    IF TOOL_SET[53]==0;没碰到
         DRESSER[6]=4;工件外径设置有误
         GOTOF OPERATION_END
     ENDIF
@@ -76,19 +81,23 @@ IF TOOL_SET[49]==1;测量头测量结构
     G90 G01 Z=INI[50]-INI[35]-TOOL_SET[9] F=INI[56];测头移动到孔处
     X_INI_POSITION=5+TOOL_SET[9]*3+PROCESS[54]
     E_PROBE_DETECTING_XMOVE(X_INI_POSITION,INI[65]);测头伸进孔内
-    IF $AC_MEA[1]==1;碰到外沿
+    
+    F_PROBE_AC_MEA(TOOL_SET[52])
+    IF TOOL_SET[53]==1;碰到外沿
         DRESSER[6]=5;工件端面到孔距离设置有误
         GOTOF OPERATION_END
     ENDIF
 
     IF TOOL_SET[22]==0;圆孔
         D_PROBE_DETECT_CPOSITION(300,-5,INI[59]*6,INI[59],TOOL_SET[32])
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
         D_PROBE_DETECT_CPOSITION(-300,5,INI[59]*6,INI[59],TOOL_SET[33])
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
@@ -100,12 +109,14 @@ IF TOOL_SET[49]==1;测量头测量结构
         G90 G01 C=TOOL_SET[5] F=INI[59]*6;旋转C轴使测头在孔中心(垂直方向)
 
         D_PROBE_DETECT_ZPOSITION(200,-5,INI[57],INI[57]/4,TOOL_SET[35])
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
         D_PROBE_DETECT_ZPOSITION(-200,5,INI[57],INI[57]/4,TOOL_SET[34])
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
@@ -115,12 +126,14 @@ IF TOOL_SET[49]==1;测量头测量结构
     ELSE;腰型孔
         FGROUP(Z)
         D_PROBE_DETECT_ZCPOS(-DR15,-DR17,DR15*0.2,DR17*0.2,INI[57],INI[57]/4,DR18,DR19)
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
         D_PROBE_DETECT_ZCPOS(DR15,DR17,-DR15*0.2,-DR17*0.2,INI[57],INI[57]/4,DR20,DR21)
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
@@ -133,12 +146,14 @@ IF TOOL_SET[49]==1;测量头测量结构
         G90 G01 Z=DR22 C=DR23 F=INI[57]
 
         D_PROBE_DETECT_ZCPOS(-DR12,DR14,DR12*0.2,-DR14*0.2,INI[57],INI[57]/4,DR24,DR25)
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
         D_PROBE_DETECT_ZCPOS(DR12,-DR14,-DR12*0.2,DR14*0.2,INI[57],INI[57]/4,DR26,DR27)
-        IF $AC_MEA[1]==0;如果没挨上工件报警
+        F_PROBE_AC_MEA(TOOL_SET[52])
+        IF TOOL_SET[53]==0;没碰到
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
@@ -170,20 +185,16 @@ IF TOOL_SET[31]==1;接近开关测量机构
     G90 G01 X=INI[10]-TOOL_SET[23] F=INI[65]*8;开关检测面在工件中心
     F_Z_POSITION(INI[48]);初始位置
     MSG("测头退回中")
-    M34;接近开关退回
-    WHILE($A_DBB[7]==0);等待接近开关缩回
-        G4 F0.2
-    ENDWHILE
+    F_PROBE_M_BACK(TOOL_SET[51]);接近开关退回
+    F_PROBE_DBB_BACK(TOOL_SET[51]);等待接近开关缩回
 ENDIF
 
 IF TOOL_SET[49]==1;测头测量
     MSG("测头离开工件中")
     G90 G01 X=INI[10]-TOOL_SET[23]-INI[34]/2-TOOL_SET[9]-5 F=INI[65]*4
     MSG("测头退回中")
-    M91;测量头退回
-    WHILE($A_DBB[20]==0);等待测量头缩回
-        G4 F0.2
-    ENDWHILE
+    F_PROBE_M_BACK(TOOL_SET[52]);测量头退回
+    F_PROBE_DBB_BACK(TOOL_SET[52]);等待测量头缩回
     F_Z_POSITION(INI[48]);初始位置Z
 ENDIF
 

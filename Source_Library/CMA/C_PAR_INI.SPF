@@ -98,17 +98,13 @@ ENDIF
 
 IF INI[69]==1;有自动对刀(0没有/1有)
 	IF (GRIND[2]==0) OR (GRIND[2]==1);不对刀或手动对刀过程
-		IF TOOL_SET[31]==1;接近开关
-			M34;接近开关退回
-			WHILE($A_DBB[7]==0);等待测头缩回
-				G4 F0.2
-			ENDWHILE
+		IF TOOL_SET[31]==1;自动对刀是否有接近开关测量机构
+			F_PROBE_M_BACK(TOOL_SET[51]);接近开关退回
+			F_PROBE_DBB_BACK(TOOL_SET[51]);等待接近开关缩回
 		ENDIF
-		IF TOOL_SET[49]==1;测量头
-			M91;测量头退回
-			WHILE($A_DBB[20]==0);等待测头缩回
-				G4 F0.2
-			ENDWHILE
+		IF TOOL_SET[49]==1;自动对刀是否有测量头测量结构
+			F_PROBE_M_BACK(TOOL_SET[52]);测量头退回
+			F_PROBE_DBB_BACK(TOOL_SET[52]);等待测量头缩回
 		ENDIF
 	ENDIF
 ENDIF
