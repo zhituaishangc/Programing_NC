@@ -13,7 +13,7 @@ IF TOOL_SET[31]==1;接近开关测量机构
 	STOPRE
 	MSG("测头伸出中")
 	F_PROBE_M_OUT(TOOL_SET[51]);接近开关伸出
-    F_PROBE_DBB_OUT(TOOL_SET[51]);测量机构伸出到位DBB信号
+	F_PROBE_DBB_OUT(TOOL_SET[51]);测量机构伸出到位DBB信号
 
 	E_PROBE_DETECTED_CMOVE(5,INI[59]*6);如果触碰到齿顶,正向旋转离开齿顶
 
@@ -39,7 +39,7 @@ IF TOOL_SET[31]==1;接近开关测量机构
 	OPERATION_KAIGUAN_END:
 	MSG("测头退回中")
 	F_PROBE_M_BACK(TOOL_SET[51]);接近开关退回
-    F_PROBE_DBB_BACK(TOOL_SET[51]);等待接近开关缩回
+	F_PROBE_DBB_BACK(TOOL_SET[51]);等待接近开关缩回
 ENDIF
 
 IF TOOL_SET[49]==1;测量头测量结构
@@ -54,7 +54,7 @@ IF TOOL_SET[49]==1;测量头测量结构
 	STOPRE
 	MSG("测头伸出中")
 	F_PROBE_M_OUT(TOOL_SET[52]);测量头伸出
-    F_PROBE_DBB_OUT(TOOL_SET[52]);测量机构伸出到位DBB信号
+	F_PROBE_DBB_OUT(TOOL_SET[52]);测量机构伸出到位DBB信号
 
 	D_PROBE_DETECT_CPOSITION(300,-5,INI[59]*6,INI[59],TOOL_SET[37])
 	F_PROBE_AC_MEA(TOOL_SET[52])
@@ -78,7 +78,7 @@ IF TOOL_SET[49]==1;测量头测量结构
 	OPERATION_CETOU_END:
 	MSG("测头退回中")
 	F_PROBE_M_BACK(TOOL_SET[52]);测量头退回
-    F_PROBE_DBB_BACK(TOOL_SET[52]);等待测量头缩回
+	F_PROBE_DBB_BACK(TOOL_SET[52]);等待测量头缩回
 ENDIF
 
 ;计算C初始角
