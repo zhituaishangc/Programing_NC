@@ -1,0 +1,51 @@
+PROC JXS_MAIN DISPLON
+;;**********程序功能**********
+;;机械手加工主程序
+;;***************************
+
+DEF REAL DR0
+
+DR0=0
+INI[86]=0;连续加工
+M83;机械手不过来
+
+TOU: 
+G90 G01 Z=INI[28] F7000
+G90 G01 X=INI[23] F5000
+G90 G01 C=INI[27] F18000
+
+;机床-机械手信号复位
+M81;门已打开指令复位
+M85;故障信号复位
+M87;卡盘松开信号复位
+M89;卡盘夹紧信号复位
+
+IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1);修整/对刀/无机械手
+    GOTOF TX;单件加工
+ENDIF
+
+IF DR0==0;机床-机械手发送送料信号
+    M82;预准备信号
+    DR0=1
+ENDIF
+
+JXS_ZJ;送料
+
+TX:
+M48;关门
+WHILE($A_DBB[10]==0)
+    MSG("等待自动门关闭")
+    G4 F0.2
+ENDWHILE
+
+A_GRINDING;磨削
+
+STOPRE
+IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1) OR (INI[86]==1);修整/对刀/不用机械手/加工结束
+    RET
+ELSE
+    GOTOB TOU
+ENDIF
+
+RET
+
