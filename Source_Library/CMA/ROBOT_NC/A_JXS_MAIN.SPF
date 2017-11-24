@@ -1,4 +1,4 @@
-PROC JXS_MAIN DISPLON
+PROC A_JXS_MAIN DISPLON
 ;;**********程序功能**********
 ;;机械手加工主程序
 ;;***************************
@@ -20,7 +20,7 @@ IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1);修整/对刀/无机械手
     GOTOF TX;单件加工
 ENDIF
 
-JXS_ZJ;送料
+B_JXS_ZJ;送料
 
 TX:
 M48;关门
