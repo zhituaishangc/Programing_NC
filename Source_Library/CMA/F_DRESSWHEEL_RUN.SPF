@@ -5,9 +5,9 @@ PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;;***************************
 
 IF $A_DBB[13]==0;修整轮当前未启动
-    INI[71]=1;启动等待转速到位延时时间
+    INI[71]=INI[114];启动等待转速到位延时时间
 ELSE
-    INI[71]=0.2
+    INI[71]=INI[115]
 ENDIF
 
 IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
