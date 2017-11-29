@@ -16,7 +16,6 @@ O_LINESPEED_DRESS;砂轮速度(直接调用外圆速度部分)
 O_DRESS_INIT_POSITION;修整轮运行至起始位置
 WHILE(DRESSER[104]+DRESSER[105]<=DRESSER[120]+DRESSER[121])
     STOPRE
-    M20;吸雾开
     M38;修整冷却开
     O_DRESS_SHAPE;修整
     IF $A_DBB[2]==1;修整中途安全结束程序

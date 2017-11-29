@@ -32,7 +32,6 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI
     ;++++sw-or-sn-end++++
 ENDIF
 
-M20;吸雾开
 M8;内磨削冷却开
 M38;外磨削冷却开
 

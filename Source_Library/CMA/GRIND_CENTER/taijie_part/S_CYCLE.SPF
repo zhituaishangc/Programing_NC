@@ -19,7 +19,6 @@ IF TECHNOLOGY[263]+TECHNOLOGY[264]==1;第一次磨削或者修整后的磨削
     ENDIF
 ENDIF
 
-M20;吸雾开
 M38;外磨削冷却开
 
 T_GRIND;螺纹小循环

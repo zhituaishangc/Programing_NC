@@ -21,7 +21,6 @@ WHILE(DRESSER[73]+DRESSER[74]<=DRESSER[75]+DRESSER[76])
         G4 F1.5;重新计算转速后的延时
     ENDIF
     K_GRINDWHEEL_DIACURNT;当前砂轮直径计算
-    M20;吸雾开
     M38;修整冷却开
     J_DRESS_SHAPE;修整
     IF $A_DBB[2]==1;修整中途安全结束程序
