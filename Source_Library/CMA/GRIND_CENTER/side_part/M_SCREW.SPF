@@ -12,6 +12,9 @@ ENDIF
 N_PARA_TRAN;参数传递
 N_TECH_PARA_TRAN;左右端面设定参数切换
 
+M20;吸雾开
+M26;空调开
+
 IF GRIND[6]<>0;修整
     IF (GRIND[7]==0) AND (INI[104]==1);当前要修整左端面且已经修整过端面了
         GOTOF SIDE_G_ENDING
