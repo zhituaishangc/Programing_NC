@@ -1030,11 +1030,12 @@
 |SHAPE_MODEL[2]||右斜线角度
 |SHAPE_MODEL[3]||锥度
 |SHAPE_MODEL[4]||螺距
-|SHAPE_MODEL[5]||大径(最小)
-|SHAPE_MODEL[6]||大径(实际需要)
-|SHAPE_MODEL[7]||小径
+|SHAPE_MODEL[5]||齿高
+|SHAPE_MODEL[6]||槽高
+|SHAPE_MODEL[7]||
 |SHAPE_MODEL[8]||底部斜线延长长度(水平)
 |SHAPE_MODEL[9]||过度线角度(0-90)
+|SHAPE_MODEL[110]||锥度(X方向)
 
 |SHAPE_MODEL[10]||弧底圆弧半径
 |SHAPE_MODEL[11]||左弧顶圆弧半径
@@ -1043,11 +1044,12 @@
 |SHAPE_MODEL[14]||右斜线角度
 |SHAPE_MODEL[15]||锥度
 |SHAPE_MODEL[16]||螺距
-|SHAPE_MODEL[17]||大径(实际需要)
-|SHAPE_MODEL[18]||小径
+|SHAPE_MODEL[17]||齿高
+|SHAPE_MODEL[18]||
 |SHAPE_MODEL[19]||底部圆弧延长长度(水平)
 |SHAPE_MODEL[20]||过度线角度(0-90)
 |SHAPE_MODEL[21]||过度线长度(水平)
+|SHAPE_MODEL[111]||锥度(X方向)
 
 |SHAPE_MODEL[30]||齿底圆弧半径
 |SHAPE_MODEL[31]||第一斜边左角度
@@ -1056,9 +1058,9 @@
 |SHAPE_MODEL[34]||第二斜边右角度
 |SHAPE_MODEL[35]||锥度
 |SHAPE_MODEL[36]||螺距
-|SHAPE_MODEL[37]||大径(实际需要)
-|SHAPE_MODEL[38]||中径
-|SHAPE_MODEL[39]||小径
+|SHAPE_MODEL[37]||齿高
+|SHAPE_MODEL[38]||中径小径距
+|SHAPE_MODEL[39]||
 |SHAPE_MODEL[40]||底部斜线延长长度(水平)
 |SHAPE_MODEL[41]||过度线角度(0-90)
 
@@ -1066,9 +1068,9 @@
 |SHAPE_MODEL[51]||右侧斜线角度
 |SHAPE_MODEL[52]||锥度
 |SHAPE_MODEL[53]||螺距
-|SHAPE_MODEL[54]||大径(实际需要)
-|SHAPE_MODEL[55]||中径
-|SHAPE_MODEL[56]||小径
+|SHAPE_MODEL[54]||齿高
+|SHAPE_MODEL[55]||中径小径距
+|SHAPE_MODEL[56]||
 |SHAPE_MODEL[57]||底部斜线延长长度(水平)
 |SHAPE_MODEL[58]||过度线角度(0-90)
 |SHAPE_MODEL[59]||过度线长度(水平)
@@ -1078,9 +1080,9 @@
 |SHAPE_MODEL[62]||右侧斜线角度
 |SHAPE_MODEL[63]||锥度
 |SHAPE_MODEL[64]||螺距
-|SHAPE_MODEL[65]||大径(实际需要)
-|SHAPE_MODEL[66]||中径
-|SHAPE_MODEL[67]||小径
+|SHAPE_MODEL[65]||齿高
+|SHAPE_MODEL[66]||中径小径距
+|SHAPE_MODEL[67]||
 |SHAPE_MODEL[68]||底部斜线延长长度(水平)
 |SHAPE_MODEL[69]||过度线角度(0-90)
 |双圆弧||
@@ -1107,3 +1109,5 @@
 |SHAPE_MODEL[103]||齿高
 |SHAPE_MODEL[104]||延长线角度
 
+|SHAPE_MODEL[110]||锥度(X方向)齿形一
+|SHAPE_MODEL[111]||锥度(X方向)齿形二
