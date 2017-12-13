@@ -137,8 +137,14 @@ IF TOOL_SET[49]==1;测量头测量结构
             DRESSER[6]=4;工件外径设置有误
             GOTOF OPERATION_END
         ENDIF
-        IF DR19<DR21
-            DR21=DR21-360
+        IF INI[31]<90;孔角度小于90度
+            IF DR19>DR21
+                DR19=DR19-360
+            ENDIF
+        ELSE
+            IF DR19<DR21
+                DR21=DR21-360
+            ENDIF
         ENDIF
         DR22=(DR18+DR20)/2
         DR23=(DR19+DR21)/2
