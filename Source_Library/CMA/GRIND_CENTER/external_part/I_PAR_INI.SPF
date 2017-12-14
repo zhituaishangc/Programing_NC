@@ -60,5 +60,9 @@ IF INI[3]<=0;磨削长度<=0
 	DRESSER[6]=1;工件左端坐标>工件右端坐标
 ENDIF
 
+IF DRESSER[91]<DRESSER[137];当前砂轮直径<最小砂轮直径
+	DRESSER[6]=9;砂轮过小,请更换砂轮
+ENDIF
+
 RET
 
