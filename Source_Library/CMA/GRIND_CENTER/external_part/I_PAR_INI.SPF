@@ -38,15 +38,9 @@ IF INI[96]==1;磨削中不正常退出标记
 ENDIF
 
 ;工件磨削起点/终点
-IF DRESSER[131]==0;外圆磨削方向(0从里往外1从外往里)
-	INI[6]=PROCESS[47]+0.1;工件右端
-	INI[7]=PROCESS[48]+0.1;工件左端
-	INI[3]=INI[6]-INI[7];磨削长度
-ELSE
-	INI[7]=PROCESS[47]+0.1;工件右端
-	INI[6]=PROCESS[48]+0.1;工件左端
-	INI[3]=INI[7]-INI[6];磨削长度
-ENDIF
+INI[6]=PROCESS[47]+0.1;工件右端
+INI[7]=PROCESS[48]+0.1+2;工件左端
+INI[3]=INI[6]-INI[7];磨削长度
 
 ;X轴初始接触赋值位置选择
 PROCESS[18]=0;当前工艺
