@@ -350,11 +350,11 @@
     <Row37 type="QString" value=""/>
     <Row38 type="QString" value=""/>
     <Row39 type="QString" value=""/>
-    <Row40 type="QString" value="发送-送料窗已打开"/>
-    <Row41 type="QString" value="发送-预完成"/>
-    <Row42 type="QString" value="发送-机床故障"/>
-    <Row43 type="QString" value="发送-卡盘松开完成"/>
-    <Row44 type="QString" value="发送-卡盘夹紧完成"/>
+    <Row40 type="QString" value="发送-送料窗已打开(M80-1/M81-0)"/>
+    <Row41 type="QString" value="发送-预完成(M82-1/M83-0)"/>
+    <Row42 type="QString" value="发送-机床故障(M84-1/M85-0)"/>
+    <Row43 type="QString" value="发送-卡盘松开完成(M86-1/M87-0)"/>
+    <Row44 type="QString" value="发送-卡盘夹紧完成(M88-1/M89-0)"/>
     <Row45 type="QString" value=""/>
     <Row46 type="QString" value=""/>
     <Row47 type="QString" value=""/>
