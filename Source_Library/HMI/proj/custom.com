@@ -79,7 +79,7 @@
 	DEF INITANG=(R///$85176,$85176,$85042,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[5]"/10,310,210/120,310,60/);头架初始角
 	DEF VAR19=(R///$85158,$85158,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR1/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
-	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[30]"/210,350,202/310,350,20/);参数锁定开关
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[30]"/0,0,0/210,350,20/);参数锁定开关
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -338,7 +338,7 @@
 	DEF INITANG=(R///$85176,$85176,$85042,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[5]"/10,310,210/120,310,60/);头架初始角
 	DEF VAR19=(R///$85158,$85158,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,330,210/120,330,60/);当前磨削接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR1/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,350,210/120,350,60/);初始磨削接触位(对刀完成后磨削接触位)
-	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[30]"/210,350,202/310,350,20/);参数锁定开关
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_18_27_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[30]"/0,0,0/210,350,20/);参数锁定开关
 
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
