@@ -185,12 +185,13 @@
 |DRESSER[128]||端面累积修整量
 |DRESSER[129]||外圆端面部分磨砂轮新旧(0新1旧)
 |DRESSER[130]||端面修整砂轮当前转速
-|DRESSER[131]||外圆磨削方向(0从里往外1从外往里)
+|DRESSER[131]||
 |DRESSER[132]||外圆修整锥度微调(正 左低右高/负 左高右低)
 |DRESSER[133]||新砂轮修整模式(0抬齿高/1偏半个砂轮宽度)
 |DRESSER[134]||新砂轮修整模式1偏半个砂轮宽度：当前左水平位置
 |DRESSER[135]||新砂轮修整模式1偏半个砂轮宽度：当前右水平位置
 |DRESSER[136]||端面修整锥度微调(正 前大后小/负 前小后大)
+|DRESSER[137]||外圆砂轮最小磨削直径
 |||
 |**初始化参数(INI)**||
 |INI[0]|ROTATION|螺纹旋向(0右旋/1左旋)
@@ -803,7 +804,7 @@
 |TECH_DRESS_DEEP[21]|TECH_DRESS_DEEP_R|批量粗修修整进给量
 |TECH_DRESS_DEEP[22]|TECH_DRESS_DEEP_MR|批量半粗修修整进给量
 |TECH_DRESS_DEEP[23]|TECH_DRESS_DEEP_MF|批量半精修修整进给量
-|TECH_DRESS_DEEP[24]|TECH_DRESS_DEEP_F|单件精修修整进给量
+|TECH_DRESS_DEEP[24]|TECH_DRESS_DEEP_F|批量精修修整进给量
 |TECH_DRESS_DEEP[31]|TECH_DRESS_DEEP_R|单件粗修修整进给量
 |TECH_DRESS_DEEP[32]|TECH_DRESS_DEEP_MR|单件半粗修修整进给量
 |TECH_DRESS_DEEP[33]|TECH_DRESS_DEEP_MF|单件半精修修整进给量
