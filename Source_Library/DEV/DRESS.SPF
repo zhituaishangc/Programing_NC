@@ -1,0 +1,39 @@
+;修整
+DRESS[2]=0;当前粗修次数
+DRESS[3]=0;当前精修次数
+
+IF MODE[0]==0;磨削中修整
+    DRESS[4]=0;
+    DRESS[5]=TECH_0[7];
+    DRESS[6]=0;
+    DRESS[7]=TECH_0[8];
+    DRESS[8]=0;
+    DRESS[9]=TECH_0[9];
+    DRESS[11]=TECH_0[10];
+ELSE;纯修整
+    DRESS[4]=DRESS[12];设定粗修次数
+    DRESS[5]=DRESS[13];设定精修次数
+    DRESS[6]=DRESS[14];设定粗修进给
+    DRESS[7]=DRESS[15];设定精修进给
+    DRESS[8]=DRESS[16];设定粗修速度
+    DRESS[9]=DRESS[17];设定精修速度
+    DRESS[11]=DRESS[18];设定线速度
+ENDIF;
+
+WHILE(DRESS[2]+DRESS[3]<DRESS[4]+DRESS[5]);当前修整次数小于设定修整次数
+    IF DRESS[2]<DRESS[4];当前粗修小于设定
+        DRESS[2]=DRESS[2]+1;
+        DRESS[10]=DRESS[8];当前修整速度
+        WHEEL[0]=WHEEL[0]-DRESS[6]*2;砂轮直径累计
+        MSG("粗修中");
+    ELSE;
+        IF DRESS[3]<DRESS[5];当前精修小于设定
+            DRESS[3]=DRESS[3]+1;
+            DRESS[10]=DRESS[9];当前修整速度
+            WHEEL[0]=WHEEL[0]-DRESS[7]*2;砂轮直径累计
+            MSG("精修中");
+        ENDIF;
+    ENDIF;
+    DRESS[1]=DRESS[0]+WHEEL[0]/2*ORI_D0;修整轮接触砂轮位
+ENDWHILE;
+

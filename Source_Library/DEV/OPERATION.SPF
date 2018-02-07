@@ -1,0 +1,3 @@
+;对刀
+GRIND[0]=OPERATION[0]-WHEEL[0]/2*ORI_G0;工件磨削位-砂轮中心基准
+GRIND[1]=GRIND[0];当前基准=初始基准
