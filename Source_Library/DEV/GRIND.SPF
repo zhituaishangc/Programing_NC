@@ -1,6 +1,10 @@
 ;磨削
-IF GRIND[4]==0;批量磨削
-    GRIND[1]=GRIND[0];当前磨削基准=初始磨削基准
+IF GRIND[2]==0;批量磨削
+    WORK[2]=WORK[1];当前磨削中径=初始磨削中径
+ENDIF;
+
+IF (TECH_0[13]/TECH_0[12])==ROUNDUP(TECH_0[13]/TECH_0[12]);工件修整设定达到
+    DRESS;
 ENDIF;
 
 TECH_1[1]=0;当前磨削次数
@@ -81,14 +85,14 @@ WHILE(TECH_1[1]+TECH_2[1]+TECH_3[1]+TECH_4[1]<TECH_1[0]+TECH_2[0]+TECH_3[0]+TECH
         ENDIF;
     ENDIF;
 
-    GRIND[1]=GRIND[1]-TECH_0[3]*ORI_G0*ORI_G3;当前磨削基准位赋值
-    GRIND[3]=GRIND[1]+WHEEL[0]/2*ORI_G0;工件当前接触砂轮位置
+    WORK[2]=WORK[2]-TECH_0[3]*2*WORK[0];当前磨削中径赋值
+    GRIND[1]=GRIND[0]+(WORK[2]/2+WHEEL[0]/2*WORK[0])*ORI_G0;工件当前接触砂轮位置
 
     GRIND_MOVE;磨削动作
 
     IF TECH_0[11]==1;修整设定到达
         DRESS;
-    ENDIF
+    ENDIF;
 
 ENDWHILE;
-
+TECH_0[13]=TECH_0[13]+1;工件计数
