@@ -1,2 +1,5 @@
 ;对刀
 GRIND[0]=OPERATION[0]-(WHEEL[0]/2*WORK[0]+WORK[1]/2)*ORI_G0;工件中心-砂轮中心基准
+
+RET;
+
