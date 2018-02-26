@@ -20,5 +20,7 @@ ELSE;左右磨削
     GRIND[7]=GRIND[4];终点
 ENDIF;
 
+WORK[7]=WORK[4]*WORK[6];导程
+
 RET;
 
