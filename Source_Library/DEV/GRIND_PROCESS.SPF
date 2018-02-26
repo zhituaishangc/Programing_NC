@@ -1,29 +1,33 @@
 IF (TECH_1[1]+TECH_2[1]+TECH_3[1]+TECH_4[1]==1) OR (TECH_0[14]==1);第一次磨削或磨削前修过砂轮
     TECH_0[14]=0;修砂轮标记清零
-    G90 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
+    G90 G64 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
     G90 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST;进给轴加工安全位置
 
     G90 G01 AX[AXNAME(G_1)]=GRIND[6] F=G1_FAST;台面磨削起始位置
-    G90 G01 AX[AXNAME(G_0)]=GRIND[1]+TECH_0[3]*4*ORI_G0*WORK[0] F=G0_FAST/4;进给轴磨削位置附近
+    G90 G01 AX[AXNAME(G_0)]=GRIND[1]+TECH_0[3]*4*ORI_G0*WORK[0] F=G0_SLOW;进给轴磨削位置附近
 ENDIF;
+
+;***********************************
 
 IF TECH_0[2]==0;单向
     G90 G01 AX[AXNAME(G_0)]=GRIND[1] F=G0_SLOW;进给轴磨削位置
-    GRIND_START;磨削插补动作
+    GRIND_START(GRIND[6],GRIND[7],WORK[3],WORK[7],WORK[5],TECH_0[4]);磨削插补动作
 ELSE;双向
     G90 G01 AX[AXNAME(G_0)]=GRIND[1]+TECH_0[3]/2*ORI_G0*WORK[0] F=G0_SLOW;进给轴磨削位置
-    GRIND_START;磨削插补动作
+    GRIND_START(GRIND[6],GRIND[7],WORK[3],WORK[7],WORK[5],TECH_0[4]);磨削插补动作
     G90 G01 AX[AXNAME(G_0)]=GRIND[1] F=G0_SLOW;进给轴磨削位置
-    GRIND_START;磨削插补动作
+    GRIND_START(GRIND[7],GRIND[6],WORK[3],WORK[7],WORK[5],TECH_0[4]);磨削插补动作
 ENDIF;
+
+;************************************
 
 IF (TECH_0[11]==0) OR (TECH_1[1]+TECH_2[1]+TECH_3[1]+TECH_4[1]<TECH_1[0]+TECH_2[0]+TECH_3[0]+TECH_4[0]);磨完不修砂轮或不是最后一刀
     IF TECH_0[2]==0;单向
-        G90 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/4;进给轴安全位置
+        G90 G64 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/4;进给轴安全位置
         G90 G01 AX[AXNAME(G_1)]=GRIND[6] F=G1_FAST;台面磨削起始位置
     ENDIF
 ELSE;磨完要修砂轮或最后一刀
-    G90 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/4;进给轴安全位置
+    G90 G64 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/4;进给轴安全位置
     G90 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
 ENDIF;
 
