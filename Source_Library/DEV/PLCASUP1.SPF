@@ -21,7 +21,7 @@ DRFOF;
 
 IF $A_DBB[2]==1;按下退刀键
 	G90 G64 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/2;进给轴加工安全位置
-    G90 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
+    G90 G01 AX[AXNAME(G_1)]=GRIND[12] F=G1_FAST;台面磨削起始安全位置
     G90 G01 AX[AXNAME(G_0)]=GRIND[11] F=G0_FAST;进给轴加工安全位置
 ENDIF;
 
