@@ -1,10 +1,10 @@
 IF OPERATION[11]==0;起点对刀
-    OPERATION[12]=GRIND[6];
+    OPERATION[12]=GRIND[6];磨削起点
 ELSE;
     IF OPERATION[11]==1;中点对刀
-        OPERATION[12]=(GRIND[6]+GRIND[7])/2
+        OPERATION[12]=(GRIND[6]+GRIND[7])/2;磨削中点
     ELSE;任意点
-        OPERATION[12]=OPERATION[12];
+        OPERATION[12]=OPERATION[12];任意输入点(界面输入)
     ENDIF;
 ENDIF;
 
@@ -25,7 +25,7 @@ ENDIF
 
 PLCASUP1;跳转到初始角度计算子程序
 
-G90 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/2;进给轴加工安全位置
+G90 G64 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/2;进给轴加工安全位置
 G90 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
 G90 G01 AX[AXNAME(G_0)]=GRIND[11] F=G0_FAST;进给轴加工安全位置
 
