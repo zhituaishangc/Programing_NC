@@ -947,6 +947,11 @@
 |R26|当前修整进给速度|
 |R27|当前修整进给量|
 |||
+|PARA_LOCK_SWITCH[6]|锁定中心距的开关|
+|PARA_LOCK_SWITCH[7]|锁定修整中心的开关|
+|PARA_LOCK_SWITCH[8]|锁定当前接触的开关|
+|PARA_LOCK_SWITCH[9]|锁定齿高的开关|
+|PARA_LOCK_SWITCH[29]|锁定初始磨削接触的开关|
 |**通用齿形模型变量**||
 |WHICH_COMMON_SHAPE||齿形选择
 |COMMON_VER_TOP||齿形最高点位置
