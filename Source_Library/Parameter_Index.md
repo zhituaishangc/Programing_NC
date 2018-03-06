@@ -228,7 +228,7 @@
 |INI[31]||腰型孔角度(展开图尺寸)
 |INI[32]||腰型孔长(展开图尺寸)
 |INI[33]||腰型孔宽(展开图尺寸)
-|INI[34]||工件外圆
+|INI[34]||内螺纹螺母外圆直径
 |INI[35]||工件端面到反相器孔距离
 |INI[36]|WHEEL_TYPE|砂轮类型选择(0模拟量/1伺服/2异步电机)
 |INI[37]|DWHEEL_TYPE|修整轮类型选择(0模拟量/1伺服/2异步电机)
@@ -369,6 +369,8 @@
 |TOOL_SET[54]||测量中$A_PROBE信号的状态
 |TOOL_SET[55]||当前正在进行接近开关0/测量头1机构测量
 |TOOL_SET[56]||成量静止对刀模式下，x-drf手动输入值
+|TOOL_SET[57]||是否是首件工件对刀,0是1否,用于批量但每件都手动对刀时保持尺寸一致性
+|TOOL_SET[58]||磨削中心测左端面前让C转一角度,避开卡盘
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
@@ -725,10 +727,10 @@
 |TECHNOLOGY[236]||夹具磨削端面部分砂轮接触夹具Z初始坐标
 |TECHNOLOGY[237]||夹具磨削端面部分磨削次数
 |TECHNOLOGY[238]||夹具磨削端面部分进刀量
-|TECHNOLOGY[239]|GRIND_METHOD_R|外圆粗修单双磨削
-|TECHNOLOGY[240]|GRIND_METHOD_MR|外圆半粗修单双磨削
-|TECHNOLOGY[241]|GRIND_METHOD_MF|外圆半精修单双磨削
-|TECHNOLOGY[242]|GRIND_METHOD_F|外圆精修单双磨削
+|TECHNOLOGY[239]|GRIND_METHOD_R|外圆粗磨单双磨削
+|TECHNOLOGY[240]|GRIND_METHOD_MR|外圆半精磨单双磨削
+|TECHNOLOGY[241]|GRIND_METHOD_MF|外圆精修单双磨削
+|TECHNOLOGY[242]|GRIND_METHOD_F|外圆终磨单双磨削
 |TECHNOLOGY[243]||磨削中心:左端面磨削精磨设定磨削次数
 |TECHNOLOGY[244]||磨削中心:右端面磨削精磨设定磨削次数
 |TECHNOLOGY[245]||磨削中心:当前端面磨削精磨设定磨削次数
