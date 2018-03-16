@@ -1,0 +1,32 @@
+TECH_1[1]=0;当前磨削次数
+TECH_2[1]=0;当前磨削次数
+TECH_3[1]=0;当前磨削次数
+TECH_4[1]=0;当前磨削次数
+TECH_0[14]=0;磨削前经过修砂轮
+GRIND[13]=0;当前磨削第几头
+
+IF GRIND[2]==0;批量磨削
+    WORK[2]=WORK[1];当前磨削中径=初始磨削中径
+ENDIF;
+
+IF (TECH_0[13]/TECH_0[12])==ROUNDUP(TECH_0[13]/TECH_0[12]);工件修整设定达到
+    DRESS;
+    TECH_0[14]=1;磨削前经过修砂轮
+ENDIF;
+
+WHILE(TECH_1[1]+TECH_2[1]+TECH_3[1]+TECH_4[1]<TECH_1[0]+TECH_2[0]+TECH_3[0]+TECH_4[0]);当前磨削次数小于设定磨削次数
+    GRIND_CUMU;数据累计
+    GRIND_PROCESS;磨削动作
+    PLCASUP1;磨削中调整计算
+    IF TECH_0[11]==1;修整设定到达
+        DRESS;
+        TECH_0[14]=1;磨削前经过修砂轮
+    ENDIF;
+ENDWHILE;
+TECH_0[13]=TECH_0[13]+1;工件计数
+
+G90 G01 AX[AXNAME(G_1)]=GRIND[12] F=G1_FAST;台面磨削起始安全位置
+G90 G01 AX[AXNAME(G_0)]=GRIND[11] F=G0_FAST;进给轴结束加工安全位置
+
+RET;
+

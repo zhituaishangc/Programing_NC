@@ -1,0 +1,26 @@
+IF DRESS[2]+DRESS[3]==1;第一次修整
+    G90 G64 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
+    G90 G01 AX[AXNAME(D_0)]=DRESS[1]+10*ORI_D0 F=D0_FAST;修整进刀轴到修整位附近
+
+    G90 G01 AX[AXNAME(D_1)]=DRESS[19] F=D1_FAST;修整插补轴滚轮-砂轮中心位
+
+    G90 G01 AX[AXNAME(D_0)]=DRESS[1]+1*ORI_D0 F=D0_FAST/2;修整进刀轴修整位附近
+    G90 G01 AX[AXNAME(D_0)]=DRESS[1]+0.1*ORI_D0 F=D0_SLOW;修整进刀轴修整位附近
+ENDIF;
+
+;*****************************
+
+DRESS_START;修整动作
+
+;*****************************
+
+IF DRESS[2]+DRESS[3]==DRESS[4]+DRESS[5];最后一次修整结束
+    G90 G64 G01 AX[AXNAME(D_0)]=DRESS[1]+10*ORI_D0 F=D0_FAST;修整进刀轴到修整位附近
+
+    G90 G01 AX[AXNAME(D_1)]=DRESS[19] F=D1_FAST;修整插补轴滚轮-砂轮中心位
+
+    G90 G01 AX[AXNAME(G_1)]=GRIND[9] F=G1_FAST;台面磨削-修整安全位置
+ENDIF;
+
+RET;
+

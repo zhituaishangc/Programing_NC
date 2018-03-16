@@ -1,0 +1,26 @@
+DRFOF;手轮偏置清除
+
+;优先级:修整>自动对刀>手动对刀>磨削
+MODE[0]=0;磨削
+IF $A_DBB[1]==1;是否手动对刀
+    MODE[0]=2;
+ENDIF;
+IF $A_DBB[5]==1;是否自动对刀
+    MODE[0]=3;
+ENDIF;
+IF $A_DBB[0]==1;是否修整
+    MODE[0]=1;
+ENDIF;
+
+IF GRIND[5]==0;右左磨削
+    GRIND[6]=GRIND[4];起点
+    GRIND[7]=GRIND[3];终点
+ELSE;左右磨削
+    GRIND[6]=GRIND[3];起点
+    GRIND[7]=GRIND[4];终点
+ENDIF;
+
+WORK[7]=WORK[4]*WORK[6];导程
+
+RET;
+

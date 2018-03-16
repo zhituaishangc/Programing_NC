@@ -1,0 +1,29 @@
+;修整
+DRESS[2]=0;当前粗修次数
+DRESS[3]=0;当前精修次数
+
+IF MODE[0]==0;磨削中修整
+    DRESS[4]=0;
+    DRESS[5]=TECH_0[7];
+    DRESS[6]=0;
+    DRESS[7]=TECH_0[8];
+    DRESS[8]=0;
+    DRESS[9]=TECH_0[9];
+    DRESS[11]=TECH_0[10];
+ELSE;纯修整
+    DRESS[4]=DRESS[12];设定粗修次数
+    DRESS[5]=DRESS[13];设定精修次数
+    DRESS[6]=DRESS[14];设定粗修进给
+    DRESS[7]=DRESS[15];设定精修进给
+    DRESS[8]=DRESS[16];设定粗修速度
+    DRESS[9]=DRESS[17];设定精修速度
+    DRESS[11]=DRESS[18];设定线速度
+ENDIF;
+
+WHILE(DRESS[2]+DRESS[3]<DRESS[4]+DRESS[5]);当前修整次数小于设定修整次数
+    DRESS_CUMU;数据累计
+    DRESS_PROCESS;修整动作
+ENDWHILE;
+
+RET;
+

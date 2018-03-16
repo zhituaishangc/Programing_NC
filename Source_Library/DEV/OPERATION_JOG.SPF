@@ -1,0 +1,33 @@
+IF OPERATION[11]==0;起点对刀
+    OPERATION[12]=GRIND[6];磨削起点
+ELSE;
+    IF OPERATION[11]==1;中点对刀
+        OPERATION[12]=(GRIND[6]+GRIND[7])/2;磨削中点
+    ELSE;任意点
+        OPERATION[12]=OPERATION[12];任意输入点(界面输入)
+    ENDIF;
+ENDIF;
+
+OPERATION[5]=GRIND[8];手动对刀开始进给轴坐标-进给轴加工安全位置
+OPERATION[6]=OPERATION[12];手动对刀起始台面位置坐标
+OPERATION[7]=0;手动对刀开始旋转插补轴坐标
+
+G90 G64 G01 AX[AXNAME(G_1)]=GRIND[12] F=G1_FAST;台面磨削起始安全位置
+G90 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST;进给轴加工安全位置
+G90 G01 AX[AXNAME(G_1)]=OPERATION[12] F=G1_FAST;手动对刀起始台面位置坐标
+G90 G01 AX[AXNAME(G_2)]=0 F=G2_FAST;手动对刀开始旋转插补轴坐标
+
+GRIND_START(OPERATION[12],GRIND[7],WORK[3],WORK[7],WORK[5],OPERATION[13]);磨削插补动作
+
+IF $A_DBB[2]==1;有报警/按下退刀键则退出程序
+    RET
+ENDIF
+
+PLCASUP1;跳转到初始角度计算子程序
+
+G90 G64 G01 AX[AXNAME(G_0)]=GRIND[8] F=G0_FAST/2;进给轴加工安全位置
+G90 G01 AX[AXNAME(G_1)]=GRIND[12] F=G1_FAST;台面磨削起始安全位置
+G90 G01 AX[AXNAME(G_0)]=GRIND[11] F=G0_FAST;进给轴加工安全位置
+
+RET;
+

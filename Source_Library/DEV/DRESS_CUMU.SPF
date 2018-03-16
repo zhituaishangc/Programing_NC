@@ -1,0 +1,17 @@
+IF DRESS[2]<DRESS[4];当前粗修小于设定
+    DRESS[2]=DRESS[2]+1;
+    DRESS[10]=DRESS[8];当前修整速度
+    WHEEL[0]=WHEEL[0]-DRESS[6]*2;砂轮直径累计
+    MSG("粗修中");
+ELSE;
+    IF DRESS[3]<DRESS[5];当前精修小于设定
+        DRESS[3]=DRESS[3]+1;
+        DRESS[10]=DRESS[9];当前修整速度
+        WHEEL[0]=WHEEL[0]-DRESS[7]*2;砂轮直径累计
+        MSG("精修中");
+    ENDIF;
+ENDIF;
+DRESS[1]=DRESS[0]+WHEEL[0]/2*ORI_D0;修整轮接触砂轮位
+
+RET;
+

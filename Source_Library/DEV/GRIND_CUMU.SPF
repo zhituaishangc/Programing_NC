@@ -1,0 +1,77 @@
+IF TECH_1[1]<TECH_1[0];当前粗磨次数小于设定
+    TECH_1[1]=TECH_1[1]+1;当前磨削次数
+    TECH_0[2]=TECH_1[2];当前单双
+    TECH_0[3]=TECH_1[3];当前进给量
+    TECH_0[4]=TECH_1[4];当前速度
+    TECH_0[5]=TECH_1[5];当前磨削线速度
+    TECH_0[6]=TECH_1[6];修整设定
+    TECH_0[7]=TECH_1[7];修整次数
+    TECH_0[8]=TECH_1[8];修整进给量
+    TECH_0[9]=TECH_1[9];修整速度
+    TECH_0[10]=TECH_1[10];修整线速度
+    IF (TECH_1[1]/TECH_0[6])-ROUNDUP(TECH_1[1]/TECH_0[6])==0;当前次数是修整设定整数倍
+        TECH_0[11]=1;修整设定到达
+    ELSE;
+        TECH_0[11]=0;修整设定到达
+    ENDIF;
+ELSE;
+    IF TECH_2[1]<TECH_2[0];当前粗磨次数小于设定
+        TECH_2[1]=TECH_2[1]+1;当前磨削次数
+        TECH_0[2]=TECH_2[2];当前单双
+        TECH_0[3]=TECH_2[3];当前进给量
+        TECH_0[4]=TECH_2[4];当前速度
+        TECH_0[5]=TECH_2[5];当前磨削线速度
+        TECH_0[6]=TECH_2[6];修整设定
+        TECH_0[7]=TECH_2[7];修整次数
+        TECH_0[8]=TECH_2[8];修整进给量
+        TECH_0[9]=TECH_2[9];修整速度
+        TECH_0[10]=TECH_2[10];修整线速度
+        IF (TECH_2[1]/TECH_0[6])-ROUNDUP(TECH_2[1]/TECH_0[6])==0;当前次数是修整设定整数倍
+            TECH_0[11]=1;修整设定到达
+        ELSE;
+            TECH_0[11]=0;修整设定到达
+        ENDIF;
+    ELSE;
+        IF TECH_3[1]<TECH_3[0];当前粗磨次数小于设定
+            TECH_3[1]=TECH_3[1]+1;当前磨削次数
+            TECH_0[2]=TECH_3[2];当前单双
+            TECH_0[3]=TECH_3[3];当前进给量
+            TECH_0[4]=TECH_3[4];当前速度
+            TECH_0[5]=TECH_3[5];当前磨削线速度
+            TECH_0[6]=TECH_3[6];修整设定
+            TECH_0[7]=TECH_3[7];修整次数
+            TECH_0[8]=TECH_3[8];修整进给量
+            TECH_0[9]=TECH_3[9];修整速度
+            TECH_0[10]=TECH_3[10];修整线速度
+            IF (TECH_3[1]/TECH_0[6])-ROUNDUP(TECH_3[1]/TECH_0[6])==0;当前次数是修整设定整数倍
+                TECH_0[11]=1;修整设定到达
+            ELSE;
+                TECH_0[11]=0;修整设定到达
+            ENDIF;
+        ELSE;
+            IF TECH_4[1]<TECH_4[0];当前粗磨次数小于设定
+                TECH_4[1]=TECH_4[1]+1;当前磨削次数
+                TECH_0[2]=TECH_4[2];当前单双
+                TECH_0[3]=TECH_4[3];当前进给量
+                TECH_0[4]=TECH_4[4];当前速度
+                TECH_0[5]=TECH_4[5];当前磨削线速度
+                TECH_0[6]=TECH_4[6];修整设定
+                TECH_0[7]=TECH_4[7];修整次数
+                TECH_0[8]=TECH_4[8];修整进给量
+                TECH_0[9]=TECH_4[9];修整速度
+                TECH_0[10]=TECH_4[10];修整线速度
+                IF (TECH_4[1]/TECH_0[6])-ROUNDUP(TECH_4[1]/TECH_0[6])==0;当前次数是修整设定整数倍
+                    TECH_0[11]=1;修整设定到达
+                ELSE;
+                    TECH_0[11]=0;修整设定到达
+                ENDIF;
+            ENDIF;
+        ENDIF;
+    ENDIF;
+ENDIF;
+
+WORK[2]=WORK[2]-TECH_0[3]*2*WORK[0];当前磨削中径赋值
+GRIND[1]=GRIND[0]+(WORK[2]/2+WHEEL[0]/2*WORK[0])*ORI_G0;工件当前接触砂轮位置
+
+RET;
+
