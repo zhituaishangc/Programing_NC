@@ -951,6 +951,7 @@
 |PARA_LOCK_SWITCH[7]|锁定修整中心的开关|
 |PARA_LOCK_SWITCH[8]|锁定当前接触的开关|
 |PARA_LOCK_SWITCH[9]|锁定齿高的开关|
+|PARA_LOCK_SWITCH[10]|锁定修整轮直径的开关|
 |PARA_LOCK_SWITCH[29]|锁定初始磨削接触的开关|
 |**通用齿形模型变量**||
 |WHICH_COMMON_SHAPE||齿形选择
