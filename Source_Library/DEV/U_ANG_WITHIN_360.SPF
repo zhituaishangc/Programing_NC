@@ -1,4 +1,4 @@
-PROC ANG_WITHIN_360(VAR REAL C_ANG) DISPLOF
+PROC U_ANG_WITHIN_360(VAR REAL C_ANG) DISPLOF
 ;;**********程序功能**********
 ;;将角度调整到0-360内
 ;C_ANG:角度
