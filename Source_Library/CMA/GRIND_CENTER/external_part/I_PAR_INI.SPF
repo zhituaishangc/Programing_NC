@@ -39,7 +39,7 @@ ENDIF
 
 ;工件磨削起点/终点
 INI[6]=PROCESS[47]+0.1;工件右端
-INI[7]=PROCESS[48]+0.1+2;工件左端
+INI[7]=PROCESS[48]+0.1+PROCESS[112];工件左端+退刀槽距离
 INI[3]=INI[6]-INI[7];磨削长度
 
 ;X轴初始接触赋值位置选择

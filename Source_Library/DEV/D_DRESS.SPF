@@ -21,8 +21,8 @@ ELSE;纯修整
 ENDIF;
 
 WHILE(DRESS[2]+DRESS[3]<DRESS[4]+DRESS[5]);当前修整次数小于设定修整次数
-    DRESS_CUMU;数据累计
-    DRESS_PROCESS;修整动作
+    E_DRESS_CUMU;数据累计
+    E_DRESS_PROCESS;修整动作
 ENDWHILE;
 
 RET;

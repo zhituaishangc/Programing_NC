@@ -11,6 +11,7 @@ ENDIF
 IF TECHNOLOGY[263]+TECHNOLOGY[264]==1;第一次磨削或者修整后的磨削
     MSG("台面到磨削起点")
     G90 G01 Z=INI[6] F=INI[56];Z轴到磨削起点
+    M3 S=PROCESS[95];头架启动
     M38;外磨削冷却开
     MSG("砂轮到安全位置")
     IF PROCESS[57]==1;外磨砂轮轴类型
