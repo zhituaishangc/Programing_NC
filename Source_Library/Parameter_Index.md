@@ -767,6 +767,10 @@
 |TECHNOLOGY[264]||当前台阶精磨次数
 |TECHNOLOGY[265]||初始台阶粗磨次数
 |TECHNOLOGY[266]||初始台阶精磨次数
+|TECHNOLOGY[267]||单件粗磨头架转速
+|TECHNOLOGY[268]||单件半粗磨头架转速
+|TECHNOLOGY[269]||单件精磨头架转速
+|TECHNOLOGY[270]||单件终磨头架转速
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
