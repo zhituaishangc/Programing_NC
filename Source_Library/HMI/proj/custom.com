@@ -7,11 +7,11 @@
 	VS1=($85006,ac7,se1) 
 	
 	PRESS(HS7)
-		LM("MASK1");磨削界面加载
+		LM("MASK1","grind.com");磨削界面加载
 	END_PRESS
 
 	PRESS(VS1)
-		LM("Mask0")
+		LM("Mask0","info.com")
 	END_PRESS
 
 //END
@@ -92,31 +92,31 @@
 	VS1=("")
 
 	PRESS(HS1)
-		LM("MASK1")
+		LM("MASK1","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF VAR45.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -125,7 +125,7 @@
 
 	CHANGE(VAR1)
 		IF VAR1.VAL==1
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_CHANGE
 	
@@ -346,43 +346,43 @@
 	VS1=("")
 
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF VAR45.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -391,7 +391,7 @@
 
 	CHANGE(VAR1)
 		IF VAR1.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ENDIF
 	END_CHANGE
 
@@ -596,42 +596,42 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2")
+		LM("MASK2","process.com")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2")
+		LM("MASK2","process.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK29")
+		LM("MASK29","process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -688,7 +688,7 @@
 
 	CHANGE(VAR45)
 		IF VAR45.VAL<>0
-			LM("MASK20")
+			LM("MASK20","process.com")
 		ENDIF
 	END_CHANGE
 
@@ -937,42 +937,42 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK29")
+		LM("MASK29","process.com")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2")
+		LM("MASK2","process.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK29")
+		LM("MASK29","process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1029,7 +1029,7 @@
 
 	CHANGE(VAR45)
 		IF VAR45.VAL<>0
-			LM("MASK20")
+			LM("MASK20","process.com")
 		ENDIF
 	END_CHANGE
 
@@ -1305,34 +1305,34 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK20")
+		LM("MASK20","process.com")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1340,11 +1340,11 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK20")
+		LM("MASK20","process.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK30")
+		LM("MASK30","process.com")
 	END_PRESS
 
 	CHANGE(VAR15);界面设定磨削总量计算
@@ -1397,7 +1397,7 @@
 
 	CHANGE(VAR45)
 		IF VAR45.VAL==0
-			LM("MASK2")
+			LM("MASK2","process.com")
 		ENDIF
 	END_CHANGE
 
@@ -1781,34 +1781,34 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK30")
+		LM("MASK30","process.com")
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1816,11 +1816,11 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK20")
+		LM("MASK20","process.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK30")
+		LM("MASK30","process.com")
 	END_PRESS
 
 	CHANGE(VAR15);界面设定磨削总量计算
@@ -1873,7 +1873,7 @@
 
 	CHANGE(VAR45)
 		IF VAR45.VAL==0
-			LM("MASK2")
+			LM("MASK2","process.com")
 		ENDIF
 	END_CHANGE
 
@@ -2218,46 +2218,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -2265,59 +2265,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR1)
@@ -2637,46 +2637,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -2684,59 +2684,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR20)
@@ -2888,46 +2888,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -2935,59 +2935,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR20)
@@ -3154,46 +3154,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3201,59 +3201,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 	
 	CHANGE(VAR3)
@@ -3461,46 +3461,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3508,59 +3508,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR1)
@@ -3664,46 +3664,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3711,59 +3711,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR3)
@@ -3879,46 +3879,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3926,59 +3926,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR3)
@@ -4070,46 +4070,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -4117,59 +4117,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR0)
@@ -4278,46 +4278,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -4325,59 +4325,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR1)
@@ -4509,46 +4509,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -4556,59 +4556,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR3)
@@ -4713,46 +4713,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -4760,59 +4760,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR3)
@@ -4950,46 +4950,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -4997,59 +4997,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR0)
@@ -5173,46 +5173,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -5220,59 +5220,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR0)
@@ -5418,46 +5418,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -5465,59 +5465,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR0)
@@ -5616,46 +5616,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -5663,59 +5663,59 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK7")
+		LM("MASK7","shape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK8")
+		LM("MASK8","shape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK9")
+		LM("MASK9","shape.com")
 	END_PRESS
 
 	PRESS(VS4)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE;XZ/X
-			LM("MASK12")
+			LM("MASK12","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5")
+			LM("MASK5","dressware.com")
 		ELSE;XZ/X
-			LM("MASK13")
+			LM("MASK13","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS6)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6")
+			LM("MASK6","dressware.com")
 		ELSE;XZ/X
-			LM("MASK14")
+			LM("MASK14","dressware.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(VS7)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK11")
+			LM("MASK11","dressware.com")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
-				LM("MASK16")
+				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17")
+					LM("MASK17","dressware.com")
 				ELSE
-					LM("MASK19")
+					LM("MASK19","dressware.com")
 				ENDIF
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK15")
+		LM("MASK15","dressware.com")
 	END_PRESS
 
 	CHANGE(VAR2)
@@ -5815,46 +5815,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -6080,43 +6080,43 @@
 	END_PRESS
 	
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
     PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -6217,43 +6217,43 @@
 	VS5=($85028,ac7,se1);台阶
 
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
     PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -6261,19 +6261,19 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK24","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK26")
+		LM("MASK26","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK33")
+		LM("MASK33","centerwaiyuan.com")
 	END_PRESS
 
 	CHANGE(VAR1)
@@ -6382,46 +6382,46 @@
 	
 	PRESS(HS1)
 	IF TYPE.VAL==1
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	ELSE
-		LM("MASK1")
+		LM("MASK1","grind.com")
 	ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -6429,19 +6429,19 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK24","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK26")
+		LM("MASK26","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK33")
+		LM("MASK33","centerwaiyuan.com")
 	END_PRESS
 
 	CHANGE(VAR15);界面设定磨削总量计算
@@ -6702,46 +6702,46 @@
 
 	PRESS(HS1)
 	IF TYPE.VAL==1
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	ELSE
-		LM("MASK1")
+		LM("MASK1","grind.com")
 	ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -6749,19 +6749,19 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK24","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK26")
+		LM("MASK26","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK33")
+		LM("MASK33","centerwaiyuan.com")
 	END_PRESS
 
 	CHANGE(VAR2)
@@ -6883,43 +6883,43 @@
 	VS5=($85028,ac7,se3);台阶
 
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
     PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -6927,19 +6927,19 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK24")
+		LM("MASK24","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK26")
+		LM("MASK26","centerwaiyuan.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK33")
+		LM("MASK33","centerwaiyuan.com")
 	END_PRESS
 
 	CHANGE(VAR1)
@@ -7027,43 +7027,43 @@
 	VS3=($85711,ac7,se1);修整
 
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
     PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -7071,15 +7071,15 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK25")
+		LM("MASK25","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK27")
+		LM("MASK27","centerduanmian.com")
 	END_PRESS
 
 	CHANGE(VAR2)
@@ -7179,46 +7179,46 @@
 
 	PRESS(HS1)
 	IF TYPE.VAL==1
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	ELSE
-		LM("MASK1")
+		LM("MASK1","grind.com")
 	ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -7226,15 +7226,15 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK25")
+		LM("MASK25","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK27")
+		LM("MASK27","centerduanmian.com")
 	END_PRESS
 
 	CHANGE(VAR15);界面设定磨削总量计算
@@ -7342,46 +7342,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL==1
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ELSE
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				LM("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -7389,15 +7389,15 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK25")
+		LM("MASK25","centerduanmian.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK27")
+		LM("MASK27","centerduanmian.com")
 	END_PRESS
 
 	CHANGE(VAR2)
@@ -7471,32 +7471,32 @@
 
 	PRESS(HS1)
 		IF DRESS_TYPE.VAL==0
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE
 			IF DRESS_TYPE.VAL==1
-				LM("MASK12")
+				LM("MASK12","dressware.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK40")
+		LM("MASK40","commonshape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK41")
+		LM("MASK41","commonshape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK42")
+		LM("MASK42","commonshape.com")
 	END_PRESS
 
 	PRESS(VS4)
-		LM("MASK43")
+		LM("MASK43","commonshape.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK44")
+		LM("MASK44","commonshape.com")
 	END_PRESS
 
 	PRESS(VS6)
@@ -7508,7 +7508,7 @@
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	CHANGE(VAR10)
@@ -7552,32 +7552,32 @@
 
 	PRESS(HS1)
 		IF DRESS_TYPE.VAL==0
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE
 			IF DRESS_TYPE.VAL==1
-				LM("MASK12")
+				LM("MASK12","dressware.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK40")
+		LM("MASK40","commonshape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK41")
+		LM("MASK41","commonshape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK42")
+		LM("MASK42","commonshape.com")
 	END_PRESS
 
 	PRESS(VS4)
-		LM("MASK43")
+		LM("MASK43","commonshape.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK44")
+		LM("MASK44","commonshape.com")
 	END_PRESS
 
 	PRESS(VS6)
@@ -7589,7 +7589,7 @@
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	CHANGE(VAR12)
@@ -7630,32 +7630,32 @@
 
 	PRESS(HS1)
 		IF DRESS_TYPE.VAL==0
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE
 			IF DRESS_TYPE.VAL==1
-				LM("MASK12")
+				LM("MASK12","dressware.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK40")
+		LM("MASK40","commonshape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK41")
+		LM("MASK41","commonshape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK42")
+		LM("MASK42","commonshape.com")
 	END_PRESS
 
 	PRESS(VS4)
-		LM("MASK43")
+		LM("MASK43","commonshape.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK44")
+		LM("MASK44","commonshape.com")
 	END_PRESS
 
 	PRESS(VS6)
@@ -7667,7 +7667,7 @@
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 //END
@@ -7702,32 +7702,32 @@
 
 	PRESS(HS1)
 		IF DRESS_TYPE.VAL==0
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE
 			IF DRESS_TYPE.VAL==1
-				LM("MASK12")
+				LM("MASK12","dressware.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK40")
+		LM("MASK40","commonshape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK41")
+		LM("MASK41","commonshape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK42")
+		LM("MASK42","commonshape.com")
 	END_PRESS
 
 	PRESS(VS4)
-		LM("MASK43")
+		LM("MASK43","commonshape.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK44")
+		LM("MASK44","commonshape.com")
 	END_PRESS
 
 	PRESS(VS6)
@@ -7739,7 +7739,7 @@
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 //END
@@ -7774,32 +7774,32 @@
 
 	PRESS(HS1)
 		IF DRESS_TYPE.VAL==0
-			LM("MASK4")
+			LM("MASK4","dressware.com")
 		ELSE
 			IF DRESS_TYPE.VAL==1
-				LM("MASK12")
+				LM("MASK12","dressware.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK40")
+		LM("MASK40","commonshape.com")
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK41")
+		LM("MASK41","commonshape.com")
 	END_PRESS
 
 	PRESS(VS3)
-		LM("MASK42")
+		LM("MASK42","commonshape.com")
 	END_PRESS
 
 	PRESS(VS4)
-		LM("MASK43")
+		LM("MASK43","commonshape.com")
 	END_PRESS
 
 	PRESS(VS5)
-		LM("MASK44")
+		LM("MASK44","commonshape.com")
 	END_PRESS
 
 	PRESS(VS6)
@@ -7811,7 +7811,7 @@
 	END_PRESS
 
 	PRESS(VS8)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 //END
