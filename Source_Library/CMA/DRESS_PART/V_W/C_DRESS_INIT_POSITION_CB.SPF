@@ -1,4 +1,4 @@
-PROC C_DRESS_INIT_POSITION DISPLOF
+PROC C_DRESS_INIT_POSITION_CB DISPLOF
 ;;**********程序功能**********
 ;;修整初始移动位置
 ;;***************************

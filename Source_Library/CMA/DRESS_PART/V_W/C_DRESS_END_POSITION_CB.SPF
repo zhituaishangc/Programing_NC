@@ -1,4 +1,4 @@
-PROC C_DRESS_END_POSITION DISPLOF
+PROC C_DRESS_END_POSITION_CB DISPLOF
 ;;**********程序功能**********
 ;;修整结束移动位置
 ;;***************************
