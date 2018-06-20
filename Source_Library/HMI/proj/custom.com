@@ -2374,13 +2374,18 @@
 			VS1.se=1
 			VS2.se=1
 			VS3.se=1
+			VS4.se=1
+			VS5.se=1
+			VS6.se=1
+			VS7.se=2
+			VS8.se=2
 			call("UP1")
 			IF QCHECK.VAL==0
-				;VAR2.WR=1
+				VAR2.WR=2
 				VAR3.WR=2
 				VAR12.WR=2
 			ELSE
-				;VAR2.WR=1
+				VAR2.WR=1
 				VAR3.WR=1
 				VAR12.WR=1
 			ENDIF
@@ -2391,13 +2396,18 @@
 				VS1.se=1
 				VS2.se=1
 				VS3.se=1
+				VS4.se=1
+				VS5.se=1
+				VS6.se=1
+				VS7.se=2
+				VS8.se=2
 				call("UP1")
 				IF QCHECK.VAL==0
-					;VAR2.WR=1
+					VAR2.WR=2
 					VAR3.WR=2
 					VAR12.WR=2
 				ELSE
-					;VAR2.WR=1
+					VAR2.WR=1
 					VAR3.WR=1
 					VAR12.WR=1
 				ENDIF
@@ -2411,6 +2421,11 @@
 					VS1.se=2
 					VS2.se=2
 					VS3.se=2
+					VS4.se=2
+					VS5.se=2
+					VS6.se=2
+					VS7.se=1
+					VS8.se=2
 				ELSE
 					IF VAR1.VAL==3
 						VAR2.WR=4
@@ -2421,6 +2436,11 @@
 						VS1.se=2
 						VS2.se=2
 						VS3.se=2
+						VS4.se=2
+						VS5.se=2
+						VS6.se=2
+						VS7.se=2
+						VS8.se=1
 					ELSE
 						IF VAR1.VAL==4
 							VAR2.WR=4
@@ -2431,6 +2451,11 @@
 							VS1.se=2
 							VS2.se=2
 							VS3.se=2
+							VS4.se=2
+							VS5.se=2
+							VS6.se=2
+							VS7.se=1
+							VS8.se=2
 						ENDIF
 					ENDIF
 				ENDIF
@@ -2587,11 +2612,11 @@
 	DEF VAR26=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[10]"/0,0,0/0,0,0/);方滚轮右圆弧半径
 	
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
-	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -2608,7 +2633,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -2671,7 +2696,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -2679,7 +2704,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -2687,7 +2712,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -2695,7 +2720,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -2838,11 +2863,11 @@
 	DEF VAR26=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[10]"/0,0,0/0,0,0/);右圆弧半径
 	
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
-	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -2854,12 +2879,12 @@
 	HS8=($85005,ac7,se1);返回
 
 	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se2);"梯形"
+	VS2=($85384,ac7,se3);"梯形"
 	VS3=($85385,ac7,se1);"双圆弧"
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -2922,7 +2947,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -2930,7 +2955,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -2938,7 +2963,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -2946,7 +2971,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -3104,11 +3129,11 @@
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DARC[1]"/0,0,0/0,0,0/);齿高
 	
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
-	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -3125,7 +3150,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -3188,7 +3213,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -3196,7 +3221,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -3204,7 +3229,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -3212,7 +3237,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -3415,6 +3440,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -3431,7 +3457,7 @@
 	VS4=($85380,ac7,se3);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -3494,7 +3520,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -3502,7 +3528,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -3510,7 +3536,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -3518,7 +3544,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -3617,6 +3643,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -3633,8 +3660,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se3);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
-	VS8=($85378,ac7,se1);"摆缸"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -3697,7 +3723,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -3705,7 +3731,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -3713,7 +3739,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -3721,7 +3747,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -3832,6 +3858,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -3848,8 +3875,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se3);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
-	VS8=($85378,ac7,se1);"摆缸"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -3912,7 +3938,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -3920,7 +3946,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -3928,7 +3954,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -3936,7 +3962,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -4023,6 +4049,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -4033,12 +4060,12 @@
 	HS7=($85011,ac7,se1);程序选项界面
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se2);"三角"
+	VS2=($85384,ac7,se2);"梯形"
+	VS3=($85385,ac7,se2);"双圆弧"
+	VS4=($85380,ac7,se2);"单滚轮"
+	VS5=($85381,ac7,se2);"双滚轮"
+	VS6=($85382,ac7,se2);"方滚轮"
 	VS7=($85379,ac7,se3);"滚压轮"
 
 	PRESS(HS1)
@@ -4102,7 +4129,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -4110,7 +4137,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -4118,7 +4145,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -4126,7 +4153,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -4230,6 +4257,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -4246,7 +4274,7 @@
 	VS4=($85380,ac7,se3);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -4309,7 +4337,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -4317,7 +4345,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -4325,7 +4353,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -4333,7 +4361,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -4460,6 +4488,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -4476,8 +4505,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se3);"双滚轮"
 	VS6=($85382,ac7,se1);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
-	VS8=($85378,ac7,se1);"摆缸"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -4540,7 +4568,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -4548,7 +4576,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -4556,7 +4584,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -4564,7 +4592,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -4664,6 +4692,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -4680,8 +4709,7 @@
 	VS4=($85380,ac7,se1);"单滚轮"
 	VS5=($85381,ac7,se1);"双滚轮"
 	VS6=($85382,ac7,se3);"方滚轮"
-	VS7=($85379,ac7,se1);"滚压轮"
-	VS8=($85378,ac7,se1);"摆缸"
+	VS7=($85379,ac7,se2);"滚压轮"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -4744,7 +4772,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -4752,7 +4780,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -4760,7 +4788,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -4768,7 +4796,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -4901,6 +4929,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -4911,12 +4940,12 @@
 	HS7=($85011,ac7,se1);程序选项界面
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se2);"三角"
+	VS2=($85384,ac7,se2);"梯形"
+	VS3=($85385,ac7,se2);"双圆弧"
+	VS4=($85380,ac7,se2);"单滚轮"
+	VS5=($85381,ac7,se2);"双滚轮"
+	VS6=($85382,ac7,se2);"方滚轮"
 	VS7=($85379,ac7,se3);"滚压轮"
 
 	PRESS(HS1)
@@ -4980,7 +5009,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -4988,7 +5017,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -4996,7 +5025,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -5004,7 +5033,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -5123,6 +5152,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5133,12 +5163,12 @@
 	HS7=($85011,ac7,se1);程序选项界面
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se2);"三角"
+	VS2=($85384,ac7,se2);"梯形"
+	VS3=($85385,ac7,se2);"双圆弧"
+	VS4=($85380,ac7,se2);"单滚轮"
+	VS5=($85381,ac7,se2);"双滚轮"
+	VS6=($85382,ac7,se2);"方滚轮"
 	VS7=($85379,ac7,se3);"滚压轮"
 
 	PRESS(HS1)
@@ -5202,7 +5232,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -5210,7 +5240,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -5218,7 +5248,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -5226,7 +5256,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -5367,6 +5397,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5377,12 +5408,12 @@
 	HS7=($85011,ac7,se1);程序选项界面
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se2);"三角"
+	VS2=($85384,ac7,se2);"梯形"
+	VS3=($85385,ac7,se2);"双圆弧"
+	VS4=($85380,ac7,se2);"单滚轮"
+	VS5=($85381,ac7,se2);"双滚轮"
+	VS6=($85382,ac7,se2);"方滚轮"
 	VS7=($85379,ac7,se3);"滚压轮"
 
 	PRESS(HS1)
@@ -5446,7 +5477,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -5454,7 +5485,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -5462,7 +5493,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -5470,7 +5501,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -5570,6 +5601,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -5643,7 +5675,7 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4")
 		ELSE;XZ/X
 			LM("MASK12")
@@ -5651,7 +5683,7 @@
 	END_PRESS
 
 	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK5")
 		ELSE;XZ/X
 			LM("MASK13")
@@ -5659,7 +5691,7 @@
 	END_PRESS
 
 	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK6")
 		ELSE;XZ/X
 			LM("MASK14")
@@ -5667,7 +5699,7 @@
 	END_PRESS
 
 	PRESS(VS7)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11")
 		ELSE;XZ/X
 			IF GRIND_TYPE.VAL==0;WAI
@@ -5735,7 +5767,7 @@
 
 	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR4/"panel_21_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[49]"/330,40,110/440,40,110/);内螺纹自动对刀测头Z轴方向起始位置
 
-	;如果自动对刀屏蔽下面参数***********************************
+	;如果是磨削中心屏蔽下面参数***********************************
 	DEF VAR3=(R/-500,500//$85505,$85505,,$85043/WR4/"panel_21_6_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,70,110/440,70,110/);内螺纹测头球中心/接近开关探测面与磨杆距离(X向)
 
 	DEF VAR4=(R/-500,500//$85527,$85527,,$85043/WR4/"panel_21_7_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[11]"/330,90,110/440,90,110/);内螺纹测头/开关与砂轮距离(Z向)
