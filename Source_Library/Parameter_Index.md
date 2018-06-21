@@ -590,6 +590,11 @@
 |PROCESS[110]||磨台阶粗磨砂轮线速度
 |PROCESS[111]||磨台阶精磨砂轮线速度
 |PROCESS[112]||退刀槽宽度
+|PROCESS[113]||单件工艺设定总量
+|PROCESS[114]||外圆工艺设定总量
+|PROCESS[115]||台阶工艺设定总量
+|PROCESS[116]||左端面工艺设定总量
+|PROCESS[117]||右端面工艺设定总量
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
