@@ -173,43 +173,43 @@
 	END_PRESS
 	
 	PRESS(HS1)
-		LM("MASK18")
+		LM("MASK18","grind.com")
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				M("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 	
     PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 	
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -275,22 +275,22 @@
 	CHANGE(NEI_GONGYI)
 		IF NEI_GONGYI.VAL==1
 			IF NEI_PILIANG.VAL==1
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ELSE
-				LM("MASK29")
+				M("MASK29","process.com")
 			ENDIF
 		ENDIF
 	END_CHANGE
 
 	CHANGE(WAI_GONGYI)
 		IF WAI_GONGYI.VAL==1
-			LM("MASK24")
+			LM("MASK24","centerwaiyuan.com")
 		ENDIF
 	END_CHANGE
 
 	CHANGE(DUAN_GONGYI)
 		IF DUAN_GONGYI.VAL==1
-			LM("MASK25")
+			LM("MASK25","centerduanmian.com")
 		ENDIF
 	END_CHANGE
 

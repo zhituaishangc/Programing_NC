@@ -245,46 +245,46 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1")
+			LM("MASK1","grind.com")
 		ELSE
-			LM("MASK18")
+			LM("MASK18","grind.com")
 		ENDIF
 	END_PRESS
 
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29")
+				M("MASK29","process.com")
 			ELSE
-				LM("MASK2")
+				LM("MASK2","process.com")
 			ENDIF
 		ELSE
 			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30")
+				LM("MASK30","process.com")
 			ELSE
-				LM("MASK20")
+				LM("MASK20","process.com")
 			ENDIF
 		ENDIF
 	END_PRESS
 
 	PRESS(HS3)
-		LM("MASK3")
+		LM("MASK3","dress.com")
 	END_PRESS
 
 	PRESS(HS4)
-		LM("MASK21")
+		LM("MASK21","auto.com")
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31")
+		LM("MASK31","centerwaiyuan.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32")
+		LM("MASK32","centerduanmian.com")
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23")
+		LM("MASK23","centermain.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -292,7 +292,7 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK50")
+		LM("MASK50","auto.com")
 	END_PRESS
 
 	CHANGE(WEIZHI_1)
