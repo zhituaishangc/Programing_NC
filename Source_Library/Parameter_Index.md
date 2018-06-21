@@ -375,6 +375,7 @@
 |R260||自动对刀测出的腰型孔中心Z坐标
 |R261||变螺距磨削的总角度
 |R262||变化后的螺距
+|R263||使用弯头磨具0否1是
 |||
 |**滚轮参数(WHEEL)**||
 |WHEEL[0]|DWHEEL_DIA|修整轮直径
@@ -956,6 +957,10 @@
 |PARA_LOCK_SWITCH[8]|锁定当前接触的开关|
 |PARA_LOCK_SWITCH[9]|锁定齿高的开关|
 |PARA_LOCK_SWITCH[10]|锁定修整轮直径的开关|
+|PARA_LOCK_SWITCH[11]|锁定对刀和磨削时是否螺旋退出的开关|
+|PARA_LOCK_SWITCH[12]|锁定是否首件工件的开关|
+|PARA_LOCK_SWITCH[13]|锁定退刀槽的开关|
+|PARA_LOCK_SWITCH[14]|锁定修砂轮时A角度的开关|
 |PARA_LOCK_SWITCH[29]|锁定初始磨削接触的开关|
 |**通用齿形模型变量**||
 |WHICH_COMMON_SHAPE||齿形选择
