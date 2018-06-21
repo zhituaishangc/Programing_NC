@@ -179,7 +179,7 @@
 	PRESS(HS2)
 		IF TECH.VAL==0;基本工艺
 			IF PIECE_VOLUME.VAL==0;单件
-				M("MASK29","process.com")
+				LM("MASK29","process.com")
 			ELSE
 				LM("MASK2","process.com")
 			ENDIF
@@ -277,7 +277,7 @@
 			IF NEI_PILIANG.VAL==1
 				LM("MASK2","process.com")
 			ELSE
-				M("MASK29","process.com")
+				LM("MASK29","process.com")
 			ENDIF
 		ENDIF
 	END_CHANGE
