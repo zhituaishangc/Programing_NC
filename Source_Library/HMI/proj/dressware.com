@@ -19,7 +19,7 @@
 
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
-	DEF VAR11=(R/-500,500//$85608,$85608,,$85043/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
+	DEF VAR11=(R/-2000,2000//$85608,$85608,,$85043/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
 	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[1]"/0,0,0/530,40,18/);参数锁定开关
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
@@ -624,8 +624,10 @@
 	DEF VAR8=(R/0,60//$85621,$85621,,$85046/WR2/"panel_11_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/330,260,110/440,260,110/);修整轮线速度
 	DEF VAR9=(I///$85600,$85600,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,280,110/440,280,110/);修整轮转速
 
-	DEF VAR0=(R/0,800//$85601,$85601,,$85043/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,35,110/440,35,110);回零时两轮中间距
-	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[5]"/0,0,0/530,35,18/);参数锁定开关
+	DEF VAR0=(R/0,800//$85601,$85601,,$85043/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/330,35,110/440,10,110);回零时两轮中间距
+	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_11_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[5]"/0,0,0/530,10,18/);参数锁定开关
+
+	;DEF Z_CENTER=(R/-2000,2000//$85608,$85608,,$85043/WR2/"panel_4_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110/);砂轮修整轮中心
 
 	DEF VAR10=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
 
