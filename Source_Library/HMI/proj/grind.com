@@ -1,3 +1,4 @@
+;ifIsExternalBegin
 ;;;;;;;;;;;;;;;;;;;MASK1:磨削参数_外:panel_1:;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask1/$85020/"panel_1_1_chs.png"/)
 
@@ -255,7 +256,9 @@
 	END_SUB
 
 //END
+;ifIsExternalEnd
 
+;ifIsInternalBegin
 ;;;;;;;;;;;;;;;;;;;MASK18:磨削参数_内:panel_18:;;;;;;;;;;;;;;;;;;;;;
 //M(Mask18/$85020/"panel_18_4_chs.png"/)
 
@@ -474,3 +477,5 @@
 	END_SUB
 
 //END
+;ifIsInternalEnd
+
