@@ -38,19 +38,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se3);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se3);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -289,19 +294,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se3);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se3);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -557,19 +567,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se3);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se3);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1

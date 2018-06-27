@@ -1,4 +1,4 @@
-;IfIsVWSRBegin
+;ifIsVWSRBegin
 ;;;;;;;;;;;;;;;;;;;MASK4:修整参数_VW单滚轮:panel_4:;;;;;;;;;;;;;;;;;
 //M(Mask4/$85380/"panel_4_1_chs.png"/)
 
@@ -31,19 +31,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se3);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -231,19 +236,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se3);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se3);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -390,9 +400,9 @@
 	END_CHANGE	
 
 //END
-;IfIsVWSREnd
+;ifIsVWSREnd
 
-;IfIsVWSideBegin
+;ifIsVWSideBegin
 ;;;;;;;;;;;;;;;;;;;MASK5:修整参数_VW双滚轮:panel_5:;;;;;;;;;;;;;;;;;
 //M(Mask5/$85381//)
 
@@ -426,19 +436,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se3);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se3);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -610,9 +625,9 @@
 	END_SUB
 
 //END
-;IfIsVWSideEnd
+;ifIsVWSideEnd
 
-;IfIsVBegin
+;ifIsVBegin
 ;;;;;;;;;;;;;;;;;;;MASK11:修整参数_滚压轮V:panel_11:;;;;;;;;;;;;;;;;;;
 //M(Mask11/$85379/"panel_11_1_chs.png"/)
 
@@ -644,19 +659,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se2);"三角"
-	VS2=($85384,ac7,se2);"梯形"
-	VS3=($85385,ac7,se2);"双圆弧"
-	VS4=($85380,ac7,se2);"单滚轮"
-	VS5=($85381,ac7,se2);"双滚轮"
-	VS6=($85382,ac7,se2);"方滚轮"
+	VS1=($85383,ac7,se2);"三角" ifIsAllShape
+	VS2=($85384,ac7,se2);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se2);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se2);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se2);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se3);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -805,9 +825,9 @@
 	END_SUB
 
 //END
-;IfIsVEnd
+;ifIsVEnd
 
-;IfIsXZSRBegin
+;ifIsXZSRBegin
 ;;;;;;;;;;;;;;;;;;;MASK12:修整参数_XZ单滚轮:panel_12:;;;;;;;;;;;;;;;;
 //M(Mask12/$85380/"panel_12_1_chs.png"/)
 
@@ -846,19 +866,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se3);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1084,19 +1109,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se3);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se3);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1287,9 +1317,9 @@
 	END_SUB
 
 //END
-;IfIsXZSREnd
+;ifIsXZSREnd
 
-;IfIsXZSideBegin
+;ifIsXZSideBegin
 ;;;;;;;;;;;;;;;;;;;MASK13:修整参数_XZ双滚轮:panel_13:;;;;;;;;;;;;;;;;
 //M(Mask13/$85381//)
 
@@ -1321,19 +1351,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se3);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se3);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1486,9 +1521,9 @@
 	END_SUB
 
 //END
-;IfIsXZSideEnd
+;ifIsXZSideEnd
 
-;IfIsXWaiBegin
+;ifIsXWaiBegin
 ;;;;;;;;;;;;;;;;;;;MASK16:修整参数_滚压轮X_外:panel_16:;;;;;;;;;;;;;;;
 //M(Mask16/$85379/"panel_16_1_chs.png"/)
 
@@ -1522,19 +1557,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se2);"三角"
-	VS2=($85384,ac7,se2);"梯形"
-	VS3=($85385,ac7,se2);"双圆弧"
-	VS4=($85380,ac7,se2);"单滚轮"
-	VS5=($85381,ac7,se2);"双滚轮"
-	VS6=($85382,ac7,se2);"方滚轮"
+	VS1=($85383,ac7,se2);"三角" ifIsAllShape
+	VS2=($85384,ac7,se2);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se2);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se2);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se2);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se3);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1707,9 +1747,9 @@
 	END_SUB
 
 //END
-;IfIsXWaiEnd
+;ifIsXWaiEnd
 
-;IfIsXNeiFrontBegin
+;ifIsXNeiFrontBegin
 ;;;;;;;;;;;;;;;;;;;MASK17:修整参数_滚压轮X_内_前:panel_17:;;;;;;;;;;;;
 //M(Mask17/$85379/"panel_17_1_chs.png"/)
 
@@ -1747,19 +1787,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se2);"三角"
-	VS2=($85384,ac7,se2);"梯形"
-	VS3=($85385,ac7,se2);"双圆弧"
-	VS4=($85380,ac7,se2);"单滚轮"
-	VS5=($85381,ac7,se2);"双滚轮"
-	VS6=($85382,ac7,se2);"方滚轮"
+	VS1=($85383,ac7,se2);"三角" ifIsAllShape
+	VS2=($85384,ac7,se2);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se2);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se2);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se2);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se3);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1962,9 +2007,9 @@
 	END_SUB
 
 //END
-;IfIsXNeiFrontEnd
+;ifIsXNeiFrontEnd
 
-;IfIsXNeiBackBegin
+;ifIsXNeiBackBegin
 ;;;;;;;;;;;;;;;;;;;MASK19:修整参数_滚压轮X_内_后:panel_19:;;;;;;;;;;;;
 //M(Mask19/$85379/"panel_19_1_chs.png"/)
 
@@ -1994,19 +2039,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se2);"三角"
-	VS2=($85384,ac7,se2);"梯形"
-	VS3=($85385,ac7,se2);"双圆弧"
-	VS4=($85380,ac7,se2);"单滚轮"
-	VS5=($85381,ac7,se2);"双滚轮"
-	VS6=($85382,ac7,se2);"方滚轮"
+	VS1=($85383,ac7,se2);"三角" ifIsAllShape
+	VS2=($85384,ac7,se2);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se2);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se2);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se2);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se3);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -2164,9 +2214,9 @@
 	END_SUB
 
 //END
-;IfIsXNeiBackEnd
+;ifIsXNeiBackEnd
 
-;IfIsVHBegin
+;ifIsVHBegin
 ;;;;;;;;;;;;;;;;;;;MASK15:修整参数_摆缸:panel_15:;;;;;;;;;;;;;;;;;;;;
 //M(Mask15/$85379//)
 
@@ -2200,10 +2250,14 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
 	VS8=($85378,ac7,se3);"摆缸"
@@ -2340,5 +2394,5 @@
 	END_CHANGE
 
 //END
-;IfIsVHEnd
+;ifIsVHEnd
 
