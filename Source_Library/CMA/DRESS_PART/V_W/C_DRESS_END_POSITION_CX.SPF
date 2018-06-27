@@ -6,5 +6,10 @@ PROC C_DRESS_END_POSITION_CX DISPLOF
 MSG("修整轮运行至结束位置")
 G90 G1 V=0 F=INI[61]
 
+;ifIsVWBegin
+MSG("水平初始位")
+G90 G01 W=DRESSER[21] F=INI[63]
+;ifIsVWEnd
+
 RET
 

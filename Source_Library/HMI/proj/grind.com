@@ -1,3 +1,4 @@
+;ifIsExternalBegin
 ;;;;;;;;;;;;;;;;;;;MASK1:磨削参数_外:panel_1:;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask1/$85020/"panel_1_1_chs.png"/)
 
@@ -54,7 +55,7 @@
 	HS1=($85001,ac7,se3);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
-	HS4=($85010,ac7,se1);自动对刀,注释不可修改
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -255,7 +256,9 @@
 	END_SUB
 
 //END
+;ifIsExternalEnd
 
+;ifIsInternalBegin
 ;;;;;;;;;;;;;;;;;;;MASK18:磨削参数_内:panel_18:;;;;;;;;;;;;;;;;;;;;;
 //M(Mask18/$85020/"panel_18_4_chs.png"/)
 
@@ -303,10 +306,14 @@
 	HS1=($85001,ac7,se3);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
-	HS4=($85010,ac7,se1);自动对刀,注释不能修改
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -474,3 +481,5 @@
 	END_SUB
 
 //END
+;ifIsInternalEnd
+

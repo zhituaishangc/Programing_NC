@@ -5,25 +5,27 @@
 
 	;以下4个参数按需选择一个类型
 	;+++++++++++++++++++++++++++++++++++++++++++++
-	DEF VAR1=(I/*0=$85344,2=$85346//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器V_W/成型V
-	;DEF VAR1=(I/*2=$85346/2/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);成型V
-	;DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器X_Z/成型X
-	;DEF VAR1=(I/*4=$85348/4/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);成型X_内后
-	;DEF VAR1=(I/*3=$85347/3/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);修整器摆缸
+	DEF VAR1=(I/*0=$85344,2=$85346//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);vw/v  ifIsDressWare1
+	DEF VAR1=(I/*2=$85346/2/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);V ifIsDressWare2
+	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);X_Z/X  ifIsDressWare3
+	DEF VAR1=(I/*4=$85348/4/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);X_内后  ifIsDressWare4
+	DEF VAR1=(I/*3=$85347/3/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);ifIsDressWare5
 
-	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 单/方
-	;DEF VAR2=(I/*1=$85381/1/$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双
+	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 ifIsSingleAndRound
+	DEF VAR2=(I/*1=$85381/1/$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双 ifIsSide
 
-	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形
+	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsAllShape
+	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsArc
+
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
 
-	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前
-	;DEF N_CX_X_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在后
+	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前 ifIsfrontDress
+	DEF N_CX_X_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在后 ifIsBackDress
 
-	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);外螺纹砂轮最小直径
-	;DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);内螺纹砂轮最小直径
-	;DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);内螺纹砂轮最大磨削直径
+	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);外螺纹砂轮最小直径 ifIsExternal
+	DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);内螺纹砂轮最小直径 ifIsInternal
+	DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);内螺纹砂轮最大磨削直径 ifIsInternal
 
 	;DEF MODEL_NAME=(S///$85464,$85464,,/WR4,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/WORM_SHAPE"/0,0,0/10,290,250/);存储齿形程序名,蜗杆用
 
@@ -65,20 +67,24 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se3);修整参数
-	HS4=($85010,ac7,se1);自动对刀
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
-	VS1=($85383,ac7,se1);"三角"
-	VS2=($85384,ac7,se1);"梯形"
-	VS3=($85385,ac7,se1);"双圆弧"
-	VS4=($85380,ac7,se1);"单滚轮"
-	VS5=($85381,ac7,se1);"双滚轮"
-	VS6=($85382,ac7,se1);"方滚轮"
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
 	VS7=($85379,ac7,se1);"滚压轮"
-	VS8=($85378,ac7,se1);"摆缸"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1

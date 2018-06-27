@@ -1,26 +1,37 @@
 ;;;;;;;;;;;;;;;;;;;MASK21:内/外/磨削中心自动对刀:panel_21:;;;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask21/$85026/"panel_21_2_chs.png"/)
-	;按实际情况选择一个类型
-	;+++++++++++++++++++++++++++++++++++
-	DEF KAIGUAN=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
-	;DEF KAIGUAN=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
-	;DEF KAIGUAN_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[52]"/0,0,0/0,0,0);接近开关(0-测量机构1/1-测量机构2)
-	;DEF KAIGUAN_2=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[52]"/0,0,0/0,0,0);接近开关(0-测量机构1/1-测量机构2)
+	;+++++++++++++++++++++++++++++++++++++++
+	;ifIsKaiGuanCeLiangBegin
+	DEF KAIGUAN=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
+	DEF KAIGUAN_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[52]"/0,0,0/0,0,0);接近开关(0-测量机构1/1-测量机构2)
 	DEF CETOU=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[50]"/0,0,0/0,0,0);自动对刀是否有测量头测量结构
-	;DEF CETOU=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[50]"/0,0,0/0,0,0);自动对刀是否有测量头测量结构
-	;DEF CETOU_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[53]"/0,0,0/0,0,0);测量头(0-测量机构1/1-测量机构2)
-	;DEF CETOU_2=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[53]"/0,0,0/0,0,0);测量头(0-测量机构1/1-测量机构2)
+	;ifIsKaiGuanCeLiangEnd
+
+	;ifIsCeTouCeLiangBegin
+	DEF KAIGUAN=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
+	DEF CETOU=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[50]"/0,0,0/0,0,0);自动对刀是否有测量头测量结构
+	DEF CETOU_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[53]"/0,0,0/0,0,0);测量头(0-测量机构1/1-测量机构2)
+	;ifIsCeTouCeLiangEnd
+
+	;ifIsKaiGuanAndCeTouCeLiangBegin
+	DEF KAIGUAN=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
+	DEF KAIGUAN_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[52]"/0,0,0/0,0,0);接近开关(0-测量机构1/1-测量机构2)
+	DEF CETOU=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[50]"/0,0,0/0,0,0);自动对刀是否有测量头测量结构
+	DEF CETOU_1=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[53]"/0,0,0/0,0,0);测量头(0-测量机构1/1-测量机构2)
+	;ifIsKaiGuanAndCeTouCeLiangEnd
 
 	;如果是磨削中心屏蔽下面参数++++++++++++++++++
+	;ifIsNotCenterBegin
 	DEF VAR3=(R/-500,500//$85505,$85505,,$85043/WR4/"panel_21_6_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,70,110/440,70,110/);内螺纹测头球中心/接近开关探测面与磨杆距离(X向)
-	;++++++++++++++++++++++++++++++++++++++
-	;磨削中心参数
-	;DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,260,130/140,260,110/);磨削中心自动对刀测头顶部在工件中心时X轴坐标
-	;DEF VAR21=(R///$85530,$85530,,$85043/WR4/"panel_21_14_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[53]"/10,280,130/140,280,110/);磨削中心外圆磨砂轮面在工件中心时U轴坐标
-	;DEF VAR22=(R///$85532,$85532,,$85043/WR4/"panel_21_15_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[51]"/10,300,130/140,300,110/);磨削中心端面磨砂轮侧面与测头中心间距
-	;DEF VAR23=(R/0,100//$85801,$85801,,$85043/WR4/"panel_21_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,320,130/140,320,110/);工件耳高
-	;DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,340,130/140,340,110/);工件外圆长度
-	;+++++++++++++++++++++++++++++++++++++++
+	;ifIsNotCenterEnd
+
+	;ifIsCenterBegin
+	DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,260,130/140,260,110/);磨削中心自动对刀测头顶部在工件中心时X轴坐标
+	DEF VAR21=(R///$85530,$85530,,$85043/WR4/"panel_21_14_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[53]"/10,280,130/140,280,110/);磨削中心外圆磨砂轮面在工件中心时U轴坐标
+	DEF VAR22=(R///$85532,$85532,,$85043/WR4/"panel_21_15_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[51]"/10,300,130/140,300,110/);磨削中心端面磨砂轮侧面与测头中心间距
+	DEF VAR23=(R/0,100//$85801,$85801,,$85043/WR4/"panel_21_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,320,130/140,320,110/);工件耳高
+	DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,340,130/140,340,110/);工件外圆长度
+	;ifIsCenterEnd
 
 	DEF VAR0=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_blank_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,10,150/440,10,110/);对刀结果调整
 
@@ -60,10 +71,15 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
-	HS4=($85010,ac7,se3);自动对刀
+	;
+	HS4=($85010,ac7,se3);自动对刀 ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
 	VS1=("")
@@ -239,10 +255,15 @@
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
-	HS4=($85010,ac7,se3);自动对刀
+
+	HS4=($85010,ac7,se3);自动对刀 ifIsAuto
+
+	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
 	HS8=($85005,ac7,se1);返回
 
 	VS1=($85537,ac7,se3);螺距变换

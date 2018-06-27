@@ -7,11 +7,17 @@
 	VS1=($85006,ac7,se1) 
 	
 	PRESS(HS7)
-		;+++++++++++++++++++++
+		;ifIsExternalBegin
 		LM("MASK1","grind.com");磨削界面加载
-		;LM("MASK18","grind.com");磨削界面加载
-		;LM("MASK23","centermain.com");磨削界面加载
-		;+++++++++++++++++++++
+		;ifIsExternalEnd
+
+		;ifIsInternalBegin
+		LM("MASK18","grind.com");磨削界面加载
+		;ifIsInternalEnd
+
+		;ifIsCenterBegin
+		LM("MASK23","centermain.com");磨削界面加载
+		;ifIsCenterEnd
 	END_PRESS
 
 	PRESS(VS1)
