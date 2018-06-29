@@ -16,10 +16,11 @@
 	DEF X_QUIT=(R/-800,800//$85714,$85714,,/WR2//"/NC/_N_NC_GD2_ACX/INI[108]"/360,240,202/460,240,60/);退刀位置
 	DEF Z_INIT=(R/-2000,2000//$85101,$85101,,/WR2//"/NC/_N_NC_GD2_ACX/INI[109]"/360,260,202/460,260,60/);磨外圆部分时台面起始位置
 
-	DEF AXIS_EW=(S1//"X"//WR4//"/NC/_N_NC_GD2_ACX/AXIS_EW"/0,0,0/0,0,0/);外圆轴
-	DEF AXIS_ORI=(R//-1//WR4//"/NC/_N_NC_GD2_ACX/PROCESS[58]"/0,0,0/0,0,0/);外圆砂轮轴方向(后正1/后负-1)
-	;DEF AXIS_EW=(S1//"U"//WR4//"/NC/_N_NC_GD2_ACX/AXIS_EW"/0,0,0/0,0,0/);外圆轴
-	;DEF AXIS_ORI=(R//1//WR4//"/NC/_N_NC_GD2_ACX/PROCESS[58]"/0,0,0/0,0,0/);外圆砂轮轴方向(后正1/后负-1)
+	DEF AXIS_EW=(S1//"X"//WR4//"/NC/_N_NC_GD2_ACX/AXIS_EW"/0,0,0/0,0,0/);外圆轴  ifIsNotHasU
+	DEF AXIS_ORI=(R//-1//WR4//"/NC/_N_NC_GD2_ACX/PROCESS[58]"/0,0,0/0,0,0/);外圆砂轮轴方向(后正1/后负-1)   ifIsNotHasU
+
+	DEF AXIS_EW=(S1//"U"//WR4//"/NC/_N_NC_GD2_ACX/AXIS_EW"/0,0,0/0,0,0/);外圆轴   ifIsHasU
+	DEF AXIS_ORI=(R//1//WR4//"/NC/_N_NC_GD2_ACX/PROCESS[58]"/0,0,0/0,0,0/);外圆砂轮轴方向(后正1/后负-1)   ifIsHasU
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数

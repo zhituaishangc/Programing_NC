@@ -82,7 +82,7 @@
 
 	HS8=($85005,ac7,se1);返回
 
-	VS1=("")
+	VS1=($85537,ac7,se1);螺距变换 ifIsCenter
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -132,6 +132,10 @@
 		EXIT
 	END_PRESS
 
+	PRESS(VS1)
+		LM("MASK50","auto.com")
+	END_PRESS
+	
 	CHANGE(CETOU)
 		call("UP1")
 	END_CHANGE
@@ -233,6 +237,7 @@
 
 //END
 
+;ifIsCenterBegin
 ;;;;;;;;;;;;;;;;;;;MASK50:内螺纹变螺距参数:panel_50:;;;;;;;;;;;;;;;;;;;;;;;;
 //M(Mask50/$85537/"panel_50_0_chs.png"/)
 
@@ -256,13 +261,12 @@
 	HS2=($85002,ac7,se1);工艺参数
 	HS3=($85003,ac7,se1);修整参数
 
-	HS4=($85010,ac7,se3);自动对刀 ifIsAuto
+	HS4=($85010,ac7,se3);自动对刀
 
-	;ifIsCenterBegin
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd
+
 
 	HS8=($85005,ac7,se1);返回
 
@@ -337,3 +341,4 @@
 	END_SUB
 
 //END
+;ifIsCenterEnd
