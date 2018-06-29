@@ -66,17 +66,15 @@ WHILE(WORK[1]<WORK[0])
 		IF $A_DBB[2]==1
 			RET
 		ENDIF
-		IF GRIND[0]<>1;WAI
-			E_DOUBLEGRIND_XBACK(PROCESS[16])
-		ELSE
-			E_DOUBLEGRIND_XBACK(INI[10])
-		ENDIF
+		;*********************
+		E_DOUBLEGRIND_XBACK(PROCESS[16]);外螺纹   ifIsExternal
+		E_DOUBLEGRIND_XBACK(INI[10]);内螺纹  ifIsInternal
+		;*********************
 	ELSE
-		IF GRIND[0]<>1;WAI
-			E_SINGLEGRIND_XZBACK(PROCESS[16])
-		ELSE
-			E_SINGLEGRIND_XZBACK(INI[10])
-		ENDIF
+		;*********************
+		E_SINGLEGRIND_XZBACK(PROCESS[16]);外螺纹   ifIsExternal
+		E_SINGLEGRIND_XZBACK(INI[10]);内螺纹  ifIsInternal
+		;*********************
 		IF $A_DBB[2]==1;返回起点过程中按下退刀键,安全结束程序
 			RET
 		ENDIF

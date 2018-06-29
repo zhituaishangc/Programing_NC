@@ -9,15 +9,15 @@
 	PRESS(HS7)
 		;ifIsExternalBegin
 		LM("MASK1","grind.com");磨削界面加载
-		;ifIsExternalEnd@
+		;ifIsExternalEnd
 
 		;ifIsInternalBegin
 		LM("MASK18","grind.com");磨削界面加载
-		;ifIsInternalEnd@
+		;ifIsInternalEnd
 
 		;ifIsCenterBegin
 		LM("MASK23","centermain.com");磨削界面加载
-		;ifIsCenterEnd@
+		;ifIsCenterEnd
 	END_PRESS
 
 	PRESS(VS1)
