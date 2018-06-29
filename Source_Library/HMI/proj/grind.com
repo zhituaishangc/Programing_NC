@@ -256,9 +256,9 @@
 	END_SUB
 
 //END
-;ifIsExternalEnd@
+;ifIsExternalEnd
 
-;ifIsInternalBegin
+;ifIsInternalOrCenterBegin
 ;;;;;;;;;;;;;;;;;;;MASK18:磨削参数_内:panel_18:;;;;;;;;;;;;;;;;;;;;;
 //M(Mask18/$85020/"panel_18_4_chs.png"/)
 
@@ -312,7 +312,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -481,5 +481,5 @@
 	END_SUB
 
 //END
-;ifIsInternalEnd@
+;ifIsInternalOrCenterEnd
 

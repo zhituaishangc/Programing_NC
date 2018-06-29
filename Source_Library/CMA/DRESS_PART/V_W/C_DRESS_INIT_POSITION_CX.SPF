@@ -9,7 +9,7 @@ G90 G1 V=0 F=INI[61]
 ;ifIsVWBegin
 MSG("水平初始位")
 G90 G01 W=DRESSER[21] F=INI[63]
-;ifIsVWEnd@
+;ifIsVWEnd
 
 MSG("修整轮运行至修整位置")
 G90 G1 V=WHEEL[10]+1 F=INI[62]

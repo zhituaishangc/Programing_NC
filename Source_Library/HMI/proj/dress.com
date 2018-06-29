@@ -24,8 +24,8 @@
 	DEF N_CX_X_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在后 ifIsBackDress
 
 	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);外螺纹砂轮最小直径 ifIsExternal
-	DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);内螺纹砂轮最小直径 ifIsInternal
-	DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);内螺纹砂轮最大磨削直径 ifIsInternal
+	DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110/);内螺纹砂轮最小直径 ifIsInternalOrCenter
+	DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110/);内螺纹砂轮最大磨削直径 ifIsInternalOrCenter
 
 	;DEF MODEL_NAME=(S///$85464,$85464,,/WR4,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/WORM_SHAPE"/0,0,0/10,290,250/);存储齿形程序名,蜗杆用
 
@@ -73,7 +73,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 

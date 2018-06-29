@@ -37,7 +37,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -242,7 +242,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -400,7 +400,7 @@
 	END_CHANGE	
 
 //END
-;ifIsVWSREnd@
+;ifIsVWSREnd
 
 ;ifIsVWSideBegin
 ;;;;;;;;;;;;;;;;;;;MASK5:修整参数_VW双滚轮:panel_5:;;;;;;;;;;;;;;;;;
@@ -442,7 +442,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -625,7 +625,7 @@
 	END_SUB
 
 //END
-;ifIsVWSideEnd@
+;ifIsVWSideEnd
 
 ;ifIsVBegin
 ;;;;;;;;;;;;;;;;;;;MASK11:修整参数_滚压轮V:panel_11:;;;;;;;;;;;;;;;;;;
@@ -665,7 +665,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -825,7 +825,7 @@
 	END_SUB
 
 //END
-;ifIsVEnd@
+;ifIsVEnd
 
 ;ifIsXZSRBegin
 ;;;;;;;;;;;;;;;;;;;MASK12:修整参数_XZ单滚轮:panel_12:;;;;;;;;;;;;;;;;
@@ -872,7 +872,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -1115,7 +1115,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -1317,7 +1317,7 @@
 	END_SUB
 
 //END
-;ifIsXZSREnd@
+;ifIsXZSREnd
 
 ;ifIsXZSideBegin
 ;;;;;;;;;;;;;;;;;;;MASK13:修整参数_XZ双滚轮:panel_13:;;;;;;;;;;;;;;;;
@@ -1357,7 +1357,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -1521,7 +1521,7 @@
 	END_SUB
 
 //END
-;ifIsXZSideEnd@
+;ifIsXZSideEnd
 
 ;ifIsXWaiBegin
 ;;;;;;;;;;;;;;;;;;;MASK16:修整参数_滚压轮X_外:panel_16:;;;;;;;;;;;;;;;
@@ -1563,7 +1563,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -1747,7 +1747,7 @@
 	END_SUB
 
 //END
-;ifIsXWaiEnd@
+;ifIsXWaiEnd
 
 ;ifIsXNeiFrontBegin
 ;;;;;;;;;;;;;;;;;;;MASK17:修整参数_滚压轮X_内_前:panel_17:;;;;;;;;;;;;
@@ -1793,7 +1793,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -2007,7 +2007,7 @@
 	END_SUB
 
 //END
-;ifIsXNeiFrontEnd@
+;ifIsXNeiFrontEnd
 
 ;ifIsXNeiBackBegin
 ;;;;;;;;;;;;;;;;;;;MASK19:修整参数_滚压轮X_内_后:panel_19:;;;;;;;;;;;;
@@ -2045,7 +2045,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -2214,7 +2214,7 @@
 	END_SUB
 
 //END
-;ifIsXNeiBackEnd@
+;ifIsXNeiBackEnd
 
 ;ifIsVHBegin
 ;;;;;;;;;;;;;;;;;;;MASK15:修整参数_摆缸:panel_15:;;;;;;;;;;;;;;;;;;;;
@@ -2256,7 +2256,7 @@
 	HS5=($85012,ac7,se1);外圆
 	HS6=($85017,ac7,se1);端面
 	HS7=($85011,ac7,se1);程序选项界面
-	;ifIsCenterEnd@
+	;ifIsCenterEnd
 
 	HS8=($85005,ac7,se1);返回
 
@@ -2394,5 +2394,5 @@
 	END_CHANGE
 
 //END
-;ifIsVHEnd@
+;ifIsVHEnd
 
