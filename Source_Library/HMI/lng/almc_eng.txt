@@ -60,7 +60,7 @@
 85058 0 0 "\\switch_off.png"  ;
 85059 0 0 "\\switch_on.png"  ;
 85060 0 0 "Model: machineName"  ;
-85061 0 0 "NO.: "  ;
+85061 0 0 "NO.: machineIndex"  ;
 85062 0 0 "Date: "  ;
 85063 0 0 "Var Locker"  ;
 85064 0 0 ""  ;
