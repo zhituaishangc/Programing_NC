@@ -3,30 +3,35 @@ PROC C_OPERATION_JOG DISPLOF
 ;;螺纹手动对刀
 ;;***************************
 
-CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD0
+;*********************
+CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD0;外螺纹   ifIsExternal
+;*********************
+
 
 DDD0:
-
 MSG("正在开至工件起点")
-IF GRIND[0]<>1;WAI
-    F_Z_POSITION(INI[6])
-ELSE
-    F_Z_POSITION(INI[28])
-ENDIF
+;*********************
+F_Z_POSITION(INI[6]);外螺纹   ifIsExternal
+F_Z_POSITION(INI[28]);内螺纹  ifIsInternal
+;*********************
 GOTOF DDD2
 
+;*********************
+;ifIsExternalBegin
 DDD1:
 MSG("正在开至工件中点")
 F_Z_POSITION(INI[8]);快速移动到对刀中点
 GOTOF DDD2
+;ifIsExternalEnd
+;*********************
 
 DDD2:
 MSG("X轴开至对刀起始位")
 G01 G90 X=INI[10] F=INI[55];X开至对刀起始位
 
-IF GRIND[0]==1;NEI
-    F_Z_POSITION(INI[6])
-ENDIF
+;*********************
+F_Z_POSITION(INI[6]);内螺纹  ifIsInternal
+;*********************
 
 G90 G01 C=ACP(0) F=INI[58];C轴初始位
 STOPRE
