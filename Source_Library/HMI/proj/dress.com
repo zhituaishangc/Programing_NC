@@ -12,7 +12,7 @@
 	DEF VAR1=(I/*3=$85347/3/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);ifIsDressWare5
 
 	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 ifIsSingleAndRound
-	DEF VAR2=(I/*1=$85381/1/$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双 ifIsSide
+	DEF VAR2=(I/*1=$85381/1/$85388,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双 ifIsSide
 
 	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsAllShape
 	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsArc
@@ -238,6 +238,13 @@
 
 	SUB(UP2)
 		call("UP4")
+		IF QCHECK.VAL==0
+			VAR1.WR=2; ifIsDressWare1
+			VAR1.WR=2; ifIsDressWare3
+		ELSE
+			VAR1.WR=1; ifIsDressWare1
+			VAR1.WR=1; ifIsDressWare3
+		ENDIF
 		IF VAR1.VAL==0
 			ROLLING_1.WR=4
 			HY_1.WR=4
@@ -251,12 +258,16 @@
 			VS8.se=2
 			call("UP1")
 			IF QCHECK.VAL==0
-				VAR2.WR=2
-				VAR3.WR=2
+				VAR2.WR=2;  ifIsSingleAndRound
+				VAR2.WR=1;  ifIsSide
+				VAR3.WR=2;  ifIsAllShape
+				VAR3.WR=1;  ifIsArc
 				VAR12.WR=2
 			ELSE
-				VAR2.WR=1
-				VAR3.WR=1
+				VAR2.WR=1;  ifIsSingleAndRound
+				VAR2.WR=1;  ifIsSide
+				VAR3.WR=1;  ifIsAllShape
+				VAR3.WR=1;  ifIsArc
 				VAR12.WR=1
 			ENDIF
 		ELSE
@@ -273,12 +284,16 @@
 				VS8.se=2
 				call("UP1")
 				IF QCHECK.VAL==0
-					VAR2.WR=2
-					VAR3.WR=2
+					VAR2.WR=2;  ifIsSingleAndRound
+					VAR2.WR=1;  ifIsSide
+					VAR3.WR=2;  ifIsAllShape
+					VAR3.WR=1;  ifIsArc
 					VAR12.WR=2
 				ELSE
-					VAR2.WR=1
-					VAR3.WR=1
+					VAR2.WR=1;  ifIsSingleAndRound
+					VAR2.WR=1;  ifIsSide
+					VAR3.WR=1;  ifIsAllShape
+					VAR3.WR=1;  ifIsArc
 					VAR12.WR=1
 				ENDIF
 			ELSE
