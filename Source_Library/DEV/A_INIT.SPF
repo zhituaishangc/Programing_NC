@@ -1,5 +1,12 @@
+;***********************************
+;机床基本配置
+OPERATION[10]=0;自动对刀后直接磨削
+;***********************************
+;参数初始化
 DRFOF;手轮偏置清除
+PAR[0]=0;报警清除
 
+;************************************
 ;优先级:修整>自动对刀>手动对刀>磨削
 MODE[0]=0;磨削
 IF $A_DBB[1]==1;是否手动对刀
@@ -21,6 +28,52 @@ ELSE;左右磨削
 ENDIF;
 
 WORK[7]=WORK[4]*WORK[6];导程
+
+;***********************************
+;不同修整器类型 参数赋值
+CASE MODE[1] OF 0 GOTOF VW_MODE 1 GOTOF XZ_MODE 2 GOTOF V_MODE 3 GOTOF X_MODE DEFAULT GOTOF VW_MODE;
+
+VW_MODE:;
+IF WORK[0]==1;外
+    GRIND[12]=GRIND[6]台面磨削起始安全位置=起点
+    GRIND[9]=GRIND[6];台面磨削-修整转换安全位置=起点
+ELSE;
+
+ENDIF;
+GOTOF MODE_END;
+
+XZ_MODE:;
+IF WORK[0]==1;外
+    GRIND[12]=GRIND[6]台面磨削起始安全位置=起点
+    GRIND[9]=GRIND[3];台面磨削-修整转换安全位置=左端
+ELSE;
+    GRIND[12]=GRIND[15]台面磨削起始安全位置=界面输入
+    GRIND[9]=GRIND[15];台面磨削-修整转换安全位置=界面输入
+ENDIF;
+GOTOF MODE_END;
+
+V_MODE:;
+IF WORK[0]==1;外
+    GRIND[12]=GRIND[6]台面磨削起始安全位置=起点
+    GRIND[9]=GRIND[6];台面磨削-修整转换安全位置=左端
+ELSE;
+
+ENDIF;
+GOTOF MODE_END;
+
+X_MODE:;
+IF WORK[0]==1;外
+
+ELSE;
+    GRIND[12]=GRIND[15]台面磨削起始安全位置=界面输入
+    GRIND[9]=GRIND[15];台面磨削-修整转换安全位置=界面输入
+ENDIF;
+GOTOF MODE_END;
+
+MODE_END:;
+
+;****************************************
+
 
 RET;
 
