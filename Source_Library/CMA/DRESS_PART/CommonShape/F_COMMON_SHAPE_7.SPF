@@ -1,15 +1,15 @@
 PROC F_COMMON_SHAPE_7 DISPLOF
-;;**********程序功能**********
-;;梯形
-;;***************************
+;***********程序功能**********
+;*梯形
+;****************************
 
-;;SHAPE_MODEL[90]:顶部长度
-;;SHAPE_MODEL[91]:左圆弧过渡半径
-;;SHAPE_MODEL[92]:右圆弧过渡半径
-;;SHAPE_MODEL[93]:左角度
-;;SHAPE_MODEL[94]:右角度
-;;SHAPE_MODEL[95]:齿高
-;;SHAPE_MODEL[96]:斜线角度
+;*SHAPE_MODEL[90]:顶部长度
+;*SHAPE_MODEL[91]:左圆弧过渡半径
+;*SHAPE_MODEL[92]:右圆弧过渡半径
+;*SHAPE_MODEL[93]:左角度
+;*SHAPE_MODEL[94]:右角度
+;*SHAPE_MODEL[95]:齿高
+;*SHAPE_MODEL[96]:斜线角度
 
 COMMON_LENGTH[1]=SHAPE_MODEL[90]/2
 COMMON_LENGTH[3]=DRESSER[32]

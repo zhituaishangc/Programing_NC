@@ -1,7 +1,7 @@
 PROC E_COMMON_BIGGEST_LOWEST(REAL POINT_1,REAL POINT_2,REAL POINT_3,REAL POINT_4,REAL POINT_5,REAL POINT_6,REAL POINT_7,REAL POINT_8,REAL POINT_9,REAL POINT_10,VAR REAL POINT_BIGGEST,VAR REAL POINT_LOWEST) DISPLOF
-;;**********程序功能**********
-;;找出最大/最小的值
-;;***************************
+;***********程序功能**********
+;*找出最大/最小的值
+;****************************
 
 POINT_BIGGEST=0
 POINT_LOWEST=0

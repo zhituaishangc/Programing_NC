@@ -1,12 +1,12 @@
 PROC C_PARA_TRAN(REAL D_DRESS_TIME_F,REAL D_DRESS_DEEP_F,REAL D_DRESS_FEED_F,REAL WHEEL_LINESPEED_DRESS_D) DISPLOF
-;;**********程序功能**********
-;;参数传递:
-;;基本界面工艺使用修整界面参数，扩展界面和DIY使用自定义参数
+;***********程序功能**********
+;*参数传递:
+;*基本界面工艺使用修整界面参数，扩展界面和DIY使用自定义参数
 ;D_DRESS_TIME_F:纯修整精修次数
 ;D_DRESS_DEEP_F:纯修整精修进给
 ;D_DRESS_FEED_F:纯修整精修速度
 ;WHEEL_LINESPEED_DRESS_D:单纯修整砂轮线速度
-;;***************************
+;****************************
 
 IF PROCESS[15]==0;基本工艺
     TECH_DRESS_TIME[0]=D_DRESS_TIME_F;修整界面的精修次数

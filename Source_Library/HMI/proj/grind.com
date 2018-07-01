@@ -1,5 +1,5 @@
 ;ifIsExternalBegin
-;;;;;;;;;;;;;;;;;;;MASK1:磨削参数_外:panel_1:;;;;;;;;;;;;;;;;;;;;;;
+;**********************MASK1:磨削参数_外:panel_1:;**********************
 //M(Mask1/$85020/"panel_1_1_chs.png"/)
 
 	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_1_26_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/360,330,202/460,330,60/);单次中径调整值
@@ -259,7 +259,7 @@
 ;ifIsExternalEnd
 
 ;ifIsInternalOrCenterBegin
-;;;;;;;;;;;;;;;;;;;MASK18:磨削参数_内:panel_18:;;;;;;;;;;;;;;;;;;;;;
+;**********************MASK18:磨削参数_内:panel_18:;**********************
 //M(Mask18/$85020/"panel_18_4_chs.png"/)
 
 	DEF DIAMETER_ADJ=(R///$85174,$85174,$85043,/WR2/"panel_18_29_chs.png"/"/NC/_N_NC_GD2_ACX/GRIND[5]"/360,330,202/460,330,60/);单次中径调整值

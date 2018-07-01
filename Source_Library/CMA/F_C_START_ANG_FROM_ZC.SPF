@@ -1,9 +1,9 @@
 PROC F_C_START_ANG_FROM_ZC(REAL ZPOSITION,REAL C_ANG) DISPLOF
-;;**********程序功能**********
-;;根据当前zc，推算初始c
+;***********程序功能**********
+;*根据当前zc，推算初始c
 ;ZPOSITION:z当前位置
 ;C_ANG:c角度
-;;***************************
+;****************************
 
 DEF REAL DR1,DR2,DR3
 
