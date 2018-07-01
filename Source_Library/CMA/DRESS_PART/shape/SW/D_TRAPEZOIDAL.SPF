@@ -1,7 +1,7 @@
 PROC D_TRAPEZOIDAL DISPLOF
-;;**********程序功能**********
-;;梯形
-;;***************************
+;***********程序功能**********
+;*梯形
+;****************************
 
 DEF REAL QO2,DG,CD,ND,DM,WHR;临时变量
 DEF REAL DH0,POINT1,POINT2,POINT3,POINT4;临时变量

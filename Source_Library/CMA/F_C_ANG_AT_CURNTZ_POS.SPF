@@ -1,9 +1,9 @@
 PROC F_C_ANG_AT_CURNTZ_POS(REAL ZPOSITION,VAR REAL C_ANG) DISPLOF
-;;**********程序功能**********
-;;当前z位置下的C角度
+;***********程序功能**********
+;*当前z位置下的C角度
 ;ZPOSITION:z当前位置
 ;C_ANG:c角度
-;;***************************
+;****************************
 
 DEF REAL DR1,DR2,DR3
 

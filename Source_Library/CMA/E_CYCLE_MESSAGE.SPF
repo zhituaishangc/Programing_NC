@@ -1,8 +1,8 @@
 PROC E_CYCLE_MESSAGE DISPLOF
-;;**********程序功能**********
-;;磨削小循环当前工艺信息:
-;;当前循环次数，头数，进刀量，剩余次数
-;;***************************
+;***********程序功能**********
+;*磨削小循环当前工艺信息:
+;*当前循环次数，头数，进刀量，剩余次数
+;****************************
 
 CASE PROCESS[2] OF 0 GOTOF MESSAGE_0 1 GOTOF MESSAGE_1 2 GOTOF MESSAGE_2 3 GOTOF MESSAGE_3 4 GOTOF MESSAGE_4 DEFAULT GOTOF MESSAGE_5
 MESSAGE_0:;粗磨信息

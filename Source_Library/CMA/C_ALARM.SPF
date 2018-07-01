@@ -1,8 +1,8 @@
 PROC C_ALARM DISPLOF
-;;**********程序功能**********
-;;报警处理:
-;;系统所有报警的处理，及显示
-;;***************************
+;***********程序功能**********
+;*报警处理:
+;*系统所有报警的处理，及显示
+;****************************
 
 CASE DRESSER[6] OF 1 GOTOF ALARM_1 2 GOTOF ALARM_2 3 GOTOF ALARM_3 4 GOTOF ALARM_4 5 GOTOF ALARM_5 6 GOTOF ALARM_6 7 GOTOF ALARM_7 8 GOTOF ALARM_8 9 GOTOF ALARM_9 10 GOTOF ALARM_10 DEFAULT GOTOF ALARM_ABORT
 

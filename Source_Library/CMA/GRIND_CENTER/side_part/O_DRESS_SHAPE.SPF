@@ -1,7 +1,7 @@
 PROC O_DRESS_SHAPE DISPLOF
-;;**********程序功能**********
-;;齿形选择
-;;***************************
+;***********程序功能**********
+;*齿形选择
+;****************************
 
 IF DRESSER[104]+DRESSER[105]==0;第一遍跳出
     RET
@@ -11,7 +11,7 @@ G90 G01 Z=DRESSER[108] F=INI[57];当前接触
 G90 G01 AX[AXNAME(AXIS_EW)]=DRESSER[100] F=300;
 FGROUP(AXNAME(AXIS_EW))
 G90 G01 AX[AXNAME(AXIS_EW)]=DRESSER[101] Z=DRESSER[108]-DRESSER[136] F=DRESSER[107]
-;;G90 G01 Z=DRESSER[108]+1 F=INI[57];修整不退刀
+;*G90 G01 Z=DRESSER[108]+1 F=INI[57];修整不退刀
 G90 G01 AX[AXNAME(AXIS_EW)]=DRESSER[100] Z=DRESSER[108] F=DRESSER[107]*2;
 
 DRESSER[129]=1;旧砂轮

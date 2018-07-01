@@ -1,12 +1,12 @@
 PROC F_ZC_START(REAL Z_START_POSITION,REAL Z_END_POSITION,REAL WORK_LEAD,REAL SPEED,REAL ENABLE_ZUIDU) DISPLOF
-;;**********程序功能**********
-;;ZC插补
+;***********程序功能**********
+;*ZC插补
 ;Z_START_POSITION:z轴起点
 ;Z_END_POSITION:z轴终点
 ;WORK_LEAD:工件导程
 ;SPEED:插补速度(z轴)
 ;ENABLE_ZUIDU:是否移动x轴
-;;***************************
+;****************************
 
 DEF REAL PERCENTS,ZUIDU_STATUS,FULL_ANG,X_DISTANCE,X_SPEED,Z_DISTANCE,LUOWEN_ORI
 
