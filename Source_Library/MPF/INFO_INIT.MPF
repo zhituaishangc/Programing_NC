@@ -3,8 +3,8 @@
 ;*机床名称: machineCHS
 ;*出厂编号: machineIndex
 ;*用户名称: customInfo
-;*调试人员: personName
-;*出厂时间: completeDate
+;*调试人员: debugMember
+;*调试日期: debugDate
 ;****************************
 ;*软件版本: softwareVersion
 ;*特殊处理: specialDealWithMark
