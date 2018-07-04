@@ -7,6 +7,7 @@
 ;****************************
 ;*软件版本: softwareVersion
 ;*特殊处理: specialDealWithMark
+;*配置代码: specificationInfo
 ;***********参数赋值**********
 INI[80]=100;*对刀zc插补速度
 INI[53]=1500;*对刀时砂轮转速
