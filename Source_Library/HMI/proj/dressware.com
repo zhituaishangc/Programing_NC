@@ -1531,8 +1531,6 @@
 	DEF para_switch=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_16_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[6]"/0,0,0/530,40,18/);参数锁定开关
 
 	DEF VAR12=(R/-2000,2000//$85608,$85608,,$85043/WR2/"panel_16_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,70,110/440,70,110/);砂轮修整轮中心
-	;DEF VAR20=(R/-2000,2000//$85624,$85624,,$85043/WR2/"panel_16_8_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[48]"/325,90,115/440,90,110/);砂轮开到修整端面位置
-	;DEF VAR21=(R/-100,100//$85625,$85625,,$85043/WR2/"panel_16_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[49]"/325,110,115/440,110,110/);修整轮齿槽到修整端面距离
 
 	DEF VAR11=(R/0,80//$85604,$85604,,$85047/WR2/"panel_16_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110/);滚压轮停留时间
 	
@@ -1697,14 +1695,6 @@
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL);修整轮转速计算
 	END_CHANGE
 	
-	CHANGE(VAR20)
-		call("UP2")
-	END_CHANGE
-
-	CHANGE(VAR21)
-		call("UP2")
-	END_CHANGE
-
 	CHANGE(para_switch)
 		CALL("UP3")
 	END_CHANGE
@@ -1734,10 +1724,6 @@
 		VAR1.VAL=VAR3.VAL-VAR2.VAL;NC用初始接触
 	END_SUB
 
-	SUB(UP2)
-		;VAR12.VAL=VAR20.VAL+VAR21.VAL
-	END_SUB
-
 	SUB(UP3)
 		IF para_switch.VAL==0
 			VAR0.WR=2
@@ -1756,13 +1742,7 @@
 	DEF VAR0=(R/-800,800//$85601,$85601,,$85043/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[3]"/325,40,110/440,40,110);回零时砂轮与修整轮中间距
 	DEF para_switch1=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_2_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[7]"/0,0,0/530,40,18/);参数锁定开关
 
-	DEF VAR12=(R/-2000,2000//$85608,$85608,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,70,110/440,70,110/);砂轮与修整轮Z中心
-
-	DEF VAR20=(R/-2000,2000//$85624,$85624,,$85043/WR2/"panel_17_8_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[48]"/325,90,115/440,90,110/);砂轮开到修整端面位置
-	DEF para_switch2=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_8_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[8]"/0,0,0/530,90,18/);参数锁定开关
-
-	DEF VAR21=(R/-100,100//$85625,$85625,,$85043/WR2/"panel_17_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[49]"/325,110,115/440,110,110/);修整轮齿槽到修整端面距离
-	DEF para_switch3=(I/*0=$85058,1=$85059//$85063,$85063,,/WR2/"panel_17_9_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[9]"/0,0,0/530,110,18/);参数锁定开关
+	DEF VAR12=(R/-2000,2000//$85608,$85608,,$85043/WR2/"panel_17_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,70,110/440,70,110/);砂轮与修整轮Z中心
 
 	DEF VAR11=(R/0,80//$85604,$85604,,$85047/WR2/"panel_17_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110/);滚压轮停留时间
 
@@ -1931,24 +1911,8 @@
 		VAR9.VAL=VAR8.VAL*60000/(PI*VAR7.VAL);修整轮转速计算
 	END_CHANGE
 
-	CHANGE(VAR20)
-		call("UP2")
-	END_CHANGE
-
-	CHANGE(VAR21)
-		call("UP2")
-	END_CHANGE
-
 	CHANGE(para_switch1)
 		call("UP3")
-	END_CHANGE
-
-	CHANGE(para_switch2)
-		call("UP4")
-	END_CHANGE
-
-	CHANGE(para_switch3)
-		call("UP5")
 	END_CHANGE
 
 	CHANGE(QCHECK)
@@ -1968,8 +1932,6 @@
 			para_switch2.WR=2
 			para_switch3.WR=2
 			CALL("UP3")
-			CALL("UP4")
-			CALL("UP5")
 		ENDIF
 	END_CHANGE
 
@@ -1978,31 +1940,11 @@
 		VAR1.VAL=VAR3.VAL+VAR2.VAL;NC用初始接触
 	END_SUB
 
-	SUB(UP2)
-		VAR12.VAL=VAR20.VAL+VAR21.VAL
-	END_SUB
-
 	SUB(UP3)
 		IF para_switch1.VAL==0
 			VAR0.WR=2
 		ELSE
 			VAR0.WR=1
-		ENDIF
-	END_SUB
-
-	SUB(UP4)
-		IF para_switch2.VAL==0
-			VAR20.WR=2
-		ELSE
-			VAR20.WR=1
-		ENDIF
-	END_SUB
-
-	SUB(UP5)
-		IF para_switch3.VAL==0
-			VAR21.WR=2
-		ELSE
-			VAR21.WR=1
 		ENDIF
 	END_SUB
 
