@@ -18,7 +18,6 @@ M26;空调开
 
 IF GRIND[1]<>0
     B_DRESS;修整
-    D_GRIND_POSITION;修整后磨削位置计算
     INI[40]=0;新砂轮磨削接触位计算标记
     GOTOF G_ENDING
 ENDIF

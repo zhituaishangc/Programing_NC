@@ -11,7 +11,6 @@ ENDIF
 IF INI[100]==1;磨削几件后修整标记位
     INI[100]=0;标记位
     N_DRESS;修整
-    O_GRIND_POSITION;修整后磨削位置计算
     IF DRESSER[6]<>0;有报警标记则退出程序
         RET
     ENDIF
@@ -52,7 +51,6 @@ ENDIF
 
 IF PROCESS[28]==1
     N_DRESS;修整
-    O_GRIND_POSITION;修整后磨削位置计算
     PROCESS[28]=0;修整标记清零
     IF DRESSER[6]<>0;有报警标记则退出程序
         RET

@@ -11,6 +11,13 @@ IF DRESSER[104]<DRESSER[120]
     PROCESS[50]=PROCESS[50]-DRESSER[122];测头中心和砂轮侧面间的距离累计
     DRESSER[93]=DRESSER[93]-DRESSER[122];外圆修整位置平移一个进刀量
     DRESSER[72]=DRESSER[72]-DRESSER[122];外圆修整位置平移一个进刀量
+
+    PROCESS[48]=PROCESS[48]-DRESSER[122];初始进刀位置计算
+    PROCESS[34]=PROCESS[34]-DRESSER[122];当前进刀位置计算
+
+    PROCESS[47]=PROCESS[47]-DRESSER[122];初始进刀位置计算
+    PROCESS[37]=PROCESS[37]-DRESSER[122];当前进刀位置计算
+
     MSG("粗修整中-->正在进行第"<<DRESSER[104]<<"次,还剩"<<DRESSER[120]-DRESSER[104]<<"次完成,进给量:"<<DRESSER[122]<<"mm")
 ELSE
     IF DRESSER[105]<DRESSER[121]
@@ -20,6 +27,13 @@ ELSE
         PROCESS[50]=PROCESS[50]-DRESSER[123];测头中心和砂轮侧面间的距离累计
         DRESSER[93]=DRESSER[93]-DRESSER[123];外圆修整位置平移一个进刀量
         DRESSER[72]=DRESSER[72]-DRESSER[123];外圆修整位置平移一个进刀量
+
+        PROCESS[48]=PROCESS[48]-DRESSER[123];初始进刀位置计算
+        PROCESS[34]=PROCESS[34]-DRESSER[123];当前进刀位置计算
+
+        PROCESS[47]=PROCESS[47]-DRESSER[123];初始进刀位置计算
+        PROCESS[37]=PROCESS[37]-DRESSER[123];当前进刀位置计算
+
         MSG("精修整中-->正在进行第"<<DRESSER[105]<<"次,还剩"<<DRESSER[121]-DRESSER[105]<<"次完成,进给量:"<<DRESSER[123]<<"mm")
     ELSE
         DRESSER[105]=DRESSER[105]+1
