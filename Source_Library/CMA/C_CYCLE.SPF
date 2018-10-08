@@ -18,7 +18,6 @@ IF INI[75]==1;磨削几件后修整标记位
     M9;内磨削冷却关
     M39;外磨削冷却关
     B_DRESS;修整
-    D_GRIND_POSITION;修整后磨削位置计算
     IF DRESSER[6]<>0;有报警标记则退出程序
         RET
     ENDIF
@@ -58,7 +57,6 @@ IF PROCESS[3]==1
     M9;内磨削冷却关
     M39;外磨削冷却关
     B_DRESS;修整
-    D_GRIND_POSITION;修整后磨削位置计算
     PROCESS[3]=0;修整标记清零
     IF DRESSER[6]<>0;有报警标记则退出程序
         RET
