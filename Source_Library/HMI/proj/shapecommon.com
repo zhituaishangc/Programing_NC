@@ -1,3 +1,8 @@
+;调用通用齿形步骤：
+;将下面对应界面替换到shape.com中
+;变量表修改DRESSER[114]=1
+;dress.com内激活对应VAR3对应变量DRESSER[115](界面调用为：DRESSER[116])
+
 ;ifIsAllShapeBegin
 ;**********************MASK7:三角:panel_7:;**********************
 //M(Mask7/$85424//)
