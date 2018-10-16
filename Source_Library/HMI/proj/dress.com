@@ -15,10 +15,10 @@
 	DEF VAR2=(I/*1=$85381/1/$85388,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双 ifIsSide
 
 	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsAllShape
-	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsArc
+	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
 	
 	;DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60/);齿形 通用齿形调用 ifIsAllShape
-	;DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60/);齿形 通用齿形调用 ifIsArc
+	;DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60/);齿形 通用齿形调用 ifIsOnlyArc
 
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
@@ -264,13 +264,13 @@
 				VAR2.WR=2;  ifIsSingleAndRound
 				VAR2.WR=1;  ifIsSide
 				VAR3.WR=2;  ifIsAllShape
-				VAR3.WR=1;  ifIsArc
+				VAR3.WR=1;  ifIsOnlyArc
 				VAR12.WR=2
 			ELSE
 				VAR2.WR=1;  ifIsSingleAndRound
 				VAR2.WR=1;  ifIsSide
 				VAR3.WR=1;  ifIsAllShape
-				VAR3.WR=1;  ifIsArc
+				VAR3.WR=1;  ifIsOnlyArc
 				VAR12.WR=1
 			ENDIF
 		ELSE
@@ -290,13 +290,13 @@
 					VAR2.WR=2;  ifIsSingleAndRound
 					VAR2.WR=1;  ifIsSide
 					VAR3.WR=2;  ifIsAllShape
-					VAR3.WR=1;  ifIsArc
+					VAR3.WR=1;  ifIsOnlyArc
 					VAR12.WR=2
 				ELSE
 					VAR2.WR=1;  ifIsSingleAndRound
 					VAR2.WR=1;  ifIsSide
 					VAR3.WR=1;  ifIsAllShape
-					VAR3.WR=1;  ifIsArc
+					VAR3.WR=1;  ifIsOnlyArc
 					VAR12.WR=1
 				ENDIF
 			ELSE
