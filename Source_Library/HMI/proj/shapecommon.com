@@ -1,3 +1,450 @@
+;ifIsAllShapeBegin
+;**********************MASK7:三角:panel_7:;**********************
+//M(Mask7/$85424//)
+
+	DEF VAR0=(R/0,20//$85465,$85465,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[101]"/325,10,120/440,10,110/);齿底圆弧半径
+
+	DEF VAR1=(R/0,90//$85413,$85413,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[102]"/325,40,120/440,40,110/);左斜面角度
+	DEF VAR2=(R/0,90//$85414,$85414,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[103]"/325,60,120/440,60,110/);右斜面角度
+
+	DEF VAR3=(R/0,50//$85417,$85417,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[104]"/325,90,120/440,90,110/);齿高
+
+	DEF VAR4=(R/0,90//$85415,$85415,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[105]"/325,120,120/440,120,110/);延长线角度
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+
+	HS1=($85001,ac7,se1);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se3);修整参数
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
+	HS5=($85012,ac7,se1);外圆
+	HS6=($85017,ac7,se1);端面
+	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
+	HS8=($85005,ac7,se1);返回
+
+	VS1=($85383,ac7,se3);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
+	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
+
+	PRESS(HS1)
+		IF TYPE.VAL<>1
+			LM("MASK1","grind.com")
+		ELSE
+			LM("MASK18","grind.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29","process.com")
+			ELSE
+				LM("MASK2","process.com")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30","process.com")
+			ELSE
+				LM("MASK20","process.com")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK31","centerwaiyuan.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK32","centerduanmian.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK23","centermain.com")
+	END_PRESS
+
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK7","shape.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK8","shape.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK9","shape.com")
+	END_PRESS
+
+	PRESS(VS4)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK4","dressware.com")
+		ELSE;XZ/X
+			LM("MASK12","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS5)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK5","dressware.com")
+		ELSE;XZ/X
+			LM("MASK13","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS6)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK6","dressware.com")
+		ELSE;XZ/X
+			LM("MASK14","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS7)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK11","dressware.com")
+		ELSE;XZ/X
+			IF GRIND_TYPE.VAL==0;WAI
+				LM("MASK16","dressware.com")
+			ELSE;NEI
+				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
+					LM("MASK17","dressware.com")
+				ELSE
+					LM("MASK19","dressware.com")
+				ENDIF
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK15","dressware.com")
+	END_PRESS
+
+//END
+
+;**********************MASK8:梯形:panel_8:;**********************
+//M(Mask8/$85401//)
+
+	DEF VAR0=(R/0,20//$85410,$85410,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[91]"/325,10,120/440,10,110/);齿底长度
+
+	DEF VAR1=(R/0,20//$85411,$85411,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[92]"/325,40,120/440,40,110/);齿底左圆弧半径
+	DEF VAR2=(R/0,20//$85412,$85412,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[93]"/325,60,120/440,60,110/);齿底右圆弧半径
+
+	DEF VAR3=(R/0,90//$85413,$85413,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[94]"/325,90,120/440,90,110/);左斜面角度
+	DEF VAR4=(R/0,90//$85414,$85414,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[95]"/325,110,120/440,110,110/);右斜面角度
+
+	DEF VAR5=(R/0,50//$85417,$85417,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[96]"/325,140,120/440,140,110/);齿高
+
+	DEF VAR6=(R/0,90//$85415,$85415,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[97]"/325,170,120/440,170,110/);延长线角度
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+
+	HS1=($85001,ac7,se1);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se3);修整参数
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
+	HS5=($85012,ac7,se1);外圆
+	HS6=($85017,ac7,se1);端面
+	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
+	HS8=($85005,ac7,se1);返回
+
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se3);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
+	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
+
+	PRESS(HS1)
+		IF TYPE.VAL<>1
+			LM("MASK1","grind.com")
+		ELSE
+			LM("MASK18","grind.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29","process.com")
+			ELSE
+				LM("MASK2","process.com")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30","process.com")
+			ELSE
+				LM("MASK20","process.com")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK31","centerwaiyuan.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK32","centerduanmian.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK23","centermain.com")
+	END_PRESS
+
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK7","shape.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK8","shape.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK9","shape.com")
+	END_PRESS
+
+	PRESS(VS4)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK4","dressware.com")
+		ELSE;XZ/X
+			LM("MASK12","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS5)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK5","dressware.com")
+		ELSE;XZ/X
+			LM("MASK13","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS6)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK6","dressware.com")
+		ELSE;XZ/X
+			LM("MASK14","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS7)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK11","dressware.com")
+		ELSE;XZ/X
+			IF GRIND_TYPE.VAL==0;WAI
+				LM("MASK16","dressware.com")
+			ELSE;NEI
+				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
+					LM("MASK17","dressware.com")
+				ELSE
+					LM("MASK19","dressware.com")
+				ENDIF
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK15","dressware.com")
+	END_PRESS
+
+//END
+;ifIsAllShapeEnd
+
+;**********************MASK9:双圆弧:panel_9:;**********************
+//M(Mask9/$85400//)
+
+	DEF VAR0=(R/0,20//$85404,$85404,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[81]"/325,10,120/440,10,110/);左圆弧半径
+	DEF VAR1=(R/0,20//$85405,$85405,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[82]"/325,30,120/440,30,110/);右圆弧半径
+
+	DEF VAR2=(R/0,90//$85406,$85406,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[83]"/325,60,120/440,60,110/);左偏心
+	DEF VAR3=(R/0,90//$85407,$85407,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[84]"/325,80,120/440,80,110/);右偏心
+
+	DEF VAR4=(R/0,90//$85408,$85408,,$85042/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[85]"/325,110,120/440,110,110/);过度1斜线角度
+	DEF VAR5=(R//0.1//WR4//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[86]"/0,0,0/0,0,0/);过度1斜线长度延长
+
+	DEF VAR6=(R////WR4//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[87]"/0,0,0/0,0,0/);过度2斜线角度
+	DEF VAR7=(R/0,20//$85409,$85409,,$85043/WR2//"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[88]"/325,130,120/440,130,110/);过度2斜线长度
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+
+	HS1=($85001,ac7,se1);磨削参数
+	HS2=($85002,ac7,se1);工艺参数
+	HS3=($85003,ac7,se3);修整参数
+	HS4=($85010,ac7,se1);自动对刀  ifIsAuto
+
+	;ifIsCenterBegin
+	HS5=($85012,ac7,se1);外圆
+	HS6=($85017,ac7,se1);端面
+	HS7=($85011,ac7,se1);程序选项界面
+	;ifIsCenterEnd
+
+	HS8=($85005,ac7,se1);返回
+
+	VS1=($85383,ac7,se1);"三角" ifIsAllShape
+	VS2=($85384,ac7,se1);"梯形" ifIsAllShape
+	VS3=($85385,ac7,se3);"双圆弧" ifIsArc
+	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
+	VS5=($85381,ac7,se1);"双滚轮" ifIsSide
+	VS7=($85379,ac7,se2);"滚压轮"
+	VS8=($85378,ac7,se1);"摆缸"  ifIsVH
+
+	PRESS(HS1)
+		IF TYPE.VAL<>1
+			LM("MASK1","grind.com")
+		ELSE
+			LM("MASK18","grind.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		IF TECH.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29","process.com")
+			ELSE
+				LM("MASK2","process.com")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30","process.com")
+			ELSE
+				LM("MASK20","process.com")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK31","centerwaiyuan.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK32","centerduanmian.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK23","centermain.com")
+	END_PRESS
+
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK7","shape.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK8","shape.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK9","shape.com")
+	END_PRESS
+
+	PRESS(VS4)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK4","dressware.com")
+		ELSE;XZ/X
+			LM("MASK12","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS5)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK5","dressware.com")
+		ELSE;XZ/X
+			LM("MASK13","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS6)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK6","dressware.com")
+		ELSE;XZ/X
+			LM("MASK14","dressware.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(VS7)
+		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
+			LM("MASK11","dressware.com")
+		ELSE;XZ/X
+			IF GRIND_TYPE.VAL==0;WAI
+				LM("MASK16","dressware.com")
+			ELSE;NEI
+				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
+					LM("MASK17","dressware.com")
+				ELSE
+					LM("MASK19","dressware.com")
+				ENDIF
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK15","dressware.com")
+	END_PRESS
+
+	CHANGE(VAR4)
+		VAR6.VAL=VAR4.VAL
+	END_CHANGE
+
+//END
+
 ;**********************MASK40:齿形1:panel_40:;**********************
 //M(Mask40/$85459//)
 
