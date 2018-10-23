@@ -25,7 +25,7 @@ workstation only for HJMT Programing segment
 
 ## Build Guide
 
-* 视频演示: [Youtube](https://youtu.be/YIN5JHb4B0E). [bilibili](https://www.bilibili.com/video/av34441063/). [Youku]()
+* 视频演示: [Youtube](https://youtu.be/YIN5JHb4B0E). [bilibili](https://www.bilibili.com/video/av34441063/). [Youku](https://v.youku.com/v_show/id_XMzg4MzI3MDM0NA==.html?spm=a2h3j.8428770.3416059.1)
 * 程序生成
     1. 运行HorizonJuicer
     2. 选择`1.配置机床`
