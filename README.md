@@ -62,4 +62,9 @@ workstation only for HJMT Programing segment
 * Group members has promission to join develops, if you'd have any suggestion or idea, just let us know and pull you request.
 * [反馈通道](https://github.com/nie11kun/Programing_NC/issues)(请详细描述问题或意见细节)
 
-![HJMT](http://i.imgur.com/3qvfsmZ.png)
+## Contact
+
+* Email: nie11kun@outlook.com
+* Follow me at [Twitter](https://twitter.com/marco_nie). [Weibo](https://weibo.com/nie11kun). [Instagram](https://www.instagram.com/marco_nie_/). [Facebook](https://www.facebook.com/nie11kun)
+* My Blog: niekun.ml
+
