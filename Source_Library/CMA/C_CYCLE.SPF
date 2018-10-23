@@ -15,8 +15,7 @@ IF INI[75]==1;磨削几件后修整标记位
     F_Z_POSITION(INI[28]);修整初始位置 内螺纹  ifIsInternal
     ;*********************
 
-    M9;内磨削冷却关
-    M39;外磨削冷却关
+    M9;磨削冷却关
     B_DRESS;修整
     IF DRESSER[6]<>0;有报警标记则退出程序
         RET
@@ -34,8 +33,7 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI
 
 ENDIF
 
-M8;内磨削冷却开
-M38;外磨削冷却开
+M8;磨削冷却开
 
 D_GRIND;螺纹小循环
 PLCASUP1;初始角度计算
@@ -54,8 +52,7 @@ IF PROCESS[3]==1
     F_Z_POSITION(INI[28]);修整初始位置 内螺纹  ifIsInternal
     ;*********************
 
-    M9;内磨削冷却关
-    M39;外磨削冷却关
+    M9;磨削冷却关
     B_DRESS;修整
     PROCESS[3]=0;修整标记清零
     IF DRESSER[6]<>0;有报警标记则退出程序
@@ -66,8 +63,7 @@ IF PROCESS[3]==1
 ENDIF
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
-    M9;内磨削冷却关
-    M39;外磨削冷却关
+    M9;磨削冷却关
 
     ;*********************
     D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55]);外螺纹   ifIsExternal
