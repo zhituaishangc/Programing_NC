@@ -165,7 +165,8 @@
 85162 0 0 ""  ;
 85163 0 0 ""  ;
 85164 0 0 "Thread Angle"  ;
-85165 0 0 "Measure start"  ;
+85165 0 0 "Measure start"  ;ifIsExternal
+85165 0 0 "Work Center"  ;ifIsInternal
 85166 0 0 "Single"  ;
 85167 0 0 "Mass";
 85168 0 0 ""  ;
