@@ -691,6 +691,7 @@
 	END_PRESS
 	
 	CHANGE(VAR3)
+		call("UP1")
 		call("UP2")
 	END_CHANGE	
 	
@@ -771,44 +772,42 @@
 	END_CHANGE
 	
     SUB(UP1)
-		IF VAR4.VAL==1.588 OR VAR4.VAL==2.381 OR VAR4.VAL==3.175 OR VAR4.VAL==3.969 OR VAR4.VAL==4.763 OR VAR4.VAL==5.953 OR VAR4.VAL==7.144 OR VAR4.VAL==9.525 OR VAR4.VAL==12.7
-			IF VAR3.VAL==45
-				IF VAR4.VAL==1.588
-					VAR5.VAL=0.881
-					VAR6.VAL=0.881
+		IF (VAR4.VAL==1.588 OR VAR4.VAL==2.381 OR VAR4.VAL==3.175 OR VAR4.VAL==3.969 OR VAR4.VAL==4.763 OR VAR4.VAL==5.953 OR VAR4.VAL==7.144 OR VAR4.VAL==9.525 OR VAR4.VAL==12.7) AND (VAR3.VAL==45)
+			IF VAR4.VAL==1.588
+				VAR5.VAL=0.881
+				VAR6.VAL=0.881
+			ELSE
+				IF VAR4.VAL==2.381
+					VAR5.VAL=1.321
+					VAR6.VAL=1.321
 				ELSE
-					IF VAR4.VAL==2.381
-						VAR5.VAL=1.321
-						VAR6.VAL=1.321
+					IF VAR4.VAL==3.175
+						VAR5.VAL=1.762
+						VAR6.VAL=1.762
 					ELSE
-						IF VAR4.VAL==3.175
-							VAR5.VAL=1.762
-							VAR6.VAL=1.762
+						IF VAR4.VAL==3.969
+							VAR5.VAL=2.203
+							VAR6.VAL=2.203
 						ELSE
-							IF VAR4.VAL==3.969
-								VAR5.VAL=2.203
-								VAR6.VAL=2.203
+							IF VAR4.VAL==4.763
+								VAR5.VAL=2.643
+								VAR6.VAL=2.643
 							ELSE
-								IF VAR4.VAL==4.763
-									VAR5.VAL=2.643
-									VAR6.VAL=2.643
+								IF VAR4.VAL==5.953
+									VAR5.VAL=3.304
+									VAR6.VAL=3.304
 								ELSE
-									IF VAR4.VAL==5.953
-										VAR5.VAL=3.304
-										VAR6.VAL=3.304
+									IF VAR4.VAL==7.144
+										VAR5.VAL=3.965
+										VAR6.VAL=3.965
 									ELSE
-										IF VAR4.VAL==7.144
-											VAR5.VAL=3.965
-											VAR6.VAL=3.965
+										IF VAR4.VAL==9.525
+											VAR5.VAL=5.286
+											VAR6.VAL=5.286
 										ELSE
-											IF VAR4.VAL==9.525
-												VAR5.VAL=5.286
-												VAR6.VAL=5.286
-											ELSE
-												IF VAR4.VAL==12.7
-													VAR5.VAL=7.049
-													VAR6.VAL=7.049
-												ENDIF
+											IF VAR4.VAL==12.7
+												VAR5.VAL=7.049
+												VAR6.VAL=7.049
 											ENDIF
 										ENDIF
 									ENDIF
