@@ -34,8 +34,7 @@ ENDWHILE
 A_GRINDING;磨削
 
 STOPRE
-IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1) OR (INI[110]==1);修整/对刀/不用机械手/加工结束
-    INI[110]=0;加工结束清除
+IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1);修整/对刀/不用机械手
     RET
 ELSE
     GOTOB TOU
