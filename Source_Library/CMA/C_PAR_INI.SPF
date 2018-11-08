@@ -69,22 +69,27 @@ GRIND[1]=$A_DBB[0];是否修整
 IF INI[69]==0;无自动对刀
 	GRIND[2]=$A_DBB[1];是否对刀
 ELSE
-	IF ($A_DBB[1]==0) AND ($A_DBB[5]==0)
-		GRIND[2]=0;不对刀
-	ELSE
-		IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
-			GRIND[2]=1;手动对刀
+	IF TOOL_SET[68]==0;磨削中心：自动对刀标记
+		IF ($A_DBB[1]==0) AND ($A_DBB[5]==0)
+			GRIND[2]=0;不对刀
 		ELSE
-			IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
-				GRIND[2]=2;自动对刀(只计算C角度)
-				TOOL_SET[8]=0;首次对刀
+			IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
+				GRIND[2]=1;手动对刀
 			ELSE
-				IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
+				IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
 					GRIND[2]=2;自动对刀(只计算C角度)
 					TOOL_SET[8]=0;首次对刀
+				ELSE
+					IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
+						GRIND[2]=2;自动对刀(只计算C角度)
+						TOOL_SET[8]=0;首次对刀
+					ENDIF
 				ENDIF
 			ENDIF
 		ENDIF
+	ELSE
+		GRIND[2]=0;不对刀
+		TOOL_SET[68]=0;自动对刀标记复位
 	ENDIF
 ENDIF
 
