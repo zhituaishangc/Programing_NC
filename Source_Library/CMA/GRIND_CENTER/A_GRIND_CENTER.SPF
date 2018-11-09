@@ -3,6 +3,8 @@ PROC A_GRIND_CENTER DISPLON
 ;*磨削中心主程序
 ;****************************
 
+DRFOF;手轮偏置清除
+
 TOOL_SET[68]=0;自动对刀标记复位
 STOPRE;
 
