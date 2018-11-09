@@ -333,8 +333,8 @@
     <Row20 type="QString" value="测量机构2汽缸回退到位"/>
     <Row21 type="QString" value="测量机构2汽缸伸出到位"/>
     <Row22 type="QString" value=""/>
-    <Row23 type="QString" value=""/>
-    <Row24 type="QString" value=""/>
+    <Row23 type="QString" value="液压修整器回退到位"/>
+    <Row24 type="QString" value="液压修整器伸出到位"/>
     <Row25 type="QString" value=""/>
     <Row26 type="QString" value=""/>
     <Row27 type="QString" value=""/>
