@@ -26,6 +26,7 @@
 	;ifIsNotCenterEnd
 
 	;ifIsCenterBegin
+	DEF YUANKONGWEIZHI=(I/*0=$85549,1=$85550//$85548,$85548,,/WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[70]"/330,300,110/440,300,60);磨削中心：自动对刀圆孔测量在左端面(0否1是)
 	DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,260,130/140,260,110/);磨削中心自动对刀测头顶部在工件中心时X轴坐标
 	DEF VAR21=(R///$85530,$85530,,$85043/WR4/"panel_21_14_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[53]"/10,280,130/140,280,110/);磨削中心外圆磨砂轮面在工件中心时U轴坐标
 	DEF VAR22=(R///$85532,$85532,,$85043/WR4/"panel_21_15_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[51]"/10,300,130/140,300,110/);磨削中心端面磨砂轮侧面与测头中心间距
@@ -222,10 +223,13 @@
 					VAR23.WR=2
 					VAR24.WR=2
 					IF VAR11.VAL==0;圆形孔
+						YUANKONGWEIZHI.WR=2
 						VAR12.WR=4
 						VAR13.WR=4
 						VAR14.WR=4
 					ELSE
+						YUANKONGWEIZHI.WR=4
+						YUANKONGWEIZHI.VAL=0
 						VAR12.WR=2
 						VAR13.WR=2
 						VAR14.WR=2
