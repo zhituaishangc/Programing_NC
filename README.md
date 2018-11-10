@@ -45,7 +45,7 @@ workstation only for HJMT Programing segment
     * 如果程序生成后提示有变量需要手动赋值则激活def后处理
     * 导入程序后重启NC，导入界面后重启HMI
     * `NC_PLC-variates.xml`文件
-        * 导入位置: HMI数据 -> 模板 -> 用户 -> 变量表
+        * 导入位置: `HMI数据 -> 模板 -> 用户 -> 变量表` 或者 `user\sinumerik\hmi\template\variables`
         * 使用: 诊断 -> NC/PLC变量 -> 载入变量表
 
 ## Quick Links
