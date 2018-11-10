@@ -31,7 +31,12 @@ WHILE(($A_DBB[10]==0)OR($A_DBB[9]==1))
     G4 F0.2
 ENDWHILE
 
-A_GRINDING;磨削
+IF GRIND[8]==0;机械手是否进行测试程序(0否1是)
+    A_GRINDING;磨削
+    A_GRIND_CENTER;磨削中心
+ELSE
+    B_JXS_TEST;
+ENDIF
 
 STOPRE
 IF ($A_DBB[0]==1) OR ($A_DBB[1]==1) OR (INI[85]<>1);修整/对刀/不用机械手
