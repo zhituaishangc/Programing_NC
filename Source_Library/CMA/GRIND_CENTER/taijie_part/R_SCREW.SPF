@@ -10,7 +10,7 @@ IF DRESSER[6]<>0;有报警标记则退出程序
 ENDIF
 
 IF TECHNOLOGY[265]+TECHNOLOGY[266]==0;工艺参数中设置的总磨削次数
-    RET
+    GOTOF TJ_G_ENDING
 ENDIF
 
 M20;吸雾开
