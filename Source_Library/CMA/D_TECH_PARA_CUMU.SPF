@@ -21,15 +21,17 @@ IF PROCESS[7]<S_TECH_DRESS_CUMU;修整判断
         PROCESS[3]=1;修整标记
         PROCESS[7]=0;次数清零
     ENDIF
-    IF S_TECH_TIME_CURNT==S_TECH_TIME;如果是最后一刀
-        PROCESS[7]=0;累计清零
-    ENDIF
 ELSE;磨削中修改了修整设定
     IF S_TECH_DRESS_CUMU<>0
         PROCESS[3]=1;修整标记
         PROCESS[7]=0;次数清零
     ENDIF
 ENDIF
+
+IF S_TECH_TIME_CURNT==S_TECH_TIME;如果是最后一刀
+    PROCESS[7]=0;累计清零
+ENDIF
+
 ;传递参数
 PROCESS[4]=PROCESS[4]-S_TECH_GRIND_DEEP;进刀位置
 PROCESS[6]=S_GRIND_METHOD;单双磨
