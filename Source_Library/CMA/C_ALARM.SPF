@@ -47,11 +47,11 @@ MSG("测量多段螺距结果有误!")
 GOTOF ALARM_DELAY
 
 ALARM_11:
-MSG("外圆测量三点偏移报警阈值,工件圆度过大--!阈值:INI[127]")
+MSG("外圆跳动:"<<INI[133]<<"mm,工件圆度过大!阈值:"<<INI[127]<<"mm")
 GOTOF ALARM_DELAY
 
 ALARM_12:
-MSG("外圆测量结果相比初始磨削位过大,请检查初始磨削设置!--!阈值:INI[130]")
+MSG("外圆测量结果相比初始磨削位过大,请检查初始磨削设置!阈值:"<<INI[130]<<"mm")
 GOTOF ALARM_DELAY
 
 ALARM_DELAY:
