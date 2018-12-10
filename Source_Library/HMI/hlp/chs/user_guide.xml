@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE HMI_SL_HELP>
+<HMI_SL_HELP language="chs">
+	<BOOK ref="index.html" title="用户手册" helpdir="UserGuide">
+		<ENTRY ref ="section_1.html" title="第一章" >
+			<ENTRY ref ="section_1.html#1_1" title="1_1" >
+				<INDEX_ENTRY ref="section_1.html#1_1" title="1_1" />
+			</ENTRY>
+		</ENTRY>
+		<ENTRY ref ="section_2.html" title="第二章" >
+			<ENTRY ref ="section_2.html#2_1" title="2_1" >
+				<INDEX_ENTRY ref="section_2.html#2_1" title="2_1" />
+			</ENTRY>
+		</ENTRY>
+		<ENTRY ref ="section_3.html" title="第三章" >
+			<ENTRY ref ="section_3.html#3_1" title="3_1" >
+				<INDEX_ENTRY ref="section_3.html#3_1" title="3_1" />
+			</ENTRY>
+		</ENTRY>
+	</BOOK>
+</HMI_SL_HELP>
