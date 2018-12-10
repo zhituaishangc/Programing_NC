@@ -2,19 +2,14 @@
 <!DOCTYPE HMI_SL_HELP>
 <HMI_SL_HELP language="chs">
 	<BOOK ref="index.html" title="用户手册" helpdir="UserGuide">
-		<ENTRY ref ="section_1.html" title="第一章" >
-			<ENTRY ref ="section_1.html#1_1" title="1_1" >
-				<INDEX_ENTRY ref="section_1.html#1_1" title="1_1" />
+		<ENTRY ref ="section_1.html" title="第一章机床基本参数" >
+			<ENTRY ref ="section_1.html#bookmark27" title="机床环境要求及轴定义" >
+				<INDEX_ENTRY ref="section_1.html#bookmark27" title="bookmark27" />
 			</ENTRY>
 		</ENTRY>
-		<ENTRY ref ="section_2.html" title="第二章" >
-			<ENTRY ref ="section_2.html#2_1" title="2_1" >
-				<INDEX_ENTRY ref="section_2.html#2_1" title="2_1" />
-			</ENTRY>
-		</ENTRY>
-		<ENTRY ref ="section_3.html" title="第三章" >
-			<ENTRY ref ="section_3.html#3_1" title="3_1" >
-				<INDEX_ENTRY ref="section_3.html#3_1" title="3_1" />
+		<ENTRY ref ="section_2.html" title="第二章用户界面介绍与参数定义" >
+			<ENTRY ref ="section_2.html#bookmark127" title="用户界面介绍" >
+				<INDEX_ENTRY ref="section_2.html#bookmark127" title="bookmark127" />
 			</ENTRY>
 		</ENTRY>
 	</BOOK>
