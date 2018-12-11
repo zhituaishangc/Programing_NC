@@ -1,0 +1,35 @@
+.head1 {
+    color: red;
+    font-size: large;
+}
+.head2 {
+    color: blue;
+    font-size: large;
+}
+.title1 {
+    padding-left: 0pt;
+    color: red;
+    font-size: large;
+}
+.title2 {
+    padding-left: 8pt;
+    color: blue;
+    font-size: large;
+}
+.var1 {
+    color: red;
+}
+.table1 {
+    font-size: medium;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+}
+.explain1 {
+    color: blue;
+    font-style: italic;
+}
+.box1 {
+    border-color: black;
+    border-width: 3px;
+}
