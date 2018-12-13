@@ -1,36 +1,51 @@
 ﻿<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/>
-        <title>HMI界面参数定义</title>
+        <title>磨削界面</title>
         <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     </head>
     
     <body>
-    
-        <p class="head1">HMI界面参数定义</p>
-        <hr>
-        <p class="head2">磨削界面</p>
-        <hr>
-
-        <a name="S1D1">&zwnj;</a><br>
-        <div class="box1">
-            <table class="table1">
-                <tr>
-                    <td><a class="var1">加工模式</a></td>
-                    <td>初始值:  单件小批量</td>
-                </tr>
-                <tr>
-                    <td>取值范围</td>
-                    <td>单件小批量/批量生产</td>
-                </tr>
-            </table>
-            <p class="explain1">
-                此参数影响磨削时起刀位置<br>
-                单件小批量：启动程序后从<b>当前</b>磨削位置开始加工<br>
-                批量生产：  启动程序后从<b>初始</b>磨削位置开始加工<br>
-            </p>
+        <div class="head1">HMI界面参数定义
             <hr>
+            <div class="head2">磨削界面
+                <hr>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S1D1">加工模式</a></td>
+                            <td>推荐设置：无</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>单件小批量/批量生产</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数影响磨削时起刀位置<br>
+                        单件小批量：启动程序后从<b class="highlight">当前</b>磨削位置开始加工<br>
+                        批量生产：  启动程序后从<b class="highlight">初始</b>磨削位置开始加工<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S1D2">工件中心</a></td>
+                            <td>推荐设置：无</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>根据计算结果设置</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数是砂轮开到中间中心X轴位置<br>
+                        手动开动机床，使砂轮接触工件外表面，记录X轴坐标X1 <br>
+                        测量当前砂轮直径D1，当前工件外径D2 <br>
+                        工件中心=X1+D1/2+D2/2 <br>
+                    </p>
+                </div>
+            </div>
         </div>
-
     </body>
 </html>
