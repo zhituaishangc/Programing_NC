@@ -6,48 +6,50 @@
     </head>
     
     <body>
-        <p class="head1">HMI界面参数定义</p>
-        <hr>
-        <p class="head2">滚轮界面</p>
-        <hr>
-        <div class="parameterCell">
-            <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                <tr>
-                    <td><a class="var_mark" name="S4D1">修整中心距(内螺纹参数)</a></td>
-                    <td>推荐设置：无</td>
-                </tr>
-                <tr>
-                    <td>取值范围</td>
-                    <td>根据计算结果设置</td>
-                </tr>
-            </table>
-            <p class="parameterExplain">
-                此参数影响修整前后起始位置<br>
-                计算方法:安装新砂轮到磨杆，测量当前砂轮直径D1, 输入到修整界面新砂轮直径里<br>
-                        根据滚轮图纸标识，将滚轮直径D2输入滚轮界面<br>
-                        移动机床将砂轮接触滚轮外沿，记录当前X轴坐标X1<br>
-                        修整中心距=绝对值(X1+D1/2+D2/2)<br>
-                        设置后观察滚轮界面的初始接触值是否等于X1，如果相等则修整中心距设置正确<br>
-            </p>
-        </div>
-        <div class="parameterCell">
-            <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                <tr>
-                    <td><a class="var_mark" name="S4D2">修整中心</a></td>
-                    <td>推荐设置：无</td>
-                </tr>
-                <tr>
-                    <td>取值范围</td>
-                    <td>根据计算结果设置</td>
-                </tr>
-            </table>
-            <p class="parameterExplain">
-                此参数影响修整左右位置<br>
-                计算方法:
-                    滚压轮：开动机床将砂轮中心移动到滚压轮槽中心，记录Z轴坐标<br>
-                    单滚轮：开动机床用滚轮左右侧面接触砂轮左右面，记录两个坐标Z1，Z2 <br>
-                    修整中心=(Z1+Z2)/2 <br>
-            </p>
+        <div class="head1"><a href="index.html">HMI界面参数定义</a>
+            <hr>
+            <div class="head2">滚轮界面
+                <hr>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S4D1">修整中心距(内螺纹参数)</a></td>
+                            <td>推荐设置：无</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>根据计算结果设置</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数影响修整前后起始位置<br>
+                        计算方法:安装新砂轮到磨杆，测量当前砂轮直径D1, 输入到修整界面新砂轮直径里<br>
+                                根据滚轮图纸标识，将滚轮直径D2输入滚轮界面<br>
+                                移动机床将砂轮接触滚轮外沿，记录当前X轴坐标X1<br>
+                                修整中心距=绝对值(X1+D1/2+D2/2)<br>
+                                设置后观察滚轮界面的初始接触值是否等于X1，如果相等则修整中心距设置正确<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S4D2">修整中心</a></td>
+                            <td>推荐设置：无</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>根据计算结果设置</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数影响修整左右位置<br>
+                        计算方法:
+                            滚压轮：开动机床将砂轮中心移动到滚压轮槽中心，记录Z轴坐标<br>
+                            单滚轮：开动机床用滚轮左右侧面接触砂轮左右面，记录两个坐标Z1，Z2 <br>
+                            修整中心=(Z1+Z2)/2 <br>
+                    </p>
+                </div>
+            </div>
         </div>
     </body>
 </html>

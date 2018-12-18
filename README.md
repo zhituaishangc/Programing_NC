@@ -48,6 +48,7 @@ workstation only for HJMT Programing segment
     * `NC_PLC-variates.xml`文件
         * 导入位置: `HMI数据 -> 模板 -> 用户 -> 变量表` 或者 `user\sinumerik\hmi\template\variables`
         * 使用: 诊断 -> NC/PLC变量 -> 载入变量表
+    * 若在线帮助hlp进行了修改，需删除`siemens\sinumerik\sys_cache\hmi\`目录下hlp文件夹，重启HMI
 
 ## Quick Links
 
@@ -56,7 +57,6 @@ workstation only for HJMT Programing segment
 * [wiki百科](https://github.com/nie11kun/Programing_NC/wiki)
 * [更新历史及下载](https://github.com/nie11kun/Programing_NC/releases)
 * [SinuTrain配置样例](https://github.com/nie11kun/Programing_NC/wiki/SinuTrain导出文件样例)
-* [出厂机床信息](https://github.com/nie11kun/Programing_NC/blob/master/Source_Library/Sell_Log.md)
 
 ## Contribute
 
