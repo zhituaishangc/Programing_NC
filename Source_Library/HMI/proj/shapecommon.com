@@ -21,6 +21,7 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -132,7 +133,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
@@ -169,6 +170,7 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -280,7 +282,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
@@ -318,6 +320,7 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -429,7 +432,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN

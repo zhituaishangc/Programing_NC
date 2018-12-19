@@ -34,6 +34,7 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -145,7 +146,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
@@ -290,6 +291,7 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -401,7 +403,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
@@ -517,11 +519,6 @@
 ;**********************MASK9:齿形参数_双圆弧:panel_9:;**********************
 //M(Mask9/$85385/"panel_9_1_chs.png"/)
 
-	;DEF VAR0=(R/0,200//$85430,$85430,,$85043/WR2/"panel_9_1_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[2]"/330,30,110/440,30,110/);外圆直径
-	;DEF VAR1=(R/0,200//$85431,$85431,,$85043/WR2/"panel_9_2_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[3]"/330,60,110/440,60,110/);公称直径
-
-	;DEF VAR2=(R/0,50//$85440,$85440,,$85043/WR2/"panel_9_3_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[12]"/330,80,110/440,80,110/);过渡圆弧半径
-
 	DEF VAR3=(R/0,90//$85433,$85433,,$85042/WR2/"panel_9_4_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[5]"/350,30,125/470,30,110/);接触角
 	DEF VAR4=(R/0,50//$85425,$85432,,$85043/WR2/"panel_9_5_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[4]"/350,50,125/470,50,110/);钢球直径
 
@@ -547,22 +544,13 @@
 	DEF VAR33=(R///$85455,$85455,,$85043/WR1/"panel_9_13_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[15]"/20,310,150/160,310,110/);当前左滚道垂直偏心
 	DEF VAR34=(R///$85456,$85456,,$85043/WR1/"panel_9_12_chs.png"/"/NC/_N_NC_GD2_ACX/DARC[16]"/20,330,150/160,330,110/);当前右滚道垂直偏心
 	
-	DEF VAR20=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/0,0,0/);修整轮
-	DEF VAR21=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[5]"/0,0,0/0,0,0/);圆弧半径
-	DEF VAR22=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[6]"/0,0,0/0,0,0/);右圆弧半径
-	DEF VAR23=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[7]"/0,0,0/0,0,0/);圆弧半径
-	DEF VAR24=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[8]"/0,0,0/0,0,0/);右圆弧半径
-	DEF VAR25=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[9]"/0,0,0/0,0,0/);圆弧半径
-	DEF VAR26=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[10]"/0,0,0/0,0,0/);右圆弧半径
-
 	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DARC[1]"/0,0,0/0,0,0/);齿高
 	
-	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
-
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
+	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 
 	HS1=($85001,ac7,se1);磨削参数
 	HS2=($85002,ac7,se1);工艺参数
@@ -674,7 +662,7 @@
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
@@ -703,22 +691,18 @@
     CHANGE(VAR5)
 	    VAR30.VAL=VAR5.VAL
 	    VAR9.VAL=VAR5.VAL+VAR7.VAL
-		
 	END_CHANGE	
 	
 	CHANGE(VAR6)
 	    VAR10.VAL=VAR6.VAL+VAR8.VAL
-		
 	END_CHANGE
 	
 	CHANGE(VAR7)
 		VAR9.VAL=VAR5.VAL+VAR7.VAL
-		
 	END_CHANGE
 
     CHANGE(VAR8)
 		VAR10.VAL=VAR6.VAL+VAR8.VAL
-		
 	END_CHANGE
 
     CHANGE(VAR15)
@@ -735,40 +719,6 @@
 	
 	CHANGE(VAR18)
 		VAR34.VAL=VAR18.VAL+VAR14.VAL
-	END_CHANGE
-	
-	CHANGE(VAR20)
-		call("UP3")
-	END_CHANGE
-	
-	CHANGE(QCHECK)
-		IF QCHECK.VAL==1
-			VAR0.WR=1
-			VAR1.WR=1
-			VAR2.WR=1
-			VAR3.WR=1
-			VAR4.WR=1
-			VAR5.WR=1
-			VAR6.WR=1
-			VAR7.WR=1
-			VAR8.WR=1
-			VAR15.WR=1
-			VAR16.WR=1
-			VAR17.WR=1
-			VAR18.WR=1
-		ELSE
-			VAR0.WR=2
-			VAR1.WR=2
-			VAR2.WR=2
-			VAR3.WR=2
-			VAR4.WR=2
-			VAR7.WR=2
-			VAR8.WR=2
-			VAR15.WR=2
-			VAR16.WR=2
-			VAR17.WR=2
-			VAR18.WR=2
-		ENDIF
 	END_CHANGE
 	
     SUB(UP1)
@@ -826,7 +776,7 @@
 			VAR6.WR=2
 			VAR9.VAL=VAR5.VAL+VAR7.VAL
 			VAR10.VAL=VAR6.VAL+VAR8.VAL
-		ENDIF	
+		ENDIF
 	END_SUB
 	
     SUB(UP2)
@@ -836,12 +786,12 @@
 				VAR12.VAL=(VAR6.VAL-VAR4.VAL/2)*SIN(VAR3.VAL*PI/180)
 				VAR13.VAL=(VAR5.VAL-VAR4.VAL/2)*COS(VAR3.VAL*PI/180)
 				VAR14.VAL=(VAR6.VAL-VAR4.VAL/2)*COS(VAR3.VAL*PI/180)
-				VAR31.VAL=VAR11.VAL
-				VAR32.VAL=VAR12.VAL
-				VAR33.VAL=VAR13.VAL
-				VAR34.VAL=VAR14.VAL
+				VAR31.VAL=VAR11.VAL+VAR15.VAL
+				VAR32.VAL=VAR12.VAL+VAR16.VAL
+				VAR33.VAL=VAR13.VAL+VAR17.VAL
+				VAR34.VAL=VAR14.VAL+VAR18.VAL
 			ENDIF
-		ENDIF 
+		ENDIF
 	END_SUB
 	
 //END

@@ -61,7 +61,6 @@
 	DEF VAR32=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/0,0,0/0,0,0/);齿高
 	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
 	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
-	DEF GRIND_TYPE=(R////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型变量的引用
 	
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -177,7 +176,7 @@
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
 			LM("MASK11","dressware.com")
 		ELSE;XZ/X
-			IF GRIND_TYPE.VAL==0;WAI
+			IF TYPE.VAL==0;WAI
 				LM("MASK16","dressware.com")
 			ELSE;NEI
 				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
