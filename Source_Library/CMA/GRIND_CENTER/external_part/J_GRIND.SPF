@@ -15,8 +15,10 @@ M3 S=PROCESS[29];头架启动
 
 ;MSG("到磨削起点")
 G90 G01 Z=INI[7] F=INI[56];Z轴到磨削起点
-;MSG("砂轮正在进入工件螺纹")
 
+K_CYCLE_MESSAGE
+
+;MSG("砂轮正在进入工件螺纹")
 G90 G01 AX[AXNAME(AXIS_EW)]=PROCESS[20]+PROCESS[57]*PROCESS[21] F=50;快速到达磨削位置附近
 
 POS[AXNAME(AXIS_EW)]=PROCESS[20] FA[AXNAME(AXIS_EW)]=0.8;X进给 响应测量信号
@@ -44,7 +46,6 @@ IF ($A_IN[4]==1) AND (INI[119]==0);测量4信号
 ENDIF
 
 G4 F0.1
-K_CYCLE_MESSAGE
 G90 G1 Z=INI[6] F=PROCESS[22];Z轴移动进给开始磨削外圆
 IF $A_DBB[2]==1;磨削中途按下退刀,安全结束程序
 	RET

@@ -31,6 +31,9 @@ WHILE(WORK[1]<WORK[0])
 	G90 G01 C=ACP(TEMPANG) F=INI[58];头数切换,角度增量累加
 	;MSG("到磨削起点")
 	F_Z_POSITION(INI[6]);Z轴到磨削起点
+
+	E_CYCLE_MESSAGE
+
 	;MSG("砂轮正在进入工件螺纹")
 	G90 G01 X=PROCESS[4]+PROCESS[8]*4 F=PROCESS[11]*4;快速到达磨削位置附近
 	IF PROCESS[6]==0;单向/双向
@@ -40,7 +43,6 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	
 	FGROUP(Z)
-	E_CYCLE_MESSAGE
 	IF TOOL_SET[59]==0;没有变螺距
 		F_ZC_START(INI[6],INI[7],INI[5],PROCESS[9],1)
 	ELSE
