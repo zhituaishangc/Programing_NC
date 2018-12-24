@@ -46,6 +46,13 @@ IF $A_DBB[2]==1;按下退刀键跳转到结束程序
     RET
 ENDIF
 
+;ifIsExternalVWBegin
+IF PROCESS[6]==0;单向/双向
+    WHEN $R[270]==1 DO POS[Z]=INI[6] FA[Z]=INI[56];定位轴启动
+    R270=1;同步动作激活标记
+ENDIF
+;ifIsExternalVWEnd
+
 IF PROCESS[3]==1
 
     ;********************
@@ -61,6 +68,14 @@ IF PROCESS[3]==1
     INI[72]=1;磨削中进行过修整后的标记
     C_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDIF
+
+;ifIsExternalVWBegin
+IF PROCESS[6]==0;单向/双向
+    WAITP;等待定位轴到位
+    STOPRE;如果不加可能产生报警
+    R270=0;同步动作取消标记
+ENDIF
+;ifIsExternalVWEnd
 
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
     M9;磨削冷却关
