@@ -1132,14 +1132,23 @@
 |SHAPE_MODEL[68]||底部斜线延长长度(水平)
 |SHAPE_MODEL[69]||过度线角度(0-90)
 |双圆弧||
-|SHAPE_MODEL[80]||左圆弧半径
-|SHAPE_MODEL[81]||右圆弧半径
-|SHAPE_MODEL[82]||左偏心
-|SHAPE_MODEL[83]||右偏心
+|SHAPE_MODEL[80]||左圆弧半径当前
+|SHAPE_MODEL[81]||右圆弧半径当前
+|SHAPE_MODEL[82]||左偏心当前
+|SHAPE_MODEL[83]||右偏心当前
+|SHAPE_MODEL[112]||左圆弧半径初始
+|SHAPE_MODEL[113]||右圆弧半径初始
+|SHAPE_MODEL[114]||左偏心初始
+|SHAPE_MODEL[115]||右偏心初始
+|SHAPE_MODEL[116]||左圆弧半径调整
+|SHAPE_MODEL[117]||右圆弧半径调整
+|SHAPE_MODEL[118]||左偏心调整
+|SHAPE_MODEL[119]||右偏心调整
 |SHAPE_MODEL[84]||过度1斜线角度
 |SHAPE_MODEL[85]||过度1斜线长度延长
 |SHAPE_MODEL[86]||过度2斜线角度
 |SHAPE_MODEL[87]||过度2斜线长度
+|SHAPE_MODEL[88]||圆弧部分角度
 |梯形||
 |SHAPE_MODEL[90]||齿底长度
 |SHAPE_MODEL[91]||齿底左圆弧半径
@@ -1157,3 +1166,4 @@
 
 |SHAPE_MODEL[110]||锥度(X方向)齿形一
 |SHAPE_MODEL[111]||锥度(X方向)齿形二
+|SHAPE_MODEL[112]-SHAPE_MODEL[119]||双圆弧已占用
