@@ -21,7 +21,16 @@
 	DEF X_DRF=(R///$85116,$85116,,/WR1//"$AC_DRF[X]"/120,10,50/170,10,60/7);DRF_X
 	DEF Z_DRF=(R///$85117,$85117,,/WR1//"$AC_DRF[Z]"/120,30,50/170,30,60/7);DRF_Z
 
+	;ifIsHasReOperateBegin
+	DEF VAR4=(I/*0=$85110,1=$85111//$85141,,,/WR2/"panel_1_1_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[9]"/0,0,0/270,10,70);对刀类型(首次/二次)
+	DEF VAR11=(I/*0=$85146,1=$85147,2=$85148//$85145,,,/WR2/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[20]"/0,0,0/270,30,70/);选择对刀位置
+	DEF DUIDAOWEI=(R///$85112,$85112,,/WR4/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/INI[135]"/245,50,50/280,50,60/);任意点对刀位
+	;ifIsHasReOperateEnd
+
+	;ifIsNotHasReOperateBegin
 	DEF VAR11=(I/*0=$85146,1=$85147,2=$85148//$85145,,,/WR2/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[20]"/0,0,0/270,10,70/);选择对刀位置
+	DEF DUIDAOWEI=(R///$85112,$85112,,/WR4/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/INI[135]"/245,30,50/280,30,60/);任意点对刀位
+	;ifIsNotHasReOperateEnd
 
 	DEF PIECE_VOLUME=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2/"panel_1_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[27]"/360,10,70/460,10,80//"UserGuide/section_1.html","S1D1");单件/批量磨削方式选择
 	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,40,70/460,40,60/);螺纹旋向
@@ -163,6 +172,14 @@
 
 	CHANGE(VAR20)
 		call("UP2")
+	END_CHANGE
+
+	CHANGE(VAR11)
+		IF VAR11.VAL==2
+			DUIDAOWEI.WR=2
+		ELSE
+			DUIDAOWEI.WR=4
+		ENDIF
 	END_CHANGE
 	
 	CHANGE(VAR23)
