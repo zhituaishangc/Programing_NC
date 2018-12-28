@@ -14,18 +14,22 @@ MSG("正在开至工件起点")
 F_Z_POSITION(INI[6]);外螺纹   ifIsExternal
 F_Z_POSITION(INI[28]);内螺纹  ifIsInternal
 ;*********************
-GOTOF DDD2
+GOTOF DDD3
 
 ;*********************
 ;ifIsExternalBegin
 DDD1:
 MSG("正在开至工件中点")
 F_Z_POSITION(INI[8]);快速移动到对刀中点
-GOTOF DDD2
+GOTOF DDD3
+
+DDD2:
+G01 G90 Z=INI[134] F=INI[56];任意点位置
+GOTOF DDD3
 ;ifIsExternalEnd
 ;*********************
 
-DDD2:
+DDD3:
 MSG("X轴开至对刀起始位")
 G01 G90 X=INI[10] F=INI[55];X开至对刀起始位
 
