@@ -4,18 +4,11 @@ PROC D_GRIND DISPLOF
 ;*完整磨削一个工件循环
 ;****************************
 
-DEF REAL TEMPC
 DEF REAL TEMPANG
 
 WORK[1]=0;当前头
 WORK[2]=360/WORK[0];每头累加角度
 INI[47]=1;磨削中不正常退出标记
-
-IF INI[0]==1;左旋
-	TEMPC=-TOOL_SET[41]/INI[5]*360
-ELSE
-	TEMPC=TOOL_SET[41]/INI[5]*360;自动对刀结果调整
-ENDIF
 
 F_C_MODIFY_BY_Z(TOOL_SET[42])
 TOOL_SET[42]=0;清零
@@ -26,7 +19,7 @@ GRIND[4]=0;清零
 WHILE(WORK[1]<WORK[0])
 	WORK[3]=WORK[2]*WORK[1];当前头角度=平均头数角度*当前头数
 	;MSG("头架到位中")
-	TEMPANG=WORK[3]+TOOL_SET[4]+TEMPC
+	TEMPANG=WORK[3]+TOOL_SET[4]
 	F_ANG_WITHIN_360(TEMPANG)
 	G90 G01 C=ACP(TEMPANG) F=INI[58];头数切换,角度增量累加
 	;MSG("到磨削起点")
