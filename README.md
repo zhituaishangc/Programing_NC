@@ -61,7 +61,7 @@ workstation only for HJMT Programing segment
 ## Contribute
 
 * Group Members: [Marco Nie](https://github.com/nie11kun), [zhituaishangc](https://github.com/zhituaishangc), [guanzhenhao](https://github.com/guanzhenhao), [wangting3215](https://github.com/wangting3215)
-* [Develop Stats](https://nie11kun.github.io/Programing_NC/)-->*截止 2017-01-24 08:40:45*
+* [Develop Stats](https://nie11kun.github.io/Horizon-Juicer/)-->*截止 2019-01-03 09:39:47*
 ---
 * As the project still in develop, there may have some bugs or unfriend parts, we are keeping in touch on it.
 * Group members has promission to join develops, if you'd have any suggestion or idea, just let us know and pull you request.
