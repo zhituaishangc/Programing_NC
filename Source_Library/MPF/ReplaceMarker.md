@@ -1,0 +1,52 @@
+# 程序内字符替换标记编写规范
+
+```
+注意：所有标记都可以在后面加上Begin和End来标记一个区域, 前面加上分号';'。
+例如：
+;ifIsCenterBegin
+    ...
+    ...
+;ifIsCenterEnd
+```
+
+|含义|标记|
+|:----:|:----:|
+|开关测量|ifIsKaiGuanCeliang
+|测头测量|ifIsCeTouCeliang
+|开关和测头|ifIsKaiGuanAndCeTouCeliang
+|不是磨削中心|ifIsNotCenter
+|是磨削中心|ifIsCenter
+|有自动对刀|ifIsAuto
+|外螺纹|ifIsExternal
+|外螺纹VW修整器|ifIsExternalVW
+|内螺纹|ifIsInternal
+|内螺纹非磨削中心|ifIsInternalOnly
+|VW/V|ifIsDressWare1
+|V|ifIsDressWare2
+|X_Z/X|ifIsDressWare3
+|X_内后|ifIsDressWare4
+|液压|ifIsDressWare5
+|单滚轮方滚轮|ifIsSingleAndRound
+|双滚轮|ifIsSide
+|全套齿形|ifIsAllShape
+|有双圆弧|ifIsArc
+|只有双圆弧|ifIsOnlyArc
+|x向前修整|ifIsFrontDress
+|x向后修整|ifIsBackDress
+|vw修整器|ifIsVW
+|vw单方滚轮|ifIsVWSR
+|vw双滚轮|ifIsVWSide
+|v修整器|ifIsV
+|xz单方滚轮|ifIsXZSR
+|xz双滚轮|ifIsXZSide
+|x外螺纹修整|ifIsXWai
+|x内螺纹向前|ifIsXNeiFront
+|x内螺纹向后|ifIsXNeiBack
+|液压修整器|ifIsVH
+|磨削中心有U轴|ifIsHasU
+|磨削中心无U轴|ifIsNotHasU
+|粗磨自动计算|ifIsRoughToAmount
+|粗磨不自动计算|ifIsNotRoughToAmount
+|A轴转完关闭液压|ifCloseHydrauilc
+|有二次对刀|ifIsHasReOperate
+|无二次对刀|ifIsNotHasReOperate
