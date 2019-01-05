@@ -8,7 +8,7 @@
 	
 	PRESS(HS7)
 		LM("MASK1","grind.com");磨削界面加载 ifIsExternal
-		LM("MASK18","grind.com");磨削界面加载 ifIsInternal
+		LM("MASK18","grind.com");磨削界面加载 ifIsInternalOnly
 		LM("MASK23","centermain.com");磨削界面加载 ifIsCenter
 	END_PRESS
 
