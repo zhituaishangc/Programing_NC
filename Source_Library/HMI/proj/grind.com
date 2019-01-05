@@ -275,7 +275,7 @@
 //END
 ;ifIsExternalEnd
 
-;ifIsInternalOrCenterBegin
+;ifIsInternalBegin
 ;**********************MASK18:磨削参数_内:panel_18:;**********************
 //M(Mask18/$85020/"panel_18_4_chs.png"/)
 
@@ -498,5 +498,5 @@
 	END_SUB
 
 //END
-;ifIsInternalOrCenterEnd
+;ifIsInternalEnd
 
