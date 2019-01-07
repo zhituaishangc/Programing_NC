@@ -4,7 +4,7 @@ PROC C_DRESS_INIT_POSITION_CX DISPLOF
 ;****************************
 
 MSG("修整轮运行至起始位置")
-G90 G1 V=0 F=INI[61]
+G90 G1 V=$AA_SOFTENDP[V]-1 F=INI[61]
 WHILE($A_DBB[23]<>1);没到初始位置
     MSG("修整器到初始位置")
     M44;回到初始位置
