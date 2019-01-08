@@ -30,5 +30,33 @@
 				<INDEX_ENTRY ref="section_12.html" title="磨削" />
 			</ENTRY>
 		</ENTRY>
+		<!--ifIsCenterBegin-->
+		<ENTRY ref ="section_20.html" title="磨削中心介绍" >
+			<ENTRY ref ="section_20.html" title="外磨砂轮修整" >
+				<INDEX_ENTRY ref="section_20.html" title="外磨砂轮修整" />
+			</ENTRY>
+			<ENTRY ref ="section_3.html" title="内磨砂轮修整" >
+				<INDEX_ENTRY ref="section_3.html" title="内磨砂轮修整" />
+			</ENTRY>
+			<ENTRY ref ="section_22.html" title="外圆端面对刀" >
+				<INDEX_ENTRY ref="section_22.html" title="外圆端面对刀" />
+			</ENTRY>
+			<ENTRY ref ="section_11.html" title="内磨对刀" >
+				<INDEX_ENTRY ref="section_11.html" title="内磨对刀" />
+			</ENTRY>
+			<ENTRY ref ="section_24.html" title="外圆端面磨削" >
+				<INDEX_ENTRY ref="section_24.html" title="外圆端面磨削" />
+			</ENTRY>
+			<ENTRY ref ="section_12.html" title="内磨磨削" >
+				<INDEX_ENTRY ref="section_12.html" title="内磨磨削" />
+			</ENTRY>
+			<ENTRY ref ="section_26.html" title="外圆参数" >
+				<INDEX_ENTRY ref="section_26.html" title="外圆参数" />
+			</ENTRY>
+			<ENTRY ref ="section_27.html" title="端面参数" >
+				<INDEX_ENTRY ref="section_27.html" title="端面参数" />
+			</ENTRY>
+		</ENTRY>
+		<!--ifIsCenterEnd-->
 	</BOOK>
 </HMI_SL_HELP>
