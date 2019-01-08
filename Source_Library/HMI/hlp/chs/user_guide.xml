@@ -15,9 +15,11 @@
 			<ENTRY ref ="section_4.html" title="滚轮界面" >
 				<INDEX_ENTRY ref="section_4.html" title="滚轮界面" />
 			</ENTRY>
+			<!--ifIsAutoBegin-->
 			<ENTRY ref ="section_5.html" title="自动对刀界面" >
 				<INDEX_ENTRY ref="section_5.html" title="自动对刀界面" />
 			</ENTRY>
+			<!--ifIsAutoEnd-->
 		</ENTRY>
 		<ENTRY ref ="section_10.html" title="机床功能介绍" >
 			<ENTRY ref ="section_10.html" title="砂轮修整" >
