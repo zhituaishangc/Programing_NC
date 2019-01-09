@@ -1,23 +1,23 @@
 ;***********************MASK3:修整参数_主界面:panel_3**********************
 //M(Mask3/$85022/"panel_3_4_chs.png"/)
 
-	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/110,10,110/200,10,110//"UserGuide/section_2.html","S3D18");累计修整量
+	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/110,10,110/200,10,110//"UserGuide/section_3.html","S3D18");累计修整量
 
 	;以下4个参数按需选择一个类型
 	;+++++++++++++++++++++++++++++++++++++++++++++
-	DEF VAR1=(I/*0=$85344,2=$85346//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_2.html","S3D1");vw/v  ifIsDressWare1
+	DEF VAR1=(I/*0=$85344,2=$85346//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D1");vw/v  ifIsDressWare1
 	DEF VAR1=(I/*2=$85346/2/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);V ifIsDressWare2
-	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_2.html","S3D2");X_Z/X  ifIsDressWare3
+	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");X_Z/X  ifIsDressWare3
 	DEF VAR1=(I/*4=$85348/4/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);X_内后  ifIsDressWare4
 	DEF VAR1=(I/*3=$85347/3/$85387,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/);ifIsDressWare5
 
-	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60//"UserGuide/section_2.html","S3D3");修整轮类型 ifIsSingleAndRound
+	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D3");修整轮类型 ifIsSingleAndRound
 	DEF VAR2=(I/*1=$85381/1/$85388,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60/);修整轮类型 双 ifIsSide
 
-	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60//"UserGuide/section_2.html","S3D4");齿形 ifIsAllShape
+	DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60//"UserGuide/section_3.html","S3D4");齿形 ifIsAllShape
 	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
 	
-	;*DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60//"UserGuide/section_2.html","S3D4");齿形 通用齿形调用 ifIsAllShape
+	;*DEF VAR3=(I/*0=$85383,1=$85384,2=$85385//$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60//"UserGuide/section_3.html","S3D4");齿形 通用齿形调用 ifIsAllShape
 	;*DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[116]"/0,0,0/335,30,60/);齿形 通用齿形调用 ifIsOnlyArc
 
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
@@ -26,30 +26,30 @@
 	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前 ifIsFrontDress
 	DEF N_CX_X_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在后 ifIsBackDress
 
-	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_2.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
-	DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_2.html","S3D5");内螺纹砂轮最小直径 ifIsInternal
-	DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110//"UserGuide/section_2.html","S3D6");内螺纹砂轮最大磨削直径 ifIsInternal
+	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
+	DEF WHEEL_N_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_12_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_3.html","S3D5");内螺纹砂轮最小直径 ifIsInternal
+	DEF WHEEL_N_MAX=(R/0,1000//$85304,$85304,,$85043/WR4/"panel_3_13_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[50]"/310,330,130/440,330,110//"UserGuide/section_3.html","S3D6");内螺纹砂轮最大磨削直径 ifIsInternal
 
 	;DEF MODEL_NAME=(S///$85464,$85464,,/WR4,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/WORM_SHAPE"/0,0,0/10,290,250/);存储齿形程序名,蜗杆用
 
 	;+++++++++++++++++++++++++++++++++++++++++++++
 
-	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60//"UserGuide/section_2.html","S3D7");粗修次数
-	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110//"UserGuide/section_2.html","S3D8");粗修量
-	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110//"UserGuide/section_2.html","S3D9");粗修速度
+	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60//"UserGuide/section_3.html","S3D7");粗修次数
+	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D8");粗修量
+	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110//"UserGuide/section_3.html","S3D9");粗修速度
 
-	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,130,110/440,130,60//"UserGuide/section_2.html","S3D10");精修次数
-	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,150,110/440,150,110//"UserGuide/section_2.html","S3D11");精修量
-	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,170,110/440,170,110//"UserGuide/section_2.html","S3D12");精修速度
+	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,130,110/440,130,60//"UserGuide/section_3.html","S3D10");精修次数
+	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,150,110/440,150,110//"UserGuide/section_3.html","S3D11");精修量
+	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,170,110/440,170,110//"UserGuide/section_3.html","S3D12");精修速度
 
-	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/330,200,110/440,200,110//"UserGuide/section_2.html","S3D13");砂轮宽度
-	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/330,220,110/440,220,110//"UserGuide/section_2.html","S3D14");新砂轮直径
+	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D13");砂轮宽度
+	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/330,220,110/440,220,110//"UserGuide/section_3.html","S3D14");新砂轮直径
 	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/330,240,110/440,240,110/);砂轮当前直径
-	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR2/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,260,110/440,260,110//"UserGuide/section_2.html","S3D15");砂轮线速度
+	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR2/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,260,110/440,260,110//"UserGuide/section_3.html","S3D15");砂轮线速度
 	DEF VAR16=(I///$85221,$85221,,$85044/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,280,110/440,280,110/);修整时砂轮转速
 
-	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60//"UserGuide/section_2.html","S3D16");砂轮状态
-	DEF CHENGXING=(I/*0=$85301,1=$85302//$85300,,,/WR4/"panel_3_14_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40//"UserGuide/section_2.html","S3D17");新砂轮是否是成型砂轮(0否1是)
+	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60//"UserGuide/section_3.html","S3D16");砂轮状态
+	DEF CHENGXING=(I/*0=$85301,1=$85302//$85300,,,/WR4/"panel_3_14_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40//"UserGuide/section_3.html","S3D17");新砂轮是否是成型砂轮(0否1是)
 
 	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/0,0,0/);垂直轴
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/0,0,0/);水平轴
