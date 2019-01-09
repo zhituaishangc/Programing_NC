@@ -20,6 +20,18 @@
 				<INDEX_ENTRY ref="section_5.html" title="自动对刀界面" />
 			</ENTRY>
 			<!--ifIsAutoEnd-->
+
+			<!--ifIsCenterBegin-->
+			<ENTRY ref ="section_26.html" title="外圆参数" >
+				<INDEX_ENTRY ref="section_26.html" title="外圆参数" />
+			</ENTRY>
+			<ENTRY ref ="section_27.html" title="端面参数" >
+				<INDEX_ENTRY ref="section_27.html" title="端面参数" />
+			</ENTRY>
+			<ENTRY ref ="section_28.html" title="加工选择" >
+				<INDEX_ENTRY ref="section_28.html" title="加工选择" />
+			</ENTRY>
+			<!--ifIsCenterEnd-->
 		</ENTRY>
 		<ENTRY ref ="section_10.html" title="机床功能介绍" >
 			<ENTRY ref ="section_10.html" title="砂轮修整" >
@@ -51,12 +63,6 @@
 			</ENTRY>
 			<ENTRY ref ="section_12.html" title="内磨磨削" >
 				<INDEX_ENTRY ref="section_12.html" title="内磨磨削" />
-			</ENTRY>
-			<ENTRY ref ="section_26.html" title="外圆参数" >
-				<INDEX_ENTRY ref="section_26.html" title="外圆参数" />
-			</ENTRY>
-			<ENTRY ref ="section_27.html" title="端面参数" >
-				<INDEX_ENTRY ref="section_27.html" title="端面参数" />
 			</ENTRY>
 		</ENTRY>
 		<!--ifIsCenterEnd-->
