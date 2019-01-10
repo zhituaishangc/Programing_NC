@@ -10,7 +10,8 @@
             <hr>
             <div class="head2">砂轮修整
                 <hr>
-                <div class="head3">内螺纹
+                <!--ifIsInternalBegin-->
+                <div class="head3">
                     <hr>
                     <div class="head4">新砂轮修整
                         <ol class="list">
@@ -18,7 +19,7 @@
                             <li>选择成型X/XZ插补修整</li>
                             <li>选择修整齿形(XZ修整器下设置)</li>
                             <li>打开滚轮/滚压轮界面</li>
-                            <li>设置<a href="section_4.html#S4D1">修整中心距</a>和<a href="section_4.html#S4D2">修整中心</a>两个参数，设置方法请点击对应链接</li>
+                            <li>设置<a href="section_4.html#S4D12">修整中心距</a>和<a href="section_4.html#S4D13">修整中心</a>两个参数，设置方法请点击对应链接</li>
                             <li>根据实际情况设置其他参数</li>
                             <li>返回修整界面</li>
                             <li>选择新砂轮</li>
@@ -53,17 +54,49 @@
                         </ol>
                     </div>
                 </div>
-                <div class="head3">外螺纹
+                <!--ifIsInternalEnd-->
+
+                <!--ifIsExternalBegin-->
+                <div class="head3">
                     <div class="head4">新砂轮修整
-                        
+                        <ol class="list">
+                            <li>打开修整界面</li>
+                            <li>选择修整器类型</li>
+                            <li>选择修整齿形(插补修整器下设置)</li>
+                            <li>打开滚轮/滚压轮界面</li>
+                            <li><a href="section_4.html#S4D6">修整中心</a>两个参数，设置方法请点击对应链接</li>
+                            <li>根据实际情况设置其他参数</li>
+                            <li>返回修整界面</li>
+                            <li>选择新砂轮</li>
+                            <li>设置修整粗修/精修进给参数</li>
+                            <li>设置砂轮宽度(插补修整器下设置)</li>
+                            <li>设置新砂轮直径(比实际直径稍大0.2mm左右合适)</li>
+                            <li>设置砂轮线速度(通常22m/s合适, 根据砂轮大小适当调整)</li>
+                            <li>设置砂轮最小磨削直径(根据砂轮法兰大小, 砂轮小于此直径后报警)</li>
+                            <li>进入齿形界面设置齿形参数(插补修整器下设置)</li>
+                            <li>点亮修整键后启动程序</li>
+                        </ol>
                     </div>
                     <div class="head4">旧砂轮修整
-
+                        <ol class="list">
+                            <li>设置粗磨次数和精磨次数</li>
+                            <li>点亮修整键后启动程序</li>
+                        </ol>
                     </div>
                     <div class="head4">磨削中修整
-
+                        <ol class="list">
+                            <li>磨削中修整次数只用精磨次数</li>
+                        </ol>
+                    </div>
+                    <hr>
+                    <div class="alarm1">如果启动后机床报警无法启动可能原因
+                        <ol class="list">
+                            <li>磨削参数未设置合适工件螺距/左端工件右端/退刀位置/工件磨削起始，可临时设置大概值完成修整</li>
+                            <Li>修整中心参数未设置正确，查看是否正负号写反</Li>
+                        </ol>
                     </div>
                 </div>
+                <!--ifIsExternalEnd-->
             </div>
         </div>
     </body>
