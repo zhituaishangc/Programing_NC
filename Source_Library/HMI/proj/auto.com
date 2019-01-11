@@ -22,50 +22,50 @@
 
 	;如果是磨削中心屏蔽下面参数++++++++++++++++++
 	;ifIsNotCenterBegin
-	DEF VAR3=(R/-500,500//$85505,$85505,,$85043/WR4/"panel_21_6_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,70,110/440,70,110/);内螺纹测头球中心/接近开关探测面与磨杆距离(X向)
+	DEF VAR3=(R/-500,500//$85505,$85505,,$85043/WR4/"panel_21_6_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[24]"/330,70,110/440,70,110//"UserGuide/section_5.html","S5D18");内螺纹测头球中心/接近开关探测面与磨杆距离(X向)
 	;ifIsNotCenterEnd
 
 	;ifIsCenterBegin
-	DEF YUANKONGWEIZHI=(I/*0=$85549,1=$85550//$85548,$85548,,/WR4/"panel_21_26_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[70]"/330,300,110/440,300,60);磨削中心：自动对刀圆孔测量在左端面(0否1是)
-	DEF VAR25=(R/0,0.5//$85553,$85553,,$85043/WR4/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[128]"/10,190,130/140,190,110/);外圆跳动阈值
-	DEF VAR26=(R/0,0.5//$85554,$85554,,$85043/WR4/"panel_21_28_chs.png"/"/NC/_N_NC_GD2_ACX/INI[131]"/10,210,130/140,210,110/);外圆测量阈值
-	DEF VAR27=(R/0,360//$85551,$85551,,$85042/WR4/"panel_21_30_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[59]"/10,230,130/140,230,110/);端面测量角度
-	DEF VAR28=(R/0,360//$85552,$85552,,$85042/WR4/"panel_21_29_chs.png"/"/NC/_N_NC_GD2_ACX/INI[132]"/10,250,130/140,250,110/);外圆测量角度
-	DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,270,130/140,270,110/);磨削中心自动对刀测头顶部在工件中心时X轴坐标
-	DEF VAR21=(R///$85530,$85530,,$85043/WR4/"panel_21_14_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[53]"/10,290,130/140,290,110/7,10);磨削中心外圆磨砂轮面在工件中心时U轴坐标
-	DEF VAR22=(R///$85532,$85532,,$85043/WR4/"panel_21_15_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[51]"/10,310,130/140,310,110/7,10);磨削中心端面磨砂轮侧面与测头中心间距
-	DEF VAR23=(R/0,100//$85801,$85801,,$85043/WR4/"panel_21_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,330,130/140,330,110/);工件耳高
-	DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,350,130/140,350,110/);工件外圆长度
+	DEF YUANKONGWEIZHI=(I/*0=$85549,1=$85550//$85548,$85548,,/WR4/"panel_21_26_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[70]"/330,300,110/440,300,60//"UserGuide/section_5.html","S5D19");磨削中心：自动对刀圆孔测量在左端面(0否1是)
+	DEF VAR25=(R/0,0.5//$85553,$85553,,$85043/WR4/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[128]"/10,190,130/140,190,110//"UserGuide/section_5.html","S5D20");外圆跳动阈值
+	DEF VAR26=(R/0,0.5//$85554,$85554,,$85043/WR4/"panel_21_28_chs.png"/"/NC/_N_NC_GD2_ACX/INI[131]"/10,210,130/140,210,110//"UserGuide/section_5.html","S5D21");外圆测量阈值
+	DEF VAR27=(R/0,360//$85551,$85551,,$85042/WR4/"panel_21_30_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[59]"/10,230,130/140,230,110//"UserGuide/section_5.html","S5D22");端面测量角度
+	DEF VAR28=(R/0,360//$85552,$85552,,$85042/WR4/"panel_21_29_chs.png"/"/NC/_N_NC_GD2_ACX/INI[132]"/10,250,130/140,250,110//"UserGuide/section_5.html","S5D23");外圆测量角度
+	DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,270,130/140,270,110//"UserGuide/section_5.html","S5D24");磨削中心自动对刀测头顶部在工件中心时X轴坐标
+	DEF VAR21=(R///$85530,$85530,,$85043/WR4/"panel_21_14_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[53]"/10,290,130/140,290,110/7,10/"UserGuide/section_5.html","S5D25");磨削中心外圆磨砂轮面在工件中心时U轴坐标
+	DEF VAR22=(R///$85532,$85532,,$85043/WR4/"panel_21_15_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[51]"/10,310,130/140,310,110/7,10/"UserGuide/section_5.html","S5D26");磨削中心端面磨砂轮侧面与测头中心间距
+	DEF VAR23=(R/0,100//$85801,$85801,,$85043/WR4/"panel_21_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,330,130/140,330,110//"UserGuide/section_5.html","S5D27");工件耳高
+	DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,350,130/140,350,110//"UserGuide/section_5.html","S5D28");工件外圆长度
 	;ifIsCenterEnd
 
-	DEF VAR0=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_21_31_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,10,150/440,10,110/);对刀结果调整
+	DEF VAR0=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_21_31_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,10,150/440,10,110//"UserGuide/section_5.html","S5D1");对刀结果调整
 
-	DEF VAR1=(R/-2000,2000//$85528,$85528,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110/);砂轮中心与接近开关重合Z坐标，外螺纹自动对刀用
-	DEF VAR16=(R/-2000,2000//$85535,$85535,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110/);砂轮中心与测头中心重合Z坐标，外螺纹自动对刀用
+	DEF VAR1=(R/-2000,2000//$85528,$85528,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110//"UserGuide/section_5.html","S5D2");砂轮中心与接近开关重合Z坐标，外螺纹自动对刀用
+	DEF VAR16=(R/-2000,2000//$85535,$85535,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110//"UserGuide/section_5.html","S5D3");砂轮中心与测头中心重合Z坐标，外螺纹自动对刀用
 
-	DEF VAR17=(R/-2000,2000//$85536,$85536,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[51]"/320,70,150/440,70,110/);外螺纹自动对刀测量头中心(左)到接近开关(右)的水平距离
+	DEF VAR17=(R/-2000,2000//$85536,$85536,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[51]"/320,70,150/440,70,110//"UserGuide/section_5.html","S5D4");外螺纹自动对刀测量头中心(左)到接近开关(右)的水平距离
 
-	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR4/"panel_21_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[49]"/330,40,110/440,40,110/);内螺纹自动对刀测头Z轴方向起始位置
+	DEF VAR2=(R/-2000,2000//$85503,$85503,,$85043/WR4/"panel_21_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[49]"/330,40,110/440,40,110//"UserGuide/section_5.html","S5D5");内螺纹自动对刀测头Z轴方向起始位置
 
-	DEF VAR4=(R/-500,500//$85527,$85527,,$85043/WR4/"panel_21_7_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[11]"/330,90,110/440,90,110/);内螺纹测头/开关与砂轮距离(Z向)
+	DEF VAR4=(R/-500,500//$85527,$85527,,$85043/WR4/"panel_21_7_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[11]"/330,90,110/440,90,110//"UserGuide/section_5.html","S5D6");内螺纹测头/开关与砂轮距离(Z向)
 
-	DEF VAR7=(R/-2000,2000//$85513,$85513,,$85043/WR4/"panel_21_10_chs.png"/"/NC/_N_NC_GD2_ACX/INI[53]"/330,120,110/440,120,110/);内螺纹自动对刀开关测量方式下，开关进入工件开始测量Z起始位置
-	DEF VAR8=(R/0,359//$85504,$85504,,$85042/WR4/"panel_21_5_chs.png"/"/NC/_N_NC_GD2_ACX/INI[50]"/330,120,110/440,120,110/);内螺纹测头自动对刀工件C方向合适角度
+	DEF VAR7=(R/-2000,2000//$85513,$85513,,$85043/WR4/"panel_21_10_chs.png"/"/NC/_N_NC_GD2_ACX/INI[53]"/330,120,110/440,120,110//"UserGuide/section_5.html","S5D7");内螺纹自动对刀开关测量方式下，开关进入工件开始测量Z起始位置
+	DEF VAR8=(R/0,359//$85504,$85504,,$85042/WR4/"panel_21_5_chs.png"/"/NC/_N_NC_GD2_ACX/INI[50]"/330,120,110/440,120,110//"UserGuide/section_5.html","S5D8");内螺纹测头自动对刀工件C方向合适角度
 
-	DEF VAR5=(R/0,500//$85512,$85512,,$85043/WR4/"panel_21_9_chs.png"/"/NC/_N_NC_GD2_ACX/INI[52]"/330,150,110/440,150,110/);内螺纹工件小径(开关)
-	DEF VAR6=(R/0,500//$85506,$85506,,$85043/WR4/"panel_21_8_chs.png"/"/NC/_N_NC_GD2_ACX/INI[35]"/330,150,110/440,150,110/);内螺纹工件大径(测量头)
+	DEF VAR5=(R/0,500//$85512,$85512,,$85043/WR4/"panel_21_9_chs.png"/"/NC/_N_NC_GD2_ACX/INI[52]"/330,150,110/440,150,110//"UserGuide/section_5.html","S5D9");内螺纹工件小径(开关)
+	DEF VAR6=(R/0,500//$85506,$85506,,$85043/WR4/"panel_21_8_chs.png"/"/NC/_N_NC_GD2_ACX/INI[35]"/330,150,110/440,150,110//"UserGuide/section_5.html","S5D10");内螺纹工件大径(测量头)
 
-	DEF VAR9=(R/0,10//$85507,$85507,,$85043/WR4/"panel_21_11_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[10]"/330,180,110/440,180,110/);测头半径
+	DEF VAR9=(R/0,10//$85507,$85507,,$85043/WR4/"panel_21_11_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[10]"/330,180,110/440,180,110//"UserGuide/section_5.html","S5D11");测头半径
 
-	DEF VAR10=(R/0,500//$85508,$85508,,$85043/WR4/"panel_21_12_chs.png"/"/NC/_N_NC_GD2_ACX/INI[36]"/330,210,110/440,210,110/);工件端面到反相器孔距离
+	DEF VAR10=(R/0,500//$85508,$85508,,$85043/WR4/"panel_21_12_chs.png"/"/NC/_N_NC_GD2_ACX/INI[36]"/330,210,110/440,210,110//"UserGuide/section_5.html","S5D12");工件端面到反相器孔距离
 
-	DEF VAR15=(R/0,100//$85531,$85531,,$85043/WR2/"panel_21_23_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[55]"/330,240,110/440,240,110/);缺口的深度
+	DEF VAR15=(R/0,100//$85531,$85531,,$85043/WR2/"panel_21_23_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[55]"/330,240,110/440,240,110//"UserGuide/section_5.html","S5D13");缺口的深度
 
-	DEF VAR11=(I/*0=$85510,1=$85511//$85509,,,/WR4/"panel_21_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/0,0,0/440,270,60);(0=圆形孔,1=腰型孔)
+	DEF VAR11=(I/*0=$85510,1=$85511//$85509,,,/WR4/"panel_21_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[23]"/0,0,0/440,270,60//"UserGuide/section_5.html","S5D14");(0=圆形孔,1=腰型孔)
 
-	DEF VAR12=(R/0,359//$85514,$85514,,$85042/WR4/"panel_21_20_chs.png"/"/NC/_N_NC_GD2_ACX/INI[32]"/330,300,110/440,300,110/);腰型孔角度(展开图尺寸)
-	DEF VAR13=(R/0,100//$85515,$85515,,$85043/WR4/"panel_21_21_chs.png"/"/NC/_N_NC_GD2_ACX/INI[33]"/330,320,110/440,320,110/);腰型孔长(展开图尺寸)
-	DEF VAR14=(R/0,100//$85516,$85516,,$85043/WR4/"panel_21_22_chs.png"/"/NC/_N_NC_GD2_ACX/INI[34]"/330,340,110/440,340,110/);腰型孔宽(展开图尺寸)
+	DEF VAR12=(R/0,359//$85514,$85514,,$85042/WR4/"panel_21_20_chs.png"/"/NC/_N_NC_GD2_ACX/INI[32]"/330,300,110/440,300,110//"UserGuide/section_5.html","S5D15");腰型孔角度(展开图尺寸)
+	DEF VAR13=(R/0,100//$85515,$85515,,$85043/WR4/"panel_21_21_chs.png"/"/NC/_N_NC_GD2_ACX/INI[33]"/330,320,110/440,320,110//"UserGuide/section_5.html","S5D16");腰型孔长(展开图尺寸)
+	DEF VAR14=(R/0,100//$85516,$85516,,$85043/WR4/"panel_21_22_chs.png"/"/NC/_N_NC_GD2_ACX/INI[34]"/330,340,110/440,340,110//"UserGuide/section_5.html","S5D17");腰型孔宽(展开图尺寸)
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数

@@ -44,9 +44,9 @@
 |全套齿形|ifIsAllShape
 |有双圆弧|ifIsArc
 |只有双圆弧|ifIsOnlyArc
-|开关测量|ifIsKaiGuanCeliang
-|测头测量|ifIsCeTouCeliang
-|开关和测头|ifIsKaiGuanAndCeTouCeliang
+|开关测量|ifIsKaiGuanCeLiang
+|测头测量|ifIsCeTouCeLiang
+|开关和测头|ifIsKaiGuanAndCeTouCeLiang
 |粗磨自动计算|ifIsRoughToAmount
 |粗磨不自动计算|ifIsNotRoughToAmount
 |A轴转完关闭液压|ifCloseHydrauilc
