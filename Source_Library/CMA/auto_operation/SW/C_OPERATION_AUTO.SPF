@@ -83,7 +83,7 @@ ENDIF
 
 ;计算C初始角
 STOPRE
-DR30=ABS(INI[42]-INI[6])/INI[5];计算推算的砂轮对刀点到磨削起点螺距数
+DR30=ABS(INI[42]+TOOL_SET[41]-INI[6])/INI[5];计算推算的砂轮对刀点到磨削起点螺距数
 DR31=(DR30-TRUNC(DR30))*360;磨削起点到对刀点C轴旋转角度计算
 TOOL_SET[4]=TOOL_SET[5]-DR31+180;外螺纹角度计算不区分左右旋
 F_ANG_WITHIN_360(TOOL_SET[4])
