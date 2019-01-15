@@ -472,6 +472,113 @@
                         自动对刀完成后，此参数会自动修改为实际测量值<br>
                     </p>
                 </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D29">变螺距使能</a></td>
+                            <td>推荐设置：根据工件</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>开/关</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数为加工变螺距工件时使用，需设置相关参数<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D30">螺距变换值</a></td>
+                            <td>推荐设置：根据螺距变换段</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>大于零</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        根据图纸，螺距变换段的螺距设置在此<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D31">孔1距右端面</a></td>
+                            <td>推荐设置：根据图纸</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>大于零</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数为自动测量时使用<br>
+                        根据图纸或手动测量，螺距变换起始反相器孔距离右端面长度<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D32">孔1测量角度</a></td>
+                            <td>推荐设置：根据图纸</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>大于零</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        此参数为自动测量时使用<br>
+                        根据图纸或手动测量，螺距变换起始反相器孔测量时合适角度，使测头可以进入<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D33">变螺距角度</a></td>
+                            <td>推荐设置：根据图纸</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>大于零</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        螺距变换段的总角度，磨削时，从变换起始位置开始使用变换后的螺距磨削此角度后恢复默认螺距<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D34">坐标变换位1</a></td>
+                            <td>推荐设置：测量或手动输入</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        螺纹加工到此Z轴坐标后开始变换螺距，此处可以通过手动对出来或者自动测量<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D35">坐标变换位2</a></td>
+                            <td>推荐设置：自动计算</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        螺纹加工到此Z轴坐标后变换结束，此处为根据变换位1和变螺距角度自动计算出来<br>
+                    </p>
+                </div>
                 <!--ifIsCenterEnd-->
             </div>
         </div>
