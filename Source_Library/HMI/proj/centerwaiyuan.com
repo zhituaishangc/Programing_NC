@@ -129,13 +129,7 @@
 //END
 
 ;***********************MASK24:外磨工艺参数:panel_24**********************
-//M(MASK24/$85710/"panel_2_0_chs.png"/)
-
-	;单双磨削选择
-	DEF VAR10=(I/*0=$85233,1=$85234/1/$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[240]"/0,0,0/132,78,60);
-	DEF VAR11=(I/*0=$85233,1=$85234/1/$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[241]"/0,0,0/222,78,60);
-	DEF VAR12=(I/*0=$85233,1=$85234/1/$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/0,0,0/312,78,60);
-	DEF VAR13=(I/*0=$85233,1=$85234/1/$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[243]"/0,0,0/402,78,60);	
+//M(MASK24/$85710/"panel_24_0_chs.png"/)
 
 	;循环次数
 	DEF VAR15=(I///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[79]"/0,0,0/132,104,60//"UserGuide/section_26.html","S26D12");粗磨次数
@@ -179,6 +173,12 @@
 	DEF VAR34=(I///,,,/WR1///0,0,0/222,266,60/);半粗磨砂轮转速
 	DEF VAR35=(I///,,,/WR1///0,0,0/312,266,60/);半精磨砂轮转速
 	DEF VAR36=(I///,,,/WR1///0,0,0/402,266,60/);精磨砂轮转速
+
+	;来回/保持磨削选择
+	DEF VAR10=(I/*0=$85703,1=$85704//$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[240]"/0,0,0/132,78,60//"UserGuide/section_26.html","S26D36");
+	DEF VAR11=(I/*0=$85703,1=$85704//$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[241]"/0,0,0/222,78,60//"UserGuide/section_26.html","S26D36");
+	DEF VAR12=(I/*0=$85703,1=$85704//$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/0,0,0/312,78,60//"UserGuide/section_26.html","S26D36");
+	DEF VAR13=(I/*0=$85703,1=$85704//$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[243]"/0,0,0/402,78,60//"UserGuide/section_26.html","S26D36");	
 
 	;界面设定磨削总量计算
 	DEF GRID_TOTAL_ACC=(R///$85222,$85222,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[59]"/30,5,190/120,5,60/);累计磨削总量显示
@@ -377,10 +377,10 @@
 
 	SUB(DIY_OFF)
 		;单双磨
-		VAR10.WR=1
-		VAR11.WR=1
-		VAR12.WR=1
-		VAR13.WR=1
+		VAR10.WR=2
+		VAR11.WR=2
+		VAR12.WR=2
+		VAR13.WR=2
 		;循环次数
 		VAR15.WR=2
 		VAR16.WR=2
@@ -429,7 +429,7 @@
 					VAR19.WR=1
 					VAR50.WR=1
 				ELSE
-					VAR10.WR=1
+					VAR10.WR=2
 					VAR19.WR=2
 					VAR50.WR=2
 				ENDIF
@@ -438,7 +438,7 @@
 					VAR20.WR=1
 					VAR51.WR=1
 				ELSE
-					VAR11.WR=1
+					VAR11.WR=2
 					VAR20.WR=2
 					VAR51.WR=2
 				ENDIF
@@ -447,7 +447,7 @@
 					VAR21.WR=1
 					VAR52.WR=1
 				ELSE
-					VAR12.WR=1
+					VAR12.WR=2
 					VAR21.WR=2
 					VAR52.WR=2
 				ENDIF
@@ -456,15 +456,15 @@
 					VAR22.WR=1
 					VAR53.WR=1
 				ELSE
-					VAR13.WR=1
+					VAR13.WR=2
 					VAR22.WR=2
 					VAR53.WR=2
 				ENDIF
 			ELSE
-				VAR10.WR=1
-				VAR11.WR=1
-				VAR12.WR=1
-				VAR13.WR=1
+				VAR10.WR=2
+				VAR11.WR=2
+				VAR12.WR=2
+				VAR13.WR=2
 				VAR19.WR=2
 				VAR20.WR=2
 				VAR21.WR=2
