@@ -117,12 +117,6 @@
 ;***********************MASK25:端面工艺参数:panel_25**********************
 //M(Mask25/$85710/"panel_25_0_chs.png"/)
 
-	;单双磨削选择
-	DEF VAR10=(I/*0=$85233,1=$85234/1/$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[73]"/0,0,0/132,103,60);左端面粗磨
-	DEF VAR11=(I/*0=$85233,1=$85234/1/$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[74]"/0,0,0/222,103,60);左端面精磨
-	DEF VAR12=(I/*0=$85233,1=$85234/1/$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[75]"/0,0,0/312,103,60);右端面粗磨
-	DEF VAR13=(I/*0=$85233,1=$85234/1/$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[76]"/0,0,0/402,103,60);右端面精磨
-
 	;循环次数
 	DEF VAR15=(I///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[100]"/0,0,0/132,129,60//"UserGuide/section_27.html","S27D14");左端面粗磨次数
 	DEF VAR16=(I///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[244]"/0,0,0/222,129,60//"UserGuide/section_27.html","S27D14");左端面精磨次数
@@ -165,6 +159,12 @@
 	DEF VAR34=(I///,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[261]"/0,0,0/222,290,60/);左端面精磨砂轮转速
 	DEF VAR35=(I///,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[262]"/0,0,0/312,290,60/);右端面粗磨砂轮转速
 	DEF VAR36=(I///,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[263]"/0,0,0/402,290,60/);右端面精磨砂轮转速
+
+	;来回/保持磨削选择
+	DEF VAR10=(I/*0=$85703,1=$85704//$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[73]"/0,0,0/132,103,60//"UserGuide/section_27.html","S27D34");左端面粗磨
+	DEF VAR11=(I/*0=$85703,1=$85704//$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[74]"/0,0,0/222,103,60//"UserGuide/section_27.html","S27D34");左端面精磨
+	DEF VAR12=(I/*0=$85703,1=$85704//$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[75]"/0,0,0/312,103,60//"UserGuide/section_27.html","S27D34");右端面粗磨
+	DEF VAR13=(I/*0=$85703,1=$85704//$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[76]"/0,0,0/402,103,60//"UserGuide/section_27.html","S27D34");右端面精磨
 
 	;界面设定磨削总量计算
 	DEF VAR100=(R///$85222,$85222,$85043,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[61]"/30,5,190/120,5,60/);累计磨削总量显示
