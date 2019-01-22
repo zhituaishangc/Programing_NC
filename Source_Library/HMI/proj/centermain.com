@@ -50,7 +50,6 @@
 	DEF NEI_CS=(R///$85180,$85180,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,170,100/110,170,60/6/"UserGuide/section_1.html","S1D26");初始磨削接触位
 	DEF NEI_DQ=(R///$85181,$85181,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,190,100/110,190,60//"UserGuide/section_1.html","S1D25");当前磨削接触位
 
-	DEF WAI_ZD=(R///$85182,$85182,,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[44]"/10,215,100/110,215,60/7/"UserGuide/section_26.html","S26D7");自动对刀测量外圆面初始接触位
 	DEF WAI_CS=(R///$85183,$85183,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[47]"/10,235,100/110,235,60/6/"UserGuide/section_26.html","S26D8");初始磨削接触位
 	DEF WAI_DQ=(R///$85184,$85184,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[21]"/10,255,100/110,255,60//"UserGuide/section_26.html","S26D9");当前磨削接触位
 

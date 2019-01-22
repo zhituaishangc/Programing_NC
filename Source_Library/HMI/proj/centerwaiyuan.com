@@ -9,7 +9,6 @@
 
 	DEF TUIDAOCAO=(R/0,10//$85702,$85702,,/WR2/"panel_31_2_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[113]"/360,130,202/460,130,60//"UserGuide/section_26.html","S26D6");退刀槽长度
 
-	DEF ZIDONGCELIANG=(R///$85720,$85720,,/WR1//"/NC/_N_NC_GD2_ACX/TOOL_SET[44]"/360,160,202/460,160,60/7/"UserGuide/section_26.html","S26D7");自动对刀测量外圆面初始接触位
 	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR2/"panel_31_4_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[47]"/360,180,202/460,180,60/6/"UserGuide/section_26.html","S26D8");初始磨削接触位
 	DEF VAR19=(R///$85158,$85158,,/WR2/"panel_31_3_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[21]"/360,200,202/460,200,60//"UserGuide/section_26.html","S26D9");当前磨削接触位
 
