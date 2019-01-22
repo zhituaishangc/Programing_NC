@@ -46,8 +46,8 @@
 
 	DEF VAR0=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_21_31_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,10,150/440,10,110//"UserGuide/section_5.html","S5D1");对刀结果调整
 
-	DEF VAR1=(R/-2000,2000//$85528,$85528,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110//"UserGuide/section_5.html","S5D2");砂轮中心与接近开关重合Z坐标，外螺纹自动对刀用
-	DEF VAR16=(R/-2000,2000//$85535,$85535,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110//"UserGuide/section_5.html","S5D3");砂轮中心与测头中心重合Z坐标，外螺纹自动对刀用
+	DEF VAR1=(R/-2000,2000//$85528,$85528,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110/7,10/"UserGuide/section_5.html","S5D2");砂轮中心与接近开关重合Z坐标，外螺纹自动对刀用
+	DEF VAR16=(R/-2000,2000//$85535,$85535,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[43]"/320,40,150/440,40,110/7,10/"UserGuide/section_5.html","S5D3");砂轮中心与测头中心重合Z坐标，外螺纹自动对刀用
 
 	DEF VAR17=(R/-2000,2000//$85536,$85536,,$85043/WR4/"panel_21_1_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[51]"/320,70,150/440,70,110/7,10/"UserGuide/section_5.html","S5D4");外螺纹自动对刀测量头中心(左)到接近开关(右)的水平距离
 
