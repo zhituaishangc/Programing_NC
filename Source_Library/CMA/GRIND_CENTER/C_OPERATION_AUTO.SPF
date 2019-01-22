@@ -39,6 +39,7 @@ IF TOOL_SET[53]==0;没碰到
 	GOTOF OPERATION_END
 ENDIF
 
+INI[139]=INI[50]-INI[136];磨削中心右端测量与设置当前差值
 IF INI[50]-INI[136]>INI[137];
 	DRESSER[6]=12;工件右端过长，检查是否放置有误或重新设置右端磨削位置
 	GOTOF OPERATION_END
@@ -344,7 +345,7 @@ IF PROCESS[44]==1;左端面选择
 	ENDIF
 	PROCESS[34]=PROCESS[48];左磨削位置当前等于初始
 	PROCESS[60]=0;工艺累积进刀清零
-	INI[30]=INI[50]-DR33;计算螺母小外圆部分长度
+	INI[140]=INI[50]-DR33;计算螺母小外圆部分长度
 	G91 G01 Z=30 F=INI[56];工件离开测头
 ENDIF
 

@@ -28,12 +28,14 @@
 	;ifIsCenterBegin
 	DEF YUANKONGWEIZHI=(I/*0=$85549,1=$85550//$85548,$85548,,/WR4/"panel_21_26_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[70]"/330,300,110/440,300,60//"UserGuide/section_5.html","S5D19");磨削中心：自动对刀圆孔测量在左端面(0否1是)
 
-	DEF YUANDUCELIANG=(I/*0=$85556,1=$85557//$85555,$85555,,/WR2/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[139]"/10,190,130/140,190,60//"UserGuide/section_5.html","S5D36");外圆是否测量圆度(0否1是)
-	DEF VAR25=(R/0,0.5//$85553,$85553,,$85043/WR4/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[128]"/10,210,130/140,210,110//"UserGuide/section_5.html","S5D20");外圆跳动阈值
+	DEF YUANDUCELIANG=(I/*0=$85014,1=$85013//$85555,$85555,,/WR2/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[139]"/10,190,130/140,190,30//"UserGuide/section_5.html","S5D36");外圆是否测量圆度(0否1是)
+	DEF VAR25=(R/0,0.5//$85553,$85553,,$85043/WR4/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[128]"/10,210,130/140,210,110//"UserGuide/section_5.html","S5D20");外圆跳动阈值设置
+	DEF DANGQIANTIAODONG=(R///$85561,$85561,,/WR1/"panel_21_27_chs.png"/"/NC/_N_NC_GD2_ACX/INI[134]"/0,0,0/230,210,60/6);外圆当前跳动
 
 	DEF YOUDUANSHEZHI=(R///$85558,$85558,,/WR2/"panel_21_32_chs.png"/"/NC/_N_NC_GD2_ACX/INI[137]"/10,230,130/140,230,60//"UserGuide/section_5.html","S5D37");右端面测量安全值
 	DEF YOUDUANJIEGUO=(R///$85560,$85560,,/WR1/"panel_21_32_chs.png"/"/NC/_N_NC_GD2_ACX/INI[51]"/0,0,0/230,230,60/6);右端面测量结果
 	DEF YOUDUANYUZHI=(R/0,0.5//$85559,$85559,,$85043/WR2/"panel_21_32_chs.png"/"/NC/_N_NC_GD2_ACX/INI[138]"/10,250,130/140,250,110//"UserGuide/section_5.html","S5D38");右端测量阈值
+	DEF YOUDUANWUCHA=(R///$85562,$85562,,/WR1/"panel_21_32_chs.png"/"/NC/_N_NC_GD2_ACX/INI[140]"/0,0,0/230,250,60/6);磨削中心右端测量与设置当前差值
 
 	DEF VAR27=(R/0,360//$85551,$85551,,$85042/WR4/"panel_21_30_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[59]"/10,270,130/140,270,110//"UserGuide/section_5.html","S5D22");端面测量角度
 	DEF VAR28=(R/0,360//$85552,$85552,,$85042/WR4/"panel_21_29_chs.png"/"/NC/_N_NC_GD2_ACX/INI[132]"/10,290,130/140,290,110//"UserGuide/section_5.html","S5D23");外圆测量角度
@@ -41,7 +43,8 @@
 	DEF VAR20=(R///$85517,$85517,,$85043/WR4/"panel_21_13_chs.png"/"/NC/_N_NC_GD2_ACX/PROCESS[54]"/10,310,130/140,310,110/7,10/"UserGuide/section_5.html","S5D24");磨削中心自动对刀测头顶部在工件中心时X轴坐标
 
 	DEF VAR23=(R/0,100//$85801,$85801,,$85043/WR4/"panel_21_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[44]"/10,330,130/140,330,110//"UserGuide/section_5.html","S5D27");工件耳高
-	DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,350,130/140,350,110//"UserGuide/section_5.html","S5D28");工件外圆长度
+	DEF VAR24=(R/0,500//$85706,$85706,,$85043/WR4/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[31]"/10,350,130/140,350,110//"UserGuide/section_5.html","S5D28");工件外圆长度设置
+	DEF CHANGDUCELIANG=(R///$85706,$85706,,/WR1/"panel_21_17_chs.png"/"/NC/_N_NC_GD2_ACX/INI[141]"/0,0,0/230,350,60/6);工件外圆长度测量
 	;ifIsCenterEnd
 
 	DEF VAR0=(R/-100,100//$85529,$85529,,$85043/WR2/"panel_21_31_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[42]"/320,10,150/440,10,110//"UserGuide/section_5.html","S5D1");对刀结果调整
