@@ -113,24 +113,6 @@
                     <div class="parameterCell">
                         <table border="1" cellspacing="0" cellpadding="2" width="100%">
                             <tr>
-                                <td><a class="var_mark" name="S26D7">自动测量参考</a></td>
-                                <td>推荐设置：自动对刀后自动计算</td>
-                            </tr>
-                            <tr>
-                                <td>取值范围</td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <p class="parameterExplain">
-                            此参数为自动对刀后自动计算值<br>
-                            第一次使用需校准此值：自动对刀界面的<a href="section_5.html#S5D24">测头中心位</a>/<a href="section_5.html#S5D25">外圆中心位</a>会影响此值<br>
-                            手动用砂轮接触外圆得到坐标输入初始磨削接触，比较初始磨削接触和自动测量参考，调整上面两个参数校准<br>
-                            自动对刀时如果自动测量参考值和初始磨削接触的差值超过<a href="section_5.html#S5D21" class="highlight">外圆测量阈值</a>则会引起报警<br>
-                        </p>
-                    </div>
-                    <div class="parameterCell">
-                        <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                            <tr>
                                 <td><a class="var_mark" name="S26D8">外圆初始磨削接触</a></td>
                                 <td>推荐设置：手动测量后输入</td>
                             </tr>
@@ -142,7 +124,7 @@
                         <p class="parameterExplain">
                             此参数为批量生产时使用的磨削位置<br>
                             为保证安全，手动用砂轮接触工件外圆后，将坐标后退0.1mm后输入此参数<br>
-                            自动对刀时如果自动测量参考值和初始磨削接触的差值超过<a href="section_5.html#S5D21" class="highlight">外圆测量阈值</a>则会引起报警<br>
+                            自动对刀不自动计算初始磨削位置，此值需手动设置<br>
                     </div>
                     <div class="parameterCell">
                         <table border="1" cellspacing="0" cellpadding="2" width="100%">

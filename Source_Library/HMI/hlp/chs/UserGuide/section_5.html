@@ -351,21 +351,6 @@
                 <div class="parameterCell">
                     <table border="1" cellspacing="0" cellpadding="2" width="100%">
                         <tr>
-                            <td><a class="var_mark" name="S5D21">外圆测量阈值</a></td>
-                            <td>推荐设置：0.05</td>
-                        </tr>
-                        <tr>
-                            <td>取值范围</td>
-                            <td>0~0.5</td>
-                        </tr>
-                    </table>
-                    <p class="parameterExplain">
-                        测量外圆时，如果测量出的外圆磨削位小于设置的初始磨削位大于阈值则报警<br>
-                    </p>
-                </div>
-                <div class="parameterCell">
-                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                        <tr>
                             <td><a class="var_mark" name="S5D22">左端面测量角度</a></td>
                             <td>推荐设置：保证测头测量时不干涉</td>
                         </tr>
@@ -407,39 +392,6 @@
                     <p class="parameterExplain">
                         测头在工件中心时，X轴坐标<br>
                         可以通过测头接触工件外圆坐标加上工件半径计算得到<br>
-                    </p>
-                </div>
-                <div class="parameterCell">
-                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                        <tr>
-                            <td><a class="var_mark" name="S5D25">外磨中心位</a></td>
-                            <td>推荐设置：无</td>
-                        </tr>
-                        <tr>
-                            <td>取值范围</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <p class="parameterExplain">
-                        外磨砂轮在工件中心时，外磨砂轮轴坐标<br>
-                        可以通过外磨砂轮接触工件外圆坐标与工件半径计算得到<br>
-                    </p>
-                </div>
-                <div class="parameterCell">
-                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
-                        <tr>
-                            <td><a class="var_mark" name="S5D26">外磨测头距</a></td>
-                            <td>推荐设置：无</td>
-                        </tr>
-                        <tr>
-                            <td>取值范围</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <p class="parameterExplain">
-                        外磨砂轮侧面与测头中心距离<br>
-                        可以通过外磨砂轮接触工件右端面距离坐标Z1，测头接触右端面Z2，测头半径R1得到<br>
-                        外磨测头距=绝对值(Z2-R1-Z1)<br>
                     </p>
                 </div>
                 <div class="parameterCell">
@@ -578,6 +530,52 @@
                     </table>
                     <p class="parameterExplain">
                         螺纹加工到此Z轴坐标后变换结束，此处为根据变换位1和变螺距角度自动计算出来<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D36">圆度测量</a></td>
+                            <td>推荐设置：是</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>是/否</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        测量时是否通过三点测量外圆圆度，如果大于跳动阈值则产生报警<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D37">右端测量设置</a></td>
+                            <td>推荐设置：手动测量后设置</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        手动用测头接触工件右端面后将结果输入此处，当测量结果与此值相差大于测量阈值后会产生报警<br>
+                    </p>
+                </div>
+                <div class="parameterCell">
+                    <table border="1" cellspacing="0" cellpadding="2" width="100%">
+                        <tr>
+                            <td><a class="var_mark" name="S5D38">右端测量阈值</a></td>
+                            <td>推荐设置：0.05</td>
+                        </tr>
+                        <tr>
+                            <td>取值范围</td>
+                            <td>0~0.5</td>
+                        </tr>
+                    </table>
+                    <p class="parameterExplain">
+                        当自动测量右端面结果与右端测量设置相差大于测量阈值后会产生报警<br>
+                        测量后大于阈值一般是因为工件过长或放置未到位，检查工件或手动修改右端测量设置后继续<br>
                     </p>
                 </div>
                 <!--ifIsCenterEnd-->
