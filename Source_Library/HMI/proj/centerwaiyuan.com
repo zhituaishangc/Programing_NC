@@ -2,6 +2,8 @@
 //M(MASK31/$85709/"panel_31_1_chs.png"/)
 	DEF VAR20=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2/"panel_31_1_chs.png"/"/NC/_N_NC_GD2_ACX/INI[98]"/360,10,70/460,10,80//"UserGuide/section_26.html","S26D3");单件/批量磨削方式选择
 
+	;*DEF ZAIXIANCELIANGSTATUS=(I/*0=$85014,1=$85013//$85707,$85707,,/WR1//"$A_IN[10]"/360,40,70/460,40,30/);在线测量状态
+
 	DEF VAR9=(R///$85712,$85712,,/WR1///360,80,202/460,80,60//"UserGuide/section_26.html","S26D4");工件起点
 	DEF VAR8=(R///$85713,$85713,,/WR1///360,100,202/460,100,60//"UserGuide/section_26.html","S26D5");工件终点
 	DEF VAR1=(R////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[49]"/0,0,0/0,0,0/);左端面初始接触
